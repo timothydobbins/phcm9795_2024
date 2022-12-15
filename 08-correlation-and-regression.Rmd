@@ -1,0 +1,241 @@
+# Correlation and linear regression
+
+## Learning objectives {-}
+
+By the end of this module you will be able to:
+
+- Explore the association between two continuous variables using a scatter plot;
+- Estimate and interpret correlation coefficients;
+- Estimate and interpret parameters from a simple linear regression;
+- Decide whether a regression model is valid;
+- Test a hypothesis using regression coefficients;
+- Outline the concept of multiple regression and its role in investigative epidemiology.
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapter 10. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Chapter 11. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+@acock10; Chapter 8.
+
+## Introduction
+
+In Module 5, we saw how to test whether the means from two groups are equal - in other words, whether a continuous variable is related to a categorical variable. We often want to know how closely two continuous variables are related. For example, we may want to know how closely blood cholesterol levels are related to dietary fat intake in adult men. To measure the strength of association between two continuously distributed variables, a correlation coefficient is used.
+
+We may also want to know how well one continuous measurement predicts the value of another continuous measurement. For example, we may want to know how well height predicts values of lung capacity in a community of adults. A regression model allows us to use one measurement to predict another measurement.
+
+Although both correlation coefficients and regression models can be used to describe the degree of association between two continuous variables, the two methods provide very different statistical information. It is important to note that  both methods only measures the strengths of an association between variables and does not imply a causal relationship.
+
+## Correlation
+
+We use correlation to measure the strength of a linear relationship between two variables. Before calculating a correlation coefficient, a scatter plot should first be obtained to give an understanding of the nature of the relationship between the two variables.
+
+### Worked Example
+
+The Stata file `Example_8.1.dta` has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). Using the twoway command in Stata we can obtain the plot shown in Figure \@ref(fig:scatter-plot)). This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
+
+```{r scatter-plot, echo=FALSE, out.width = "66%", fig.cap="Association between height and lung function in 120 adults"}
+knitr::include_graphics(here::here("img", "mod08", "scatterpng.png"))
+```
+
+### Correlation coefficients
+
+A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. In general, an absolute (disregarding the sign) r value below 0.3 indicates a weak association, 0.3 to < 0.6 is fair association, 0.6 to < 0.8 is a moderate association, and $\ge$ 0.8 indicates a strong association.
+
+The coefficient is positive when large values of one variable tend to occur with large values of the other, and small values of one variable (y) tend to occur with small values of the other (x) (Figure \@ref(fig:scatter-plot-four) (a and b)). For example, height and weight in healthy children or age and blood pressure.
+
+The coefficient is negative when large values of one variable tend to occur with small values of the other, and small values of one variable tend to occur with large values of the other (Figure \@ref(fig:scatter-plot-four) (c and d)). For example, percentage immunised against infectious diseases and under-five mortality rate.
+
+```{r scatter-plot-four, echo=FALSE, out.width = "66%", fig.cap="Scatter plots demonstrating strong and weak, positive and negative associations"}
+knitr::include_graphics(here::here("img", "mod08", "scatterplot-four-plots.png"))
+```
+
+The P value associated with an r value is an estimate of whether the correlation coefficient is significantly different from zero. However, a correlation coefficient that does not have a significant P value does not imply that there is no relationship because the correlation coefficient only tests for a linear association and there may be a non-linear relationship such as a curved or irregular relationship.
+
+The assumptions for using a Pearson's correlation coefficient are that:
+
+- observations are independent;
+- both variables are continuous variables;
+- the relationship between the two variables is linear.
+
+There is a further assumption that the data follow a bivariate normal distribution. This assumes: *y* follows a normal distribution for given values of *x*; and *x* follows a normal distribution for given values of *y*. This is quite a technical assumption that we do not discuss further.
+
+There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in Table \@ref(tab:mod08-correlation-coefficients)).
+
+```{r mod08-correlation-coefficients, echo=FALSE}
+df <- tibble::tribble(
+  ~`Correlation coefficient`, ~Application,
+  "Pearson’s correlation coefficient: r", "Both variables are continuous and a bivariate normal distribution can be assumed",
+  "Spearman’s rank correlation: rho", "Bivariate normality cannot be assumed. Also useful when at least one of the variables is ordinal"
+  )
+
+huxtable(df) %>% 
+  theme_article() %>% 
+  set_width(0.95) %>% 
+  set_caption("Correlation coefficients and their application")
+```
+
+Spearman's $\rho$ is calculated using the ranks of the data, rather than the actual values of the data. We will see further examples of such methods in Module 9, when we consider non-parametric tests, which are often based on ranks.
+
+For the data in the Worked Example 8.1, using the pwcorr command in Stata gives the information shown in Output 8.1.
+
+#### Stata Output 8.1: pwcorr command
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. pwcorr Height FVC, sig
+
+             |   Height      FVC
+-------------+------------------
+      Height |   1.0000 
+             |
+             |
+         FVC |   0.6976   1.0000 
+             |   0.0000
+             |
+```
+
+This table shows that the Pearson's correlation coefficient between height and lung function is 0.698 with P<0.001 indicating very strong evidence of a linear association between height and FVC.
+
+This r value was calculated for the full data set of 120 adults who had heights ranging from 160 to 172cms. If the r value is calculated for the 60 adults with a height less than 165cms, it is much lower at 0.433 although significant at P=0.001. In general, r values are higher for a wider range of values on the x axis even though the relationship between the two variables remains the same.
+
+Correlation coefficients are rarely used as important statistics in their own right because they do not fully explain the relationship between the two variables and the range of the data has an important influence on the size of the coefficient. In addition, the statistical significance of the correlation coefficient is often over interpreted because a small correlation which is of no clinical importance can become statistically significant even with a relatively small sample size. For example, a poor correlation of 0.3 will be statistically significant if the sample size is large enough.
+
+## Linear regression
+
+The nature of a relationship between two variables is more fully described using regression. There are two principal purposes for building a regression model. The most common is to build a predictive model, for example in situations in which age and gender are used to predict normal values of characteristics such as lung size or body mass index. Normal values are the range of values that occur naturally in the general population.
+
+The second purpose for using a regression model is for testing the hypothesis that there is a linear relationship between one or more explanatory variables and an outcome variable. For example, a regression model can be used to test the extent to which age predicts BMI or to test the hypothesis that two groups with a different dietary regime have significantly different BMI values after adjusting for age differences.
+
+From Worked Example 8.1, Stata can be used to plot a regression line through the scatter. Figure \@ref(fig:scatter-plot-line) shows the data with the line fitted.
+
+```{r scatter-plot-line, echo=FALSE, out.width = "66%", fig.cap="Association between height and lung function in 120 adults"}
+knitr::include_graphics(here::here("img", "mod08", "scatterplot-line-fvc-height.png"))
+```
+
+The line through the plot is called the line of 'best fit' because the size of the deviations between the data points and the line is minimised in the calculation. The distance between each data point and the regression line is called a 'residual'.
+
+### Regression equations
+
+The mathematical equation for the line explains the relationship between the two variables. The equation of the regression line is as follows:
+
+$$y = \beta_{0} + \beta_{1}x$$
+
+This line is shown in Figure \@ref(fig:regression-parameters) using the notation shown in Table \@ref(tab:regression-notation).
+
+```{r regression-parameters, echo=FALSE, out.width = "66%", fig.cap="Coefficients of a linear regression equation"}
+knitr::include_graphics(here::here("img", "mod08", "regression-line-parameters.png"))
+```
+
+```{r regression-notation, echo=FALSE}
+df <- tibble::tribble(
+        ~Symbol,  ~Interpretation,
+        "y", "Observed value of the outcome variable",
+        "x", "Observed value of the explanatory variable",
+        "β_0", "Intercept of the regression line",
+        "β_1", "Slope of the regression line"
+        )
+
+huxtable(df) %>% 
+  theme_article() %>% 
+  set_width(0.8) %>% 
+  set_caption("Notation for linear regression equation")
+```
+
+The intercept is the point at which the regression line intersects with the y-axis when the value of 'x' is zero. In most cases, the intercept does not have a biologically meaningful interpretation. The slope of the line is the unit change in the outcome variable 'y' with each unit change in the explanatory variable 'x'. For any data set, the fitted regression line passes through the mean values of both the explanatory variable 'x' and the outcome variable 'y'.
+
+When using regression, the research question must be framed so that the explanatory variable 'x' and outcome variable 'y' are classified correctly. An important concept is that regression predicts a mean value of 'y' given an observed value of 'x' so that any error around the explanatory variable is not taken into account. For this reason, measurements that can be taken accurately, such as age and height, make good explanatory variables.
+
+### Fit of a linear regression model
+
+After fitting a linear regression model, it is important to know how well the model fits the observed data. One way of assessing the model fit is to compute a statistic called coefficient of determination, denoted by $R^2$. It is the square of the Pearson correlation coefficient $r: r^2 = R^2$. Since the range of $r$ is from −1 to 1, $R^2$ must lie between 0 and 1.
+
+$R^2$ can be interpreted as the proportion of variability in y that can be explained by variability in x. Hence, the following conditions may arise:
+
+If $R^2 = 1$, then all variation in y can be explained by variation of x and all data points fall on the regression line.
+
+If $R^2 = 0$, then none of the variation in y is related to x at all, and the variable x explains none of the variability in y.
+
+If $0 < R^2 <1$, then the variability of y can be partially explained by the variability in x. The larger the $R^2$ value, the better is the fit of the regression model.
+
+### Assumptions for linear regression
+
+Regression is robust to moderate degrees of non-normality in the variables, provided that the sample size is large enough and that there are no influential outliers. Also, the regression equation describes the relationship between the variables and this is not influenced as much by the spread of the data as the correlation coefficient is.
+
+The assumptions that must be met when using linear regression are as follows:
+
+- observations are independent;
+- the relationship between the explanatory and the outcome variable is linear;
+- the residuals are normally distributed.
+
+A residual is defined as the difference between the observed and predicted outcome from the regression model. If the predicted value of the outcome variable is denoted by $\hat y$ then:
+
+$$ \text{Residual} = \text{observed} - \text{predicted} = y - \hat y$$
+
+It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the **Advanced Biostatistics** course.
+
+## Obtaining a regression equation in Stata
+
+To measure whether height is a significant predictor of forced vital capacity (FVC), we use the `regress` command in Stata.
+
+Output 8.2 shows the model summary in the first part of the Stata output. The R-squared is 0.487, indicating that 48.7% of the variation in FVC is explained by height. The square root of R-squared gives us the (absolute value of) Pearson's correlation coefficient of 0.698 as obtained in Section 8.2.
+
+#### Output 8.2: Model summary from the regress command in Stata
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. regress FVC Height
+
+      Source |       SS           df       MS      Number of obs   =       120
+-------------+----------------------------------   F(1, 118)       =    111.88
+       Model |  17.5914327         1  17.5914327   Prob > F        =    0.0000
+    Residual |  18.5540027       118  .157237311   R-squared       =    0.4867
+-------------+----------------------------------   Adj R-squared   =    0.4823
+       Total |  36.1454355       119  .303743155   Root MSE        =    .39653
+
+------------------------------------------------------------------------------
+         FVC |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      Height |   .1407567   .0133075    10.58   0.000     .1144042    .1671092
+       _cons |  -18.87347   2.193651    -8.60   0.000     -23.2175   -14.52944
+------------------------------------------------------------------------------
+```
+
+The adjusted R-squared is only used when comparing multivariable models (i.e. those with different numbers of explanatory variables, including confounders), and will not be used in this course.
+
+The coefficients table, the second part of the Stata output, provide the estimated regression coefficients. Stata labels the regression slope with the name of the explanatory variable and the intercept `_cons`.
+
+From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:
+
+FVC (L) = − 18.873 + (0.141 $\times$ Height in cm)
+
+This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:
+
+FVC = − 18.87347 + (0.1407567 $\times$ 165.0) = 4.40 L.
+
+Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.
+
+The t-values are calculated by dividing the coefficients by their SEs and are tests of whether each coefficient is significantly different from zero. A coefficient that is significantly different from zero indicates a significant linear relationship between the variables. In this model, both the intercept and the coefficient are significantly different from zero at P < 0.001.
+
+In the above example, the response rate for the survey was low and there may be selection bias in that people who were healthier may have been more likely to attend so the predictive equation may not be considered representative of the general population of adults from which the sample was drawn.
+
+The distribution of the residuals should always be checked. Outlying residuals can have a large effect on the slope of the model and need to be censored or brought closer to the remainder of the data to reduce their influence. The residuals can be generated using the predict command in Stata.
+
+The histogram of residuals from the model is shown in Figure 8.5. They are normally distributed and indicate that there are no influential outliers so that the assumptions for regression are met.
+
+```{r residual-hist, echo=FALSE, out.width = "66%", fig.cap="Histogram of regression residuals"}
+knitr::include_graphics(here::here("img", "mod08", "regression-residual-histogram.png"))
+```
+
+### Critical appraisal
+
+When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any influential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.
+
+When regression is reported it is essential that the axes are correctly presented so that the equation is predictive. Thus, the explanatory variable must be presented on the x axis and the outcome on the y axis. It is also a good idea to check that all the assumptions are met. Outliers which result in a non-normal distribution of the residuals can severely bias the regression coefficients.
+
+## Multiple linear regression
+
+In the above example, we have only used a simple linear regression model of two continuous variables. Other more complex models can be built from this e.g. if we wanted to look at the effect of gender (male vs. female) as binary indicator in the model while adjusting for the effect of height. In that case we would include both the variables in the model as explanatory variables. In the same way we can include any number of explanatory variables (both continuous and categorical) in the model: this is called a multivariable model. Multivariable models are often used for building predictive equations, for example by using age, height, gender and smoking history to predict lung function, or to adjust for confounding and detect effect modification to investigate the association between an exposure and an outcome factor.
+
+Multiple regression has an important role in investigating causality in epidemiology. The exposure variable under investigation must stay in the model and the effects of other variables which can be confounders or effect-modifiers are tested. The biological, psychological or social meaning of the variables in the model and their interactions are of great importance for interpreting theories of causality.
+
+Other multivariable models include binary logistic regression for use with a binary outcome variable, Cox regression for survival analyses, or Poisson regression for count data. These models, together with multiple regression, will be taught in **PHCM9517: Advanced Biostatistics**.

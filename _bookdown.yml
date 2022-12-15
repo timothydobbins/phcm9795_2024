@@ -1,0 +1,6 @@
+book_filename: "PHCM9795"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Module "
+output_dir: "docs"
