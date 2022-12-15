@@ -1,0 +1,110 @@
+# Correlation and simple linear regression
+
+```{r}
+library(ggformula)
+```
+
+We will demonstrate using R for correlation and simple linear regression using the dataset `Example_8.1.csv`.
+
+```{r}
+lung <- read.csv("data/examples/Example_8.1.csv")
+```
+
+## Creating a scatter plot
+
+We can use the `plot` function to create a scatter plot to explore the association between height and FVC, assigning meaningful labels with the `xlab` and `ylab` commands:
+
+```{r}
+plot(x=lung$Height, y=lung$FVC, 
+     xlab="Height (cm)", 
+     ylab="Forced vital capacity (L)")
+```
+
+To add a fitted line, we can use the `abline()` function which adds a straight line to the plot. The equation of this straight line will be determined from the estimated regression line, which we specify with the `lm()` function, which fits a *linear model*.
+
+The basic syntax of the `lm()` function is: `lm(y ~ x)` where `y` represents the *outcome* variable, and `x` represents the *explanatory* variable. Putting this all together:
+
+```{r}
+plot(x=lung$Height, y=lung$FVC,
+     xlab="Height (cm)",
+     ylab="Forced vital capacity (L)")
+
+abline(lm(lung$FVC ~ lung$Height))
+```
+
+Or using the `ggformula` package, we form the basic plot using the following:
+```{r}
+gf_point(FVC ~ Height, data=lung,
+     xlab="Height (cm)", 
+     ylab="Forced vital capacity (L)") |>
+  gf_theme(theme = theme_minimal())
+```
+
+We can add an estimated linear regression line by piping the command `gf_lm()`:
+```{r}
+gf_point(FVC ~ Height, data=lung,
+     xlab="Height (cm)", 
+     ylab="Forced vital capacity (L)") |>
+  gf_lm() |>
+  gf_theme(theme = theme_minimal())
+```
+
+### Calculating a correlation coefficient {-}
+
+We can use the `cor.test(x, y)` function to calculate a Pearson's correlation coefficient:
+
+```{r}
+cor.test(lung$Height, lung$FVC)
+```
+
+## Fitting a simple linear regression model
+
+We can use the `lm` function to fit a simple linear regression model, specifying the model as `y ~ x` where `y` represents the *outcome* variable, and `x` represents the *explanatory* variable. Using `Example_8.1.rds`, we can quantify the relationship between FVC and height:
+
+```{r}
+lm(lung$FVC ~ lung$Height)
+```
+
+The default output from the `lm` function is rather sparse. We can obtain much more useful information by defining the linear regression model as an object, then using the `summary()` function:
+
+```{r}
+model <- lm(lung$FVC ~ lung$Height)
+summary(model)
+```
+
+Finally, we can obtain 95% confidence intervals for the regression coefficients using the `confint` function:
+
+```{r}
+confint(model)
+```
+
+## Plotting residuals from a simple linear regression
+
+We can use the `resid` function to obtain the residuals from a saved model. These residuals can then be plotted using a histogram in the usual way:
+
+```{r}
+residuals <- resid(model)
+hist(residuals)
+```
+
+A Normal curve can be overlaid if we plot the residuals using a probability scale.
+
+```{r}
+hist(residuals, probability = TRUE,
+     ylim = c(0, 1))
+
+curve(dnorm(x, mean=mean(residuals), sd=sd(residuals)), 
+      col="darkblue", lwd=2, add=TRUE)
+```
+
+Using `ggformula`, we can plot the residuals as a histogram:
+
+```{r}
+gf_dhistogram(~ residuals, data=model) |>
+  gf_dist("norm", 
+          params=list(mean=mean(model$residuals), 
+                      sd=sd(model$residuals)))
+
+gf_dhistogram(~ residuals, data=model) |>
+  gf_dens()
+```

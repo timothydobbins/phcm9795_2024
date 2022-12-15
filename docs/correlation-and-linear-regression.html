@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 1 Correlation and linear regression | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 1 Correlation and linear regression | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 1 Correlation and linear regression | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 1 Correlation and linear regression | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Course notes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="stata-notes.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-information"><i class="fa fa-check"></i>Course information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#units-of-credit"><i class="fa fa-check"></i>Units of credit</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aim"><i class="fa fa-check"></i>Course aim</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Correlation and linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#readings"><i class="fa fa-check"></i>Readings</a></li>
+<li class="chapter" data-level="1.1" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#correlation"><i class="fa fa-check"></i><b>1.2</b> Correlation</a></li>
+<li class="chapter" data-level="1.3" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#linear-regression"><i class="fa fa-check"></i><b>1.3</b> Linear regression</a></li>
+<li class="chapter" data-level="1.4" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#regression-coefficients-estimation"><i class="fa fa-check"></i><b>1.4</b> Regression coefficients: estimation</a></li>
+<li class="chapter" data-level="1.5" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#regression-coefficients-inference"><i class="fa fa-check"></i><b>1.5</b> Regression coefficients: inference</a></li>
+<li class="chapter" data-level="1.6" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#multiple-linear-regression"><i class="fa fa-check"></i><b>1.6</b> Multiple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="stata-notes.html"><a href="stata-notes.html"><i class="fa fa-check"></i><strong>8</strong> Stata notes</a>
+<ul>
+<li class="chapter" data-level="1.7" data-path="stata-notes.html"><a href="stata-notes.html#creating-a-scatter-plot"><i class="fa fa-check"></i><b>1.7</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="1.8" data-path="stata-notes.html"><a href="stata-notes.html#calculating-a-correlation-coefficient"><i class="fa fa-check"></i><b>1.8</b> Calculating a correlation coefficient</a></li>
+<li class="chapter" data-level="1.9" data-path="stata-notes.html"><a href="stata-notes.html#fitting-a-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.9</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="1.10" data-path="stata-notes.html"><a href="stata-notes.html#plotting-residuals-from-a-simple-linear-regression"><i class="fa fa-check"></i><b>1.10</b> Plotting residuals from a simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Correlation and simple linear regression</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>2.1</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="2.2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>2.2</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="2.3" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>2.3</b> Plotting residuals from a simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="learning-activities.html"><a href="learning-activities.html"><i class="fa fa-check"></i><strong>8</strong> Learning Activities</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="correlation-and-linear-regression" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Module 1</span> Correlation and linear regression<a href="correlation-and-linear-regression.html#correlation-and-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-objectives" class="section level2 unnumbered hasAnchor">
+<h2>Learning objectives<a href="correlation-and-linear-regression.html#learning-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this module you will be able to:</p>
+<ul>
+<li>Explore the association between two continuous variables using a scatter plot;</li>
+<li>Estimate and interpret correlation coefficients;</li>
+<li>Estimate and interpret parameters from a simple linear regression;</li>
+<li>Decide whether a regression model is valid;</li>
+<li>Test a hypothesis using regression coefficients;</li>
+<li>Outline the concept of multiple regression and its role in investigative epidemiology.</li>
+</ul>
+</div>
+<div id="readings" class="section level2 unnumbered hasAnchor">
+<h2>Readings<a href="correlation-and-linear-regression.html#readings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Kirkwood and Sterne (<a href="#ref-kirkwood_sterne01" role="doc-biblioref">2001</a>)</span>; Chapter 10. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728">[UNSW Library Link]</a></p>
+<p><span class="citation">Bland (<a href="#ref-bland15" role="doc-biblioref">2015</a>)</span>; Chapter 11. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730">[UNSW Library Link]</a></p>
+<p><span class="citation">Acock (<a href="#ref-acock10" role="doc-biblioref">2010</a>)</span>; Chapter 8.</p>
+</div>
+<div id="introduction" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Introduction<a href="correlation-and-linear-regression.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Module 5, we saw how to test whether the means from two groups are equal - in other words, whether a continuous variable is related to a categorical variable. We often want to know how closely two continuous variables are related. For example, we may want to know how closely blood cholesterol levels are related to dietary fat intake in adult men. To measure the strength of association between two continuously distributed variables, a correlation coefficient is used.</p>
+<p>We may also want to know how well one continuous measurement predicts the value of another continuous measurement. For example, we may want to know how well height predicts values of lung capacity in a community of adults. A regression model allows us to use one measurement to predict another measurement.</p>
+<p>Although both correlation coefficients and regression models can be used to describe the degree of association between two continuous variables, the two methods provide very different statistical information. It is important to note that both methods only measures the strengths of an association between variables and does not imply a causal relationship.</p>
+</div>
+<div id="correlation" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Correlation<a href="correlation-and-linear-regression.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We use correlation to measure the strength of a linear relationship between two variables. Before calculating a correlation coefficient, a scatter plot should first be obtained to give an understanding of the nature of the relationship between the two variables.</p>
+<div id="worked-example" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Worked Example<a href="correlation-and-linear-regression.html#worked-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The file <code>Example_8.1.csv</code> has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). We can obtain a <em>scatter-plot</em> shown in Figure <a href="correlation-and-linear-regression.html#fig:scatter-plot">1.1</a>). This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.</p>
+<div class="figure"><span style="display:block;" id="fig:scatter-plot"></span>
+<img src="img/mod08/scatterpng.png" alt="Association between height and lung function in 120 adults" width="66%" />
+<p class="caption">
+Figure 1.1: Association between height and lung function in 120 adults
+</p>
+</div>
+</div>
+<div id="correlation-coefficients" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Correlation coefficients<a href="correlation-and-linear-regression.html#correlation-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. In general, an absolute (disregarding the sign) r value below 0.3 indicates a weak association, 0.3 to &lt; 0.6 is fair association, 0.6 to &lt; 0.8 is a moderate association, and <span class="math inline">\(\ge\)</span> 0.8 indicates a strong association.</p>
+<p>The coefficient is positive when large values of one variable tend to occur with large values of the other, and small values of one variable (y) tend to occur with small values of the other (x) (Figure <a href="correlation-and-linear-regression.html#fig:scatter-plot-four">1.2</a> (a and b)). For example, height and weight in healthy children or age and blood pressure.</p>
+<p>The coefficient is negative when large values of one variable tend to occur with small values of the other, and small values of one variable tend to occur with large values of the other (Figure <a href="correlation-and-linear-regression.html#fig:scatter-plot-four">1.2</a> (c and d)). For example, percentage immunised against infectious diseases and under-five mortality rate.</p>
+<div class="figure"><span style="display:block;" id="fig:scatter-plot-four"></span>
+<img src="img/mod08/scatterplot-four-plots.png" alt="Scatter plots demonstrating strong and weak, positive and negative associations" width="66%" />
+<p class="caption">
+Figure 1.2: Scatter plots demonstrating strong and weak, positive and negative associations
+</p>
+</div>
+<p>The P value associated with an r value is an estimate of whether the correlation coefficient is significantly different from zero. However, a correlation coefficient that does not have a significant P value does not imply that there is no relationship because the correlation coefficient only tests for a linear association and there may be a non-linear relationship such as a curved or irregular relationship.</p>
+<p>The assumptions for using a Pearson’s correlation coefficient are that:</p>
+<ul>
+<li>observations are independent;</li>
+<li>both variables are continuous variables;</li>
+<li>the relationship between the two variables is linear.</li>
+</ul>
+<p>There is a further assumption that the data follow a bivariate normal distribution. This assumes: <em>y</em> follows a normal distribution for given values of <em>x</em>; and <em>x</em> follows a normal distribution for given values of <em>y</em>. This is quite a technical assumption that we do not discuss further.</p>
+<p>There are two types of correlation coefficients– the correct one to use is determined by the nature of the variables as shown in Table <a href="correlation-and-linear-regression.html#tab:mod08-correlation-coefficients">1.1</a>).</p>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 95%; margin-left: auto; margin-right: auto;  " id="tab:mod08-correlation-coefficients">
+<caption style="caption-side: top; text-align: center;"><span id="tab:mod08-correlation-coefficients">Table 1.1: </span> Correlation coefficients and their application</caption><col><col><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Correlation coefficient</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Application</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Pearson’s correlation coefficient: r</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Both variables are continuous and a bivariate normal distribution can be assumed</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Spearman’s rank correlation: rho</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Bivariate normality cannot be assumed. Also useful when at least one of the variables is ordinal</td></tr>
+</table>
+
+<p>Spearman’s <span class="math inline">\(\rho\)</span> is calculated using the ranks of the data, rather than the actual values of the data. We will see further examples of such methods in Module 9, when we consider non-parametric tests, which are often based on ranks.</p>
+<p>Correlation coefficients are often presented in the form of a <em>correlation matrix</em> which can display the correlation between a number of variables in a single table (Table <a href="correlation-and-linear-regression.html#tab:corrmatrix">1.2</a>).</p>
+<table style="width:57%;">
+<caption><span id="tab:corrmatrix">Table 1.2: </span> Correlation matrix for Height and FVC</caption>
+<colgroup>
+<col width="18%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>Height</td>
+<td>FVC</td>
+</tr>
+<tr class="even">
+<td>Height</td>
+<td>1</td>
+<td>0.70<br />
+P &lt; 0.0001</td>
+</tr>
+<tr class="odd">
+<td>FVC</td>
+<td>0.70<br />
+P &lt; 0.0001</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>This correlation matrix shows that the Pearson’s correlation coefficient between height and lung function is 0.70 with P&lt;0.0001 indicating very strong evidence of a linear association between height and FVC. A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, <span class="math inline">\(Height\)</span> is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, <span class="math inline">\(FVC\)</span> is perfectly correlated with itself.</p>
+<p>This r value was calculated for the full data set of 120 adults who had heights ranging from 160 to 172cms. If the r value is calculated for the 60 adults with a height less than 165cms, it is much lower at 0.433 although significant at P=0.001. In general, r values are higher for a wider range of values on the x axis even though the relationship between the two variables remains the same.</p>
+<p>Correlation coefficients are rarely used as important statistics in their own right because they do not fully explain the relationship between the two variables and the range of the data has an important influence on the size of the coefficient. In addition, the statistical significance of the correlation coefficient is often over interpreted because a small correlation which is of no clinical importance can become statistically significant even with a relatively small sample size. For example, a poor correlation of 0.3 will be statistically significant if the sample size is large enough.</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Linear regression<a href="correlation-and-linear-regression.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The nature of a relationship between two variables is more fully described using regression. There are two principal purposes for building a regression model. The most common is to build a predictive model, for example in situations in which age and gender are used to predict normal values of characteristics such as lung size or body mass index. Normal values are the range of values that occur naturally in the general population.</p>
+<p>The second purpose for using a regression model is for testing the hypothesis that there is a linear relationship between one or more explanatory variables and an outcome variable. For example, a regression model can be used to test the extent to which age predicts BMI or to test the hypothesis that two groups with a different dietary regime have significantly different BMI values after adjusting for age differences.</p>
+<p>From Worked Example 8.1, we can be also plot a regression line through the scatter. Figure <a href="correlation-and-linear-regression.html#fig:scatter-plot-line">1.3</a> shows the data overlayed with the fitted regression line.</p>
+<div class="figure"><span style="display:block;" id="fig:scatter-plot-line"></span>
+<img src="img/mod08/scatterplot-line-fvc-height.png" alt="Association between height and lung function in 120 adults" width="66%" />
+<p class="caption">
+Figure 1.3: Association between height and lung function in 120 adults
+</p>
+</div>
+<p>The line through the plot is called the line of ‘best fit’ because the size of the deviations between the data points and the line is minimised in the calculation. The distance between each data point and the regression line is called a ‘residual’.</p>
+<div id="regression-equations" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Regression equations<a href="correlation-and-linear-regression.html#regression-equations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The mathematical equation for the line explains the relationship between the two variables. The equation of the regression line is as follows:</p>
+<p><span class="math display">\[y = \beta_{0} + \beta_{1}x\]</span></p>
+<p>This line is shown in Figure <a href="correlation-and-linear-regression.html#fig:regression-parameters">1.4</a> using the notation shown in Table <a href="correlation-and-linear-regression.html#tab:regression-notation">1.3</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:regression-parameters"></span>
+<img src="img/mod08/regression-line-parameters.png" alt="Coefficients of a linear regression equation" width="66%" />
+<p class="caption">
+Figure 1.4: Coefficients of a linear regression equation
+</p>
+</div>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:regression-notation">
+<caption style="caption-side: top; text-align: center;"><span id="tab:regression-notation">Table 1.3: </span> Notation for linear regression equation</caption><col><col><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Symbol</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Interpretation</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">y</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Observed value of the outcome variable</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">x</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Observed value of the explanatory variable</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">β_0</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Intercept of the regression line</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">β_1</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">Slope of the regression line</td></tr>
+</table>
+
+<p>The intercept is the point at which the regression line intersects with the y-axis when the value of ‘x’ is zero. In most cases, the intercept does not have a biologically meaningful interpretation as the explanatory variable cannot take a value of zero. In our working example, the intercept is not meaningful as it is not possible for an adult to have a height of 0cm.</p>
+<p>The slope of the line is the predicted change in the outcome variable ‘y’ as the explanatory explanatory variable ‘x’ increases by 1 unit.</p>
+<p>An important concept is that regression predicts an expected value of ‘y’ given an observed value of ‘x’: any error around the explanatory variable is not taken into account. For this reason, measurements that can be taken accurately, such as age and height, make good explanatory variables.</p>
+</div>
+</div>
+<div id="regression-coefficients-estimation" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Regression coefficients: estimation<a href="correlation-and-linear-regression.html#regression-coefficients-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Software is always used to estimate the regression equation for a set of data, using the <em>method of least squares</em>. This method estimates the intercept and the slope, and also their variability (i.e. standard errors).</p>
+</div>
+<div id="regression-coefficients-inference" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Regression coefficients: inference<a href="correlation-and-linear-regression.html#regression-coefficients-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with <span class="math display">\[n - 2\]</span> degrees of freedom is used:</p>
+<p>b0 plus/minus t_n-2 * SE(b0) <em>
+b1 plus/minus t_n-2 </em> SE(b1)</p>
+<p>Note that as the constant (b0) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.</p>
+<p>The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:</p>
+<p>H0: beta_1 = 0
+H1: beta_1 NE 0</p>
+<p>To test the null hypothesis for the regression coefficient beta_1, the following t-test is used:</p>
+<p>t = beta_1 /SE(beta_1)</p>
+<p>This will give a t statistic with an underlying t distribution with n − 2 degrees of freedom, with a corresponding P-value.</p>
+<p>Table X.X shows the estimated regression coefficients for our working example.</p>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:estimated-regression">
+<caption style="caption-side: top; text-align: center;"><span id="tab:estimated-regression">Table 1.4: </span> Estimated regression coefficients</caption><col><col><col><col><col><col><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Term</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Estimate</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Standard error</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">t value</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">P value</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence interval</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Intercept</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-18.9&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2.19&nbsp;</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">t=-8.60, 118df</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&lt;0.001</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">-23.22 to -14.53</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Height</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.14</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.013</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">t=10.58, 118df</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&lt;0.001</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">0.11 to 0.17</td></tr>
+</table>
+
+<p>From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:</p>
+<p>FVC (L) = − 18.873 + (0.141 <span class="math inline">\(\times\)</span> Height in cm)</p>
+<p>This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:</p>
+<p>FVC = − 18.87347 + (0.1407567 <span class="math inline">\(\times\)</span> 165.0) = 4.40 L.</p>
+<p>Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.</p>
+<p>From this model, there is very strong evidence of a linear association between FVC and height in cm (P &lt; 0.001).</p>
+<div id="fit-of-a-linear-regression-model" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Fit of a linear regression model<a href="correlation-and-linear-regression.html#fit-of-a-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After fitting a linear regression model, it is important to know how well the model fits the observed data. One way of assessing the model fit is to compute a statistic called coefficient of determination, denoted by <span class="math inline">\(R^2\)</span>. It is the square of the Pearson correlation coefficient <span class="math inline">\(r: r^2 = R^2\)</span>. Since the range of <span class="math inline">\(r\)</span> is from −1 to 1, <span class="math inline">\(R^2\)</span> must lie between 0 and 1.</p>
+<p><span class="math inline">\(R^2\)</span> can be interpreted as the proportion of variability in y that can be explained by variability in x. Hence, the following conditions may arise:</p>
+<p>If <span class="math inline">\(R^2 = 1\)</span>, then all variation in y can be explained by variation of x and all data points fall on the regression line.</p>
+<p>If <span class="math inline">\(R^2 = 0\)</span>, then none of the variation in y is related to x at all, and the variable x explains none of the variability in y.</p>
+<p>If <span class="math inline">\(0 &lt; R^2 &lt;1\)</span>, then the variability of y can be partially explained by the variability in x. The larger the <span class="math inline">\(R^2\)</span> value, the better is the fit of the regression model.</p>
+</div>
+<div id="assumptions-for-linear-regression" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Assumptions for linear regression<a href="correlation-and-linear-regression.html#assumptions-for-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Regression is robust to moderate degrees of non-normality in the variables, provided that the sample size is large enough and that there are no influential outliers. Also, the regression equation describes the relationship between the variables and this is not influenced as much by the spread of the data as the correlation coefficient is.</p>
+<p>The assumptions that must be met when using linear regression are as follows:</p>
+<ul>
+<li>observations are independent;</li>
+<li>the relationship between the explanatory and the outcome variable is linear;</li>
+<li>the residuals are normally distributed.</li>
+</ul>
+<p>A residual is defined as the difference between the observed and predicted outcome from the regression model. If the predicted value of the outcome variable is denoted by <span class="math inline">\(\hat y\)</span> then:</p>
+<p><span class="math display">\[ \text{Residual} = \text{observed} - \text{predicted} = y - \hat y\]</span></p>
+<p>It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the <strong>Advanced Biostatistics</strong> course.</p>
+<p>The distribution of the residuals should always be checked. Large residuals can indicate unusual points or points that may exert undue influence on the estimated regression slope.</p>
+<p>The histogram of residuals from the model is shown in Figure 8.5. They are normally distributed and indicate that there are no influential outliers so that the assumptions for regression are met.</p>
+<div class="figure"><span style="display:block;" id="fig:residual-hist"></span>
+<img src="img/mod08/regression-residual-histogram.png" alt="Histogram of regression residuals" width="66%" />
+<p class="caption">
+Figure 1.5: Histogram of regression residuals
+</p>
+</div>
+</div>
+<div id="critical-appraisal" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Critical appraisal<a href="correlation-and-linear-regression.html#critical-appraisal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any influential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.</p>
+<p>When regression is reported it is essential that the axes are correctly presented so that the equation is predictive. Thus, the explanatory variable must be presented on the x axis and the outcome on the y axis. It is also a good idea to check that all the assumptions are met. Outliers which result in a non-normal distribution of the residuals can severely bias the regression coefficients.</p>
+</div>
+</div>
+<div id="multiple-linear-regression" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Multiple linear regression<a href="correlation-and-linear-regression.html#multiple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the above example, we have only used a simple linear regression model of two continuous variables. Other more complex models can be built from this e.g. if we wanted to look at the effect of gender (male vs. female) as binary indicator in the model while adjusting for the effect of height. In that case we would include both the variables in the model as explanatory variables. In the same way we can include any number of explanatory variables (both continuous and categorical) in the model: this is called a multivariable model. Multivariable models are often used for building predictive equations, for example by using age, height, gender and smoking history to predict lung function, or to adjust for confounding and detect effect modification to investigate the association between an exposure and an outcome factor.</p>
+<p>Multiple regression has an important role in investigating causality in epidemiology. The exposure variable under investigation must stay in the model and the effects of other variables which can be confounders or effect-modifiers are tested. The biological, psychological or social meaning of the variables in the model and their interactions are of great importance for interpreting theories of causality.</p>
+<p>Other multivariable models include binary logistic regression for use with a binary outcome variable, or Cox regression for survival analyses. These models, together with multiple regression, will be taught in <strong>PHCM9517: Regression Methods in Biostatistics</strong>.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-acock10" class="csl-entry">
+Acock, Alan C. 2010. <em>A <span>Gentle Introduction</span> to <span>Stata</span></em>. 3rd ed. <span>College Station, Tex</span>: <span>Stata Press</span>.
+</div>
+<div id="ref-bland15" class="csl-entry">
+Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical Statistics</span></em>. 4th ed. <span>Oxford, New York</span>: <span>Oxford University Press</span>.
+</div>
+<div id="ref-kirkwood_sterne01" class="csl-entry">
+Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of <span>Medical Statistics</span></em>. 2nd ed. <span>Malden, Mass</span>: <span>Wiley-Blackwell</span>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stata-notes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PHCM9795.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

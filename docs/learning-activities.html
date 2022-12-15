@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="8 Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Course notes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="correlation-and-simple-linear-regression.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-information"><i class="fa fa-check"></i>Course information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#units-of-credit"><i class="fa fa-check"></i>Units of credit</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aim"><i class="fa fa-check"></i>Course aim</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Correlation and linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#readings"><i class="fa fa-check"></i>Readings</a></li>
+<li class="chapter" data-level="1.1" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#correlation"><i class="fa fa-check"></i><b>1.2</b> Correlation</a></li>
+<li class="chapter" data-level="1.3" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#linear-regression"><i class="fa fa-check"></i><b>1.3</b> Linear regression</a></li>
+<li class="chapter" data-level="1.4" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#regression-coefficients-estimation"><i class="fa fa-check"></i><b>1.4</b> Regression coefficients: estimation</a></li>
+<li class="chapter" data-level="1.5" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#regression-coefficients-inference"><i class="fa fa-check"></i><b>1.5</b> Regression coefficients: inference</a></li>
+<li class="chapter" data-level="1.6" data-path="correlation-and-linear-regression.html"><a href="correlation-and-linear-regression.html#multiple-linear-regression"><i class="fa fa-check"></i><b>1.6</b> Multiple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="stata-notes.html"><a href="stata-notes.html"><i class="fa fa-check"></i><strong>8</strong> Stata notes</a>
+<ul>
+<li class="chapter" data-level="1.7" data-path="stata-notes.html"><a href="stata-notes.html#creating-a-scatter-plot"><i class="fa fa-check"></i><b>1.7</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="1.8" data-path="stata-notes.html"><a href="stata-notes.html#calculating-a-correlation-coefficient"><i class="fa fa-check"></i><b>1.8</b> Calculating a correlation coefficient</a></li>
+<li class="chapter" data-level="1.9" data-path="stata-notes.html"><a href="stata-notes.html#fitting-a-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.9</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="1.10" data-path="stata-notes.html"><a href="stata-notes.html#plotting-residuals-from-a-simple-linear-regression"><i class="fa fa-check"></i><b>1.10</b> Plotting residuals from a simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Correlation and simple linear regression</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>2.1</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="2.2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>2.2</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="2.3" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>2.3</b> Plotting residuals from a simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="learning-activities.html"><a href="learning-activities.html"><i class="fa fa-check"></i><strong>8</strong> Learning Activities</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="learning-activities" class="section level1 unnumbered hasAnchor">
+<h1><strong>8</strong> Learning Activities<a href="learning-activities.html#learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-8.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.1<a href="learning-activities.html#activity-8.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To investigate how body weight (kg) effects blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95% confidence interval 52 to 84) and the intercept was −1570 (95% confidence interval −2655 to −492).</p>
+<p>[<em>You do not need Stata for this Activity</em>]</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the outcome variable and explanatory (exposure) variable?</li>
+<li>Interpret the regression slope and its 95% CI</li>
+<li>Write the regression equation</li>
+<li>If we randomly sampled a person from the population and found that their weight is 80kg, what would be the predicted value of plasma volume for this person?</li>
+</ol>
+</div>
+<div id="activity-8.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.2<a href="learning-activities.html#activity-8.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To examine whether age predicts IQ, data were collected on 104 people. Use the data in the Stata file <code>Activity_8.2.dta</code> to answer the following questions.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What are the outcome variable and the explanatory variable?</li>
+<li>Create a scatter plot with the two variables. What can you infer from the scatter plot?</li>
+<li>Using Stata, obtain the correlation coefficient between age and IQ and interpret it.</li>
+<li>Conduct a simple linear regression using Stata and report the relationship between the two variables including the interpretation of the R2 value. Are the assumptions for linear regression met in this model?</li>
+<li>What could you infer about the association between age and IQ in the population, based on the results of the regression analysis in this sample?</li>
+</ol>
+</div>
+<div id="activity-8.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.3<a href="learning-activities.html#activity-8.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Which of the following correlation coefficients indicates the weakest linear relationship and why?</p>
+<ol style="list-style-type: lower-alpha">
+<li>r = 0.72</li>
+<li>r = 0.41</li>
+<li>r = 0.13</li>
+<li>r = −0.33</li>
+<li>r = −0.84</li>
+</ol>
+</div>
+<div id="activity-8.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.4<a href="learning-activities.html#activity-8.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Are the following statements true or false?</p>
+<ol style="list-style-type: lower-alpha">
+<li>If a correlation coefficient is closer to 1.00 than to 0.00, this indicates that the outcome is caused by the exposure.</li>
+<li>If a researcher has data on two variables, there will be a higher correlation if the two means are close together and a lower correlation if the two means are far apart.</li>
+</ol>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Acock, Alan C. 2010. <em>A <span>Gentle Introduction</span> to <span>Stata</span></em>. 3rd ed. <span>College Station, Tex</span>: <span>Stata Press</span>.
+</div>
+<div class="csl-entry">
+Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical Statistics</span></em>. 4th ed. <span>Oxford, New York</span>: <span>Oxford University Press</span>.
+</div>
+<div class="csl-entry">
+Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of <span>Medical Statistics</span></em>. 2nd ed. <span>Malden, Mass</span>: <span>Wiley-Blackwell</span>.
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="correlation-and-simple-linear-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PHCM9795.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
