@@ -182,11 +182,12 @@ div.csl-indent {
 <li class="chapter" data-level="1.9" data-path="stata-notes.html"><a href="stata-notes.html#fitting-a-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.9</b> Fitting a simple linear regression model</a></li>
 <li class="chapter" data-level="1.10" data-path="stata-notes.html"><a href="stata-notes.html#plotting-residuals-from-a-simple-linear-regression"><i class="fa fa-check"></i><b>1.10</b> Plotting residuals from a simple linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Correlation and simple linear regression</a>
+<li class="chapter" data-level="" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><strong>8</strong> R notes</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>2.1</b> Creating a scatter plot</a></li>
-<li class="chapter" data-level="2.2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>2.2</b> Fitting a simple linear regression model</a></li>
-<li class="chapter" data-level="2.3" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>2.3</b> Plotting residuals from a simple linear regression</a></li>
+<li class="chapter" data-level="1.11" data-path="r-notes.html"><a href="r-notes.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>1.11</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="" data-path="r-notes.html"><a href="r-notes.html#calculating-a-correlation-coefficient-1"><i class="fa fa-check"></i>Calculating a correlation coefficient</a></li>
+<li class="chapter" data-level="1.12" data-path="r-notes.html"><a href="r-notes.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>1.12</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="1.13" data-path="r-notes.html"><a href="r-notes.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>1.13</b> Plotting residuals from a simple linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="learning-activities.html"><a href="learning-activities.html"><i class="fa fa-check"></i><strong>8</strong> Learning Activities</a></li>
 </ul>
@@ -355,17 +356,21 @@ Figure 1.4: Coefficients of a linear regression equation
 </div>
 <div id="regression-coefficients-inference" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Regression coefficients: inference<a href="correlation-and-linear-regression.html#regression-coefficients-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with <span class="math display">\[n - 2\]</span> degrees of freedom is used:</p>
-<p>b0 plus/minus t_n-2 * SE(b0) <em>
-b1 plus/minus t_n-2 </em> SE(b1)</p>
-<p>Note that as the constant (b0) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.</p>
+<p>We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with <span class="math inline">\(n - 2\)</span> degrees of freedom is used:</p>
+<ul>
+<li>95% confidence interval for intercept: <span class="math inline">\(b_0 \pm t_{n-2} \times SE(b_0)\)</span></li>
+<li>95% confidence interval for slope: <span class="math inline">\(b_1 \pm t_{n-2} \times SE(b_1)\)</span></li>
+</ul>
+<p>Note that as the constant (<span class="math inline">\(b_0\)</span>) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.</p>
 <p>The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:</p>
-<p>H0: beta_1 = 0
-H1: beta_1 NE 0</p>
+<ul>
+<li>H<sub>0</sub>: <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li>H<sub>1</sub>: <span class="math inline">\(\beta_1 \ne 0\)</span></li>
+</ul>
 <p>To test the null hypothesis for the regression coefficient beta_1, the following t-test is used:</p>
-<p>t = beta_1 /SE(beta_1)</p>
-<p>This will give a t statistic with an underlying t distribution with n − 2 degrees of freedom, with a corresponding P-value.</p>
-<p>Table X.X shows the estimated regression coefficients for our working example.</p>
+<p><span class="math display">\[t = b_1 /SE(b_1)\]</span></p>
+<p>This will give a t statistic which can be referred to a t distribution with n − 2 degrees of freedom to calculate the corresponding P-value.</p>
+<p>Table <a href="correlation-and-linear-regression.html#tab:estimated-regression">1.4</a> shows the estimated regression coefficients for our working example.</p>
 <table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:estimated-regression">
 <caption style="caption-side: top; text-align: center;"><span id="tab:estimated-regression">Table 1.4: </span> Estimated regression coefficients</caption><col><col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Term</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Estimate</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Standard error</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">t value</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">P value</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence interval</th></tr>
@@ -375,12 +380,12 @@ H1: beta_1 NE 0</p>
 <td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Height</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.14</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.013</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">t=10.58, 118df</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&lt;0.001</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">0.11 to 0.17</td></tr>
 </table>
 
-<p>From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:</p>
-<p>FVC (L) = − 18.873 + (0.141 <span class="math inline">\(\times\)</span> Height in cm)</p>
+<p>From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:</p>
+<p>FVC (L) = − 18.87 + (0.14 <span class="math inline">\(\times\)</span> Height in cm)</p>
+<p>There is very strong evidence of a linear association between FVC and height in cm (P &lt; 0.001).</p>
 <p>This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:</p>
 <p>FVC = − 18.87347 + (0.1407567 <span class="math inline">\(\times\)</span> 165.0) = 4.40 L.</p>
 <p>Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.</p>
-<p>From this model, there is very strong evidence of a linear association between FVC and height in cm (P &lt; 0.001).</p>
 <div id="fit-of-a-linear-regression-model" class="section level3 hasAnchor" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Fit of a linear regression model<a href="correlation-and-linear-regression.html#fit-of-a-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After fitting a linear regression model, it is important to know how well the model fits the observed data. One way of assessing the model fit is to compute a statistic called coefficient of determination, denoted by <span class="math inline">\(R^2\)</span>. It is the square of the Pearson correlation coefficient <span class="math inline">\(r: r^2 = R^2\)</span>. Since the range of <span class="math inline">\(r\)</span> is from −1 to 1, <span class="math inline">\(R^2\)</span> must lie between 0 and 1.</p>
@@ -400,9 +405,9 @@ H1: beta_1 NE 0</p>
 </ul>
 <p>A residual is defined as the difference between the observed and predicted outcome from the regression model. If the predicted value of the outcome variable is denoted by <span class="math inline">\(\hat y\)</span> then:</p>
 <p><span class="math display">\[ \text{Residual} = \text{observed} - \text{predicted} = y - \hat y\]</span></p>
-<p>It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the <strong>Advanced Biostatistics</strong> course.</p>
+<p>It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the <strong>Regression Methods in Biostatistics</strong> course.</p>
 <p>The distribution of the residuals should always be checked. Large residuals can indicate unusual points or points that may exert undue influence on the estimated regression slope.</p>
-<p>The histogram of residuals from the model is shown in Figure 8.5. They are normally distributed and indicate that there are no influential outliers so that the assumptions for regression are met.</p>
+<p>The histogram of residuals from the model is shown in Figure <a href="correlation-and-linear-regression.html#fig:residual-hist">1.5</a>. The residuals are approximately normally distributed, with no outlying values.</p>
 <div class="figure"><span style="display:block;" id="fig:residual-hist"></span>
 <img src="img/mod08/regression-residual-histogram.png" alt="Histogram of regression residuals" width="66%" />
 <p class="caption">
@@ -412,7 +417,7 @@ Figure 1.5: Histogram of regression residuals
 </div>
 <div id="critical-appraisal" class="section level3 hasAnchor" number="1.5.3">
 <h3><span class="header-section-number">1.5.3</span> Critical appraisal<a href="correlation-and-linear-regression.html#critical-appraisal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any influential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.</p>
+<p>When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any potential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.</p>
 <p>When regression is reported it is essential that the axes are correctly presented so that the equation is predictive. Thus, the explanatory variable must be presented on the x axis and the outcome on the y axis. It is also a good idea to check that all the assumptions are met. Outliers which result in a non-normal distribution of the residuals can severely bias the regression coefficients.</p>
 </div>
 </div>

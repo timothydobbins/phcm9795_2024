@@ -1,7 +1,8 @@
-# Correlation and simple linear regression
+# **8** R notes {-}
 
-```{r}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(ggformula)
+library(jmv)
 ```
 
 We will demonstrate using R for correlation and simple linear regression using the dataset `Example_8.1.csv`.
@@ -49,12 +50,12 @@ gf_point(FVC ~ Height, data=lung,
   gf_theme(theme = theme_minimal())
 ```
 
-### Calculating a correlation coefficient {-}
+## Calculating a correlation coefficient {-}
 
-We can use the `cor.test(x, y)` function to calculate a Pearson's correlation coefficient:
+We can use the `corrMatrix` function in the Jamovi package to calculate a Pearson's correlation coefficient:
 
 ```{r}
-cor.test(lung$Height, lung$FVC)
+corrMatrix(data=lung, vars=c(Height, FVC))
 ```
 
 ## Fitting a simple linear regression model
@@ -62,13 +63,13 @@ cor.test(lung$Height, lung$FVC)
 We can use the `lm` function to fit a simple linear regression model, specifying the model as `y ~ x` where `y` represents the *outcome* variable, and `x` represents the *explanatory* variable. Using `Example_8.1.rds`, we can quantify the relationship between FVC and height:
 
 ```{r}
-lm(lung$FVC ~ lung$Height)
+lm(FVC ~ Height, data=lung)
 ```
 
 The default output from the `lm` function is rather sparse. We can obtain much more useful information by defining the linear regression model as an object, then using the `summary()` function:
 
 ```{r}
-model <- lm(lung$FVC ~ lung$Height)
+model <- lm(FVC ~ Height, data=lung)
 summary(model)
 ```
 

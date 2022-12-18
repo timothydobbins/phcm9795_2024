@@ -485,25 +485,35 @@ Software is always used to estimate the regression equation for a set of data, u
 \hypertarget{regression-coefficients-inference}{%
 \section{Regression coefficients: inference}\label{regression-coefficients-inference}}
 
-We can use the estimated regression coefficients and their variability to calculate 95\% confidence intervals. Here, a t-value from a t-distribution with \[n - 2\] degrees of freedom is used:
+We can use the estimated regression coefficients and their variability to calculate 95\% confidence intervals. Here, a t-value from a t-distribution with \(n - 2\) degrees of freedom is used:
 
-b0 plus/minus t\_n-2 * SE(b0) \emph{
-b1 plus/minus t\_n-2 } SE(b1)
+\begin{itemize}
+\tightlist
+\item
+  95\% confidence interval for intercept: \(b_0 \pm t_{n-2} \times SE(b_0)\)
+\item
+  95\% confidence interval for slope: \(b_1 \pm t_{n-2} \times SE(b_1)\)
+\end{itemize}
 
-Note that as the constant (b0) is not often biologically plausible, the 95\% confidence interval for the constant is often not reported.
+Note that as the constant (\(b_0\)) is not often biologically plausible, the 95\% confidence interval for the constant is often not reported.
 
 The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:
 
-H0: beta\_1 = 0
-H1: beta\_1 NE 0
+\begin{itemize}
+\tightlist
+\item
+  H\textsubscript{0}: \(\beta_1 = 0\)
+\item
+  H\textsubscript{1}: \(\beta_1 \ne 0\)
+\end{itemize}
 
 To test the null hypothesis for the regression coefficient beta\_1, the following t-test is used:
 
-t = beta\_1 /SE(beta\_1)
+\[t = b_1 /SE(b_1)\]
 
-This will give a t statistic with an underlying t distribution with n − 2 degrees of freedom, with a corresponding P-value.
+This will give a t statistic which can be referred to a t distribution with n − 2 degrees of freedom to calculate the corresponding P-value.
 
-Table X.X shows the estimated regression coefficients for our working example.
+Table \ref{tab:estimated-regression} shows the estimated regression coefficients for our working example.
 
  
   \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
@@ -561,17 +571,17 @@ Table X.X shows the estimated regression coefficients for our working example.
 \end{table}
  
 
-From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:
+From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:
 
-FVC (L) = − 18.873 + (0.141 \(\times\) Height in cm)
+FVC (L) = − 18.87 + (0.14 \(\times\) Height in cm)
+
+There is very strong evidence of a linear association between FVC and height in cm (P \textless{} 0.001).
 
 This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:
 
 FVC = − 18.87347 + (0.1407567 \(\times\) 165.0) = 4.40 L.
 
 Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.
-
-From this model, there is very strong evidence of a linear association between FVC and height in cm (P \textless{} 0.001).
 
 \hypertarget{fit-of-a-linear-regression-model}{%
 \subsection{Fit of a linear regression model}\label{fit-of-a-linear-regression-model}}
@@ -607,11 +617,11 @@ A residual is defined as the difference between the observed and predicted outco
 
 \[ \text{Residual} = \text{observed} - \text{predicted} = y - \hat y\]
 
-It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the \textbf{Advanced Biostatistics} course.
+It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the \textbf{Regression Methods in Biostatistics} course.
 
 The distribution of the residuals should always be checked. Large residuals can indicate unusual points or points that may exert undue influence on the estimated regression slope.
 
-The histogram of residuals from the model is shown in Figure 8.5. They are normally distributed and indicate that there are no influential outliers so that the assumptions for regression are met.
+The histogram of residuals from the model is shown in Figure \ref{fig:residual-hist}. The residuals are approximately normally distributed, with no outlying values.
 
 \begin{figure}
 \includegraphics[width=0.66\linewidth]{img/mod08/regression-residual-histogram} \caption{Histogram of regression residuals}\label{fig:residual-hist}
@@ -620,7 +630,7 @@ The histogram of residuals from the model is shown in Figure 8.5. They are norma
 \hypertarget{critical-appraisal}{%
 \subsection{Critical appraisal}\label{critical-appraisal}}
 
-When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any influential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.
+When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any potential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.
 
 When regression is reported it is essential that the axes are correctly presented so that the equation is predictive. Thus, the explanatory variable must be presented on the x axis and the outcome on the y axis. It is also a good idea to check that all the assumptions are met. Outliers which result in a non-normal distribution of the residuals can severely bias the regression coefficients.
 
@@ -735,67 +745,9 @@ You can now check the assumption that the residuals are normally distributed by 
 
 {[}Command: \texttt{histogram\ FVC\_resid,\ bin(12)\ frequency\ normal}{]}
 
-\hypertarget{correlation-and-simple-linear-regression}{%
-\chapter{Correlation and simple linear regression}\label{correlation-and-simple-linear-regression}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggformula)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: ggstance
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'ggstance'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:ggplot2':
-## 
-##     geom_errorbarh, GeomErrorbarh
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: scales
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'scales'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:huxtable':
-## 
-##     number_format
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: ggridges
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## New to ggformula?  Try the tutorials: 
-##  learnr::run_tutorial("introduction", package = "ggformula")
-##  learnr::run_tutorial("refining", package = "ggformula")
-\end{verbatim}
+\hypertarget{r-notes}{%
+\chapter*{\texorpdfstring{\textbf{8} R notes}{8 R notes}}\label{r-notes}}
+\addcontentsline{toc}{chapter}{\textbf{8} R notes}
 
 We will demonstrate using R for correlation and simple linear regression using the dataset \texttt{Example\_8.1.csv}.
 
@@ -869,29 +821,31 @@ We can add an estimated linear regression line by piping the command \texttt{gf\
 \includegraphics{PHCM9795_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \hypertarget{calculating-a-correlation-coefficient-1}{%
-\subsection*{Calculating a correlation coefficient}\label{calculating-a-correlation-coefficient-1}}
-\addcontentsline{toc}{subsection}{Calculating a correlation coefficient}
+\section*{Calculating a correlation coefficient}\label{calculating-a-correlation-coefficient-1}}
+\addcontentsline{toc}{section}{Calculating a correlation coefficient}
 
-We can use the \texttt{cor.test(x,\ y)} function to calculate a Pearson's correlation coefficient:
+We can use the \texttt{corrMatrix} function in the Jamovi package to calculate a Pearson's correlation coefficient:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{cor.test}\NormalTok{(lung}\SpecialCharTok{$}\NormalTok{Height, lung}\SpecialCharTok{$}\NormalTok{FVC)}
+\FunctionTok{corrMatrix}\NormalTok{(}\AttributeTok{data=}\NormalTok{lung, }\AttributeTok{vars=}\FunctionTok{c}\NormalTok{(Height, FVC))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-##  Pearson's product-moment correlation
+##  CORRELATION MATRIX
 ## 
-## data:  lung$Height and lung$FVC
-## t = 10.577, df = 118, p-value < 2.2e-16
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.5924715 0.7794090
-## sample estimates:
-##       cor 
-## 0.6976279
+##  Correlation Matrix                                   
+##  ──────────────────────────────────────────────────── 
+##                             Height        FVC         
+##  ──────────────────────────────────────────────────── 
+##    Height    Pearson's r             —                
+##              p-value                 —                
+##                                                       
+##    FVC       Pearson's r     0.6976279            —   
+##              p-value        < .0000001            —   
+##  ────────────────────────────────────────────────────
 \end{verbatim}
 
 \hypertarget{fitting-a-simple-linear-regression-model-1}{%
@@ -901,17 +855,17 @@ We can use the \texttt{lm} function to fit a simple linear regression model, spe
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{lm}\NormalTok{(lung}\SpecialCharTok{$}\NormalTok{FVC }\SpecialCharTok{\textasciitilde{}}\NormalTok{ lung}\SpecialCharTok{$}\NormalTok{Height)}
+\FunctionTok{lm}\NormalTok{(FVC }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Height, }\AttributeTok{data=}\NormalTok{lung)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
 ## Call:
-## lm(formula = lung$FVC ~ lung$Height)
+## lm(formula = FVC ~ Height, data = lung)
 ## 
 ## Coefficients:
-## (Intercept)  lung$Height  
+## (Intercept)       Height  
 ##    -18.8735       0.1408
 \end{verbatim}
 
@@ -919,7 +873,7 @@ The default output from the \texttt{lm} function is rather sparse. We can obtain
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(lung}\SpecialCharTok{$}\NormalTok{FVC }\SpecialCharTok{\textasciitilde{}}\NormalTok{ lung}\SpecialCharTok{$}\NormalTok{Height)}
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(FVC }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Height, }\AttributeTok{data=}\NormalTok{lung)}
 \FunctionTok{summary}\NormalTok{(model)}
 \end{Highlighting}
 \end{Shaded}
@@ -927,7 +881,7 @@ The default output from the \texttt{lm} function is rather sparse. We can obtain
 \begin{verbatim}
 ## 
 ## Call:
-## lm(formula = lung$FVC ~ lung$Height)
+## lm(formula = FVC ~ Height, data = lung)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
@@ -936,7 +890,7 @@ The default output from the \texttt{lm} function is rather sparse. We can obtain
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
 ## (Intercept) -18.87347    2.19365  -8.604 3.89e-14 ***
-## lung$Height   0.14076    0.01331  10.577  < 2e-16 ***
+## Height        0.14076    0.01331  10.577  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -956,7 +910,7 @@ Finally, we can obtain 95\% confidence intervals for the regression coefficients
 \begin{verbatim}
 ##                   2.5 %      97.5 %
 ## (Intercept) -23.2174967 -14.5294441
-## lung$Height   0.1144042   0.1671092
+## Height        0.1144042   0.1671092
 \end{verbatim}
 
 \hypertarget{plotting-residuals-from-a-simple-linear-regression-1}{%
@@ -1024,7 +978,7 @@ Using \texttt{ggformula}, we can plot the residuals as a histogram:
 
 To investigate how body weight (kg) effects blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95\% confidence interval 52 to 84) and the intercept was −1570 (95\% confidence interval −2655 to −492).
 
-{[}\emph{You do not need Stata for this Activity}{]}
+{[}\emph{You do not need software for this Activity}{]}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -1043,7 +997,7 @@ To investigate how body weight (kg) effects blood plasma volume (mL), data were 
 \subsection*{Activity 8.2}\label{activity-8.2}}
 \addcontentsline{toc}{subsection}{Activity 8.2}
 
-To examine whether age predicts IQ, data were collected on 104 people. Use the data in the Stata file \texttt{Activity\_8.2.dta} to answer the following questions.
+To examine whether age predicts IQ, data were collected on 104 people. Use the data in the file \texttt{Activity\_8.2.csv} to answer the following questions.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -1053,9 +1007,9 @@ To examine whether age predicts IQ, data were collected on 104 people. Use the d
 \item
   Create a scatter plot with the two variables. What can you infer from the scatter plot?
 \item
-  Using Stata, obtain the correlation coefficient between age and IQ and interpret it.
+  Obtain the correlation coefficient between age and IQ and interpret it.
 \item
-  Conduct a simple linear regression using Stata and report the relationship between the two variables including the interpretation of the R2 value. Are the assumptions for linear regression met in this model?
+  Conduct a simple linear regression and report the relationship between the two variables including the interpretation of the R\textsuperscript{2} value. Are the assumptions for linear regression met in this model?
 \item
   What could you infer about the association between age and IQ in the population, based on the results of the regression analysis in this sample?
 \end{enumerate}

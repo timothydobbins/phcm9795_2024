@@ -4,7 +4,7 @@
 
 To investigate how body weight (kg) effects blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95% confidence interval 52 to 84) and the intercept was −1570 (95% confidence interval −2655 to −492).
 
-[*You do not need Stata for this Activity*]
+[*You do not need software for this Activity*]
 
 a) What is the outcome variable and explanatory (exposure) variable? 
 b) Interpret the regression slope and its 95% CI
@@ -12,12 +12,12 @@ c) Write the regression equation
 d) If we randomly sampled a person from the population and found that their weight is 80kg, what would be the predicted value of plasma volume for this person?  
 
 ### Activity 8.2 {-}
-To examine whether age predicts IQ, data were collected on 104 people. Use the data in the Stata file `Activity_8.2.dta` to answer the following questions.
+To examine whether age predicts IQ, data were collected on 104 people. Use the data in the file `Activity_8.2.csv` to answer the following questions.
 
 a)	What are the outcome variable and the explanatory variable? 
 b)	Create a scatter plot with the two variables. What can you infer from the scatter plot? 
-c)	Using Stata, obtain the correlation coefficient between age and IQ and interpret it. 
-d)	Conduct a simple linear regression using Stata and report the relationship between the two variables including the interpretation of the R2 value. Are the assumptions for linear regression met in this model?
+c)	Obtain the correlation coefficient between age and IQ and interpret it. 
+d)	Conduct a simple linear regression and report the relationship between the two variables including the interpretation of the R^2^ value. Are the assumptions for linear regression met in this model?
 e)	What could you infer about the association between age and IQ in the population, based on the results of the regression analysis in this sample? 
 
 ### Activity 8.3 {-}

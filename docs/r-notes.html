@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Module 2 Correlation and simple linear regression | PHCM9795 Foundations of Biostatistics</title>
-  <meta name="description" content="Module 2 Correlation and simple linear regression | PHCM9795 Foundations of Biostatistics" />
+  <title>8 R notes | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="8 R notes | PHCM9795 Foundations of Biostatistics" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Module 2 Correlation and simple linear regression | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:title" content="8 R notes | PHCM9795 Foundations of Biostatistics" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Module 2 Correlation and simple linear regression | PHCM9795 Foundations of Biostatistics" />
+  <meta name="twitter:title" content="8 R notes | PHCM9795 Foundations of Biostatistics" />
   
   
   
@@ -118,6 +118,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -160,11 +182,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.9" data-path="stata-notes.html"><a href="stata-notes.html#fitting-a-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.9</b> Fitting a simple linear regression model</a></li>
 <li class="chapter" data-level="1.10" data-path="stata-notes.html"><a href="stata-notes.html#plotting-residuals-from-a-simple-linear-regression"><i class="fa fa-check"></i><b>1.10</b> Plotting residuals from a simple linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Correlation and simple linear regression</a>
+<li class="chapter" data-level="" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><strong>8</strong> R notes</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>2.1</b> Creating a scatter plot</a></li>
-<li class="chapter" data-level="2.2" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>2.2</b> Fitting a simple linear regression model</a></li>
-<li class="chapter" data-level="2.3" data-path="correlation-and-simple-linear-regression.html"><a href="correlation-and-simple-linear-regression.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>2.3</b> Plotting residuals from a simple linear regression</a></li>
+<li class="chapter" data-level="1.11" data-path="r-notes.html"><a href="r-notes.html#creating-a-scatter-plot-1"><i class="fa fa-check"></i><b>1.11</b> Creating a scatter plot</a></li>
+<li class="chapter" data-level="" data-path="r-notes.html"><a href="r-notes.html#calculating-a-correlation-coefficient-1"><i class="fa fa-check"></i>Calculating a correlation coefficient</a></li>
+<li class="chapter" data-level="1.12" data-path="r-notes.html"><a href="r-notes.html#fitting-a-simple-linear-regression-model-1"><i class="fa fa-check"></i><b>1.12</b> Fitting a simple linear regression model</a></li>
+<li class="chapter" data-level="1.13" data-path="r-notes.html"><a href="r-notes.html#plotting-residuals-from-a-simple-linear-regression-1"><i class="fa fa-check"></i><b>1.13</b> Plotting residuals from a simple linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="learning-activities.html"><a href="learning-activities.html"><i class="fa fa-check"></i><strong>8</strong> Learning Activities</a></li>
 </ul>
@@ -184,74 +207,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="correlation-and-simple-linear-regression" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Module 2</span> Correlation and simple linear regression<a href="correlation-and-simple-linear-regression.html#correlation-and-simple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r-notes" class="section level1 unnumbered hasAnchor">
+<h1><strong>8</strong> R notes<a href="r-notes.html#r-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>We will demonstrate using R for correlation and simple linear regression using the dataset <code>Example_8.1.csv</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="correlation-and-simple-linear-regression.html#cb1-1" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/examples/Example_8.1.csv&quot;</span>)</span></code></pre></div>
-<div id="creating-a-scatter-plot-1" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Creating a scatter plot<a href="correlation-and-simple-linear-regression.html#creating-a-scatter-plot-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-notes.html#cb1-1" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/examples/Example_8.1.csv&quot;</span>)</span></code></pre></div>
+<div id="creating-a-scatter-plot-1" class="section level2 hasAnchor" number="1.11">
+<h2><span class="header-section-number">1.11</span> Creating a scatter plot<a href="r-notes.html#creating-a-scatter-plot-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the <code>plot</code> function to create a scatter plot to explore the association between height and FVC, assigning meaningful labels with the <code>xlab</code> and <code>ylab</code> commands:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="correlation-and-simple-linear-regression.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>lung<span class="sc">$</span>Height, <span class="at">y=</span>lung<span class="sc">$</span>FVC, </span>
-<span id="cb2-2"><a href="correlation-and-simple-linear-regression.html#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
-<span id="cb2-3"><a href="correlation-and-simple-linear-regression.html#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="r-notes.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>lung<span class="sc">$</span>Height, <span class="at">y=</span>lung<span class="sc">$</span>FVC, </span>
+<span id="cb2-2"><a href="r-notes.html#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb2-3"><a href="r-notes.html#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>)</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>To add a fitted line, we can use the <code>abline()</code> function which adds a straight line to the plot. The equation of this straight line will be determined from the estimated regression line, which we specify with the <code>lm()</code> function, which fits a <em>linear model</em>.</p>
 <p>The basic syntax of the <code>lm()</code> function is: <code>lm(y ~ x)</code> where <code>y</code> represents the <em>outcome</em> variable, and <code>x</code> represents the <em>explanatory</em> variable. Putting this all together:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="correlation-and-simple-linear-regression.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>lung<span class="sc">$</span>Height, <span class="at">y=</span>lung<span class="sc">$</span>FVC,</span>
-<span id="cb3-2"><a href="correlation-and-simple-linear-regression.html#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>,</span>
-<span id="cb3-3"><a href="correlation-and-simple-linear-regression.html#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>)</span>
-<span id="cb3-4"><a href="correlation-and-simple-linear-regression.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="correlation-and-simple-linear-regression.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(lung<span class="sc">$</span>FVC <span class="sc">~</span> lung<span class="sc">$</span>Height))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-notes.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>lung<span class="sc">$</span>Height, <span class="at">y=</span>lung<span class="sc">$</span>FVC,</span>
+<span id="cb3-2"><a href="r-notes.html#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>,</span>
+<span id="cb3-3"><a href="r-notes.html#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>)</span>
+<span id="cb3-4"><a href="r-notes.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="r-notes.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(lung<span class="sc">$</span>FVC <span class="sc">~</span> lung<span class="sc">$</span>Height))</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Or using the <code>ggformula</code> package, we form the basic plot using the following:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="correlation-and-simple-linear-regression.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung,</span>
-<span id="cb4-2"><a href="correlation-and-simple-linear-regression.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
-<span id="cb4-3"><a href="correlation-and-simple-linear-regression.html#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="correlation-and-simple-linear-regression.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="r-notes.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung,</span>
+<span id="cb4-2"><a href="r-notes.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb4-3"><a href="r-notes.html#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="r-notes.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can add an estimated linear regression line by piping the command <code>gf_lm()</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="correlation-and-simple-linear-regression.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung,</span>
-<span id="cb5-2"><a href="correlation-and-simple-linear-regression.html#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
-<span id="cb5-3"><a href="correlation-and-simple-linear-regression.html#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="correlation-and-simple-linear-regression.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lm</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="correlation-and-simple-linear-regression.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-notes.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung,</span>
+<span id="cb5-2"><a href="r-notes.html#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb5-3"><a href="r-notes.html#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Forced vital capacity (L)&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="r-notes.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lm</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="r-notes.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="at">theme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
 <pre><code>## Warning: Using the `size` aesthietic with geom_line was deprecated in ggplot2 3.4.0.
 ## ℹ Please use the `linewidth` aesthetic instead.</code></pre>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div id="calculating-a-correlation-coefficient-1" class="section level3 unnumbered hasAnchor">
-<h3>Calculating a correlation coefficient<a href="correlation-and-simple-linear-regression.html#calculating-a-correlation-coefficient-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can use the <code>cor.test(x, y)</code> function to calculate a Pearson’s correlation coefficient:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="correlation-and-simple-linear-regression.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lung<span class="sc">$</span>Height, lung<span class="sc">$</span>FVC)</span></code></pre></div>
+</div>
+<div id="calculating-a-correlation-coefficient-1" class="section level2 unnumbered hasAnchor">
+<h2>Calculating a correlation coefficient<a href="r-notes.html#calculating-a-correlation-coefficient-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use the <code>corrMatrix</code> function in the Jamovi package to calculate a Pearson’s correlation coefficient:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-notes.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrMatrix</span>(<span class="at">data=</span>lung, <span class="at">vars=</span><span class="fu">c</span>(Height, FVC))</span></code></pre></div>
 <pre><code>## 
-##  Pearson&#39;s product-moment correlation
+##  CORRELATION MATRIX
 ## 
-## data:  lung$Height and lung$FVC
-## t = 10.577, df = 118, p-value &lt; 2.2e-16
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.5924715 0.7794090
-## sample estimates:
-##       cor 
-## 0.6976279</code></pre>
+##  Correlation Matrix                                   
+##  ──────────────────────────────────────────────────── 
+##                             Height        FVC         
+##  ──────────────────────────────────────────────────── 
+##    Height    Pearson&#39;s r             —                
+##              p-value                 —                
+##                                                       
+##    FVC       Pearson&#39;s r     0.6976279            —   
+##              p-value        &lt; .0000001            —   
+##  ────────────────────────────────────────────────────</code></pre>
 </div>
-</div>
-<div id="fitting-a-simple-linear-regression-model-1" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Fitting a simple linear regression model<a href="correlation-and-simple-linear-regression.html#fitting-a-simple-linear-regression-model-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fitting-a-simple-linear-regression-model-1" class="section level2 hasAnchor" number="1.12">
+<h2><span class="header-section-number">1.12</span> Fitting a simple linear regression model<a href="r-notes.html#fitting-a-simple-linear-regression-model-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the <code>lm</code> function to fit a simple linear regression model, specifying the model as <code>y ~ x</code> where <code>y</code> represents the <em>outcome</em> variable, and <code>x</code> represents the <em>explanatory</em> variable. Using <code>Example_8.1.rds</code>, we can quantify the relationship between FVC and height:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="correlation-and-simple-linear-regression.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(lung<span class="sc">$</span>FVC <span class="sc">~</span> lung<span class="sc">$</span>Height)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-notes.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = lung$FVC ~ lung$Height)
+## lm(formula = FVC ~ Height, data = lung)
 ## 
 ## Coefficients:
-## (Intercept)  lung$Height  
+## (Intercept)       Height  
 ##    -18.8735       0.1408</code></pre>
 <p>The default output from the <code>lm</code> function is rather sparse. We can obtain much more useful information by defining the linear regression model as an object, then using the <code>summary()</code> function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="correlation-and-simple-linear-regression.html#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(lung<span class="sc">$</span>FVC <span class="sc">~</span> lung<span class="sc">$</span>Height)</span>
-<span id="cb11-2"><a href="correlation-and-simple-linear-regression.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-notes.html#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(FVC <span class="sc">~</span> Height, <span class="at">data=</span>lung)</span>
+<span id="cb11-2"><a href="r-notes.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = lung$FVC ~ lung$Height)
+## lm(formula = FVC ~ Height, data = lung)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
@@ -260,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) -18.87347    2.19365  -8.604 3.89e-14 ***
-## lung$Height   0.14076    0.01331  10.577  &lt; 2e-16 ***
+## Height        0.14076    0.01331  10.577  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -268,34 +293,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.4867, Adjusted R-squared:  0.4823 
 ## F-statistic: 111.9 on 1 and 118 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Finally, we can obtain 95% confidence intervals for the regression coefficients using the <code>confint</code> function:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="correlation-and-simple-linear-regression.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-notes.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model)</span></code></pre></div>
 <pre><code>##                   2.5 %      97.5 %
 ## (Intercept) -23.2174967 -14.5294441
-## lung$Height   0.1144042   0.1671092</code></pre>
+## Height        0.1144042   0.1671092</code></pre>
 </div>
-<div id="plotting-residuals-from-a-simple-linear-regression-1" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Plotting residuals from a simple linear regression<a href="correlation-and-simple-linear-regression.html#plotting-residuals-from-a-simple-linear-regression-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="plotting-residuals-from-a-simple-linear-regression-1" class="section level2 hasAnchor" number="1.13">
+<h2><span class="header-section-number">1.13</span> Plotting residuals from a simple linear regression<a href="r-notes.html#plotting-residuals-from-a-simple-linear-regression-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the <code>resid</code> function to obtain the residuals from a saved model. These residuals can then be plotted using a histogram in the usual way:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="correlation-and-simple-linear-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(model)</span>
-<span id="cb15-2"><a href="correlation-and-simple-linear-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-notes.html#cb15-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(model)</span>
+<span id="cb15-2"><a href="r-notes.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals)</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>A Normal curve can be overlaid if we plot the residuals using a probability scale.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="correlation-and-simple-linear-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals, <span class="at">probability =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-2"><a href="correlation-and-simple-linear-regression.html#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb16-3"><a href="correlation-and-simple-linear-regression.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="correlation-and-simple-linear-regression.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(residuals), <span class="at">sd=</span><span class="fu">sd</span>(residuals)), </span>
-<span id="cb16-5"><a href="correlation-and-simple-linear-regression.html#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-notes.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals, <span class="at">probability =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-2"><a href="r-notes.html#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb16-3"><a href="r-notes.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="r-notes.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(residuals), <span class="at">sd=</span><span class="fu">sd</span>(residuals)), </span>
+<span id="cb16-5"><a href="r-notes.html#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Using <code>ggformula</code>, we can plot the residuals as a histogram:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="correlation-and-simple-linear-regression.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dhistogram</span>(<span class="sc">~</span> residuals, <span class="at">data=</span>model) <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="correlation-and-simple-linear-regression.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dist</span>(<span class="st">&quot;norm&quot;</span>, </span>
-<span id="cb17-3"><a href="correlation-and-simple-linear-regression.html#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">params=</span><span class="fu">list</span>(<span class="at">mean=</span><span class="fu">mean</span>(model<span class="sc">$</span>residuals), </span>
-<span id="cb17-4"><a href="correlation-and-simple-linear-regression.html#cb17-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sd=</span><span class="fu">sd</span>(model<span class="sc">$</span>residuals)))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-notes.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dhistogram</span>(<span class="sc">~</span> residuals, <span class="at">data=</span>model) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="r-notes.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dist</span>(<span class="st">&quot;norm&quot;</span>, </span>
+<span id="cb17-3"><a href="r-notes.html#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">params=</span><span class="fu">list</span>(<span class="at">mean=</span><span class="fu">mean</span>(model<span class="sc">$</span>residuals), </span>
+<span id="cb17-4"><a href="r-notes.html#cb17-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sd=</span><span class="fu">sd</span>(model<span class="sc">$</span>residuals)))</span></code></pre></div>
 <pre><code>## Warning: `stat(density)` was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.</code></pre>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="correlation-and-simple-linear-regression.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dhistogram</span>(<span class="sc">~</span> residuals, <span class="at">data=</span>model) <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="correlation-and-simple-linear-regression.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-notes.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dhistogram</span>(<span class="sc">~</span> residuals, <span class="at">data=</span>model) <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="r-notes.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>()</span></code></pre></div>
 <p><img src="PHCM9795_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
 
 </div>
@@ -360,6 +385,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

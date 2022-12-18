@@ -151,17 +151,17 @@ Software is always used to estimate the regression equation for a set of data, u
 
 ## Regression coefficients: inference
 
-We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with $$n - 2$$ degrees of freedom is used:
+We can use the estimated regression coefficients and their variability to calculate 95% confidence intervals. Here, a t-value from a t-distribution with $n - 2$ degrees of freedom is used:
 
-95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
-95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
+- 95% confidence interval for intercept: $b_0 \pm t_{n-2} \times SE(b_0)$
+- 95% confidence interval for slope: $b_1 \pm t_{n-2} \times SE(b_1)$
 
 Note that as the constant ($b_0$) is not often biologically plausible, the 95% confidence interval for the constant is often not reported.
 
 The significance of the estimated slope (and less commonly, intercept) can be tested using a t-test. The null hypotheses and the alternative hypothesis for testing the slope of a simple linear regression model are:
 
-H0: $\beta_1 = 0$
-H1: $\beta_1 \ne 0$
+- H~0~: $\beta_1 = 0$
+- H~1~: $\beta_1 \ne 0$
 
 To test the null hypothesis for the regression coefficient beta_1, the following t-test is used:
 
@@ -169,7 +169,7 @@ $$t = b_1 /SE(b_1)$$
 
 This will give a t statistic which can be referred to a t distribution with n − 2 degrees of freedom to calculate the corresponding P-value.
 
-Table X.X shows the estimated regression coefficients for our working example.
+Table \@ref(tab:estimated-regression) shows the estimated regression coefficients for our working example.
 
 ```{r estimated-regression, echo=FALSE}
 df <- tibble::tribble(
@@ -182,9 +182,11 @@ huxtable(df) %>%
   set_caption("Estimated regression coefficients")
 ```
 
-From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:
+From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:
 
-FVC (L) = − 18.873 + (0.141 $\times$ Height in cm)
+FVC (L) = − 18.87 + (0.14 $\times$ Height in cm)
+
+There is very strong evidence of a linear association between FVC and height in cm (P \< 0.001).
 
 This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:
 
@@ -192,7 +194,6 @@ FVC = − 18.87347 + (0.1407567 $\times$ 165.0) = 4.40 L.
 
 Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.
 
-From this model, there is very strong evidence of a linear association between FVC and height in cm (P \< 0.001).
 
 ### Fit of a linear regression model
 
@@ -220,11 +221,11 @@ A residual is defined as the difference between the observed and predicted outco
 
 $$ \text{Residual} = \text{observed} - \text{predicted} = y - \hat y$$
 
-It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the **Advanced Biostatistics** course.
+It is important for regression modelling that the data are collected in a period when the relationship remains constant. For example, in building a model to predict normal values for lung function the data must be collected when the participants have been resting and not exercising and people taking bronchodilator medications that influence lung capacity should be excluded. In regression, it is not so important that the variables themselves are normally distributed, but it is important that the residuals are. Scatter plots and specific diagnostic tests can be used to check the regression assumptions. Some of these will not be covered in this introductory course but will be discussed in detail in the **Regression Methods in Biostatistics** course.
 
 The distribution of the residuals should always be checked. Large residuals can indicate unusual points or points that may exert undue influence on the estimated regression slope.
 
-The histogram of residuals from the model is shown in Figure 8.5. They are normally distributed and indicate that there are no influential outliers so that the assumptions for regression are met.
+The histogram of residuals from the model is shown in Figure \@ref(fig:residual-hist). The residuals are approximately normally distributed, with no outlying values.
 
 ```{r residual-hist, echo=FALSE, out.width = "66%", fig.cap="Histogram of regression residuals"}
 knitr::include_graphics(here::here("img", "mod08", "regression-residual-histogram.png"))
@@ -232,7 +233,7 @@ knitr::include_graphics(here::here("img", "mod08", "regression-residual-histogra
 
 ### Critical appraisal
 
-When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any influential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.
+When reading the literature, it is important to be critical about how correlation coefficients are interpreted. It is a good idea to check if a scatter plot is shown to help interpret the relationship and to indicate if there are any potential outliers. Also, question whether the correlation coefficient has been calculated from a random sample and if not, what selected samples the value can be generalised to.
 
 When regression is reported it is essential that the axes are correctly presented so that the equation is predictive. Thus, the explanatory variable must be presented on the x axis and the outcome on the y axis. It is also a good idea to check that all the assumptions are met. Outliers which result in a non-normal distribution of the residuals can severely bias the regression coefficients.
 
