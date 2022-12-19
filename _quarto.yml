@@ -2,15 +2,13 @@ project:
   type: book
 
 book:
-  title: "NewQuartoBook"
-  author: "Jane Doe"
-  date: "04/08/2022"
+  title: "PHCM9795: Foundations of Biostatistics"
+  author: "Timothy Dobbins"
+  date: "Term 2, 2023"
   chapters:
     - index.qmd
     - intro.qmd
     - summary.qmd
-    - 04-hypothesis-testing.qmd
-    - 05-comparing-two-means.qmd
     - 08-correlation-and-regression.qmd
     - 08.1-correlation-and-regression-stata.qmd
     - 08.2-correlation-and-regression-R.qmd
@@ -25,6 +23,7 @@ format:
   html:
     theme: cosmo
   pdf:
+    papersize: A4
     documentclass: memoir
     mainfont: Roboto
     sansfont: Clancy

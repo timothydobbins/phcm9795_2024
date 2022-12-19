@@ -2,24 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.0.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NewQuartoBook - 1&nbsp; Introduction</title>
+<title>PHCM9795: Foundations of Biostatistics - 1&nbsp; Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
-  vertical-align: middle;
-}
 </style>
 
 
@@ -83,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">NewQuartoBook</a> 
+      <a href="./">PHCM9795: Foundations of Biostatistics</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -110,17 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -148,15 +133,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#markdown-table" id="toc-markdown-table" class="nav-link active" data-scroll-target="#markdown-table"><span class="toc-section-number">1.0.1</span>  Markdown table</a></li>
-  <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt"><span class="toc-section-number">1.0.2</span>  gt</a></li>
-  <li><a href="#huxtable" id="toc-huxtable" class="nav-link" data-scroll-target="#huxtable"><span class="toc-section-number">1.0.3</span>  huxtable</a></li>
-  <li><a href="#gtsummary---huxtable" id="toc-gtsummary---huxtable" class="nav-link" data-scroll-target="#gtsummary---huxtable"><span class="toc-section-number">1.0.4</span>  gtsummary -&gt; huxtable</a></li>
-  <li><a href="#knitrkable" id="toc-knitrkable" class="nav-link" data-scroll-target="#knitrkable"><span class="toc-section-number">1.0.5</span>  knitr::kable</a></li>
+  <li><a href="#markdown-table" id="toc-markdown-table" class="nav-link active" data-scroll-target="#markdown-table"> <span class="header-section-number">1.0.1</span> Markdown table</a></li>
+  <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt"> <span class="header-section-number">1.0.2</span> gt</a></li>
+  <li><a href="#huxtable" id="toc-huxtable" class="nav-link" data-scroll-target="#huxtable"> <span class="header-section-number">1.0.3</span> huxtable</a></li>
+  <li><a href="#gtsummary---huxtable" id="toc-gtsummary---huxtable" class="nav-link" data-scroll-target="#gtsummary---huxtable"> <span class="header-section-number">1.0.4</span> gtsummary -&gt; huxtable</a></li>
+  <li><a href="#knitrkable" id="toc-knitrkable" class="nav-link" data-scroll-target="#knitrkable"> <span class="header-section-number">1.0.5</span> knitr::kable</a></li>
   </ul>
 </nav>
     </div>
@@ -173,7 +158,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
@@ -186,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="1.0.1" class="anchored" data-anchor-id="markdown-table"><span class="header-section-number">1.0.1</span> Markdown table</h3>
 <div id="tbl-md" class="anchored">
 <table class="table">
-<caption>Table&nbsp;1.1: A simple markdown table</caption>
+<caption>Table 1.1: A simple markdown table</caption>
 <thead>
 <tr class="header">
 <th>r estimate (ignoring sign)</th>
@@ -238,12 +222,12 @@ Attaching package: 'gtsummary'</code></pre>
 <div class="cell-output-display">
 <div id="tbl-1-1" class="anchored">
 
-<div id="dkxczqkbvd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lecqfxqgvt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#dkxczqkbvd) .gt_table {
+#lecqfxqgvt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -268,7 +252,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_heading {
+#lecqfxqgvt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -280,12 +264,12 @@ Attaching package: 'gtsummary'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_caption {
+#lecqfxqgvt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-:where(#dkxczqkbvd) .gt_title {
+#lecqfxqgvt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -297,7 +281,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-bottom-width: 0;
 }
 
-:where(#dkxczqkbvd) .gt_subtitle {
+#lecqfxqgvt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -309,13 +293,13 @@ Attaching package: 'gtsummary'</code></pre>
   border-top-width: 0;
 }
 
-:where(#dkxczqkbvd) .gt_bottom_border {
+#lecqfxqgvt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_col_headings {
+#lecqfxqgvt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -330,7 +314,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_col_heading {
+#lecqfxqgvt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -350,7 +334,7 @@ Attaching package: 'gtsummary'</code></pre>
   overflow-x: hidden;
 }
 
-:where(#dkxczqkbvd) .gt_column_spanner_outer {
+#lecqfxqgvt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -362,15 +346,15 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 4px;
 }
 
-:where(#dkxczqkbvd) .gt_column_spanner_outer:first-child {
+#lecqfxqgvt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#dkxczqkbvd) .gt_column_spanner_outer:last-child {
+#lecqfxqgvt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#dkxczqkbvd) .gt_column_spanner {
+#lecqfxqgvt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -382,7 +366,7 @@ Attaching package: 'gtsummary'</code></pre>
   width: 100%;
 }
 
-:where(#dkxczqkbvd) .gt_group_heading {
+#lecqfxqgvt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -408,7 +392,7 @@ Attaching package: 'gtsummary'</code></pre>
   text-align: left;
 }
 
-:where(#dkxczqkbvd) .gt_empty_group_heading {
+#lecqfxqgvt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -423,15 +407,15 @@ Attaching package: 'gtsummary'</code></pre>
   vertical-align: middle;
 }
 
-:where(#dkxczqkbvd) .gt_from_md > :first-child {
+#lecqfxqgvt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#dkxczqkbvd) .gt_from_md > :last-child {
+#lecqfxqgvt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#dkxczqkbvd) .gt_row {
+#lecqfxqgvt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -450,7 +434,7 @@ Attaching package: 'gtsummary'</code></pre>
   overflow-x: hidden;
 }
 
-:where(#dkxczqkbvd) .gt_stub {
+#lecqfxqgvt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -463,7 +447,7 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_stub_row_group {
+#lecqfxqgvt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -477,11 +461,11 @@ Attaching package: 'gtsummary'</code></pre>
   vertical-align: top;
 }
 
-:where(#dkxczqkbvd) .gt_row_group_first td {
+#lecqfxqgvt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#dkxczqkbvd) .gt_summary_row {
+#lecqfxqgvt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -491,16 +475,16 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_first_summary_row {
+#lecqfxqgvt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_first_summary_row.thick {
+#lecqfxqgvt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#dkxczqkbvd) .gt_last_summary_row {
+#lecqfxqgvt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -510,7 +494,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_grand_summary_row {
+#lecqfxqgvt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -520,7 +504,7 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_first_grand_summary_row {
+#lecqfxqgvt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,11 +514,11 @@ Attaching package: 'gtsummary'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_striped {
+#lecqfxqgvt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#dkxczqkbvd) .gt_table_body {
+#lecqfxqgvt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -543,7 +527,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_footnotes {
+#lecqfxqgvt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -557,7 +541,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_footnote {
+#lecqfxqgvt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -566,7 +550,7 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_sourcenotes {
+#lecqfxqgvt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -580,7 +564,7 @@ Attaching package: 'gtsummary'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-:where(#dkxczqkbvd) .gt_sourcenote {
+#lecqfxqgvt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -588,68 +572,68 @@ Attaching package: 'gtsummary'</code></pre>
   padding-right: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_left {
+#lecqfxqgvt .gt_left {
   text-align: left;
 }
 
-:where(#dkxczqkbvd) .gt_center {
+#lecqfxqgvt .gt_center {
   text-align: center;
 }
 
-:where(#dkxczqkbvd) .gt_right {
+#lecqfxqgvt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#dkxczqkbvd) .gt_font_normal {
+#lecqfxqgvt .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#dkxczqkbvd) .gt_font_bold {
+#lecqfxqgvt .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#dkxczqkbvd) .gt_font_italic {
+#lecqfxqgvt .gt_font_italic {
   font-style: italic;
 }
 
-:where(#dkxczqkbvd) .gt_super {
+#lecqfxqgvt .gt_super {
   font-size: 65%;
 }
 
-:where(#dkxczqkbvd) .gt_footnote_marks {
+#lecqfxqgvt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#dkxczqkbvd) .gt_asterisk {
+#lecqfxqgvt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#dkxczqkbvd) .gt_indent_1 {
+#lecqfxqgvt .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#dkxczqkbvd) .gt_indent_2 {
+#lecqfxqgvt .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#dkxczqkbvd) .gt_indent_3 {
+#lecqfxqgvt .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#dkxczqkbvd) .gt_indent_4 {
+#lecqfxqgvt .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#dkxczqkbvd) .gt_indent_5 {
+#lecqfxqgvt .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table"><caption>Table&nbsp;1.2:  A simple gt table </caption>
+<table class="gt_table"><caption>Table 1.2:  A simple gt table </caption>
   
   <thead class="gt_col_headings">
     <tr>
@@ -681,7 +665,7 @@ Attaching package: 'gtsummary'</code></pre>
 <div class="cell-output-display">
 <div id="tbl-1-2" class="anchored">
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:tbl-1-2"><caption>Table&nbsp;1.3:  A simple huxtable </caption>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:tbl-1-2"><caption>Table 1.3:  A simple huxtable </caption>
 <colgroup><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">r estimate (ignoring sign)</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Strength</th></tr>
 <tr>
@@ -704,7 +688,7 @@ Attaching package: 'gtsummary'</code></pre>
 <div class="cell-output-display">
 <div id="tbl-1-3" class="anchored">
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:tbl-1-3"><caption>Table&nbsp;1.4:  A simple gtsummary table </caption>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:tbl-1-3"><caption>Table 1.4:  A simple gtsummary table </caption>
 <colgroup><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;"><p><strong>Characteristic</strong></p>
 </th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;"><p><strong>N = 32</strong></p>
@@ -769,7 +753,7 @@ Attaching package: 'gtsummary'</code></pre>
 <div class="cell-output-display">
 <div id="tbl-1-4" class="anchored">
 <table class="table table-sm table-striped">
-<caption>Table&nbsp;1.5: A simple kable</caption>
+<caption>Table 1.5: A simple kable</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">r estimate (ignoring sign)</th>
@@ -844,24 +828,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -889,50 +856,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      let href = ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

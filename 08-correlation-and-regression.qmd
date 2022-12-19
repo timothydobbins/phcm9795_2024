@@ -40,7 +40,7 @@ We use correlation to measure the strength of a linear relationship between two 
 The file `Example_8.1.csv` has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). We can obtain a *scatter-plot* shown in @fig-scatter-plot. This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
 
 ```{r}
-#| echo: FALSE
+#| echo: false
 #| label: fig-scatter-plot
 #| fig-cap: "Plot"
 
@@ -51,11 +51,11 @@ knitr::include_graphics(here::here("img", "mod08", "scatterpng.png"))
 
 A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. In general, an absolute (disregarding the sign) r value below 0.3 indicates a weak association, 0.3 to \< 0.6 is fair association, 0.6 to \< 0.8 is a moderate association, and $\ge$ 0.8 indicates a strong association.
 
-The coefficient is positive when large values of one variable tend to occur with large values of the other, and small values of one variable (y) tend to occur with small values of the other (x) (Figure \@ref(fig:scatter-plot-four) (a and b)). For example, height and weight in healthy children or age and blood pressure.
+The coefficient is positive when large values of one variable tend to occur with large values of the other, and small values of one variable (y) tend to occur with small values of the other (x) (@fig-scatter-plot-four (a and b)). For example, height and weight in healthy children or age and blood pressure.
 
-The coefficient is negative when large values of one variable tend to occur with small values of the other, and small values of one variable tend to occur with large values of the other (Figure \@ref(fig:scatter-plot-four) (c and d)). For example, percentage immunised against infectious diseases and under-five mortality rate.
+The coefficient is negative when large values of one variable tend to occur with small values of the other, and small values of one variable tend to occur with large values of the other (@fig-scatter-plot-four (c and d)). For example, percentage immunised against infectious diseases and under-five mortality rate.
 
-```{r scatter-plot-four, echo=FALSE, out.width = "66%", fig.cap="Scatter plots demonstrating strong and weak, positive and negative associations"}
+```{r fig-scatter-plot-four, echo=FALSE, out.width = "66%", fig.cap="Scatter plots demonstrating strong and weak, positive and negative associations"}
 knitr::include_graphics(here::here("img", "mod08", "scatterplot-four-plots.png"))
 ```
 
@@ -69,9 +69,13 @@ The assumptions for using a Pearson's correlation coefficient are that:
 
 There is a further assumption that the data follow a bivariate normal distribution. This assumes: *y* follows a normal distribution for given values of *x*; and *x* follows a normal distribution for given values of *y*. This is quite a technical assumption that we do not discuss further.
 
-There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in Table \@ref(tab:mod08-correlation-coefficients)).
+There are two types of correlation coefficients-- the correct one to use is determined by the nature of the variables as shown in  @tbl-mod08-correlation-coefficients.
 
-```{r mod08-correlation-coefficients, echo=FALSE}
+```{r}
+#| echo: false
+#| label: tbl-mod08-correlation-coefficients
+#| tbl-cap: Correlation coefficients and their application
+
 df <- tibble::tribble(
   ~`Correlation coefficient`, ~Application,
   "Pearson’s correlation coefficient: r", "Both variables are continuous and a bivariate normal distribution can be assumed",
@@ -80,13 +84,12 @@ df <- tibble::tribble(
 
 huxtable(df) |> 
   theme_article() |> 
-  set_width(0.95) |> 
-  set_caption("Correlation coefficients and their application")
+  set_width(0.95)
 ```
 
 Spearman's $\rho$ is calculated using the ranks of the data, rather than the actual values of the data. We will see further examples of such methods in Module 9, when we consider non-parametric tests, which are often based on ranks.
 
-Correlation coefficients are often presented in the form of a *correlation matrix* which can display the correlation between a number of variables in a single table (Table \@ref(tab:corrmatrix)).
+Correlation coefficients are often presented in the form of a *correlation matrix* which can display the correlation between a number of variables in a single table (@tbl-corrmatrix).
 
 +------------+-------------+-------------+
 |            | Height      | FVC         |
@@ -98,7 +101,7 @@ Correlation coefficients are often presented in the form of a *correlation matri
 |            | P \< 0.0001 |             |
 +------------+-------------+-------------+
 
-: (#tab:corrmatrix) Correlation matrix for Height and FVC
+: Correlation matrix for Height and FVC {#tbl-corrmatrix}
 
 This correlation matrix shows that the Pearson's correlation coefficient between height and lung function is 0.70 with P\<0.0001 indicating very strong evidence of a linear association between height and FVC. A correlation matrix sometimes includes correlations between the same variable, indicated as a correlation coefficient of 1. For example, $Height$ is perfectly correlated with itself (i.e. has a correlation coefficient of 1). Similarly, $FVC$ is perfectly correlated with itself.
 
@@ -126,13 +129,14 @@ The mathematical equation for the line explains the relationship between the two
 
 $$y = \beta_{0} + \beta_{1}x$$
 
-This line is shown in Figure \@ref(fig:regression-parameters) using the notation shown in Table \@ref(tab:regression-notation).
+This line is shown in @fig-regression-parameters using the notation shown in @tbl-regression-notation.
 
-```{r regression-parameters, echo=FALSE, out.width = "66%", fig.cap="Coefficients of a linear regression equation"}
+```{r fig-regression-parameters, echo=FALSE, out.width = "66%", fig.cap="Coefficients of a linear regression equation"}
 knitr::include_graphics(here::here("img", "mod08", "regression-line-parameters.png"))
 ```
 
-```{r regression-notation, echo=FALSE}
+```{r tbl-regression-notation, echo=FALSE}
+#| tbl-cap: Notation for linear regression equation
 df <- tibble::tribble(
         ~Symbol,  ~Interpretation,
         "y", "Observed value of the outcome variable",
@@ -143,8 +147,7 @@ df <- tibble::tribble(
 
 huxtable(df) |> 
   theme_article() |> 
-  set_width(0.8) |> 
-  set_caption("Notation for linear regression equation")
+  set_width(0.8)
 ```
 
 The intercept is the point at which the regression line intersects with the y-axis when the value of 'x' is zero. In most cases, the intercept does not have a biologically meaningful interpretation as the explanatory variable cannot take a value of zero. In our working example, the intercept is not meaningful as it is not possible for an adult to have a height of 0cm.
@@ -177,17 +180,18 @@ $$t = b_1 /SE(b_1)$$
 
 This will give a t statistic which can be referred to a t distribution with n − 2 degrees of freedom to calculate the corresponding P-value.
 
-Table \@ref(tab:estimated-regression) shows the estimated regression coefficients for our working example.
+@tbl-estimated-regression shows the estimated regression coefficients for our working example.
 
-```{r estimated-regression, echo=FALSE}
+```{r tbl-estimated-regression, echo=FALSE}
+#| tbl-cap: Estimated regression coefficients
+
 df <- tibble::tribble(
         ~Term,  ~Estimate, ~`Standard error`, ~`t value`, ~`P value`, ~`95% Confidence interval`,
        "Intercept", -18.87,   2.194, "t=-8.60, 118df", "<0.001", "-23.22 to -14.53",
        "Height", 0.14, 0.013, "t=10.58, 118df", "<0.001", "0.11 to 0.17")
 
 huxtable(df) |> 
-  theme_article() |> 
-  set_caption("Estimated regression coefficients")
+  theme_article()
 ```
 
 From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:
@@ -233,9 +237,9 @@ It is important for regression modelling that the data are collected in a period
 
 The distribution of the residuals should always be checked. Large residuals can indicate unusual points or points that may exert undue influence on the estimated regression slope.
 
-The histogram of residuals from the model is shown in Figure \@ref(fig:residual-hist). The residuals are approximately normally distributed, with no outlying values.
+The histogram of residuals from the model is shown in @fig-residual-hist. The residuals are approximately normally distributed, with no outlying values.
 
-```{r residual-hist, echo=FALSE, out.width = "66%", fig.cap="Histogram of regression residuals"}
+```{r fig-residual-hist, echo=FALSE, out.width = "66%", fig.cap="Histogram of regression residuals"}
 knitr::include_graphics(here::here("img", "mod08", "regression-residual-histogram.png"))
 ```
 
