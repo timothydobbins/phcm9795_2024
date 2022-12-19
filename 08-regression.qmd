@@ -1,0 +1,102 @@
+# Correlation and linear regression
+
+## Learning objectives {-}
+
+By the end of this module you will be able to:
+
+- Explore the association between two continuous variables using a scatter plot;
+- Estimate and interpret correlation coefficients;
+- Estimate and interpret parameters from a simple linear regression;
+- Decide whether a regression model is valid;
+- Test a hypothesis using regression coefficients;
+- Outline the concept of multiple regression and its role in investigative epidemiology.
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapter 10. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Chapter 11. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+@acock10; Chapter 8.
+
+## Introduction
+
+In Module 5, we saw how to test whether the means from two groups are equal - in other words, whether a continuous variable is related to a categorical variable. We often want to know how closely two continuous variables are related. For example, we may want to know how closely blood cholesterol levels are related to dietary fat intake in adult men. To measure the strength of association between two continuously distributed variables, a correlation coefficient is used.
+
+We may also want to know how well one continuous measurement predicts the value of another continuous measurement. For example, we may want to know how well height predicts values of lung capacity in a community of adults. A regression model allows us to use one measurement to predict another measurement.
+
+Although both correlation coefficients and regression models can be used to describe the degree of association between two continuous variables, the two methods provide very different statistical information. It is important to note that  both methods only measures the strengths of an association between variables and does not imply a causal relationship.
+
+## Correlation
+
+We use correlation to measure the strength of a linear relationship between two variables. Before calculating a correlation coefficient, a scatter plot should first be obtained to give an understanding of the nature of the relationship between the two variables.
+
+### Worked Example
+
+The Stata file `Example_8.1.dta` has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). Using the twoway command in Stata we can obtain the plot shown in @fig-scatterplot. This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
+
+![Association between height and lung function in 120 adults](img/mod08/scatterpng.png){#fig-scatterplot}
+
+### Correlation coefficients
+
+A correlation coefficient (r) describes how closely the variables are related, that is the strength of linear association between two continuous variables. The range of the coefficient is from +1 to −1 where +1 is a perfect positive association, 0 is no association and −1 is a perfect inverse association. We can summarise the strength of the correlation using the following guide:
+
+| r estimate (ignoring sign) | Strength |
+|----------------------------|----------|
+| <0.3                       | Poor     |
+| 0.3 to <0.6                | Fair     |
+| 0.6 to <0.8                | Moderate |
+| >=0.6                      | Strong   |
+
+: Description of correlation coefficients {#tbl-correlations}
+
+## Obtaining a regression equation in Stata
+
+To measure whether height is a significant predictor of forced vital capacity (FVC), we use the `regress` command in Stata.
+
+@lst-regress-stata and @lst-regress-r shows the model summary in the first part of the Stata output. The R-squared is 0.487, indicating that 48.7% of the variation in FVC is explained by height. The square root of R-squared gives us the (absolute value of) Pearson's correlation coefficient of 0.698 as obtained in Section 8.2.
+
+::: {.panel-tabset}
+
+## Stata
+```{#lst-regress-stata lst-cap="Stata simple linear regression"}
+. regress FVC Height
+
+      Source |       SS           df       MS      Number of obs   =       120
+-------------+----------------------------------   F(1, 118)       =    111.88
+       Model |  17.5914327         1  17.5914327   Prob > F        =    0.0000
+    Residual |  18.5540027       118  .157237311   R-squared       =    0.4867
+-------------+----------------------------------   Adj R-squared   =    0.4823
+       Total |  36.1454355       119  .303743155   Root MSE        =    .39653
+
+------------------------------------------------------------------------------
+         FVC |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      Height |   .1407567   .0133075    10.58   0.000     .1144042    .1671092
+       _cons |  -18.87347   2.193651    -8.60   0.000     -23.2175   -14.52944
+------------------------------------------------------------------------------
+```
+
+## R
+```{#lst-regress-r lst-cap="R simple linear regression"}
+Imagine this is some R output
+```
+
+:::
+
+The adjusted R-squared is only used when comparing multivariable models (i.e. those with different numbers of explanatory variables, including confounders), and will not be used in this course.
+
+The coefficients table, the second part of the Stata output, provide the estimated regression coefficients. Stata labels the regression slope with the name of the explanatory variable and the intercept `_cons`.
+
+From this output, we see that the slope is estimated as 0.141 with an estimated intercept of -18.873. Therefore, the regression equation is estimated as:
+
+FVC (L) = − 18.873 + (0.141 $\times$ Height in cm)
+
+This equation can be used to predict FVC for a person of a given height. For example, the predicted FVC for a person 165 cm tall is estimated as:
+
+FVC = − 18.87347 + (0.1407567 $\times$ 165.0) = 4.40 L.
+
+Note that for the purpose of prediction we have kept all the decimal places in the coefficients to avoid rounding error in the intermediate calculation.
+
+The t-values are calculated by dividing the coefficients by their SEs and are tests of whether each coefficient is significantly different from zero. A coefficient that is significantly different from zero indicates a significant linear relationship between the variables. In this model, both the intercept and the coefficient are significantly different from zero at P < 0.001.
+

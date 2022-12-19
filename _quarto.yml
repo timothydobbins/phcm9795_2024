@@ -1,0 +1,31 @@
+project:
+  type: book
+
+book:
+  title: "NewQuartoBook"
+  author: "Jane Doe"
+  date: "04/08/2022"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - 04-hypothesis-testing.qmd
+    - 05-comparing-two-means.qmd
+    - 08-correlation-and-regression.qmd
+    - 08.1-correlation-and-regression-stata.qmd
+    - 08.2-correlation-and-regression-R.qmd
+    - 08.3-correlation-and-regression-activities.qmd
+    - references.qmd
+
+bibliography: PHCM9795.bib
+
+pdf-engine: xelatex
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: memoir
+    mainfont: Roboto
+    sansfont: Clancy
+    include-in-header: preamble.tex

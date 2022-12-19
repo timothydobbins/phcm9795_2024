@@ -1,0 +1,65 @@
+# Introduction
+
+This is a book created from markdown and executable code.
+
+Let's investigate some tables.
+
+### Markdown table
+
+| r estimate (ignoring sign) | Strength |
+|----------------------------|----------|
+| <0.3                       | Poor     |
+| 0.3 to <0.6                | Fair     |
+| 0.6 to <0.8                | Moderate |
+| >=0.6                      | Strong   |
+
+: A simple markdown table {#tbl-md}
+
+### gt
+
+```{r, echo=FALSE}
+#| label: tbl-1-1
+#| tbl-cap: "A simple gt table"
+
+library(huxtable)
+library(gt)
+library(gtsummary)
+library(knitr)
+
+rdf <- tibble::tribble(
+  ~`r estimate (ignoring sign)`, ~Strength,
+  "<0.3", "Poor",
+  "0.3 to <0.6", "Fair",
+  "0.6 to <0.8", "Moderate",
+  ">=0.6", "Strong")
+
+gt::gt(rdf)
+```
+
+### huxtable
+
+```{r, echo=FALSE}
+#| label: tbl-1-2
+#| tbl-cap: "A simple huxtable"
+ 
+huxtable(rdf) %>% 
+  theme_article()
+```
+
+### gtsummary -> huxtable
+```{r, echo=FALSE}
+#| label: tbl-1-3
+#| tbl-cap: "A simple gtsummary table"
+
+tbl_summary(mtcars) %>% 
+  as_hux_table() %>% 
+  theme_article()
+```
+
+### knitr::kable
+```{r, echo=FALSE}
+#| label: tbl-1-4
+#| tbl-cap: "A simple kable"
+ 
+knitr::kable(rdf)
+```

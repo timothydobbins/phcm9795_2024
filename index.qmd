@@ -1,0 +1,15 @@
+# Preface {.unnumbered}
+
+```{r message=FALSE, warning=FALSE}
+library(huxtable)
+library(magrittr)
+```
+
+
+This is a Quarto book.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+```{r}
+1 + 1
+```
