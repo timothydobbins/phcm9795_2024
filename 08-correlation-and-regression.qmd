@@ -137,17 +137,33 @@ knitr::include_graphics(here::here("img", "mod08", "regression-line-parameters.p
 
 ```{r tbl-regression-notation, echo=FALSE}
 #| tbl-cap: Notation for linear regression equation
-df <- tibble::tribble(
+
+if (knitr::is_latex_output()) {
+  df <- tibble::tribble(
         ~Symbol,  ~Interpretation,
-        "y", "Observed value of the outcome variable",
-        "x", "Observed value of the explanatory variable",
-        "β_0", "Intercept of the regression line",
-        "β_1", "Slope of the regression line"
+        "$y$", "Observed value of the outcome variable",
+        "$x$", "Observed value of the explanatory variable",
+        "$\\beta_0$", "Intercept of the regression line",
+        "$\\beta_1$", "Slope of the regression line"
         )
 
-huxtable(df) |> 
+knitr::kable(df, "latex", booktabs=TRUE, escape = F)
+}
+  
+if (knitr::is_html_output()) {
+df <- tibble::tribble(
+        ~Symbol,  ~Interpretation,
+        "\\(y \\)", "Observed value of the outcome variable",
+        "\\(x \\)", "Observed value of the explanatory variable",
+        "\\(\\beta_0\\)", "Intercept of the regression line",
+        "\\(\\beta_1\\)", "Slope of the regression line"
+        )
+
+  huxtable(df) |> 
   theme_article() |> 
-  set_width(0.8)
+  set_width(0.8) |> 
+    set_escape_contents(TRUE)
+}
 ```
 
 The intercept is the point at which the regression line intersects with the y-axis when the value of 'x' is zero. In most cases, the intercept does not have a biologically meaningful interpretation as the explanatory variable cannot take a value of zero. In our working example, the intercept is not meaningful as it is not possible for an adult to have a height of 0cm.

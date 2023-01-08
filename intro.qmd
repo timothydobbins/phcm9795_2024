@@ -8,10 +8,10 @@ Let's investigate some tables.
 
 | r estimate (ignoring sign) | Strength |
 |----------------------------|----------|
-| <0.3                       | Poor     |
-| 0.3 to <0.6                | Fair     |
-| 0.6 to <0.8                | Moderate |
-| >=0.6                      | Strong   |
+| \<0.3                      | Poor     |
+| 0.3 to \<0.6               | Fair     |
+| 0.6 to \<0.8               | Moderate |
+| \>=0.6                     | Strong   |
 
 : A simple markdown table {#tbl-md}
 
@@ -25,6 +25,7 @@ library(huxtable)
 library(gt)
 library(gtsummary)
 library(knitr)
+library(kableExtra)
 
 rdf <- tibble::tribble(
   ~`r estimate (ignoring sign)`, ~Strength,
@@ -46,7 +47,18 @@ huxtable(rdf) %>%
   theme_article()
 ```
 
-### gtsummary -> huxtable
+### kableExtra
+
+```{r, echo=FALSE}
+#| label: tbl-1-kblExt
+#| tbl-cap: "A simple kableExtra"
+ 
+kbl(rdf) %>%
+  kable_classic(full_width = F)
+```
+
+### gtsummary -\> huxtable
+
 ```{r, echo=FALSE}
 #| label: tbl-1-3
 #| tbl-cap: "A simple gtsummary table"
@@ -57,9 +69,59 @@ tbl_summary(mtcars) %>%
 ```
 
 ### knitr::kable
+
 ```{r, echo=FALSE}
 #| label: tbl-1-4
 #| tbl-cap: "A simple kable"
  
 knitr::kable(rdf)
+```
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+tibble(
+  "β~0~" = letters[1:2],
+  "\u0394T" = 1:2,
+  "\u03b2" = c("\u0394F~0-100~", "\u0394F~100-200~")
+)
+```
+
+```{r}
+#| echo: false
+#| warning: false
+data.frame(Function = "`read_delim()`",
+           Formula = "$\\leftarrow$",
+           Break = "this continues on a<br>new line",
+           Link = "[Google](www.google.com)") |>
+  kbl(format = "markdown") %>% 
+  kable_classic(full_width = F)
+```
+
+```{r}
+#| echo: false
+#| warning: false
+data.frame(Function = "`read_delim()`",
+           Formula = "$\\leftarrow$",
+           Break = "this continues on a<br>new line",
+           Link = "[Google](www.google.com)") |>
+  huxtable() 
+```
+
+```{r tab}
+library(knitr)
+library(kableExtra)
+df <- data.frame(v1=rnorm(6), v2=runif(6), v3=rbinom(6, 1, .33), 
+             row.names=LETTERS[1:6])
+
+df$v4 <- c('My formula $\\sum_{i=1}^9$')
+kable(df, "latex", align="c", booktabs=TRUE, escape = F, caption = '$\\Gamma$') %>%
+footnote(general=c("$a^2+b^2=c^2,$",     
+                   "$\\\\sigma^2=\\\\frac{1}{n-1}\\\\sum_{i=1}^n(x_i-\\\\bar{x})^2;$", 
+                   "1,000 \\\\$;", "100\\\\%."),
+         number=c("Hello\ there! \\\\textit{Hello\ there!}"),
+         footnote_as_chunk=TRUE, 
+         escape=FALSE)
 ```
