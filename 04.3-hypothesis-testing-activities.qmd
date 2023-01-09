@@ -1,0 +1,51 @@
+# **4** Learning Activities {-}
+
+### Activity 4.1
+
+In each of the following situations, what decision should be made about the null hypothesis if the researcher indicates that:
+
+a) P < 0.01
+b) P > 0.05
+c) "ns"
+d) "significant differences exist"
+
+### Activity 4.2
+
+For the following hypothetical situations, formulate the null hypothesis and alternative hypothesis and write a conclusion about the study results:
+
+a) A study was conducted to investigate whether the mean systolic blood pressure of males aged 40 to 60 years was different to the mean systolic blood pressure of females aged 40 to 60 years. The result of the study was that the mean systolic blood pressure was higher in males by 5.1 mmHg (95% CI 2.4 to 7.6; P = 0.008).
+b) A case-control study was conducted to investigate the association between obesity and breast cancer. The researchers found an OR of 3.21 (95% CI 1.15 to 8.47; P = 0.03).
+c) A cohort study investigated the relationship between eating a healthy diet and the incidence of influenza infection among adults aged 20 to 60 years. The results were RR = 0.88 (95% CI 0.65 to 1.50; P = 0.2). 
+
+### Activity 4.3
+
+A pilot study was conducted to compare the mean daily energy intake of women aged 25 to 30 years with the recommended intake of 7750 kJ/day. In this study, the average daily energy intake over 10 days was recorded for 12 healthy women of that age group. The data are in the the Excel file Activity_4.3.xls. Import the file into Stata for this activity.
+
+a) State the research question
+b) Formulate the null hypothesis
+c) Formulate the alternative hypothesis
+d) Analyse the data in Stata and report your conclusions
+
+### Activity 4.4
+
+Which procedure gives the researcher the better chance of rejecting a null hypothesis?
+
+a) comparing the data-based p-value with the level of significance at 5%
+b) comparing the 95% CI with a nominated value
+c) neither procedure  
+
+### Activity 4.5
+
+Setting the significance level at P < 0.10 instead of the more usual P < 0.05 increases the likelihood of:
+
+a) a Type I error
+b) a Type II error
+c) rejecting the null hypothesis
+d) Not rejecting the null hypothesis 
+
+### Activity 4.6
+For a fixed sample size setting the significance level at a very extreme cutoff such as P < 0.001 increases the chances of:
+a) obtaining a significant result
+b) rejecting the null hypothesis
+c) a Type I error
+d) a Type II error

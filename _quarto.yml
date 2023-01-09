@@ -9,10 +9,14 @@ book:
     - index.qmd
     - intro.qmd
     - summary.qmd
-    - 08-correlation-and-regression.qmd
-    - 08.1-correlation-and-regression-stata.qmd
-    - 08.2-correlation-and-regression-R.qmd
-    - 08.3-correlation-and-regression-activities.qmd
+    - 04-hypothesis-testing.qmd
+    - 04.1-hypothesis-testing-stata.qmd
+    - 04.2-hypothesis-testing-R.qmd
+    - 04.3-hypothesis-testing-activities.qmd
+    # - 08-correlation-and-regression.qmd
+    # - 08.1-correlation-and-regression-stata.qmd
+    # - 08.2-correlation-and-regression-R.qmd
+    # - 08.3-correlation-and-regression-activities.qmd
     - references.qmd
 
 bibliography: PHCM9795.bib

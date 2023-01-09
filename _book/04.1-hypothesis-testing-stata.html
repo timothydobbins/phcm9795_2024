@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHCM9795: Foundations of Biostatistics - 2&nbsp; Summary</title>
+<title>PHCM9795: Foundations of Biostatistics - 4 Stata notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-hypothesis-testing.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./04.2-hypothesis-testing-R.html" rel="next">
+<link href="./04-hypothesis-testing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+      <h1 class="quarto-secondary-nav-title"><strong>4</strong> Stata notes</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -168,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04.1-hypothesis-testing-stata.html" class="sidebar-item-text sidebar-link"><strong>4</strong> Stata notes</a>
+  <a href="./04.1-hypothesis-testing-stata.html" class="sidebar-item-text sidebar-link active"><strong>4</strong> Stata notes</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,14 +201,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link active" data-scroll-target="#one-sample-t-test">One sample t-test</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title d-none d-lg-block"><strong>4</strong> Stata notes</h1>
 </div>
 
 
@@ -223,15 +229,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>In summary, this book has no content whatsoever.</p>
+<section id="one-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-t-test">One sample t-test</h2>
+<p>We will use data from <code>Example_4.1.csv</code> to demonstrate how a one-sample t-test is conducted in Stata. To perform the test, go to <strong>Statistics &gt; Summaries, tables, and tests &gt; Classical tests of hypotheses &gt; t test (mean-comparison test)</strong>.</p>
+<p>Ensure that the <strong>One-sample</strong> option is selected, then choose <code>dbp</code> as the <strong>Variable name</strong> from the drop-down list. Enter the <strong>Hypothesised mean</strong> value (<code>71</code> in this example) as shown below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="cell-output-display">
+<p><img src="img/mod04/stata/mod4-ttest.png" class="img-fluid" style="width:66.0%"></p>
 </div>
 </div>
+<p>Click <strong>OK</strong> or <strong>Submit</strong> to obtain the output below.</p>
+<p>[Command: <code>ttest dbp == 71</code>]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>. ttest dbp <span class="sc">==</span> <span class="dv">71</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>One<span class="sc">-</span>sample t test</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Variable <span class="sc">|</span>     Obs        Mean    Std. Err.   Std. Dev.   [<span class="dv">95</span>% Conf. Interval]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---------+--------------------------------------------------------------------</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     dbp <span class="sc">|</span>     <span class="dv">733</span>    <span class="fl">72.40518</span>    .<span class="dv">4573454</span>    <span class="fl">12.38216</span>    <span class="fl">71.50732</span>    <span class="fl">73.30305</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    mean <span class="ot">=</span> <span class="fu">mean</span>(dbp)                                              t <span class="ot">=</span>   <span class="fl">3.0725</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Ho<span class="sc">:</span> mean <span class="ot">=</span> <span class="dv">71</span>                                    degrees of freedom <span class="ot">=</span>      <span class="dv">732</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    Ha<span class="sc">:</span> mean <span class="sc">&lt;</span> <span class="dv">71</span>               Ha<span class="sc">:</span> mean <span class="sc">!=</span> <span class="dv">71</span>                 Ha<span class="sc">:</span> mean <span class="sc">&gt;</span> <span class="dv">71</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">Pr</span>(T <span class="sc">&lt;</span> t) <span class="ot">=</span> <span class="fl">0.9989</span>         <span class="fu">Pr</span>(<span class="sc">|</span>T<span class="sc">|</span> <span class="er">&gt;</span> <span class="er">|</span>t<span class="sc">|</span>) <span class="ot">=</span> <span class="fl">0.0022</span>          <span class="fu">Pr</span>(T <span class="sc">&gt;</span> t) <span class="ot">=</span> <span class="fl">0.0011</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The table gives the sample mean and standard deviation, as well as the standard error and 95% confidence interval of the mean. The test statistics are given under the table: t and the degrees of freedom as well as the P values from two-sided (Ha: mean != 71) and one-sided (Ha: mean &lt;71 and Ha: mean &gt; 71) tests. Refer to the previous sections of this module on the appropriate test to use.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -369,13 +396,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./04-hypothesis-testing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-hypothesis-testing.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04.2-hypothesis-testing-R.html" class="pagination-link">
+        <span class="nav-page-text"><strong>4</strong> R notes</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

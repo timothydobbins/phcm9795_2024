@@ -1,0 +1,32 @@
+# **4** Stata notes {-}
+
+## One sample t-test
+We will use data from `Example_4.1.csv` to demonstrate how a one-sample t-test is conducted in Stata. To perform the test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**.
+
+Ensure that the **One-sample** option is selected, then choose `dbp` as the **Variable name** from the drop-down list. Enter the **Hypothesised mean** value (`71` in this example) as shown below. 
+
+```{r mod4-ttest, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod04", "stata", "mod4-ttest.png"))
+```
+ 
+Click **OK** or **Submit** to obtain the output below.
+
+[Command: `ttest dbp == 71`]
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. ttest dbp == 71
+
+One-sample t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+     dbp |     733    72.40518    .4573454    12.38216    71.50732    73.30305
+------------------------------------------------------------------------------
+    mean = mean(dbp)                                              t =   3.0725
+Ho: mean = 71                                    degrees of freedom =      732
+
+    Ha: mean < 71               Ha: mean != 71                 Ha: mean > 71
+ Pr(T < t) = 0.9989         Pr(|T| > |t|) = 0.0022          Pr(T > t) = 0.0011
+```
+
+The table gives the sample mean and standard deviation, as well as the standard error and 95% confidence interval of the mean. The test statistics are given under the table: t and the degrees of freedom as well as the P values from two-sided (Ha: mean != 71) and one-sided (Ha: mean <71 and Ha: mean > 71) tests. Refer to the previous sections of this module on the appropriate test to use.

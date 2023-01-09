@@ -1,0 +1,21 @@
+# **4** R notes {-}
+
+## One sample t-test
+
+We will use data from `Example_4.1.rds` to demonstrate how a one-sample t-test is conducted in R.
+
+```{r}
+library(jmv)
+
+bloodpressure <- read.csv("data/examples/Example_4.1.csv")
+
+descriptives(bloodpressure)
+```
+
+To test whether the mean diastolic blood pressure of the population from which the sample was drawn is equal to 71, we can use the t.test command:
+
+```{r}
+t.test(bloodpressure$dbp, mu=71)
+```
+
+The output gives a test statistic, degrees of freedom and a P values from the two-sided test. The mean of the sample is provided, as well as the 95% confidence interval.
