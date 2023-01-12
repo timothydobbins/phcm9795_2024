@@ -1,0 +1,143 @@
+# Precision, standard errors and confidence intervals
+
+## Learning objectives {-}
+
+By the end of this module you will be able to:
+
+- Explain the purpose of sampling, different sampling methods and their implications for data analysis;
+- Distinguish between standard deviation of a sample and standard error of a mean;
+- Recognise the importance of the central limit theorem;
+- Calculate the standard error of a mean;
+- Calculate and interpret confidence intervals for a mean;
+- Be familiar with the t-distribution and when to use it.
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapters 4 and 6. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Sections 3.3 and 3.4, 8.1 to 8.3. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+
+## Introduction
+
+To describe the characteristics of a population we can gather data about the entire population (as is undertaken in a national census) or we can gather data from a sample of the population. When undertaking a research study, taking a sample from a population is far more cost-effective and less time consuming than collecting information from the entire population. When a sample of a population is selected, summary statistics that describe the sample are used to make inferences about the total population from which the sample was drawn. These are referred to as inferential statistics. 
+
+However, for the inferences about the population to be valid, a random sample of the population must be obtained. The goal of using random sampling methods is to obtain a sample that is representative of the target population. In other words, apart from random error, the information derived from the sample is expected to be much the same as the information collected from a complete population census as long as the sample is large enough. 
+
+## Sampling methods 
+
+Methods have been designed to select participants from a population such that each person in the target population has an equal probability of being chosen. Methods that use this approach are called random sampling methods. Examples include simple random sampling and stratified random sampling.
+
+In simple random sampling, every person in the population from which the sample is drawn has the same random chance of being selected into the sample. To implement this method, every person in the population is allocated an ID number and then a random sample of the ID numbers is selected. Software packages can be used to generate a list of random numbers to select the random sample. 
+
+In stratified sampling, the population is divided into distinct non-overlapping subgroups (strata) according to an important characteristic (e.g. age or sex) and then a random sample is selected from each of the strata. This method is used to ensure that sufficient numbers of people are sampled from each stratum and therefore each subgroup of interest is adequately represented in the sample. 
+
+The purpose of using random sampling is to minimise selection bias to ensure that the sample enrolled in a study is representative of the population being studied. This is important because the summary statistics that are obtained can then be regarded as valid in that they can be applied (generalised) back to the population.
+
+A non-representative sample can occur when random sampling is used, simply by chance. However, non-random sampling methods, such as using a convenient study population, will often result in a non-representative sample being selected so that the summary statistics from the sample cannot be generalised back to the population from which the participants were drawn. The effects of non-random error are much more serious than the effects of random error. Concepts such as non-random error (i.e. systematic bias), selection bias, validity and generalisability are discussed in more detail in PHCM9476: Foundations of Epidemiology.
+
+## Standard error and precision
+
+Module 1 introduced the mean, variance and standard deviation as measures of central tendency and spread for continuous measurements from a sample or a population. As described in Module 1, we rarely have data on the entire population but we can infer information about the population (e.g. the mean weight of people in the population) based on a sample. However, a sample taken from a population is usually a small proportion of the total population. If the sample is very small, we would not expect our estimate of the population mean value to be precise. If the sample is very large, we would expect a more precise estimate of the population mean, i.e. the estimated mean value would be much closer to the true mean value in the population. 
+
+### The standard error of the mean
+
+A point estimate is a single best guess of the true value in the population. Instead of trying to guess the true value, it may be preferable to give a range of values in which we think the true value lies. For example, suppose we want to estimate the average weight of a population, and found a sample mean of 65 kg. Rather than saying we believe the true mean to be 65 kg, we could say we believe it is somewhere between, say, 58 kg and 72 kg.
+
+Often in papers, one will see something like “the mean is 70.24 $\pm$ 1.78 kg”. The 1.78 is called the standard error of the mean (sometimes shortened to S.E.M. or S.E.). The standard error of the mean measures the extent to which we expect the means from different samples to vary because of chance error in the sampling process. The standard error is a measure of precision of the point estimate. This statistic is directly related to the size of the sample. The standard error of the mean for a continuously distributed measurement for which the SD is an accurate measure of spread is computed as follows:
+
+$$ \text{SE}(\bar{x}) = \frac{\text{SD}}{\sqrt{n}} $$
+For our sample of weight data from 30 patients in Module 1:
+
+$$ \text{SE}(\bar{x}) = \frac{\text{5.04}}{\sqrt{30}} = 0.92 $$
+Because the calculation uses the sample size (n) (i.e. the number of study participants) in the denominator, the SE will become smaller when the sample size becomes larger. A smaller SE indicates that the estimated mean value is more precise.
+
+The standard error is an important statistic that is related to sampling variation. When a random sample of a population is selected, it is likely to differ in some characteristic compared with another random sample selected from the same population. Also, when a sample of a population is taken, the true population mean is an unknown value. 
+
+Just as the standard deviation measures the spread of the data around the population mean, the standard error of the mean measures the spread of the sample means. Note that we do not have different samples, only one. It is a theoretical concept which enables us to conduct various other statistical analyses.
+
+## Central limit theorem 
+Even though we now have an estimate of the mean and its standard error, we might like to know what the mean from a different random sample of the same size might be. To do this, we need to know how sample means are distributed. In determining the form of the probability distribution of the sample mean ($\bar{x}$), we consider two cases:
+
+###	When the population distribution is unknown:
+The central limit theorem for this situation states:
+
+>In selecting random samples of size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, the sampling distribution of the sample mean $\bar{x}$ approaches a normal distribution with mean $\mu$ and standard deviation $\tfrac{\sigma}{\sqrt{n}}$ as the sample size becomes large.
+
+The sample size n = 30 and above is a rule of thumb for the central limit theorem to be used. However, larger sample sizes may be needed if the distribution is highly skewed.
+
+###	When the population is assumed to be normal:
+
+In this case the sampling distribution of $\bar{x}$ is normal for any sample size.
+
+## 95% confidence interval of the mean
+In Module 2, we showed that the characteristics of a Standard Normal Distribution are that 95% of the data lie within 1.96 standard deviations from the mean (Figure 2.2). Because the central limit theorem states that the sampling distribution of the mean is approximately Normal in large enough samples, we expect that 95% of the mean values would fall within 1.96 × SE units above and below the measured mean population value. 
+
+For example, if we repeated the study on weight 100 times using 100 different random samples from the population and calculated the mean weight for each of the 100 samples, approximately 95% of the values for the mean weight calculated for each of the 100 samples would fall within 1.96 × SE of the population mean weight. 
+
+This interpretation of the SE is translated into the concept of precision as a 95% confidence interval (CI). A 95% CI is a range of values within which we have 95% confidence that the true population mean lies. If an experiment was conducted a very large number of times, and a 95%CI was calculated for each experiment, 95% of the confidence intervals would contain the true population mean.
+
+The calculation of the 95% CI for a mean is as follows:
+
+$$  \bar{x} \pm 1.96 \times \text{SE}( \bar{x} ) $$
+This is the generic formula for calculating 95% CI for any summary statistic. In general, the mean value can be replaced by the point estimate of a rate or a proportion and the same formula applies for computing 95% CIs, i.e.
+
+$$ 95\% \text{ CI} = \text{point estimate} \pm 1.96 \times \text{SE}(\text{point estimate)} $$
+
+The main difference in the methods used to calculate the 95% CI for different point estimates is the way the SE is calculated. The methods for calculating 95% CI around proportions and other ratio measures will be discussed in Module 6.
+
+The use of 1.96 as a general critical value to compute the 95% CI is determined by sampling theory. For the confidence interval of the mean, the critical value (1.96) is based on normal distribution (true when the population SD is known). However, in practice, Stata and other statistical packages will provide slightly different confidence intervals because they use a critical value obtained from the t-distribution. The t-distribution approaches a normal distribution when the sample size approaches infinity, and is close to a normal distribution when the sample size is ≥30.The critical values obtained from the t-distribution are always larger than the corresponding critical value from the normal distribution. The difference gets smaller as the sample size becomes larger. For example, when the sample size n=10, the critical value from the t-distribution is 2.26 (rather than 1.96); when n= 30, the value is 2.05; when n=100, the value is 1.98; and when n=1000, the critical value is 1.96.  
+
+The critical value multiplied by SE (for normal distribution, 1.96 × SE) is called the maximum likely error for 95% confidence. 
+
+### Worked Example 3.1: 95% CI of a mean
+
+For our sample of weights data with standard error of 0.92:
+
+$$
+\begin{aligned}
+\ 95\% \text{ CI}(\bar{x}) &=  \bar{x} \pm 1.96 \times \text{SE}(\bar{x}) \\
+ &= 70.0 \pm 1.96 \times 0.92 \\
+ &= 68.2 \text{ to } 71.8 \text{kg}
+\end{aligned}
+$$
+We interpret this confidence interval as: we are 95% confident that the true mean of the population from which our sample was drawn lies between 68.2 kg and 71.8 kg.
+
+This calculation takes into account both the sample mean of 70.0 kg and the sampling error that has arisen by chance due to the sample size of 30 people.
+
+For a 95% CI to be reported around a mean value, the data values need to be approximately normally distributed, as discussed in Module 2. 
+
+Note: Had we used the t-distribution to calculate the critical value, the 95%CI would have been slightly wider, 68.1 kg to 71.9 kg as shown in  Output 3.1 below using Example_1.3.dta with the ci mean command in Stata.
+
+#### Stata Output 3.1: Mean and 95%CI of weight {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+      weight |         30          70    .9207069        68.11694    71.88306
+```
+
+### The t-distribution and when should I use it?
+
+The population standard deviation ($\sigma$) is required for calculation of the standard error. Often, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable is a downward-biased estimator of $\sigma$, particularly when the sample size is small.
+
+Someone by the pseudonym of Student came up with the Student’s t distribution with ($n-1$) degrees of freedom to account for this bias. It looks very much like the standardised normal distribution, only that it has fatter tails (Figure \@ref(fig:mod03-z-t-dist). As the degrees of freedom increase (i.e. as $n$ increases), the t-distribution gradually approaches the standard normal distribution. With a sufficiently large sample size, the Student’s t-distribution closely approximates the standardised normal distribution.
+
+```{r mod03-z-t-dist, echo=FALSE, out.width = "100%", fig.cap="The normal (Z) and the student’s t-distribution with 2, 5 and 30 degrees of freedom"}
+knitr::include_graphics(here::here("img", "mod03", "mod03-z-t-dist.png"))
+```
+
+If a variable $X$ is normally distributed and the population standard deviation $\sigma$ is known, using the normal distribution is appropriate. However, if $\sigma$ is not known then one should use the student t-distribution with ($n – 1$) degrees of freedom.
+
+### Worked Example 3.2
+The publication of a study using a sample of 30 patients reported a sample mean of 70 kg and a sample standard deviation of 6 kg. Find the 95% confidence interval estimate for the mean weight from this sample.
+
+In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset). This command uses the t-distribution, and the output is shown below:
+
+#### Stata Output 3.2: 95%CI for a given sample mean, sample standard deviation and sample size {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+             |         30          70    1.095445        67.75956    72.24044
+```
+
+We are 95% confident that the true mean weight lies between 67.8 kg and 72.2 kg.

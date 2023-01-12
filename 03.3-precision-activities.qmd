@@ -1,0 +1,43 @@
+# **3** Learning Activities {-}
+
+### Activity 3.1 {-}
+
+An investigator wishes to study people living with agoraphobia (fear of open spaces). The investigator places an advertisement in a newspaper asking for volunteer participants. A total of 100 replies are received of which the investigator randomly selects 30. However, only 15 volunteers turn up for their interview.
+
+1.	Which of the following statements is true?
+
+a)	The final 15 participants are likely to be a representative sample of the population available to the investigator
+b)	The final 15 participants are likely to be a representative sample of the population of people with agoraphobia
+c)	The randomly selected 30 participants are likely to be a representative sample of people with agoraphobia who replied to the newspaper advertisement
+d)	None of the above
+
+2.	The basic problem confronted by the investigator is that:
+
+a)	The accessible population might be different from the target population
+b)	The sample has been chosen using an unethical method
+c)	The sample size was too small
+d)	It is difficult to obtain a sample of people with agoraphobia in a scientific way
+
+### Activity 3.2 {-}
+
+A dental epidemiologist wishes to estimate the mean weekly consumption of sweets among children of a given age in her area. After devising a method which enables her to determine the weekly consumption of sweets by a child, she conducted a pilot survey and found that the standard deviation of sweet consumption by the children per week is 85 gm (assuming this is the population standard deviation, $\sigma$). She considers taking a random sample for the main survey of:
+
+- 25 children, or 
+- 100 children, or 
+- 625 children or 
+- 3,000 children.
+
+a)	Estimate the standard error and maximum likely (95% confidence) error of the sample mean for each of these four sample sizes.
+b)	What happens to the standard error as the sample size increases? What can you say about the precision of the sample mean as the sample size increases?
+
+### Activity 3.3 {-}
+
+The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is Activity1.4.dta on Moodle.
+
+a) Plot a histogram of diastolic BP and describe the distribution.
+b) Use Stata to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.
+c) Interpret the 95% confidence interval for the mean diastolic blood pressure.
+
+### Activity 3.4 {-}
+
+Suppose that a random sample of 81 newborn babies delivered in a hospital located in a poor neighbourhood during the last year had a mean birth weight of 2.7 kg and a standard deviation of 0.9 kg. Calculate the 95% confidence interval for the unknown population mean. Interpret the 95% confidence interval. 
