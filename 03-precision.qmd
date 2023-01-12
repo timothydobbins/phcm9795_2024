@@ -118,7 +118,7 @@ Note: Had we used the t-distribution to calculate the critical value, the 95%CI 
 
 ### The t-distribution and when should I use it?
 
-The population standard deviation ($\sigma$) is required for calculation of the standard error. Often, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable is a downward-biased estimator of $\sigma$, particularly when the sample size is small.
+The population standard deviation ($\sigma$) is required for calculation of the standard error. Usually, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable is a downward-biased estimator of $\sigma$, particularly when the sample size is small.
 
 Someone by the pseudonym of Student came up with the Student’s t distribution with ($n-1$) degrees of freedom to account for this bias. It looks very much like the standardised normal distribution, only that it has fatter tails (Figure \@ref(fig:mod03-z-t-dist). As the degrees of freedom increase (i.e. as $n$ increases), the t-distribution gradually approaches the standard normal distribution. With a sufficiently large sample size, the Student’s t-distribution closely approximates the standardised normal distribution.
 
