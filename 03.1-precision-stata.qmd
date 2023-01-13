@@ -5,7 +5,9 @@
 ### Individual data
 To demonstrate the computation of the 95% confidence interval of a mean we have used data from `Example_1.3.dta`. To calculate the 95% confidence interval, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Confidence intervals**. In the **ci** dialog box, select `weight` as the **Variable**.
 
-```{r mod3-ci, echo=FALSE, out.width = "66%",}
+```{r fig-mod3-ci, echo=FALSE, out.width = "66%"}
+#| fig-cap: Calculating a confidence interval from individual data
+
 knitr::include_graphics(here::here("img", "mod03", "stata", "mod3-ci.png"))
 ```
 
@@ -17,7 +19,9 @@ Click **OK** or **Submit** to obtain Output 3.1.
 
 For Worked Example 3.2 where we are given the sample mean, sample standard deviation and sample size, we use the `cii means` command. To calculate the 95% CI, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Normal mean CI calculator**. In the **cii** dialog box, check that the **Normal mean** button is selected, and enter `30` as the **Sample size**, `70` as the **Sample mean**, `6` as the **Sample standard deviation** and check that `95` in entered as the **Confidence level**.
 
-```{r mod3-cii, echo=FALSE, out.width = "66%",}
+```{r fig-mod3-cii, echo=FALSE, out.width = "66%"}
+#| fig-cap: Calculating a confidence interval from summarised data
+
 knitr::include_graphics(here::here("img", "mod03", "stata", "mod3-cii.png"))
 ```
  

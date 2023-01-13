@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PHCM9795: Foundations of Biostatistics - 5 R notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05.3-comparing-two-means-activities.html" rel="next">
+<link href="./05.1-comparing-two-means-stata.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><strong>5</strong> R notes</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PHCM9795: Foundations of Biostatistics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-precision.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.1-precision-stata.html" class="sidebar-item-text sidebar-link"><strong>3</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.2-precision-R.html" class="sidebar-item-text sidebar-link"><strong>3</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.3-precision-activities.html" class="sidebar-item-text sidebar-link"><strong>3</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.1-hypothesis-testing-stata.html" class="sidebar-item-text sidebar-link"><strong>4</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.2-hypothesis-testing-R.html" class="sidebar-item-text sidebar-link"><strong>4</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.3-hypothesis-testing-activities.html" class="sidebar-item-text sidebar-link"><strong>4</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.1-comparing-two-means-stata.html" class="sidebar-item-text sidebar-link"><strong>5</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.2-comparing-two-means-R.html" class="sidebar-item-text sidebar-link active"><strong>5</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.3-comparing-two-means-activities.html" class="sidebar-item-text sidebar-link"><strong>5</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.1-correlation-and-regression-stata.html" class="sidebar-item-text sidebar-link"><strong>8</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.2-correlation-and-regression-R.html" class="sidebar-item-text sidebar-link"><strong>8</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.3-correlation-and-regression-activities.html" class="sidebar-item-text sidebar-link"><strong>8</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setting-an-observation-to-missing" id="toc-setting-an-observation-to-missing" class="nav-link active" data-scroll-target="#setting-an-observation-to-missing">Setting an observation to missing</a></li>
+  <li><a href="#checking-data-for-the-independent-samples-t-test" id="toc-checking-data-for-the-independent-samples-t-test" class="nav-link" data-scroll-target="#checking-data-for-the-independent-samples-t-test">Checking data for the independent samples t-test</a>
+  <ul class="collapse">
+  <li><a href="#producing-histograms-and-boxplots-by-a-second-variable" id="toc-producing-histograms-and-boxplots-by-a-second-variable" class="nav-link" data-scroll-target="#producing-histograms-and-boxplots-by-a-second-variable">Producing histograms and boxplots by a second variable</a></li>
+  <li><a href="#producing-split-summary-statistics" id="toc-producing-split-summary-statistics" class="nav-link" data-scroll-target="#producing-split-summary-statistics">Producing split summary statistics</a></li>
+  </ul></li>
+  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test">Independent samples t-test</a></li>
+  <li><a href="#checking-the-assumptions-for-a-paired-t-test" id="toc-checking-the-assumptions-for-a-paired-t-test" class="nav-link" data-scroll-target="#checking-the-assumptions-for-a-paired-t-test">Checking the assumptions for a Paired t-test</a></li>
+  <li><a href="#paired-t-test" id="toc-paired-t-test" class="nav-link" data-scroll-target="#paired-t-test">Paired t-Test</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><strong>5</strong> R notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="setting-an-observation-to-missing" class="level2">
+<h2 class="anchored" data-anchor-id="setting-an-observation-to-missing">Setting an observation to missing</h2>
+<p>Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor. While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.</p>
+<p>A missing value in R is denoted <code>NA</code>, and this is consistent for any variable type: continuous, string (i.e.&nbsp;character) and even a factor.</p>
+<p>Recall the <code>weights</code> data used in Module 2. In viewing a boxplot of <code>weight</code>, we saw an obvious outlier of 700.2kg for ID 58:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/examples/Weight_s2.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(sample<span class="sc">$</span>weight, <span class="at">xlab=</span><span class="st">"Weight (kg)"</span>, <span class="at">main=</span><span class="st">"Boxplot of 1000 weights"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="05.2-comparing-two-means-R_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(sample, weight<span class="sc">&gt;</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id weight
+58 58  700.2</code></pre>
+</div>
+</div>
+<p>We previously set this value to 70.2kg using an <code>ifelse()</code> command. Here, let’s create a new, cleaned weight variable, and set the incorrect value to missing:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample<span class="sc">$</span>weight_clean <span class="ot">=</span> <span class="fu">ifelse</span>(sample<span class="sc">$</span>weight<span class="sc">==</span><span class="fl">700.2</span>, <span class="cn">NA</span>, sample<span class="sc">$</span>weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our code will create a new column (called weight_clean) in the <code>sample</code> dataframe. We will test whether weight is equal to 700.2; if this is true, we will assign weight_clean to be NA (i.e.&nbsp;missing), otherwise weight_clean will equal the value of weight.</p>
+<p>Let’s view the data from ID 58, and summarise the cleaned weight variable using <code>descriptives()</code> and a boxplot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(sample, sample<span class="sc">$</span>id<span class="sc">==</span><span class="dv">58</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id weight weight_clean
+58 58  700.2           NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>sample, <span class="at">vars=</span>weight_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                           
+ ────────────────────────────────────── 
+                         weight_clean   
+ ────────────────────────────────────── 
+   N                              999   
+   Missing                          1   
+   Mean                      69.76406   
+   Median                    69.80000   
+   Standard deviation        5.055188   
+   Minimum                   53.80000   
+   Maximum                   85.80000   
+ ────────────────────────────────────── </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(sample<span class="sc">$</span>weight_clean, <span class="at">xlab=</span><span class="st">"Weight (kg)"</span>, <span class="at">main=</span><span class="st">"Boxplot of 999 weights"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">sub=</span><span class="st">"(Excluding 1 observation of 700.2kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="05.2-comparing-two-means-R_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="checking-data-for-the-independent-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="checking-data-for-the-independent-samples-t-test">Checking data for the independent samples t-test</h2>
+<section id="producing-histograms-and-boxplots-by-a-second-variable" class="level3">
+<h3 class="anchored" data-anchor-id="producing-histograms-and-boxplots-by-a-second-variable">Producing histograms and boxplots by a second variable</h3>
+<p>We have seen how to create histograms and boxplots separated by a second variable in Module 2 (REF). We will demonstrate using the birthweight data in <code>Example_5.1.rds</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>bwt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/Example_5.1.rds"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bwt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    gender    birthweight   
+ Female:56   Min.   :2.750  
+ Male  :44   1st Qu.:3.257  
+             Median :3.450  
+             Mean   :3.514  
+             3rd Qu.:3.772  
+             Max.   :4.250  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bwt<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Female   Male 
+    56     44 </code></pre>
+</div>
+</div>
+<p>We can create subsets of the birthweight data, subsetted for males and females separately. Note here that <code>gender</code> is a factor, so we need to select based on the factor labels, not the underlying numeric code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bwt_m <span class="ot">&lt;-</span> <span class="fu">subset</span>(bwt, bwt<span class="sc">$</span>gender<span class="sc">==</span><span class="st">"Male"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>bwt_f <span class="ot">&lt;-</span> <span class="fu">subset</span>(bwt, bwt<span class="sc">$</span>gender<span class="sc">==</span><span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now create histograms and boxplots for males and females separately, in the usual way, using the <code>par</code> function to set the graphics parameters to display graphs in a 2-by-2 grid:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bwt_m<span class="sc">$</span>birthweight, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.5</span>), <span class="at">xlab=</span><span class="st">"Birthweight (kg)"</span>, <span class="at">main=</span><span class="st">"Males"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bwt_f<span class="sc">$</span>birthweight, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.5</span>), <span class="at">xlab=</span><span class="st">"Birthweight (kg)"</span>, <span class="at">main=</span><span class="st">"Females"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bwt_m<span class="sc">$</span>birthweight, <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.5</span>), <span class="at">ylab=</span><span class="st">"Birthweight (kg)"</span>, <span class="at">main=</span><span class="st">"Males"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bwt_f<span class="sc">$</span>birthweight, <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.5</span>), <span class="at">ylab=</span><span class="st">"Birthweight (kg)"</span>, <span class="at">main=</span><span class="st">"Females"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="05.2-comparing-two-means-R_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we are done plotting multiple graphs, we can reset the plot window by submitting <code>par(mfrow=c(1,1))</code>.</p>
+</section>
+<section id="producing-split-summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="producing-split-summary-statistics">Producing split summary statistics</h3>
+<p>The <code>descriptives</code> function within the <code>jmv</code> function allows summary statistics to be calculated within subgroups using the <code>splitBy</code> argument:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">splitBy=</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ DESCRIPTIVES
+
+ Descriptives                                    
+ ─────────────────────────────────────────────── 
+                         gender    birthweight   
+ ─────────────────────────────────────────────── 
+   N                     Female             56   
+                         Male               44   
+   Missing               Female              0   
+                         Male                0   
+   Mean                  Female       3.587411   
+                         Male         3.421364   
+   Median                Female       3.530000   
+                         Male         3.430000   
+   Standard deviation    Female      0.3629788   
+                         Male        0.3536165   
+   Minimum               Female       2.950000   
+                         Male         2.750000   
+   Maximum               Female       4.250000   
+                         Male         4.100000   
+ ─────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="independent-samples-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="independent-samples-t-test">Independent samples t-test</h2>
+<p>We can use the <code>ttestIS()</code> (t-test, independent samples) function from the <code>jmv</code> package to perform the independent samples t-test. We include the <code>meanDiff=TRUE</code> and <code>ci=TRUE</code> options to obtain the difference in means, with its 95% confidence interval. We can request a Welch’s test (which does not assume equal variances) by the <code>welchs=TRUE</code> option:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ INDEPENDENT SAMPLES T-TEST
+
+ Independent Samples T-Test                                                                                                          
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+                                 Statistic    df          p            Mean difference    SE difference    Lower         Upper       
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+   birthweight    Student's t     2.296556    98.00000    0.0237731          0.1660471       0.07230265    0.02256481    0.3095293   
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ INDEPENDENT SAMPLES T-TEST
+
+ Independent Samples T-Test                                                                                                          
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+                                 Statistic    df          p            Mean difference    SE difference    Lower         Upper       
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+   birthweight    Student's t     2.296556    98.00000    0.0237731          0.1660471       0.07230265    0.02256481    0.3095293   
+                  Welch's t       2.303840    93.54377    0.0234458          0.1660471       0.07207403    0.02293328    0.3091609   
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+<p>There is no built-in function to calculate an independent t-test from summarised data, nor is there a function within <code>jmv</code>. We can use the <code>tsum.test()</code> function within the <code>BSDA</code> package, with the following syntax:</p>
+<pre><code>tsum.test(mean.x=, s.x=, n.x=,
+          mean.y=, s.y=, n.y=,
+          mu=0, alternative="two.sided", var.equal = TRUE)</code></pre>
+<p>Here we specify the mean, standard deviation and sample size for the first group (on the first line) and the second group (on the second line). We can relax the assumption of equal variances using <code>var.equal=FALSE</code>.</p>
+</section>
+<section id="checking-the-assumptions-for-a-paired-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test">Checking the assumptions for a Paired t-test</h2>
+<p>Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset <code>Example_5.2.rds</code> to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sbp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/Example_5.2.rds"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sbp<span class="sc">$</span>diff <span class="ot">=</span> sbp<span class="sc">$</span>sbp_dp <span class="sc">-</span> sbp<span class="sc">$</span>sbp_tp</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">"Blood pressure (mmHg)"</span>, <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="05.2-comparing-two-means-R_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We might want to plot a Normal curve over this distribution, as we did in Module 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Systolic blood pressure (mmHg)"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(sbp<span class="sc">$</span>diff),</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(sbp<span class="sc">$</span>diff)),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"darkblue"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="05.2-comparing-two-means-R_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>While there is a large difference in blood pressure (around 60 mmHg) that warrents further checking, the curve is roughly symmetric with an approximately Normal distribution.</p>
+</section>
+<section id="paired-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="paired-t-test">Paired t-Test</h2>
+<p>To perform a paired t-test we will use the dataset <code>Example_5.2.rds</code>. We can perform a paired t-test using the <code>ttestPS()</code> function within the <code>jmv</code> package, where we defined the paired observations as: `pairs=list(list(i1 = ‘variable1’, i2 = ‘variable2’))</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>sbp, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">'sbp_dp'</span>, <span class="at">i2 =</span> <span class="st">'sbp_tp'</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ PAIRED SAMPLES T-TEST
+
+ Paired Samples T-Test                                                                                                                   
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+                                      statistic     df          p            Mean difference    SE difference    Lower        Upper      
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+   sbp_dp    sbp_tp    Student's t    -0.9621117    106.0000    0.3381832          -1.261682         1.311368    -3.861596    1.338232   
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </code></pre>
+</div>
+</div>
+<p>The syntax of the ttestPS function is a little cumbersome. The <code>t.test</code> function can be used as an alternative:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sbp<span class="sc">$</span>sbp_dp, sbp<span class="sc">$</span>sbp_tp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  sbp$sbp_dp and sbp$sbp_tp
+t = -0.96211, df = 106, p-value = 0.3382
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -3.861596  1.338232
+sample estimates:
+mean difference 
+      -1.261682 </code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05.1-comparing-two-means-stata.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>5</strong> Stata notes</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05.3-comparing-two-means-activities.html" class="pagination-link">
+        <span class="nav-page-text"><strong>5</strong> Learning Activities</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

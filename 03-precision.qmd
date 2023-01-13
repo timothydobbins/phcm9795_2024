@@ -44,7 +44,7 @@ Module 1 introduced the mean, variance and standard deviation as measures of cen
 
 A point estimate is a single best guess of the true value in the population. Instead of trying to guess the true value, it may be preferable to give a range of values in which we think the true value lies. For example, suppose we want to estimate the average weight of a population, and found a sample mean of 65 kg. Rather than saying we believe the true mean to be 65 kg, we could say we believe it is somewhere between, say, 58 kg and 72 kg.
 
-Often in papers, one will see something like “the mean is 70.24 $\pm$ 1.78 kg”. The 1.78 is called the standard error of the mean (sometimes shortened to S.E.M. or S.E.). The standard error of the mean measures the extent to which we expect the means from different samples to vary because of chance error in the sampling process. The standard error is a measure of precision of the point estimate. This statistic is directly related to the size of the sample. The standard error of the mean for a continuously distributed measurement for which the SD is an accurate measure of spread is computed as follows:
+Often in papers, one will see something like “the mean is 70.24 $\pm$ 1.78 kg”. The value 1.78 is the *standard error of the mean* (sometimes shortened to S.E.M. or S.E.). The standard error of the mean measures the extent to which we expect the means from different samples to vary because of chance error in the sampling process. The standard error is a measure of precision of the point estimate. This statistic is directly proportional to the standard deviation of the variable, and inversely proportional to the size of the sample. The standard error of the mean for a continuously distributed measurement for which the SD is an accurate measure of spread is computed as follows:
 
 $$ \text{SE}(\bar{x}) = \frac{\text{SD}}{\sqrt{n}} $$
 For our sample of weight data from 30 patients in Module 1:
@@ -107,22 +107,13 @@ This calculation takes into account both the sample mean of 70.0 kg and the samp
 
 For a 95% CI to be reported around a mean value, the data values need to be approximately normally distributed, as discussed in Module 2. 
 
-Note: Had we used the t-distribution to calculate the critical value, the 95%CI would have been slightly wider, 68.1 kg to 71.9 kg as shown in  Output 3.1 below using Example_1.3.dta with the ci mean command in Stata.
-
-#### Stata Output 3.1: Mean and 95%CI of weight {-}
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
--------------+---------------------------------------------------------------
-      weight |         30          70    .9207069        68.11694    71.88306
-```
-
 ### The t-distribution and when should I use it?
 
-The population standard deviation ($\sigma$) is required for calculation of the standard error. Usually, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable is a downward-biased estimator of $\sigma$, particularly when the sample size is small.
+The population standard deviation ($\sigma$) is required for calculation of the standard error. Usually, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable underestimates the true value of $\sigma$, particularly when the sample size is small.
 
-Someone by the pseudonym of Student came up with the Student’s t distribution with ($n-1$) degrees of freedom to account for this bias. It looks very much like the standardised normal distribution, only that it has fatter tails (Figure \@ref(fig:mod03-z-t-dist). As the degrees of freedom increase (i.e. as $n$ increases), the t-distribution gradually approaches the standard normal distribution. With a sufficiently large sample size, the Student’s t-distribution closely approximates the standardised normal distribution.
+Someone by the pseudonym of Student came up with the Student’s t distribution with ($n-1$) degrees of freedom to account for this underestimation. It looks very much like the standardised normal distribution, only that it has fatter tails (@fig-mod03-z-t-dist). As the degrees of freedom increase (i.e. as $n$ increases), the t-distribution gradually approaches the standard normal distribution. With a sufficiently large sample size, the Student’s t-distribution closely approximates the standardised normal distribution.
 
-```{r mod03-z-t-dist, echo=FALSE, out.width = "100%", fig.cap="The normal (Z) and the student’s t-distribution with 2, 5 and 30 degrees of freedom"}
+```{r fig-mod03-z-t-dist, echo=FALSE, out.width = "100%", fig.cap="The normal (Z) and the student’s t-distribution with 2, 5 and 30 degrees of freedom"}
 knitr::include_graphics(here::here("img", "mod03", "mod03-z-t-dist.png"))
 ```
 
@@ -140,4 +131,4 @@ In Stata we use the `cii means` command to compute the 95% confidence interval g
              |         30          70    1.095445        67.75956    72.24044
 ```
 
-We are 95% confident that the true mean weight lies between 67.8 kg and 72.2 kg.
+We are 95% confident that the true mean weight of the population from which the sample was drawn lies between 67.8 kg and 72.2 kg.

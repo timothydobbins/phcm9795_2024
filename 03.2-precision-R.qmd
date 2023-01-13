@@ -1,4 +1,4 @@
-# Precision: R notes
+# **3** R notes {-}
 
 ## Calculating a 95% confidence interval of a mean
 

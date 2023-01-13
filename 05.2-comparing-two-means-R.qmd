@@ -1,0 +1,146 @@
+# **5** R notes {-}
+
+## Setting an observation to missing
+
+Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor. While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.
+
+A missing value in R is denoted `NA`, and this is consistent for any variable type: continuous, string (i.e. character) and even a factor.
+
+Recall the `weights` data used in Module 2. In viewing a boxplot of `weight`, we saw an obvious outlier of 700.2kg for ID 58:
+
+```{r}
+library(jmv)
+
+sample <- read.csv("data/examples/Weight_s2.csv")
+
+boxplot(sample$weight, xlab="Weight (kg)", main="Boxplot of 1000 weights")
+
+subset(sample, weight>200)
+```
+
+We previously set this value to 70.2kg using an `ifelse()` command. Here, let's create a new, cleaned weight variable, and set the incorrect value to missing:
+
+```{r}
+sample$weight_clean = ifelse(sample$weight==700.2, NA, sample$weight)
+```
+
+Our code will create a new column (called weight_clean) in the `sample` dataframe. We will test whether weight is equal to 700.2; if this is true, we will assign weight_clean to be NA (i.e. missing), otherwise weight_clean will equal the value of weight.
+
+Let's view the data from ID 58, and summarise the cleaned weight variable using `descriptives()` and a boxplot:
+
+```{r}
+subset(sample, sample$id==58)
+
+descriptives(data=sample, vars=weight_clean)
+
+boxplot(sample$weight_clean, xlab="Weight (kg)", main="Boxplot of 999 weights",
+        sub="(Excluding 1 observation of 700.2kg)")
+
+```
+
+
+## Checking data for the independent samples t-test
+
+### Producing histograms and boxplots by a second variable
+
+We have seen how to create histograms and boxplots separated by a second variable in Module 2 (REF). We will demonstrate using the birthweight data in `Example_5.1.rds`.
+
+```{r}
+library(jmv)
+
+bwt <- readRDS("data/examples/Example_5.1.rds")
+
+summary(bwt)
+summary(bwt$gender)
+```
+
+
+We can create subsets of the birthweight data, subsetted for males and females separately. Note here that `gender` is a factor, so we need to select based on the factor labels, not the underlying numeric code.
+
+```{r}
+bwt_m <- subset(bwt, bwt$gender=="Male")
+bwt_f <- subset(bwt, bwt$gender=="Female")
+```
+
+We can now create histograms and boxplots for males and females separately, in the usual way, using the `par` function to set the graphics parameters to display graphs in a 2-by-2 grid:
+
+```{r}
+par(mfrow=c(2,2))
+hist(bwt_m$birthweight, xlim=c(2.5, 4.5), xlab="Birthweight (kg)", main="Males")
+hist(bwt_f$birthweight, xlim=c(2.5, 4.5), xlab="Birthweight (kg)", main="Females")
+
+boxplot(bwt_m$birthweight, ylim=c(2.5, 4.5), ylab="Birthweight (kg)", main="Males")
+boxplot(bwt_f$birthweight, ylim=c(2.5, 4.5), ylab="Birthweight (kg)", main="Females")
+par(mfrow=c(1,1))
+```
+
+When we are done plotting multiple graphs, we can reset the plot window by submitting `par(mfrow=c(1,1))`.
+
+### Producing split summary statistics
+
+The `descriptives` function within the `jmv` function allows summary statistics to be calculated within subgroups using the `splitBy` argument:
+
+```{r}
+descriptives(data=bwt, vars=birthweight, splitBy=gender)
+```
+
+## Independent samples t-test
+
+We can use the `ttestIS()` (t-test, independent samples) function from the `jmv` package to perform the independent samples t-test. We include the `meanDiff=TRUE` and `ci=TRUE` options to obtain the difference in means, with its 95% confidence interval. We can request a Welch's test (which does not assume equal variances) by the `welchs=TRUE` option:
+
+```{r}
+ttestIS(data=bwt, vars=birthweight, group=gender, meanDiff=TRUE, ci=TRUE)
+ttestIS(data=bwt, vars=birthweight, group=gender, meanDiff=TRUE, ci=TRUE, welchs=TRUE)
+```
+
+There is no built-in function to calculate an independent t-test from summarised data, nor is there a function within `jmv`. We can use the `tsum.test()` function within the `BSDA` package, with the following syntax:
+
+```
+tsum.test(mean.x=, s.x=, n.x=,
+          mean.y=, s.y=, n.y=,
+          mu=0, alternative="two.sided", var.equal = TRUE)
+```
+
+Here we specify the mean, standard deviation and sample size for the first group (on the first line) and the second group (on the second line). We can relax the assumption of equal variances using `var.equal=FALSE`.
+
+## Checking the assumptions for a Paired t-test
+
+Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `Example_5.2.rds` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.
+
+```{r}
+sbp <- readRDS("data/examples/Example_5.2.rds")
+sbp$diff = sbp$sbp_dp - sbp$sbp_tp
+hist(sbp$diff, xlab="Blood pressure (mmHg)", main="Difference in systolic blood pressure")
+```
+
+We might want to plot a Normal curve over this distribution, as we did in Module 2:
+
+```{r}
+hist(sbp$diff,
+     xlab="Systolic blood pressure (mmHg)",
+     main="Difference in systolic blood pressure",
+     probability = TRUE)
+
+curve(dnorm(x,
+            mean=mean(sbp$diff),
+            sd=sd(sbp$diff)),
+      col="darkblue",
+      add=TRUE)
+```
+
+While there is a large difference in blood pressure (around 60 mmHg) that warrents further checking, the curve is roughly symmetric with an approximately Normal distribution.
+
+## Paired t-Test
+
+To perform a paired t-test we will use the dataset `Example_5.2.rds`. We can perform a paired t-test using the `ttestPS()` function within the `jmv` package, where we defined the paired observations as: `pairs=list(list(i1 = 'variable1', i2 = 'variable2'))
+
+```{r}
+ttestPS(data=sbp, pairs=list(list(i1 = 'sbp_dp', i2 = 'sbp_tp')), meanDiff=TRUE, ci=TRUE)
+```
+
+The syntax of the ttestPS function is a little cumbersome. The `t.test` function can be used as an alternative:
+
+```{r}
+t.test(sbp$sbp_dp, sbp$sbp_tp, paired=TRUE)
+```
+

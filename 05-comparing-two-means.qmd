@@ -65,14 +65,14 @@ The final assumption is homogeneity of variance between the groups. This can be 
 
 In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.
 
-Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using **Graphics > Box plot** is shown in Figure \@ref(fig:mod05-bwt-gender). The dataset Example_5.1.dta is available on Moodle.
+Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using **Graphics > Box plot** is shown in Figure @fig-mod05-bwt-gender. The dataset Example_5.1.dta is available on Moodle.
 
-```{r mod05-bwt-gender, echo=FALSE, out.width = "100%", fig.cap="Histograms and box plots of birth weight by gender"}
+```{r fig-mod05-bwt-gender, echo=FALSE, out.width = "100%", fig.cap="Histograms and box plots of birth weight by gender"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-bwt-gender.png"))
 ```
 The plots show that the data are approximately normally distributed: the histograms are relatively bell shaped and symmetric, and the boxes are fairly symmetrical, there are no outliers as indicated by dots, and the spread is similar in both groups as the similar length of the whiskers suggesting that the variance is homogenous.
 
-We can also describe the date using summary statistics:
+We can also describe the data using summary statistics:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 #| label: tbl-5-1
@@ -89,7 +89,11 @@ tbl_summary(ex5_1, by=gender,
                                              "{mean} ({sd})",
                                      "{median} ({p25}, {p75})", 
                                      "{min}, {max}")) |>
-  modify_header(all_stat_cols() ~ "**{level}**")
+  modify_header(all_stat_cols() ~ "**{level}**") |>
+  as_hux_table() |>
+  theme_article() |> 
+  set_width(0.8)
+
 ```
 
 The table shows that girls have a mean weight of 3.59 kg (SD 0.36) and boys have a mean weight of 3.42 kg (SD 0.35) with females being heavier than males. The variabilities of birth weight, as indicated by the standard deviations, are similar.
@@ -104,44 +108,33 @@ with *n~1~ + n~2~* -- 2 degrees of freedom.
 
 Looking at the formula for the t-statistic, we can see that the $t$ is an estimate of how different the mean values are compared to their variability. So $t$ will become larger as the difference in means increases with respect to the variability.
 
-In Stata, both the t and P values are provided. If the t-value falls outside a critical range, the P value will be small and we can reject the null hypothesis of no difference between the groups.
+Statistical software will calculate both the t and P values. If the t-value is large, the P value will be small, providing evidence against the null hypothesis of no difference between the groups.
 
-Stata Output 5.2 shows the results of an independent samples t-test using Example_5.1.dta, obtained using **Statistics - Summaries, tables, and tests - Classical tests of hypotheses - t test (mean-comparison test)** and choosing the two-sample test in the ttest dialog box.
+@tbl-ind-t summarises the results of an independent samples t-test using Example_5.1.dta. The process of conducting the t-test is summarised for Stata and R in the following sections.
 
-#### Independent samples t-test, software output: Stata
-```{#lst-ind-t-stata lst-cap="Stata"}
+**Present SD or SE??? Inconsistent between the previous two tables**
 
-. ttest birthweight, by(gender)
+```{r, echo=FALSE}
+#| label: tbl-ind-t
+#| tbl-cap: "Birthweight (kg) by sex"
 
-Two-sample t test with equal variances
-------------------------------------------------------------------------------
-   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
----------+--------------------------------------------------------------------
-  Female |      56    3.587411    .0485051    .3629788    3.490204    3.684617
-    Male |      44    3.421364    .0533097    .3536165    3.313854    3.528873
----------+--------------------------------------------------------------------
-combined |     100     3.51435    .0366567    .3665666    3.441615    3.587085
----------+--------------------------------------------------------------------
-    diff |            .1660471    .0723027                .0225648    .3095293
-------------------------------------------------------------------------------
-    diff = mean(Female) - mean(Male)                              t =   2.2966
-Ho: diff = 0                                     degrees of freedom =       98
+library(huxtable)
 
-    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
- Pr(T < t) = 0.9881         Pr(|T| > |t|) = 0.0238          Pr(T > t) = 0.0119
+df <- tibble::tribble(
+                ~Sex,  ~n,   ~`Mean (SE)`, ~`95% Confidence Interval`,
+            "Female",  56, "3.59 (0.049)",             "3.49 to 3.68",
+              "Male",  44, "3.42 (0.053)",             "3.31 to 3.53",
+        "Difference",  NA, "0.17 (0.072)",             "0.02 to 0.31"
+        )
+
+huxtable(df) |> 
+  theme_article() |> 
+  set_width(0.8)
 ```
 
-#### Independent samples t-test, software output: R
-```{r}
-#| label: fig-ind-t-r
-#| fig-cap: "R"
+Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference lies between 0.02 and 0.31. Note that this interval does not contain the null value of 0.
 
-t.test(birthweight ~ gender, data=ex5_1)
-```
-
-The output table reports the mean, standard deviation, 95% confidence interval etc of weights of the two groups separately as well as that of their difference. It shows the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference lies between 0.02 and 0.31, this interval does not contain the null value of 0.
-
-Stata reports 3 different P-values. Among them the middle one reports the P-value for a two-sided test evaluating the null hypothesis "Difference =0" and is our desired test. The test has a t-value of 2.297 with 98 degrees of freedom, and a two-sided P value of 0.024 which is less than 0.05 and is statistically significant. Thus, we can reject the null hypothesis of no difference in weights between the genders.
+Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.297 with 98 degrees of freedom, and yields a two-sided P value of 0.024, providing evidence of a difference in mean birthweight between sex.
 
 ## Paired t-tests
 
@@ -178,35 +171,28 @@ Because the standard error becomes smaller as the sample size becomes larger, th
 
 A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.
 
-The dataset Example_5.2.dta is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the `generate` command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in Figure \@ref(fig:mod05-sbpdiff). It approximates a normal distribution and therefore a paired t-test can be used.
+The dataset Example_5.2.dta is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the `generate` command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in @fig-mod05-sbpdiff. The differences approximate a normal distribution and therefore a paired t-test can be used.
 
-```{r mod05-sbpdiff, echo=FALSE, out.width = "100%", fig.cap="Distribution of differences in ankle SBP between two sites of 107 participants"}
+```{r fig-mod05-sbpdiff, echo=FALSE, out.width = "100%", fig.cap="Distribution of differences in ankle SBP between two sites of 107 participants"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-sbpdiff.png"))
 ```
 
-The paired t-test is performed using the `ttest` command in Stata (see the Stata Notes section for details). We specify the data is paired with `sbp_dp` as First variable and `sbp_tp` as the Second variable. Output 5.3 shows the summary statistics for both sites. From this we can see that the mean SBP is very similar in the two sites.
+The paired t-test can be performed using statistical software, with a summary of the results presented in @tbl-paired-t. We can see that the mean SBP is very similar in the two sites.
 
-#### Stata Output 5.3: Paired t-test {-}
+```{r, echo=FALSE}
+#| label: tbl-paired-t
+#| tbl-cap: "Systolic blood pressure (mmHg) measured at two sites on the ankle"
 
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-Paired t test
-------------------------------------------------------------------------------
-Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
----------+--------------------------------------------------------------------
-  sbp_dp |     107     116.729    3.460296    35.79358    109.8686    123.5893
-  sbp_tp |     107    117.9907    3.431356    35.49422    111.1877    124.7937
----------+--------------------------------------------------------------------
-    diff |     107   -1.261682    1.311368    13.56489   -3.861596    1.338232
-------------------------------------------------------------------------------
-     mean(diff) = mean(sbp_dp - sbp_tp)                           t =  -0.9621
- Ho: mean(diff) = 0                              degrees of freedom =      106
+df <- tibble::tribble(
+                       ~Site,   ~n,   ~`Mean (SE)`, ~`95% Confidence Interval`,
+            "Dorsalis pedis", 107L, "116.7 (3.46)",         "(109.9 to 123.6)",
+        "Tibialis posterior", 107L, "118.0 (3.43)",         "(111.2 to 124.8)",
+                "Difference", 107L,  "-1.3 (1.31)",            "(-3.9 to 1.3)"
+        )
 
- Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
- Pr(T < t) = 0.1691         Pr(|T| > |t|) = 0.3382          Pr(T > t) = 0.8309
+huxtable(df) |> 
+  theme_article() |> 
+  set_width(0.8)
 ```
 
-We can see that the average SBP measured in dorsalis pedis is 116.7 mmHg and that in tibialis posterior is 118.0 mmHg. The difference is −1.3 (95% CI: −3.9 to 1.3).
-
-The t-value of −0.96 yields a two-sided P-value of 0.34 (under Ha: mean(diff) ≠ 0) confirms that these data provide no evidence against the null hypothesis, and conclude that the SBP measured in the two sites are not different.
-
-As with any statistical test, it is important to decide what mean difference between measurements would be considered clinically important in addition to considering statistical significance.
+The t-value is calculated as −0.96 with 106 degrees of freedom, providing a two-sided P-value of 0.34. Thus these data provide no evidence of a difference in systolic blood pressure between the two sites.

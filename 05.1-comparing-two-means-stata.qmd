@@ -1,0 +1,188 @@
+# **5** Stata notes {-}
+
+## Checking data for the independent samples t-test
+
+### Producing histograms and boxplots by a second variable
+
+To obtain the histograms in @fig-mod05-bwt-gender using the `Example_5.1.dta` data, go to **Graphics > Histogram**. Select `birthweight` as the **Variable** in the **Main** tab. Next go to the **By** tab, tick **Draw subgraphs for unique values of variable** and select `gender` as the **variable** as shown below:
+
+```{r hist-by-1, echo=FALSE, out.width = "66%"}
+knitr::include_graphics(here::here("img", "mod05", "stata", "hist-by-1.png"))
+```
+
+Note that we have also improved the basic histogram definition on the **Main** tab, by defining the **Lower limit of first bin** to be 2.5, and the **Bin width** to be 0.25kg:
+
+```{r hist-by-2, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "hist-by-2.png"))
+```
+
+A similar process is used to obtain the boxplots shown in @fig-mod05-bwt-gender: go to **Graphics > Box plot**. In the **graph box – Box plots** dialog box, select `birthweight` as the **Variable** in the **Main** tab. Next go to the **Categories** tab, tick **Group 1** and select `gender` as the **Grouping variable** as shown below.
+ 
+```{r box-by-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "box-by-1.png"))
+```
+
+Click **OK** or **Submit** to produce the box plot. 
+
+[Command: `graph box birthweight, over(gender)`]
+
+### Producing split summary statistics
+
+To produce summary statistics for a continuous variable, split by a second binary categorical variable, as in Worked Example 5.1 using `Example_5.1.dta`, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Summary statistics** . In the **summarize** dialog box, select `birthweight` as the **Variable** in the **Main** tab of the dialog box. Next go to the **by/if/in** tab, tick **Repeat command by groups** and select `gender` as the **Variable that define groups** as shown below.
+ 
+```{r summ-by-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "summ-by-1.png"))
+```
+
+Click **OK** or **Submit** to obtain the output as shown below. 
+
+[Command: `by gender, sort : summary birthweight`]
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. by gender, sort : summ birthweight
+
+--------------------------------------------------------------------------------
+-> gender = Female
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ birthweight |         56    3.587411    .3629788       2.95       4.25
+
+--------------------------------------------------------------------------------
+-> gender = Male
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ birthweight |         44    3.421364    .3536165       2.75        4.1
+```
+
+The output above is easy for copying into a report. You could also submit the summarize command with the **detail** option to compare the mean with the median (50th percentile) and check the minimum and maximum values for implausible values.
+
+[Command: by gender, sort : sum birthweight , detail]
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. by gender, sort : summ birthweight, detail
+
+--------------------------------------------------------------------------------
+-> gender = Female
+
+                         Birthweight
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         2.95           2.95
+ 5%         3.03           2.97
+10%         3.14           3.03       Obs                  56
+25%        3.325           3.07       Sum of Wgt.          56
+
+50%         3.53                      Mean           3.587411
+                        Largest       Std. Dev.      .3629788
+75%         3.88            4.2
+90%         4.15            4.2       Variance       .1317536
+95%          4.2            4.2       Skewness       .2453238
+99%         4.25           4.25       Kurtosis       1.962126
+
+--------------------------------------------------------------------------------
+-> gender = Male
+
+                         Birthweight
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         2.75           2.75
+ 5%         2.82           2.79
+10%         2.85           2.82       Obs                  44
+25%         3.15           2.85       Sum of Wgt.          44
+
+50%         3.43                      Mean           3.421364
+                        Largest       Std. Dev.      .3536165
+75%        3.635           3.94
+90%          3.9           3.97       Variance       .1250446
+95%         3.97           4.06       Skewness      -.0895932
+99%          4.1            4.1       Kurtosis       2.325761
+```
+
+## Independent samples t-test
+
+To carry out an independent sample t-test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**. In the **ttest** dialog box, choose the **Two-sample using groups** button, then select `birthweight` as the **Variable** name and `gender` as the **Group** variable name as shown below. Because the variances of `birthweight` are similar for males and females, we can leave the **Unequal variances** box unchecked.
+
+```{r ttest-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-1.png"))
+```
+
+Click **OK** or **Submit** to obtain the following output:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  Female |      56    3.587411    .0485051    .3629788    3.490204    3.684617
+    Male |      44    3.421364    .0533097    .3536165    3.313854    3.528873
+---------+--------------------------------------------------------------------
+combined |     100     3.51435    .0366567    .3665666    3.441615    3.587085
+---------+--------------------------------------------------------------------
+    diff |            .1660471    .0723027                .0225648    .3095293
+------------------------------------------------------------------------------
+    diff = mean(Female) - mean(Male)                              t =   2.2966
+Ho: diff = 0                                     degrees of freedom =       98
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.9881         Pr(|T| > |t|) = 0.0238          Pr(T > t) = 0.0119
+```
+
+[Command: `ttest birthweight, by(gender)`]
+
+## Checking the assumptions for a Paired t-test
+
+Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `Example_5.2.dta` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences.
+
+Go to **Data > Create new variable**.
+
+In the **generate – Create a new variable** dialog box, assign a name (e.g. `difference`) to your new variable in the **Variable name** box. We want to compute difference as sbp_dp − sbp_tp, so we enter this in the **Specify a value or an expression** box as shown below.
+
+```{r ttest-2, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-2.png"))
+```
+
+Click **Submit** or **OK**.
+
+[Command: `generate difference = sbp_dp-sbp_tp`] 
+
+Check that the new variable appears in your Data Editor window. 
+
+Create a histogram with a normal curve under **Graphics > Histogram**, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, @fig-mod05-sbpdiff was defined to have a lower limit of -40 and a bin width of 10. We have also requested a Normal curve be plotted in the **Density plots** tab.
+
+```{r ttest-3, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-3.png"))
+```
+
+[Command: `histogram difference, width(10) start(-40) frequency normal`]
+ 
+## Paired t-Test
+
+To perform a paired t-test we will use the dataset `Example_5.2.dta`. For a paired t-test, data must be organised into two variables (i.e. two columns). Go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)** as you had for the Independent samples t-test. In the **ttest** dialog box, choose the **Paired** button then Select `sbp_dp` from the dropdown list under **First variable** and select `sbp_tp` from the dropdown list under **Second variable**. The dialog box will look like: 
+
+```{r ttest-4, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-4.png"))
+```
+
+Click **Submit** or **OK**. The output will look as follows:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  sbp_dp |     107     116.729    3.460296    35.79358    109.8686    123.5893
+  sbp_tp |     107    117.9907    3.431356    35.49422    111.1877    124.7937
+---------+--------------------------------------------------------------------
+    diff |     107   -1.261682    1.311368    13.56489   -3.861596    1.338232
+------------------------------------------------------------------------------
+     mean(diff) = mean(sbp_dp - sbp_tp)                           t =  -0.9621
+ Ho: mean(diff) = 0                              degrees of freedom =      106
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) = 0.1691         Pr(|T| > |t|) = 0.3382          Pr(T > t) = 0.8309
+```
+
+
+[Command: `ttest sbp_dp == sbp_tp`]
