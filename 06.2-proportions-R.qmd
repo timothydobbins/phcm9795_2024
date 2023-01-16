@@ -1,0 +1,134 @@
+# Summary statistics for binary data
+
+## 95% confidence intervals for proportions
+We can use the `BinomCI(x=, n=, method=)` function within the `DescTools` package to compute 95% confidence intervals for proportions. Here we specify `x`: the number of successes, `n`: the sample size, and optionally, the `method` (which defaults to Wilson's method).
+
+```{r}
+library(DescTools)
+
+BinomCI(x=47, n=215, method='wald')
+BinomCI(x=47, n=215, method='wilson')
+```
+
+## Significance test for single proportion
+We can use the `binom.test` function to perform a significance test for a single proportion: `binom.test(x=, n=, p=)`. Here we specify `x`: the number of successes, `n`: the sample size, and `p`: the hypothesised proportion (which defaults to 0.5 if nothing is entered).
+
+```{r}
+binom.test(x=54, n=300, p=0.2)
+```
+
+Note that the `binom.test` function also produces a 95% confidence interval around the estimated proportion. This confidence interval is based on the inferior Wald method: *the confidence interval derived from the Wilson method is preferred*.
+
+We can also conduct a z-test for a single proportion:
+
+```{r}
+prop.test(x=54, n=300, p=0.2, correct=FALSE)
+```
+
+## Computing a relative risk and its 95% confidence interval
+
+We will use Worked Example 6.4 to demonstrate calculating a relative risk and its 95% CI:
+
+```{r}
+library(jmv)
+
+drug <- readRDS("data/examples/Example_6.4.rds")
+
+summary(drug)
+```
+
+By using the `head()` function to view the first six lines of data, we see that both `group` and `side_effect` have been entered as factors. Notice the order in which the factor levels are presented: `group` has the `Placebo` level defined as the first level, and the `Active` level defined as the second; `side_effect` has `No nausea` defined as the first level, and the `Nausea` level defined as the second.
+
+We will use `jmv` to calculate relative risks, odds ratios and risk differences. To calculate these estimates correctly, **we must define the positive exposure and positive outcome to be the first level of a factor**. When defining an exposure for example, we should define the active treatment or the positive exposure as the first category. When defining an outcome, we should define the category of interest (e.g. disease, or side effect) as the first category.
+
+In this example, we will define `Active` as the first level in the `group` factor, and `Nausea` to be the first level of the `side_effect` factor.
+
+We can do this using the `relevel()` function, which re-orders the levels of a factor so that the level specified is defined as the first level, and the others are moved down:
+
+```{r}
+# Define "Active" as the first level of group:
+drug$group <- relevel(drug$group, ref="Active")
+
+
+# Define "Nausea" as the first level of side_effect:
+drug$side_effect <- relevel(drug$side_effect, ref="Nausea")
+```
+
+Upon re-leveling the factors, we can check that the levels of interest have been defined as the first levels:
+
+```{r}
+summary(drug)
+```
+
+To construct the 2-by-2 table and calculate a relative risk, we use the `contTables()` function in `jmv`. We request the row-percents using `pcRow = TRUE` and the relative risk and confidence interval using `relRisk = TRUE`:
+
+```{r}
+contTables(data=drug, 
+           rows=group, cols=side_effect, 
+           pcRow=TRUE, relRisk = TRUE)
+```
+
+If you only have the cross-tabulated data (i.e. aggregated), you will need to enter your data into a new data frame. For example, to recreate the above analyses, we can re-write the 2-by-2 table as follows:
+
+| Group | side_effect | Number |
+|:------:|:------:|:------:|
+| Active   | Nausea    | 15     |
+| Active   | No nausea     | 35    |
+| Placebo | Nausea    | 4     |
+| Placebo | No nausea    | 46    |
+
+We can enter these data in a dataframe, comprising three vectors, as follows:
+
+```{r}
+drug_aggregated <- data.frame(
+  group = c("Active", "Active", "Placebo", "Placebo"),
+  side_effect = c("Nausea", "No nausea", "Nausea", "No nausea"),
+  n = c(15, 35, 4, 46)
+)
+```
+
+We need to define group and side_effect as factors. Here we must define the `levels` **in the order we want the categories to appear in the table**. Note that as group and side_effect are entered as text variables, we can omit `labels` command when defining the factors, and the factor will be labelled using the text entry:
+
+```{r}
+drug_aggregated$group <- factor(drug_aggregated$group, levels=c("Active", "Placebo"))
+drug_aggregated$side_effect <- factor(drug_aggregated$side_effect, levels=c("Nausea", "No nausea"))
+```
+
+We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the `counts` command:
+
+```{r}
+contTables(data=drug_aggregated,
+           rows=group, cols=side_effect, count=n,
+           pcRow=TRUE, relRisk = TRUE)
+```
+
+## Computing a difference in proportions and its 95% confidence interval
+
+We can use the `contTables` function to obtain a difference in proportions and its 95% CI, by specifying `diffProp=TRUE`:
+
+```{r}
+contTables(data=drug, 
+           rows=group, cols=side_effect, 
+           pcRow=TRUE, diffProp=TRUE)
+```
+
+## Computing an odds ratio and its 95% confidence interval
+
+We can use the `contTables` function to obtain an odds ratio and its 95% CI, by specifying `odds=TRUE`. Here we will use the summarised HPV data from Module 6.
+
+```{r}
+hpv <- data.frame(
+  hpv = c("HPV +", "HPV +", "HPV -", "HPV -"),
+  cancer = c("Case", "Control", "Case", "Control"),
+  n = c(57, 14, 43, 186)
+)
+
+hpv$cancer <- factor(hpv$cancer, levels=c("Case", "Control"))
+hpv$hpv <- factor(hpv$hpv, levels=c("HPV +", "HPV -"))
+
+contTables(data=hpv, 
+           rows=hpv, cols=cancer, count=n,
+           odds = TRUE)
+```
+
+Note that 95% confidence intervals for the odds ratio based on `jmv` differ from those calculated by Stata. It appears that `jmv` uses the Woolf method to calculate confidence intervals, but this is not documented.

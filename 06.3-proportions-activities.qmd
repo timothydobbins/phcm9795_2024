@@ -1,0 +1,56 @@
+# **6** Learning Activities {-}
+
+### Activity 6.1 {-}
+
+In a clinical trial involving a dietary intervention, 150 adult volunteers agreed to participate. The investigator wanted to know whether this sample was representative of the general population. One interesting finding was that 90 of the participants drink alcohol regularly compared to 70% of the general population.
+
+a) State the null hypothesis.
+b) Calculate the proportion of regular drinkers (and its 95% confidence interval) in the sample using software.
+c) Conduct a hypothesis test to decide if the sample of volunteers is representative of the population.
+d) Repeat (b) and (c) using the data saved in Activity_6.1.csv.
+
+### Activity 6.2 {-}
+
+A survey was conducted of a random sample of upper primary school children to measure the prevalence of asthma using questionnaires completed by the parents. A total of 514 children were enrolled. Use the dataset Activity_S6.2.csv for this activity.
+
+a) What type of study was used to collect these data? Based on this, which measure of effect would you use to summarise the association between gender and asthma symptoms?
+b) Calculate the relevant measure of effect (with its 95% confidence interval).
+
+### Activity 6.3 {-}
+
+In a study to determine the cause of mortality, 89 people were followed up for 5 years. The participants are classified into two groups of those who did or did not have a heart attack. At the end of the follow-up 15 people died among them 10 had a heart attack. Among the 74 survivors 35 had a heart attack. Present the data in a 2-by-2 table and calculate relative risk of death from heart attack with 95% confidence interval.
+
+### Activity 6.4 {-}
+
+A study is conducted to test the hypothesis that the observed frequency of a certain health outcome is 30%. If the results yield a CI around the sample proportion that extends from 23.8 to 30.2, what can you say about the evidence against the null hypothesis?
+
+### Activity 6.5 {-}
+
+In an experiment to test the effect of Vitamin C on IQ scores, the following confidence intervals were estimated around the percentage with improved scores for five different populations:
+
+```{r act-6-5, echo=FALSE}
+library(huxtable)
+
+tab6_5 <- tibble::tribble(
+  ~Population, ~`% with improved IQ`, ~`95% confidence interval`,
+    1L,  "35.0",  "32.0 to 38.0",
+    2L,  "29.5",  "25.0 to 34.0",
+    3L,  "43.5",  "42.0 to 45.0",
+    4L,  "30.5",  "20.0 to 41.0",
+    5L,  "24.5",  "21.0 to 28.0"
+  )
+
+huxtable::huxtable(tab6_5) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  theme_article() |> 
+  set_width(0.8) |> 
+  set_caption("Summary of improvement in IQ")
+```
+
+
+a) Which CI is the most precise?
+b) Which CI implies the largest sample size?
+c) Which CI is the least precise?
+d) Which CI most strongly supports the conclusion that vitamin C increases IQ score and why?
+e) Which would most likely to stimulate the investigator to conduct an additional experiment using a larger sample size?
+ 

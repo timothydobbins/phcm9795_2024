@@ -1,0 +1,189 @@
+# **6** Stata notes {-}
+
+## 95% confidence intervals for proportions
+To compute the 95% confidence interval for proportions, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics >Proportion CI calculator**. In the `cii` dialog box as shown below, key in `215` as the **Sample size** and `47` as the number of **Successes**. Choose **Wald** for the normal approximation to binomial distribution CI [Command: cii 215 47, wald] or **Wilson** for Wilson CI [Command: cii 215 47, wilson].
+
+```{r s-cii, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cii.png"))
+```
+
+#### Stata Output: 95% confidence interval (Wald method) {-}
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. cii proportions 215 47, wald
+
+                                                         -- Binomial Wald ---
+    Variable |        Obs  Proportion    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+             |        215    .2186047    .0281868        .1633595    .2738498
+```
+
+#### Stata Output: 95% confidence interval (Wilson method) {-}
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. cii proportions 215 47, wilson
+
+
+                                                         ------ Wilson ------
+    Variable |        Obs  Proportion    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+             |        215    .2186047    .0281868        .1685637    .2785246
+
+```
+
+## Significance test for single proportion
+To perform a binomial test using the data from `Example_6.3.dta`, it is a good idea to check that the variable is dichotomous and numerically coded in 0 and 1 by using the `codebook` command. [Command: codebook smoking_status]
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. codebook smoking_status 
+
+--------------------------------------------------------------------------------
+smoking_status                                                    Smoking status
+--------------------------------------------------------------------------------
+
+                  type:  numeric (double)
+                 label:  smoking_status
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  0/300
+
+            tabulation:  Freq.   Numeric  Label
+                           246         0  Non-smokers
+                            54         1  Smokers
+```
+
+After checking the data, perform the binomial probability test by going to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > Binomial probability test**. Select `Smoking_status` as the **Binomial variable**. The probability we want to test against is entered in the **Probability of success** box. To test that the sample proportion (0.18) is different from the population proportion of 0.2, we enter 0.2 as the **Probability of success**.
+
+```{r s-bitest, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "bitest.png"))
+```
+
+Click **OK** or **Submit** to obtain the following output:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. bitest smoking_status == 0.2
+
+    Variable |        N   Observed k   Expected k   Assumed p   Observed p
+-------------+------------------------------------------------------------
+smoking_st~s |      300         54           60       0.20000      0.18000
+
+  Pr(k >= 54)            = 0.825531  (one-sided test)
+  Pr(k <= 54)            = 0.215202  (one-sided test)
+  Pr(k <= 54 or k >= 66) = 0.427280  (two-sided test)
+```
+
+A similar process can be used to conduct a z-test for a single proportion, by choosing **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > Proportion test**:
+
+```{r s-proptest, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "z-prop-test.png"))
+```
+
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. prtest smoking_status == 0.2
+
+One-sample test of proportion                   Number of obs      =       300
+
+------------------------------------------------------------------------------
+    Variable |       Mean   Std. Err.                     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+smoking_st~s |        .18   .0221811                      .1365259    .2234741
+------------------------------------------------------------------------------
+    p = proportion(smoking_st~s)                                  z =  -0.8660
+Ho: p = 0.2
+
+     Ha: p < 0.2                 Ha: p != 0.2                   Ha: p > 0.2
+ Pr(Z < z) = 0.1932         Pr(|Z| > |z|) = 0.3865          Pr(Z > z) = 0.8068
+```
+
+
+If you have only the aggregate data then the binomial test can be carried out using the immediate command. For that you will need to go through perform the binomial probability test by going to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > Binomial probability test calculator**. Enter the numbers in the appropriate fields as shown below.
+
+```{r s-bitesti, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "bitesti.png"))
+```
+
+[Command: bitesti 300 54 0.2]
+
+## Computing a relative risk and its 95% confidence interval
+
+Using data file from Worked Example 6.4, to obtain relative risk and its 95% CI, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Cohort study risk ratio etc...**
+
+```{r s-cs-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cs-1.png"))
+```
+
+In the **cs – cohort studies** dialog box, select the variable `side_effect` in the **Case variable** box, and the variable `group` in the **Exposed variable** box.
+
+```{r s-cs-2, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cs-2.png"))
+```
+
+Click **OK** or **Submit** to obtain the following output:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+                 | Group                  |
+                 |   Exposed   Unexposed  |      Total
+-----------------+------------------------+------------
+           Cases |        15           4  |         19
+        Noncases |        35          46  |         81
+-----------------+------------------------+------------
+           Total |        50          50  |        100
+                 |                        |
+            Risk |        .3         .08  |        .19
+                 |                        |
+                 |      Point estimate    |    [95% Conf. Interval]
+                 |------------------------+------------------------
+ Risk difference |              .22       |    .0723899    .3676101 
+      Risk ratio |             3.75       |     1.33754     10.5137 
+ Attr. frac. ex. |         .7333333       |    .2523589     .904886 
+ Attr. frac. pop |         .5789474       |
+                 +-------------------------------------------------
+                               chi2(1) =     7.86  Pr>chi2 = 0.0050
+```
+
+
+[Command: `cs side_effect group`]
+
+If you only have the cross-tabulated data (i.e. aggregated), you can go to **Statistics > Epidemiology and related > Tables for epidemiologists > Cohort study risk ratio etc. calculator**. In the **csi** dialog box, key in the relevant numbers from the cross-tabulated data (similarly to the cci dialog box above). Click **OK** or **Submit** to obtain identical output.
+
+```{r s-cs-3, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cs-3.png"))
+```
+
+[Command: `csi 15 4 35 46`]
+
+
+## Computing an odds ratio and its 95%CI
+
+To obtain an odds ratio and its 95% CI, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Case-control odds ratio**. The **cc** dialog box is completed as for the **cs** dialog box.
+
+To obtain the Cornfield confidence interval, click on the **Options** tab and select the **Cornfield approximation** radio button.
+
+```{r s-cc-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cc-1.png"))
+```
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+                                                         Proportion
+                 |   Exposed   Unexposed  |      Total      exposed
+-----------------+------------------------+------------------------
+           Cases |        57          43  |        100       0.5700
+        Controls |        14         186  |        200       0.0700
+-----------------+------------------------+------------------------
+           Total |        71         229  |        300       0.2367
+                 |                        |
+                 |      Point estimate    |    [95% Conf. Interval]
+                 |------------------------+------------------------
+      Odds ratio |          17.6113       |    9.043258    34.25468 (Cornfield)
+ Attr. frac. ex. |         .9432183       |    .8894204    .9708069 (Cornfield)
+ Attr. frac. pop |         .5376344       |
+                 +-------------------------------------------------
+                               chi2(1) =    92.26  Pr>chi2 = 0.0000
+```
+
+If you only have the cross-tabulated data (i.e. aggregated), you can go to **Statistics > Epidemiology and related > Tables for epidemiologists > Case-control odds ratio calculator**. In the `cci` dialog box, enter the numbers from the cross-tabulated data and select the **Cornfield approximation** radio button. For example, Worked example 6.5 would be entered as:
+
+```{r s-cc-2, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod06", "stata", "cc-2.png"))
+```
