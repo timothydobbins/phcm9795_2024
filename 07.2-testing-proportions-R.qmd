@@ -1,0 +1,141 @@
+# Hypothesis testing for categorical data
+
+## Pearson’s chi-squared test
+
+### Individual data
+
+We will demonstrate how to use R to conduct a Pearson chi-squared test using Worked Example 7.1.
+
+```{r}
+library(jmv)
+
+nausea <- readRDS("data/examples/Example_7.1.rds")
+
+head(nausea)
+
+str(nausea$group)
+str(nausea$side_effect)
+```
+
+The columns `group` and `side_effect` have been entered as factors, with "Placebo" and "No nausea" as the first levels. We should use the `relevel()` command to re-order the factor levels.
+
+```{r}
+nausea$group <- relevel(nausea$group, ref="Active")
+nausea$side_effect <- relevel(nausea$side_effect, ref="Nausea")
+
+str(nausea$group)
+str(nausea$side_effect)
+```
+
+After confirming the factors are appropriately defined, we can construct our 2-by-2 table and view the expected frequencies.
+
+```{r}
+contTables(data=nausea,
+           rows=group, cols=side_effect,
+           exp=TRUE)
+```
+
+After confirming that there are no cells with small expected frequencies, we can interpret the chi-square test. The last section reports the chi-squared test statistic which has a value of 7.86 with 1 degree of freedom and a P-value of 0.005.
+
+If there are small values of expected frequencies, Fisher's exact test can be requested using `fisher = TRUE`:
+
+```{r}
+contTables(data=nausea,
+           rows=group, cols=side_effect,
+           fisher = TRUE)
+```
+
+### Summarised data
+When you only have the summarised date (for example, the cross-tabulated data), you need to enter the summarised data manually. As we did in Module 6, the 2-by-2 table can be entered as four lines of data:
+
+```{r}
+drug_aggregated <- data.frame(
+  group = c("Active", "Active", "Placebo", "Placebo"),
+  side_effect = c("Nausea", "No nausea", "Nausea", "No nausea"),
+  n = c(15, 35, 4, 46)
+)
+```
+
+The `contTables()` function is used in the usual way, specifying `count=n`.
+
+## Chi-squared test for tables larger than 2-by-2
+Use the data in `Example_7.2.rds`. We use similar steps as described above for a 2-by-2 table.
+
+```{r}
+allergy <- readRDS("data/examples/Example_7.2.rds")
+
+head(allergy)
+```
+
+```{r}
+contTables(data=allergy, 
+           rows=allergy_severity, cols=sex, 
+           pcCol=TRUE)
+```
+
+
+## McNemar’s test for paired proportions
+
+To perform this test in R, we will use the dataset `Example_7.3.rds`. 
+
+```{r}
+drug <- readRDS("data/examples/Example_7.3.rds")
+
+head(drug)
+```
+
+As usual, we should check that the variables being tabulated are factors, with the first level of the factor being the outcome of interest. We can use the `relevel()` function to re-order levels as necessary.
+
+```{r}
+str(drug$druga)
+str(drug$drugb)
+
+drug$druga <- relevel(drug$druga, ref="Yes")
+drug$drugb <- relevel(drug$drugb, ref="Yes")
+
+str(drug$druga)
+str(drug$drugb)
+```
+
+We can use the `contTablesPaired()` function within the `jmv` library to conduct McNemar's test of paired proportions:
+
+```{r}
+contTablesPaired(data=drug, rows=druga, cols=drugb)
+```
+
+Note that `contTablesPaired()` does not calculate an exact P-value.
+
+To estimate the proportion in each of the paired samples, its difference, and the 95% confidence interval of the difference, we can use the `mcNemarDiff()` function which is stored in Microsoft Teams and [here](https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R).
+
+```{r}
+
+### Copied from Microsoft Teams
+mcNemarDiff <- function(data, var1, var2, digits = 3) {
+  if (!requireNamespace("epibasix", quietly = TRUE)) {
+    stop("This function requires epibasix to be installed")
+  }
+  
+  tab <- table(data[[var1]], data[[var2]])
+  p1 <- (tab[1, 1] + tab[1, 2]) / sum(tab)
+  p2 <- (tab[1, 1] + tab[2, 1]) / sum(tab)
+  pd <- epibasix::mcNemar(tab)$rd
+  pd.cil <- epibasix::mcNemar(tab)$rd.CIL
+  pd.ciu <- epibasix::mcNemar(tab)$rd.CIU
+  print(paste0(
+    "Proportion 1: ",
+    format(round(p1, digits = digits), nsmall = digits),
+    "; Proportion 2: ", format(round(p2, digits = digits), nsmall = digits)
+  ))
+  print(paste0(
+    "Difference in paired proportions: ",
+    format(round(pd, digits = digits), nsmall = digits),
+    "; 95% CI: ", format(round(pd.cil, digits = digits), nsmall = digits),
+    " to ", format(round(pd.ciu, digits = digits), nsmall = digits)
+  ))
+}
+### End copy
+
+mcNemarDiff(data = drug, var1 = "druga", var2 = "drugb", digits = 2)
+```
+
+In this study of 60 participants, where each participant received both drugs, 41 (68%) responded to Drug A and 35 (58%) responded to Drug B. The difference in the proportions responding is estimated as 10% (95% CI -11% to 31%). There is no evidence that the response differed between the two drugs (McNemar’s chi-squared = 1.06 with 1df, P=0.30).
