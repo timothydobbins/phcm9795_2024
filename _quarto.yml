@@ -20,10 +20,11 @@ book:
     # - 05.1-comparing-two-means-stata.qmd
     # - 05.2-comparing-two-means-R.qmd
     # - 05.3-comparing-two-means-activities.qmd
-    - 06-proportions.qmd
-    - 06.1-proportions-stata.qmd
-    - 06.2-proportions-R.qmd
-    - 06.3-proportions-activities.qmd
+    # - 06-proportions.qmd
+    # - 06.1-proportions-stata.qmd
+    # - 06.2-proportions-R.qmd
+    # - 06.3-proportions-activities.qmd
+    - 07-testing-proportions.qmd
     # - 08-correlation-and-regression.qmd
     # - 08.1-correlation-and-regression-stata.qmd
     # - 08.2-correlation-and-regression-R.qmd
@@ -43,3 +44,7 @@ format:
     mainfont: Roboto
     sansfont: Clancy
     include-in-header: preamble.tex
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
