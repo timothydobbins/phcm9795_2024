@@ -61,3 +61,32 @@ knitr::include_graphics(here::here("img", "mod07", "stata", "mcc-1.png"))
 [Command: `mcc drugb druga`]
  
 Click **OK** or **Submit** when you are done to obtain Stata Output 7.4.
+
+#### Stata Output 7.4: McNemar's test {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. mcc druga drugb
+
+                 |        Controls        |
+Cases            |   Exposed   Unexposed  |      Total
+-----------------+------------------------+-----------
+         Exposed |        21          20  |         41
+       Unexposed |        14           5  |         19
+-----------------+------------------------+-----------
+           Total |        35          25  |         60
+
+McNemar's chi2(1) =      1.06    Prob > chi2 = 0.3035
+Exact McNemar significance probability       = 0.3915
+
+Proportion with factor
+        Cases       .6833333
+        Controls    .5833333     [95% Conf. Interval]
+                   ---------     --------------------
+        difference        .1     -.1054528   .3054528
+        ratio       1.171429      .8663498   1.583939
+        rel. diff.       .24     -.1585239   .6385239
+
+        odds ratio  1.428571      .6862537   3.057277   (exact)
+```
+
+Two versions of the McNemar's test are given in the output. The exact version is generally recommended. The P value for the exact McNemar's test is 0.39, providing no evidence against the null hyopthesis.
+
