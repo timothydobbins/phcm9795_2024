@@ -1,0 +1,275 @@
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(jmv)
+library(huxtable)
+```
+
+
+# Analysing non-normal data
+
+## Learning objectives {-}
+
+By the end of this module you will be able to:
+
+- Transform non-normally distributed variables;
+- Explain the purpose of non-parametric statistics and key principles for their use;
+- Calculate ranks for variables;
+- Conduct and interpret a non-parametric independent samples significance test;
+- Conduct and interpret a non-parametric paired samples significance test;
+- Calculate and interpret the Spearman rank correlation coefficient.
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapter 13. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Chapter 12. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+@acock10; Section 7.11.
+
+## Introduction
+
+In general, parametric statistics are preferred for reporting data because the summary statistics (mean, standard deviation, standard error of the mean etc) and the tests used (t-tests, correlation, regression etc) are familiar and the results are easy to communicate. However, non-parametric tests can be used if data are not normally distributed. Non-parametric tests make fewer assumptions about the distribution of the data.
+
+## Transforming non-normally distributed variables
+When a variable has a skewed distribution, one possibility is to transform the data to a new variable to try and obtain a normal or near normal distribution. Methods to transform non-normally distributed data include logarithmic transformation of each data point, or using the square root or the square or the inverse (i.e. 1/x) etc. 
+
+### Worked Example
+We have data from 132 patients who had a hospital stay following admission to ICU available on Moodle (Example_9.1.csv). The distribution of the length of stay for these patients is shown in the histogram in @fig-mod09-los. As is common with variables that record time, the data are skewed with many patients having relatively short stays and a few patients having very long hospital stays. Clearly, it would be inappropriate to use parametric statistical methods for these data.
+
+```{r fig-mod09-los, echo=FALSE, out.width = "66%", fig.cap="Length of hospital stay for 132 patients"}
+knitr::include_graphics(here::here("img", "mod09", "mod09-los.png"))
+```
+
+When data are positively skewed, as shown in @fig-mod09-los, a logarithmic transformation can often make the data closer to being normally distributed. This is the most common transformation used. You should note, however, that the logarithmic function cannot handle 0 or negative values. One way to deal with zeros in a set of data is to add 1 to each value before taking the logarithm.
+
+We would generate a new variable, as shown in the Stata or R notes. As the minimum length of stay in these sample data was 0, we have added 1 to each length of stay before taking the logarithm. The distribution of the logarithm of (length of stay + 1) is shown in @fig-mod09-lnlos.
+
+```{r fig-mod09-lnlos, echo=FALSE, out.width = "66%", fig.cap="istribution of log transformed (length of stay + 1)"}
+knitr::include_graphics(here::here("img", "mod09", "mod09-lnlos.png"))
+```
+
+The distribution now appears much more bell shaped. @tbl-los-desc shows the descriptive statistics for length of stay before and after logarithmic transformation. Before transformation, the SD is almost as large as the mean value which indicates that the data are skewed and that these statistics are not an accurate description of the centre and spread of the data.
+
+|                               | Length of stay | log(Length of stay + 1) |
+|-------------------------------|----------------|-------------------------|
+| Mean (Standard deviation)     | 38.1 (35.78)   | 3.41 (0.715)            |
+| Mean: 95% confidence interval | 31.9 to 44.2   | 3.29 to 3.53            |
+| Median [Interquartile range]  | 27 [21 to 42]  | 3.3 [3.1 to 3.8]        |
+| Range                         | 0 to 244       | 0 to 5.5                |
+
+: Summary statistics for untransformed and transformed length of stay {#tbl-los-desc}
+
+The mean and standard deviation of the transformed length of stay are in log base e (i.e. ln) units. If we raise the mean of the log of length of stay to the power of $e$, it returns a value of 30.2 days ($e^{3.41}=30.2$).
+
+Technically, this is called the geometric mean of the data, and it has a different interpretation to the usual mean, the arithmetic mean. This is a much better estimate in this case of the “average” length of stay than the mean of 38.1 days (95% CI 31.9, 44.2 days) obtained from the non-transformed positively skewed data. Note that, if you have added 1 to your data to deal with 0 values, the back-transformed estimate is *approximately* equal to the geometric mean.
+
+This set of data also includes a variable summarising whether a patient acquired a nosocomial infection (also known as healthcare-associated infections), which are infections that develop while undergoing medical treatment but were absent at the time of admission.
+
+If we were testing the hypothesis that there was a difference in length of stay between groups (status of nosocomial infection), t-tests should not be used with length of stay, but could be used for the log transformed variable, which is approximately normally distributed. The output from the t-test of the log-transformed length of stay is shown in @tbl-los-ttest. This is done using the t-test shown in Module 5.
+
+| Nosocomial infection  | n   | Mean (SE)    | 95% Confidence interval |
+|-----------------------|-----|--------------|:-----------------------:|
+| No                    | 106 | 3.33 (0.068) |       3.19 to 3.46      |
+| Yes                   | 26  | 3.73 (0.136) |       3.45 to 4.01      |
+| Difference (Yes - No) |     | 0.39 (0.153) |       0.09 to 0.70      |
+
+: Summary statistics for transformed length of stay {#tbl-los-ttest}
+
+Here, a two-sample t-test gives a test statistic of 2.59 with 130 degrees of freedom, and a P-value of 0.01. 
+
+As explained above, the estimated statistics would need to be converted back to the units in which the variable was measured. From Output 9.2, we can take the exponential of the corresponding log-transformed values:
+
+- the geometric mean of the infected group is approximately 41.5 days with a 95% confidence interval from 31.4 to 55.0 days.
+- the geometric mean of the uninfected group is approximately 27.9 days with a 95% confidence interval from 24.4 to 31.9 days.
+
+## Non-parametric significance tests
+It is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g. length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.
+
+### Ranking variables
+Table 9.1 shows how ranks are calculated for the first 21 patients in the length-of-stay data (Example_9.1.dta). First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
+
+```{r tab-9-1, echo=FALSE}
+df <- tibble::tribble(
+   ~ID, ~Infection, ~`Length of stay`, ~Rank, ~`Infection=no`, ~`Infection=Yes`,
+   32L,       "No",              0L,     1,               1,               NA,
+   33L,       "No",              1L,     2,               2,               NA,
+   12L,       "No",              9L,     3,               3,               NA,
+   22L,       "No",             11L,   4.5,             4.5,               NA,
+   16L,       "No",             11L,   4.5,             4.5,               NA,
+   28L,      "Yes",             12L,     6,              NA,                6,
+   27L,       "No",             13L,   7.5,             7.5,               NA,
+   20L,       "No",             13L,   7.5,             7.5,               NA,
+   24L,       "No",             14L,    11,              11,               NA,
+   11L,       "No",             14L,    11,              11,               NA,
+  130L,       "No",             14L,    11,              11,               NA,
+   10L,       "No",             14L,    11,              11,               NA,
+   25L,       "No",             14L,    11,              11,               NA,
+   19L,       "No",             15L,  15.5,            15.5,               NA,
+   30L,       "No",             15L,  15.5,            15.5,               NA,
+   23L,       "No",             15L,  15.5,            15.5,               NA,
+   14L,       "No",             15L,  15.5,            15.5,               NA,
+   15L,       "No",             17L,  20.5,            20.5,               NA,
+   13L,       "No",             17L,  20.5,            20.5,               NA,
+   21L,      "Yes",             17L,  20.5,              NA,             20.5,
+   17L,       "No",             17L,  20.5,            20.5,               NA
+  )
+
+huxtable(df) %>%
+  set_align(everywhere, everywhere, "centre") %>% 
+  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
+  theme_article() %>% 
+  set_width(0.95) %>% 
+  set_caption("Transforming data to ranks: first 21 participants")
+```
+
+By assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups.
+
+## Non-parametric test for two independent samples (Wilcoxon ranked sum test)
+
+The non-parametric equivalent to an independent samples t-test (Module 5) is the Wilcoxon ranked sum test, also known as the Mann-Whitney U test. In Stata, this can be obtained using the ranksum command. 
+
+The assumption for this test is that the distributions of the two populations have the same general shape. If this assumption is met, then this test evaluates the null hypothesis that the medians of the two populations are equal. This test does not assume that the populations are normally distributed, nor that their variances are equal.
+
+For the length of stay data in the Worked Example 9.1, we first get a ranks table as shown in Output 9.3. The rank sum table gives us a direction of effect that the ranks are higher than expected in patients who had nosocomial infection. While the positive infection group has a lower sum of ranks because there were fewer people who contracted an infection, it is higher than expected, i.e. they have a longer length of stay compared with the negative infection group. This ranks table does not provide any summary statistics of direction of effect, central tendency or spread that describe the data.
+
+#### Stata Output 9.3: Wilcoxon rank-sum test {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+      infect |      obs    rank sum    expected
+-------------+---------------------------------
+          No |      106        6620        7049
+         Yes |       26        2158        1729
+-------------+---------------------------------
+    combined |      132        8778        8778
+
+unadjusted variance    30545.67
+adjustment for ties      -53.87
+                     ----------
+adjusted variance      30491.80
+
+Ho: los(infect==No) = los(infect==Yes)
+             z =  -2.457
+    Prob > |z| =   0.0140
+    Exact Prob =   0.0135
+```
+
+The test statistics are shown under the rank sum table in Output 9.3. The variance shown immediately under the table are used to conduct the test, and are not reported on. 
+
+From Output 9.3, there are two P-values shown: one assuming normality of the ranks (not the underlying data), and an "Exact" P-value. The exact P-value is calculated when the sample size is not too large (less than 200), and is preferred. The rounded exact P value is 0.014 which indicates that the there is evidence of a difference in length of stay between the groups. This P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges.
+
+Using the summary command with the detail option in Stata and splitting the LOS variable by the Infect variable (as shown in Module 5), we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection.
+
+## Non-parametric test for paired data (Wilcoxon signed-rank test)
+
+There are two types of non-parametric tests for paired data, called the Sign test and the Wilcoxon signed rank test. In practice, the Sign test is rarely used and will not be discussed in this course.
+
+If the differences between two paired measurements are not normally distributed, a non-parametric equivalent of a paired t-test (Module 5) should be used. The equivalent test is the Wilcoxon matched-pairs signed rank test, also simply called the Wilcoxon matched-pairs test. This test is resistant to outliers in the data, however the proportion of outliers in the sample should be small. This test evaluates the null hypothesis that the median of the paired differences is equal to zero.
+
+In this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e. scores where there is no difference between the pairs) are excluded. Thus, the test is not suitable when a large proportion of the differences are zero because the effective sample size is reduced considerably.
+
+### Worked Example
+
+A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in Stata datafile file Example_9.2.dta. The data are shown in Table 9.2. The descriptive statistics indicate that the differences are not normally distributed. You can use the Explore function in Stata to determine this.
+
+```{r tab-9-2, echo=FALSE}
+df <- tibble::tribble(
+          ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,        ~`Difference (Drug 2 – Drug 1)`,
+                   1L,               3L,               4L,                "1",
+                   2L,               2L,               7L,                "5",
+                   3L,               3L,               4L,                "1",
+                   4L,               8L,              10L,                "2",
+                   5L,               6L,               8L,                "2",
+                   6L,               6L,               1L,               "-5",
+                   7L,               2L,               6L,                "4",
+                   8L,               3L,               7L,                "4",
+                   9L,               5L,               8L,                "3",
+                  10L,               9L,              10L,                "1",
+                  11L,               7L,               8L,                "1"
+          )
+  
+huxtable(df) %>%
+  set_align(everywhere, everywhere, "centre") %>% 
+  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
+  theme_article() %>% 
+  set_width(0.8) %>% 
+  set_caption("Arthritis symptom scores for 11 patients after administering two drugs")
+```
+
+Before doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in Figure \@ref(fig:mod09-diff-hist).
+
+```{r mod09-diff-hist, echo=FALSE, out.width = "66%", fig.cap="Distribution of difference in symptom scores between Drug 1 and Drug 2"}
+knitr::include_graphics(here::here("img", "mod09", "mod09-diff-hist.png"))
+```
+
+The histogram shows that the differences are not normally distributed. The data looks negatively skewed with a gap in the histogram between the values of -5 and 0. Therefore, it would not be appropriate to conduct a paired t-test. Hence, we conduct a non-parametric paired test (Wilcoxon matched-pairs signed-rank test).
+
+A non-parametric paired test can be obtained in Stata using the signrank command and the results of the test are shown in Output 9.4.
+
+#### Stata Output 9.4: Wilcoxon matched-pairs signed-rank test {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+Wilcoxon signed-rank test
+
+        sign |      obs   sum ranks    expected
+-------------+---------------------------------
+    positive |        1        10.5          33
+    negative |       10        55.5          33
+        zero |        0           0           0
+-------------+---------------------------------
+         all |       11          66          66
+
+unadjusted variance      126.50
+adjustment for ties       -1.63
+adjustment for zeros       0.00
+                     ----------
+adjusted variance        124.88
+
+Ho: drug_1 = drug_2
+             z =  -2.013
+    Prob > |z| =   0.0441
+    Exact Prob =   0.0459
+```
+
+The table in Output 9.4 shows that there is 1 person who has a positive difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs. The difference scores are ranked and the observed and expected sum of the ranks are shown in the output. This provides no intuitive summary statistics except to indicate which drug has higher ranks.
+
+The test statistics are also shown under the table in Output 9.4. From the output, the exact P value of 0.046 indicates that there is evidence of a difference in symptom score between the two drugs.
+
+## Non-parametric estimates of correlation
+
+Estimating correlation using Pearson's correlation coefficient can be problematic when bivariate Normality cannot be assumed, or in the presence of outliers or skewness. There are two commonly used non-parametric alternatives to Pearson's correlation coefficient: Spearman's rank correlation ($\rho$ or rho), and Kendall's rank correlation ($\tau$ or tau).
+
+When estimating the correlation between x and y, Spearman's rank correlation essentially replaces the observations x and y by their ranks, and calculates the correlation between the ranks. Kendall's rank correlation compares the ranks between every possible combination of pairs of data to measure concordance: whether high values for x tend to be associated with high values for y (positively correlated) or low values of y (negatively correlated).
+
+In terms of which is the more appropriate measure to use, the following passage from An Introduction to Medical Statistics (@bland15) provides some guidance:
+
+> "Why have two different rank correlation coefficients? Spearman’s $\rho$ is older than Kendall’s $\tau$, and can be thought of as a simple analogue of the product moment correlation coefficient, Pearson’s r. Kendall’s $\tau$ is a part of a more general and consistent system of ranking methods, and has a direct interpretation, as the difference between the proportions of concordant and discordant pairs. In general, the numerical value of $\rho$ is greater than that of $\tau$. It is not possible to calculate $\tau$ from $\rho$ or $\rho$ from $\tau$, they measure different sorts of correlation. $\rho$ gives more weight to reversals of order when data are far apart in rank than when there is a reversal close together in rank, $\tau$ does not. However, in terms of tests of significance, both have the same power to reject a false null hypothesis, so for this purpose it does not matter which is used."
+
+We will illustrate estimating rank correlation using the Stata file `Example_8.1.dta`, which has information about height and lung function collected from a sample of 120 adults.
+
+#### Stata Output 9.5: Results from rank correlation analysis {-}
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. spearman Height FVC
+
+ Number of obs =     120
+Spearman's rho =       0.7476
+
+Test of Ho: Height and FVC are independent
+    Prob > |t| =       0.0000
+
+. ktau Height FVC
+
+  Number of obs =     120
+Kendall's tau-a =       0.5431
+Kendall's tau-b =       0.5609
+Kendall's score =    3878
+    SE of score =     439.463   (corrected for ties)
+
+Test of Ho: Height and FVC are independent
+     Prob > |z| =       0.0000  (continuity corrected)
+```
+
+The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC.
+Stata provides two versions of the Kendall rank correlation coefficient: we would use tau-b ($\tau_b$) as it allows for tied observations. The Kendall rank correlation coefficient is estimated as 0.56, again demonstrating a positive association between height and FVC.
+
+## Summary
+In this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.

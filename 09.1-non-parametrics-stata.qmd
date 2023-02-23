@@ -1,0 +1,84 @@
+# **9** Stata resources {-}
+
+## Transforming non-normally distributed variables
+
+One option for dealing with a non-normally distributed varaible is to transform it into its square, square root or logarithmic value. The new transformed variable may be normally distributed and therefore a parametric test can be used. First we check the distribution of the variable for normality, e.g. by plotting a histogram (for example, Figure 9.1).
+
+You can calculate a new, transformed, variable using the generate command in Stata from the menu **Data > Create or change data > Create new variable**. Below are the instructions for creating a log to the base e, referred to as “ln” of the length of stay data for `Example_9.1.dta`.
+
+Go to **Data > Create or change data > Create new variable**. In the **generate** dialog box, type a name for your new variable into the **Variable name:** box: for example, `ln_los`. To include the `ln` function, you can either:
+
+1) simply type `ln(los + 1)` directly into the **Specify a value or an expression** text box, or; 
+2) click the **Create** button to bring up the **Expression Builder** dialog box. Double click on **Functions** to expand the list in the **Categories** box, then click on **Mathematical** to display the list of mathematical functions in the box on the right. Scroll down to the **ln()** function and double click on it to bring it to the main text box. Next scroll down the **Categories** box to **Variables** and click on it to check the variables you have in the dataset. In the text box, replace `x` with `los + 1` as shown below.
+
+```{r mod09-gen-1, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-gen-1.png"))
+```
+
+  
+Click the **OK** button when you are done to transfer the expression to the **Specify a value or an expression** box in the generate dialog box as shown below.
+ 
+```{r mod09-gen-2, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-gen-2.png"))
+```
+
+Click **OK** and the new variable will appear in your dataset. You can check in your Variables window or your Data Editor window.
+
+[Command: `gen ln_los=ln(los + 1)`]
+
+You can now check whether this variable is normally distributed as described in Module 2, for example with the `histogram` command as shown in Figure 9.2.
+
+To obtain the back-transformed mean shown in Output 9.1, go to **Data > Other Utilities > Hand calculator**. In the **display** dialog box, expand the **Functions** list in the **Categories** box and select **Mathematical**. On the right-hand-side box, double-click on **exp()**. Replace `x` with the mean, `3.407232` as shown below.
+
+Click **OK** when you are done, then **OK** or **Submit** in the **display** dialog box. 
+
+```{r mod09-calc, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-calc.png"))
+```
+
+
+[Command: `di exp(3.407232)`]
+
+If your transformed variable is approximately normally distributed, you can apply parametric tests such as the t-test. In the Worked Example 9.1 dataset, the variable `infect` (presence of nosocomial infection) is a binary categorical variable. To test the hypothesis that patients with nosocomial infection have a different length of stay to patients without infection, you can conduct a t-test on the `ln_los` variable. You will need to back transform your mean values, as shown in Worked Example 9.1 in the course notes when reporting your results.
+
+## Wilcoxon ranked-sum test
+
+The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `Example_9.1.dta`. To perform the Wilcoxon ranked-sum test go to: **Statistics > Summaries, tables, and tests > Nonparametric tests of hypotheses > Wilcoxon ranked-sum test**.
+
+In the **ranksum** dialog box, select `los` as the **Variable** and select `infect` as the **Grouping variable** as shown below.
+
+```{r mod09-ranksum, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-ranksum.png"))
+```
+
+Click **OK** or **Submit** to obtain Output 9.3.
+
+[Command: `ranksum los, by(infect)`]
+
+## Wilcoxon matched-pairs signed-rank test
+The Wilcoxon matched-pairs signed-rank test in Stata will be demonstrated using the dataset on the arthritis drug cross-over trial (`Example_9.2.dta`). Like the paired t-test the paired data need to be in separate columns.
+
+To do the analysis, go to: **Statistics > Summaries, tables, and tests > Nonparametric tests of hypotheses > Wilcoxon matched-pairs sign-rank test**. In the **signrank** dialog box, select `drug_1` in the **Variable** box and type `drug_2` in the **Expression** box. The dialog box will look like: 
+
+```{r mod09-signrank, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-signrank.png"))
+```
+
+
+Click **OK** or **Submit** to obtain Output 9.4. 
+[Command: `signrank drug_1 = drug_2`]
+
+## Estimating rank correlation coefficients
+The analyses for Spearman's and Kendall's rank correlation are conducted in similar ways.
+
+**Statistics > Nonparametric analysis > Tests of hypotheses > Spearman's rank correlation**
+
+```{r mod09-spearman, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-spearman.png"))
+```
+
+**Statistics > Nonparametric analysis > Tests of hypotheses > Kendall's rank correlation**
+
+```{r mod09-kendall, echo=FALSE, out.width = "66%",}
+knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-kendall.png"))
+```

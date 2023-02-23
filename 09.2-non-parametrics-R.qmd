@@ -1,0 +1,80 @@
+# Analysing non-normal data
+
+## Transforming non-normally distributed variables
+
+One option for dealing with a non-normally distributed varaible is to transform it into its square, square root or logarithmic value. The new transformed variable may be normally distributed and therefore a parametric test can be used. First we check the distribution of the variable for normality, e.g. by plotting a histogram.
+
+You can calculate a new, transformed, variable using standard commands. For example, to create a new column of data based on the log of length of stay:
+
+```{r}
+library(jmv)
+
+hospital <- readRDS("data/examples/Example_9.1.rds")
+
+hospital$ln_los <- log(hospital$los+1)
+descriptives(data=hospital, vars=c(los, ln_los))
+```
+You can now check whether this logged variable is normally distributed as described in Module 2, for example by plotting a histogram as shown in Figure 9.2.
+
+To obtain the back-transformed mean, we can use the `exp` command to `anti-log` the mean:
+
+```{r}
+exp(3.407232)
+```
+
+If your transformed variable is approximately normally distributed, you can apply parametric tests such as the t-test. In the Worked Example 9.1 dataset, the variable `infect` (presence of nosocomial infection) is a binary categorical variable. To test the hypothesis that patients with nosocomial infection have a different length of stay to patients without infection, you can conduct a t-test on the `ln_los` variable. You will need to back transform your mean values, as shown in Worked Example 9.1 in the course notes when reporting your results.
+
+## Wilcoxon ranked-sum test
+
+We use the `wilcox.test` function to perform the Wilcoxon ranked-sum test:
+
+```
+wilcox.test(continuous_variable ~ group_variable, data=df)
+```
+
+Note that the implementation of R's Wilcoxon rank-sum test uses a "continuity correction" for calculating the P-value from the ranks. This differs from Stata which does not use the continuity correction. While the use of the continuity correction is preferable, in most cases the difference in P-values between the methods will be minimal.
+
+To obtain results that are consistent with Stata, the `correct=FALSE` option can be used:
+
+```
+wilcox.test(continuous_variable ~ group_variable, data=df, correct=FALSE)
+```
+
+
+The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `Example_9.1.rds`. Here, out continuous variable is `los` and the grouping variable is `infect`.
+
+```{r}
+wilcox.test(los ~ infect, data=hospital)
+```
+
+## Wilcoxon matched-pairs signed-rank test
+
+The `wilcox.test` function can also be used to conduct the Wilcoxon matched-pairs signed-rank test. The specification of the variables is a little different, in that each variable is specified as `dataframe$variable`:
+
+```
+wilcox.test(df$continuous_variable_1, df$continuous_variable_1, paired=TRUE)
+```
+
+We will demonstrate using the dataset on the arthritis drug cross-over trial (`Example_9.2.rds`). Like the paired t-test the paired data need to be in separate columns.
+
+```{r}
+arthritis <- readRDS("data/examples/Example_9.2.rds")
+
+arthritis$difference = arthritis$drug_1 - arthritis$drug_2
+
+hist(arthritis$difference, xlab="Difference", main="Histogram of differences in pain scores")
+
+wilcox.test(arthritis$drug_1, arthritis$drug_2, 
+            paired=TRUE)
+```
+
+## Estimating rank correlation coefficients
+The analyses for Spearman's and Kendall's rank correlation are conducted in similar ways:
+
+```{r}
+lung <- readRDS("data/examples/Example_8.1.rds")
+
+cor.test(lung$Height, lung$FVC, method="spearman")
+
+cor.test(lung$Height, lung$FVC, method="kendall")
+```
