@@ -1,0 +1,453 @@
+# Probability and probability distributions
+
+## Learning objectives {-}
+
+By the end of this module you will be able to:
+
+- Describe the concept of probability;
+- Describe the characteristics of a binomial distribution and a Normal distribution;
+- Compute binomial probabilities using Stata;
+- Compute and use Z-scores to obtain probabilities;
+- Decide when to use parametric or non-parametric statistical methods;
+- Briefly outline other types of distributions.
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapters 5, 14 and 15. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Chapters 6 and 7. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+## Introduction
+
+In Module 1, we looked at how to summarise data numerically and graphically. In this module, we will introduce the concept of probability which underpins the theoretical basis of statistics, and then introduce the concept of probability distributions. We will look at the binomial distribution, and then look at the most important distribution in statistics: the Normal distribution. Finally, we introduce some other probability distributions commonly used in biostatistics.
+
+## Probability
+Probability is defined as:
+
+>the chance of an event occurring, where an event is the result of an observation or experiment, or the description of some potential outcome.
+
+Probabilities range from 0 (where the event will never occur) to 1 (where the event will always occur). For example, tossing a coin is an experiment; one event is the coin landing with head up, while the other event is the coin landing tails up. The set of all possible outcomes in an experiment is called the sample space.  For example, by tossing a coin you can get either a head or a tail (called mutually exclusive events); and by rolling a die you can get any of the six sides. Thus, for a die the sampling space is: S = {1, 2, 3, 4, 5, 6}
+
+With a fair (unbiased) die, the probability of each outcome occurring is 1/6 and its probability distribution is simply a probability of 1/6 for each of the six numbers on a die. 
+
+### Additive law of probability
+
+How do we work out the probability that one roll of a die will turn out to be a 3 or a 6? To do that, we first need to work out whether the events (3 or 6 on the roll of a die) are mutually exclusive. Events are mutually exclusive if they are events which cannot occur at the same time. For example, rolling a die once and getting a 3 and 6 are mutually exclusive events (you can roll one or the other but not both in a single roll).
+
+To obtain the probability of one or the other of two mutually exclusive events occurring, the sum of the probabilities of each is taken. For example, the probability of the roll of a die being a 3 or a 6 is the sum of the probability of the die being 3 (i.e. 1/6) and the probability of the die being 6 (also 1/6). With a fair die:
+
+Probability of a die roll being 3 or 6 = $1/6 + 1/6 = 1/3$
+
+Another way of putting it is:
+
+P(die roll =3 or die roll =6) = P(die roll=3) + P(die roll=6) = $1/6 + 1/6 = 1/3$
+
+#### Example: Additive law for mutually exclusive events {-}
+Consider that blood type can be organised into the ABO system (blood types A, B, AB or O) An individual may only have one blood type. 
+
+Using the information from https://www.donateblood.com.au/learn/about-blood let’s consider the ABO blood type system. The frequency distribution (prevalence) of the ABO blood type system in the population represents the probability of each of the outcomes. If we consider all possible blood type outcomes, then the total of the probabilities will sum to 1 (100%).
+
+```{r tbl-2-1, echo=FALSE}
+#| tbl-cap: Frequency of blood types
+
+library(huxtable)
+
+tab2_1 <- tibble::tribble(
+  ~`Blood Type`, ~`% of population`, ~Probability,
+  "A",              "38%",         0.38,
+  "B",              "10%",          0.1,
+  "AB",               "3%",         0.03,
+  "O",              "49%",         0.49,
+  "Total",             "100%",          1.0
+)
+
+huxtable::huxtable(tab2_1)  |> 
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.6)
+```
+
+In this example we consider: What is the probability that an individual will have either blood group O or A? 
+
+Since blood type is mutually exclusive, the probability that either one or the other occurs is the sum of the individual probabilities. These are mutually exclusive events so we can say P(O or A) = P(O) + P(A) 
+
+Thus, the answer is: P(Blood type O) + P(Blood type A) = 0.49 + 0.38 = 0.87
+
+### Multiplicative law of probability
+The additive law of probability lets us consider the probability of different outcomes in a single experiment. The multiplicative law lets us consider the probability of multiple events occurring in a particular order. For example: if I roll a die twice, what is the probability of rolling a 3 and *then* a 6?
+
+These events are independent: the probability of rolling a 6 on the second roll is not affected by the first roll.
+
+The multiplicative law of probability states:
+
+>	If A and B are independent, then P(A and B) = P(A) $\times$ P(B).
+
+So, the probability of rolling a 3 and then a 6 is: P(3 and 6) = $1/6 \times 1/6 = 1/36$.
+
+Note here that the order matters – we are considering the probability of rolling a 3 and then a 6, not the probability of rolling a 6 and then a 3.
+
+## Probability distributions
+A probability distribution is a table or a function that provides the probabilities of all possible outcomes for a random variable (a variable whose outcome depends on a random process). For example, the probability distribution for a single coin toss is straightforward: the probability of obtaining a head is 0.5, and the probability of obtaining a tail is 0.5. Similarly, the probability distribution for a single roll of a die is straightforward: each face has a probability of 1/6.
+
+```{r tbl-2-2, echo=FALSE}
+#| tbl-cap: Probability distributions for (a) a single coin toss and (b) a single roll of a die
+
+tab2_2 <- tibble::tribble(
+            ~`Coin face`, ~Probability, ~` `, ~`Face of a die`, ~Probability,
+               "Heads",          0.5,   NA,          1L,      "1/6",
+               "Tails",          0.5,   NA,          2L,      "1/6",
+                    NA,           NA,   NA,          3L,      "1/6",
+                    NA,           NA,   NA,          4L,      "1/6",
+                    NA,           NA,   NA,          5L,      "1/6",
+                    NA,           NA,   NA,          6L,      "1/6"
+            )
+
+huxtable::huxtable(tab2_2) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  theme_article() |> 
+  set_width(0.95)
+```
+
+Things become more complicated when we consider a series of coin-tosses, or rolls of a die. These series of events can be summarised by considering the number of times a certain outcome is observed. For example, the probability of obtaining three heads from five coin tosses.
+
+Probability distributions can be used in two main ways:
+1. To calculate the probability of an event occurring. This seems trivial for the coin-toss and die-roll examples above. However, we can consider more complex events, as below.
+1. To understand the behaviour of a sample statistic. We will see in Modules 3 and 4 that the mean of a sample follows a probability distribution. We can obtain useful information about a sample mean by using properties of the probability distribution.
+
+## Discrete variables and their probability distributions
+
+A discrete random variable is a random variable that has countable values (non-negative integers). An example of a discrete random variable is the number of heads observed in a series of coin tosses.
+
+A discrete random variable can be summarised by listing all the possible values that the variable can take. As defined earlier, a table, formula or graph that presents these possible values, and their associated probabilities, is called a probability distribution.
+
+Example: let’s consider the number of heads in a series of three coin tosses. We might observe 0 heads, or 1 head, or 2, or 3 heads. If we let X denote the number of heads in a series of three coin tosses, then possible values of X are 0, 1, 2 or 3.
+
+We write the probability of observing x heads as P(X=x). So P(X=0) is the probability that the three tosses has no heads. Similarly, P(X=1) is the probability of observing one head.
+The possible combinations for three coin tosses are as follows:
+
+
+There are eight possible outcomes from three coin tosses (permutations). If we assume an equal chance of observing a head or a tail, each permutation above is equally likely, and so has a probability of 1/8.
+
+However, if we consider the possibility of observing just one head out of the three tosses, this can happen in three ways (HTT, THT, TTH). So the probability of observing one head is calculated using the additive law: P(X=1) = $\tfrac{1}{8} + \tfrac{1}{8} + \tfrac{1}{8} = \tfrac{3}{8}$.
+
+Therefore, the probability distribution for X, the number of heads from three coin tosses, is as follows:
+
+```{r tbl-2-4, echo=FALSE}
+#| tbl-cap: Probability distribution for the number of heads from three coin tosses
+
+tab2_4 <- tibble::tribble(
+            ~`x (number of heads observed)`, ~`P(X=x)`,
+                                         0L,        "1/8",
+                                         1L,        "1/8 + 1/8 + 1/8 = 3/8",
+                                         2L,        "1/8 + 1/8 + 1/8 = 3/8",
+                                         3L,        "1/8"
+            )
+
+
+huxtable::huxtable(tab2_4) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  theme_article() |> 
+  set_width(0.8)
+```
+
+Note that the probabilities sum to 1.
+
+The above example was based on a coin toss, where flipping a head or a tail is equally likely (both have probabilities of 0.5). Let’s consider a case where the probability of an event is not equal to 0.5: having blood type A.
+
+From @tbl-2-1, the probability that a person has Type A blood is 0.38, and therefore, the probability that a person does not have Type A blood is 0.62 (1–0.38). If we considered taking a random sample of three people, the probability that all three would have Type A blood is 0.38 × 0.38 × 0.38 (using the multiplicative rule above) – and there is only one way this could happen.
+
+The number of ways two people out of three could have Type A blood is 3, and each permutation is listed in @tbl-2-5. The probability of observing each of the three patterns is the same, and can be calculated using the multiplicative rule: 0.38 × 0.38 × 0.62 = 0.0895.
+
+```{r tbl-2-5, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Combinations and probabilities of Type A blood in three people
+
+tab2_5 <- tibble::tribble(
+        ~`Person 1`, ~`Person 2`, ~`Person 3`,                  ~Probability,
+                  "A",       "A",       "A", "0.38 × 0.38 × 0.38 = 0.0549",
+                  "A",       "A",   "Not A", "0.38 × 0.38 × 0.62 = 0.0895",
+                  "A",   "Not A",       "A", "0.38 × 0.62 × 0.38 = 0.0895",
+              "Not A",       "A",       "A", "0.62 × 0.38 × 0.38 = 0.0895",
+                  "A",   "Not A",   "Not A", "0.38 × 0.62 × 0.62 = 0.1461",
+              "Not A",       "A",   "Not A", "0.62 × 0.38 × 0.62 = 0.1461",
+              "Not A",   "Not A",       "A", "0.62 × 0.62 × 0.38 = 0.1461",
+              "Not A",   "Not A",   "Not A", "0.62 × 0.62 × 0.62 = 0.2383"
+            )
+
+huxtable(tab2_5) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  theme_article() |> 
+  set_bottom_border(c(2, 5, 8), everywhere, value = 0.4) |> 
+  set_width(0.8)
+```
+
+@tbl-2-5 gives the probability of each of the blood type combinations we could observe in three people. The probability of observing a certain number of people (say, k) with Type A blood from a sample of three people can be calculated by summing the combinations:
+
+```{r tbl-2-6, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Probabilities of observing numbers of people with Type A blood in a sample of three people
+
+tab2_6 <- tibble::tribble(
+        ~`Number of people with Type A blood`,        ~`Probability of each pattern`,
+                                         3L,                            "0.0549",
+                                         2L, "0.0895 + 0.0895 + 0.0895 = 0.2689",
+                                         1L, "0.1461 + 0.1461 + 0.1461 = 0.4382",
+                                         0L,                            "0.2383"
+        )
+
+huxtable::huxtable(tab2_6) |>
+  set_align(everywhere, 2, ".") |> 
+  theme_article() |> 
+  set_width(0.8)
+```
+
+## Binomial distribution
+The above are examples of the binomial distribution. The binomial distribution is used when we have a collection of random events, where each random event is binary (e.g. Heads vs Tails, Type A blood vs Not Type A blood, Infected vs Not infected).  The binomial distribution calculates (in general terms):
+
+- the probability of observing k successes
+- from a collection of n trials
+- where the probability of a success in one trial is p.
+
+The terms used here can be defined as:
+- a success is simply an event of interest from a binary random event. In the coin-toss example, “success” was tossing a Head. In the blood type example, we were only interested in whether someone was Type A or not Type A, so “success” was a blood of Type A. We tend to use the word “success” to mean “an event of interest”, and “failure” as “an event not of interest”.
+- the number of trials refers to the number of random events observed. In both examples, we observed three events (three coin tosses, three people).
+- the probability of a success (p) simply refers to the probability of the event of interest. In the coin toss example, this was the probability of tossing a Heads (=0.5); for the blood-type example, this was the probability of having Type A blood (0.38).
+
+Putting all this together, we say that we have a binomial experiment. To satisfy the assumptions of a binomial distribution, our experiment must satisfy the following criteria:
+
+1. The experiment consists of fixed number (n) of trials.
+2. The result of each trial falls into only one of two categories – the event occurred (“success”) or the event did not occur (“failure”).
+3. The probability, p, of the event occurring remains constant for each trial.
+4. Each trial of the experiment is independent of the other trials.
+
+We have shown in the examples above how we can calculate the probabilities for small experiments (n=3). Once n becomes large, constructing such probability distribution tables becomes difficult. The general formula for calculating the probability of observing k successes from n trials, where each trial has a probability of success of p is given by:
+
+$$ P(X=k) = \frac{n!}{k! (n-k)!} \times p^k \times (1-p)^{n-k} $$
+
+where $n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1$.
+
+**Note that this formula is almost never calculated by hand.** Instructions for calculating binomial probabilities are given in the Stata notes at the end of this Module.
+
+### Mean and variance of a binomial variable
+The properties of the binomial distribution are useful in the statistical modelling of prevalence data. If *X* has a binomial distribution, then the mean of *X* is:
+
+$$ E(X) = n \times p$$
+and the variance is:
+
+$$ var(X) = n \times p \times (1-p) $$
+where *n* = the number of trials, and *p* = the probability of the event occurring (or success).
+
+#### Worked example {-}
+A population-based survey conducted by the AIHW (2008) of a random sample of the Australian population estimated that in 2007, 19.8% of the Australian population were current smokers.
+
+a) From a random sample of 6 people from the Australian population in 2007, what is the probability that 3 of them will be smokers? 
+b) What is the probability that among the six persons, at least 4 will be smokers? 
+c) What is the probability that at most, 2 will be smokers?
+
+#### Solution {-}
+
+a) The computation for binomial probabilities can be done using Stata from the main menu **Data > Other utilities > Hand calculator** as shown in the Stata Notes section.
+
+Of the three binomial functions in the Hand Calculator, we choose the binomialp function, which gives “the probability of observing k successes in n trials when the probability of a success on one trial is p”. 
+
+We complete the function using n=6, k=3, and p=0.198. This gives an answer of 0.08.
+[Command: `display binomialp(6, 4, 0.198)`]
+
+b)	In common language, getting “at least 4” smokers means getting 4, 5 or 6 smokers. Since these are mutually exclusive events, we can apply the additive law to find the probability of getting at least 4 smokers:
+
+$$ P(X \ge 4) = P(X=4) + P(X=5) + P(X=6) $$
+Using the same binomial probability function as in the previous question,
+
+-	P(X=4) = 0.015 [Command: `display binomialp(6, 4, 0.198)`]
+-	P(X=5) = 0.001 [Command: `display binomialp(6, 5, 0.198)`]
+-	P(X=6) = 0.00006 [Command: `display binomialp(6, 6, 0.198)`]
+
+Answer: $P(X \ge 4) = 0.00006025 + 0.00146437 + 0.0148282 = 0.016$
+
+Alternatively, we can use the `binomialtail` function (which gives “the probability of observing k or more successes in n trials when the probability of a success on one trial is p”). 
+
+Here, n=6, k=4 and p=0.198, giving the same answer as above: 0.016.
+[Command: `display binomialtail(6, 4, 0.198)`]
+
+c)	Observing at most two means observing 0, 1 or 2 smokers. Therefore, the probability of observing at most 2 smokers is:
+
+-	P(X $\le$ 2) = P(X=0) + P(X=1) + P(X=2)
+- P(X=0) = 0.266 [Command: `display binomialp(6,0,.198)`]
+- P(X=1) = 0.394 [Command: `display binomialp(6,1,.198)`]
+- P(X=2) = 0.243 [Command: `display binomialp(6,2,.198)`]
+
+Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
+
+This can also be done by using the `binomial` function (which gives “the probability of observing k or fewer successes in n trials when the probability of a success on one trial is p”).
+
+Here, n=6, k=2 and p=0.198, giving the same answer as above: 0.903.
+[Command: `display binomial(6, 2, 0.198)`]
+
+## Normal distribution
+
+The frequency plot for many biological and clinical measurements (for example blood pressure and height) follow a bell shape where the curve is symmetrical about the mean value and has tails at either end. @fig-2-1 ^[Source: https://www.aihw.gov.au/reports/risk-factors/high-blood-pressure/contents/high-blood-pressure (accessed March 2021)] and @fig-2-2 ^[Source: https://ourworldindata.org/human-height (accessed March 2021)] demonstrate this type of distribution.
+
+```{r fig-2-1, echo=FALSE, out.width = "66%", fig.cap="Distribution of diastolic blood pressure, 2017–18 Australian Bureau of Statistics National Health Survey"}
+knitr::include_graphics(here::here("img", "mod02", "dbp.png"))
+```
+
+```{r fig-2-2, echo=FALSE, out.width = "66%", fig.cap="Distribution of male and female heights"}
+knitr::include_graphics(here::here("img", "mod02", "heights.png"))
+```
+
+The Normal distribution, also called the Gaussian distribution (named after Johann Carl Friedrich Gauss, 1777–1855), has been shown to fit the frequency distribution of many naturally occurring variables. It is characterised by its bell-shaped, symmetric curve and its tails that approach zero on either side.
+
+There are two reasons for the importance of the Normal distribution in biostatistics (Kirkwood and Sterne, 2003). The first is that many variables can be modelled reasonably well using the Normal distribution. Even if the observed data were not Normally distributed, it can often be made reasonably Normal after applying some transformation of the data. The second (and possible most important) reason, is based on the central limit theorem and will be discussed in Module 3.
+
+The Normal distribution is characterised by two parameters: the mean ($\mu$) and the standard deviation ($\sigma$). The mean defines where the middle of the Normal distribution is located, and the standard deviation defines how wide the tails of the distribution are.
+
+For a Normal distribution, about 68% of the observations lie between $- \sigma$ and $\sigma$ of the mean; 95% of the observations lie between $−1.96 \times \sigma$ and $1.96 \times \sigma$ from the mean; and almost all the observations (99.7%) lie between $-3 \times \sigma$ and $3 \times \sigma$ (@fig-2-3). Also note that the mean is the same as the median, as the curve is symmetric about its mean.
+
+```{r fig-2-3, echo=FALSE, out.width = "66%", fig.cap="Characteristics of a Normal distribution"}
+knitr::include_graphics(here::here("img", "mod02", "normal-curve.png"))
+```
+
+## The Standard Normal distribution
+
+As each Normal distribution is defined by its mean and standard deviation, there are an infinite number of possible Normal distributions. However, every Normal distribution can be transformed to what we call the Standard Normal distribution, which has a mean of zero ($\mu = 0$) and a standard deviation of one ($\sigma = 1$). The Standard Normal distribution is so important that it has been assigned its own symbol: Z.
+
+Every observation from a Normal distribution $X$ with a mean $\mu$ and a standard deviation $\sigma$ can be transformed to a z-score (also called a Standard Normal deviate) by the formula:
+
+$$ z = \frac{x - \mu}{\sigma} $$
+
+The z-score is simply how far an observation lies from the population mean value, scaled by the population standard deviation.
+
+We can use z-scores to estimate probabilities, as shown in Worked Example 2.2.
+
+#### Worked Example {-}
+This example extends the example of diastolic blood pressure shown in Figure 2.1. Assume that the mean diastolic blood pressure for men is 77.9 mmHg, with a standard deviation of 11. What is the probability that a man selected at random will have high blood pressure (i.e. diastolic blood pressure ≥ 90)?
+
+To estimate the probability that diastolic blood pressure ≥ 90 (i.e. the upper tail probability), we first need to calculate the z-score that corresponds to 90 mmHg.
+
+Using the z-score formula, with x=90, $\mu$=77.9 and $\sigma$=11:
+
+$$ z = \frac{90 - 77.9}{11} = 1.1 $$
+Thus, a blood pressure of 90 mmHg corresponds to a z-score of 1.1, or a value 1.1 $\times \sigma$ above the mean weight of the population.
+
+Using a table of Z-scores (Appendix Table 1), we find the probability that a person has a diastolic blood pressure of 90 mmHg or more as P(Z ≥ 1.1) = 0.136.
+
+An extract from Appendix Table 1 is shown in @fig-2-4 to demonstrate how to find the probability from the look-up table.
+
+```{r fig-2-4, echo=FALSE, out.width = "66%", fig.cap="Obtaining a probability from a table of Standard Normal distribution"}
+knitr::include_graphics(here::here("img", "mod02", "z-table-extract.png"))
+```
+
+@fig-2-5 shows the probability of a diastolic blood pressure of 90 mmHg or more in the population for a Z-score of greater than 1.1 on a Standard Normal distribution.
+
+```{r fig-2-5, echo=FALSE, out.width = "66%", fig.cap="Area under the Standard Normal curve (as probability) for Z > 1.1"}
+knitr::include_graphics(here::here("img", "mod02", "z-dist-shaded.png"))
+```
+
+Apart from calculating probabilities, Z-scores are most useful for comparing measurements taken from a sample to a known population distribution. It allows measurements to be compared to one another despite being on different scales or having different predicted values.
+
+For example, if we take a sample of children and measure their weights, it is useful to describe those weights as Z-scores from the population weight distribution for each age and gender. Such distributions from large population samples are widely available. This allows us to describe a child’s weight in terms of how much it is above or below the population average. For example, if mean weights were compared, children aged 5 years would be on average heavier than the children aged 3 years simply because they are older and therefore larger. To make a valid comparison, we could use the Z-scores to say that children aged 3 years tend to be more overweight than children aged 5 years because they have a higher mean Z-score for weight. 
+
+## Assessing Normality
+There are several ways to assess whether a continuous variable is Normally distributed. The simple process of plotting a histogram and boxplot and comparing estimates of the centre of the data (mean and median) provide valuable information about the way in which the data are distributed.
+
+Other more formal measures of Normality such as skewness (whether the distribution is symmetrical or asymmetrical) and kurtosis (whether the distribution is flat or peaked) can be obtained from Stata (see Stata Notes section on Producing summary statistics in Module 1).
+
+### Skewness and kurtosis
+Skewness is a measure of the lack of symmetry of a distribution. If the distribution is symmetric, the coefficient of skewness is 0. If the coefficient is negative, the median is usually greater than the mean and the distribution is said to be skewed left. If the coefficient is positive, the median is usually less than the mean and the distribution is said to be skewed right. 
+
+Kurtosis (from the Greek kyrtosis, meaning curvature) is a measure of peakiness of a distribution. The smaller the coefficient of kurtosis, the flatter the distribution. The Normal distribution has a coefficient of kurtosis of 3 and provides a convenient benchmark. If the distribution is more spread out, then the kurtosis will be greater than 3.
+
+```{r tbl-2-skew, echo=FALSE}
+#| tbl-cap: Interpretation of skewness statistics
+
+tab2_skew <- tibble::tribble(
+  ~`Skewness`,	~Interpretation,
+  "0", "The distribution is symmetric",
+  "0", "If skewness is between -0.5 and 0.5, the distribution is approximately symmetric",
+  "Negative", "Distribution is skewed to the left (mean is usually less than the median) – aka negative skew (longer tail to the left)",
+  "Negative", "If it is less than −1, the distribution is highly skewed to the left",
+  "Negative", "If it is between −1 and −0.5, the distribution is moderately skewed to the left",
+  "Positive",	"Distribution is skewed to the right (mean is usually greater than the median) – aka positive skew (longer tail to the right)",
+  "Positive",	"If it is greater than 1, the distribution is highly skewed to the right",
+  "Positive",	"If it is between 1 and 0.5, the distribution is moderately skewed to the right"
+)
+
+huxtable::huxtable(tab2_skew) |>
+  set_align(everywhere, everywhere, "left") |> 
+  theme_article() |> 
+  set_width(0.95) |> 
+  merge_repeated_rows() |> 
+  set_bottom_border(c(3,6,9), everywhere)
+```
+
+For your information: There are formal tests in Stata and R that test for Normality. These tests are beyond the scope of this course and will be discussed in the Advanced course.
+
+The skewness and kurtosis values for the 30 weights are close to 0 and 3 respectively which is consistent with the symmetrical bell-shaped distribution as shown by the histogram. The mean and median (50th percentile) values are identical, as would be expected for a Normal distribution. These statistics indicate that the data are Normally distributed. Finally, you can look at the histogram and boxplot (Figure \@ref(fig:fig-2-6)) for symmetry and outliers at either end of the distribution.
+
+```{r fig-2-6, echo=FALSE, out.width = "90%", fig.cap="Histogram and boxplot of weight of 30 students attending a gym"}
+knitr::include_graphics(here::here("img", "mod02", "weights-hist-boxplot.png"))
+```
+
+A summary of how to explore Normality is shown in @tbl-2-examine-normality.
+
+```{r tbl-2-examine-normality, echo=FALSE}
+#| tbl-cap: Methods to assess Normality
+
+tab2_norm <- tibble::tribble(
+~Method, ~`Indication of Normality`,
+"Examine histogram", "Approximately bell shaped and symmetrical; may be difficult to determine if the sample size is small",
+"Compare mean and median values", "Values are approximately equal",
+"Compute skewness and kurtosis", "A Normal distribution would have a skewness of 0 and a kurtosis of 3",
+"Examine box plot", "Box plot symmetrical with no outliers"
+  )
+
+huxtable::huxtable(tab2_norm) |>
+  set_align(everywhere, everywhere, "left") |> 
+  theme_article() |> 
+  set_width(0.95) |> 
+  merge_repeated_rows()
+```
+
+It is important to look at all these measures together, and not rely on a single measure when assessing whether a sample is approximately Normally distributed. For small samples, it can be very difficult to determine whether the data are approximately Normally distributed. 
+
+## Non-Normally distributed measurements 
+In the above example, diastolic blood pressure was Normally distributed with an approximately bell-shaped frequency histogram. However, not all measurements are Normally distributed, and the symmetry of the bell shape may be distorted by the presence of some very small or very large values. Non-Normal distributions such as this are called skewed distributions.
+
+When there are some very large values, the distribution is said to be positively skewed.This often occurs when measuring variables related to time, such as days of hospital stay, where most patients have short stays (say 1 - 5 days) but a few patients with serious medical conditions have very long lengths of hospital stay (say 20 - 100 days).
+
+In practice, most parametric summary statistics are quite robust to minor deviations from Normality and non-parametric statistical methods are only required when the sample size is small and/or the data are obviously skewed with some influential outliers.
+
+When the data are markedly skewed, histograms and boxplots can look very different. For example, data of length of hospital stay in a sample of children are shown as a histogram and as a box plot in @fig-2-7.
+
+```{r fig-2-7, echo=FALSE, out.width = "90%", fig.cap="Histogram and boxplot of length of stay"}
+knitr::include_graphics(here::here("img", "mod02", "los-hist-boxplot.png"))
+```
+
+In the histogram of @fig-2-7, there is a tail of values to the right, so we would conclude that the distribution is skewed to the right. In the boxplot, the whiskers appear to be fairly symmetric, but there are some unusual values (denoted by dots) above the box and its whiskers. Stata defines these unusual values as being more than 1.5 times the IQR from the edge of the box.
+
+The presence of unusual values may be an indication that the data are not Normally distributed. Both the histogram and the box plot show that the distribution has a marked tail towards high values and that non-parametric statistics should be used to generate summary statistics and analyse the data.
+
+Note that Stata has defined points as being unusual, or outliers. Outliers can be problematic and the decision to include them or omit them from further analyses can be difficult. After detecting any outliers or extreme values, you should not automatically exclude them from the analysis, particularly if the sample was selected randomly from a population. First, it is important to check the original data collection form or questionnaire to rule out the possibility of a data entry error. If the outlier is not a data entry error, it is then important to decide whether the observation is biologically plausible and, if it is, it should be included in the analysis.
+
+### Which measure of central tendency to use
+It is most appropriate to use the mean when the data exhibit a symmetric or bell-shaped distribution. For skewed distributions (where there are more values on the higher (negative skew) or lower side (positive skew) of the scale) the mean is not a good measure of the centre, as the calculation will be influenced by the extreme values. The median is the preferred statistic for describing central tendency in a skewed distribution.
+
+If the data exhibits a Normal distribution, we use the standard deviation as the measure of spread. Otherwise, the interquartile range is preferred. 
+
+## Parametric and non-parametric statistical methods
+Many statistical methods are based on assumptions about the distribution of the variable – these methods are known as parametric statistical methods. Many methods of statistical inferences based on theoretical sampling properties that are derived from a Normal distribution with the characteristics described above. Thus, it is important that measurements approximate to a Normal distribution before these parametric methods are used. The methods are called ‘parametric’ because they are based on the parameters – the mean and standard deviation - that underlie a Normal distribution. Statistics which do not assume a particular distribution are called distribution-free statistics, or ‘non-parametric statistics’.
+
+In this course, you will learn about both parametric and non-parametric statistical methods. Parametric summary statistical methods include those based on the mean, standard deviation and range (Module 1), and standard error and 95% confidence interval (Module 3). Parametric statistical tests also include t-tests which will be covered in Modules 4 and 5, and correlation and regression described in Module 8.
+
+Non-parametric summary statistical methods are often based on ranks, and may use such statistics as the median, mode and inter-quartile range (Module 1). Non-parametric statistical tests that use ranking are described in Module 9.
+
+## Other types of probability distributions
+In this module we have considered a Normal probability distribution and how to use it to measure the precision of continuously distributed measurements. Data also follow other types of distributions which are briefly described below. In other modules in this course, we will be looking at a range of methods to analyse health data and will refer back to these different distributions. 
+
+Normal approximation of binomial: When the sample size becomes large, it becomes cumbersome to calculate the exact probability of an event using the binomial distribution. Conveniently, with large sample sizes, the binomial distribution approximates a Normal distribution. The mean and SD of a binomial distribution can be used to calculate the probability of the event as though it was from a Normal distribution. 
+
+Poisson distribution: is another distribution which is often used in health research for modelling count data. The Poisson distribution is followed when a number of events happen in a fixed time interval. This distribution is useful for describing data such as deaths in the population in a time period. For example, the number of deaths from breast cancer in one year in women over 50 years old will be an observation from a Poisson distribution. We can also use this to make comparisons of mortality rates between populations.
+
+Many other probability distributions can be derived for functions which arise in statistical analyses but the chi-squared, t and F distributions are the three distributions that are most widely used. These have many applications, some of which are described in later modules. 
+
+The chi-squared distribution is a skewed distribution which allows us to determine the probability of a deviation between a count that we observe and a count that we expect for categorical data. One use of this is in conducting statistical tests for categorical data. See Module 7.
+
+A t-distribution is used when the population standard deviation is not known. The t-distribution is appropriate for small samples (<30) and its distribution is bell shaped similar to a Normal distribution but slightly flatter. The t-distribution is useful for comparing mean values.  See Module 4 and Module 5.

@@ -1,0 +1,66 @@
+# **1** Learning Activities {-}
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(huxtable)
+```
+
+### Activity 1.1 {-}
+
+25 participants were enrolled in a 3-week weight loss program. The following data present the weight loss (in grams) of the participants.
+
+```{r act-1-1, echo=FALSE}
+tab1_1 <- tibble::tribble(
+  ~v1, ~v2, ~v3, ~v4, ~v5,
+  255L, 198L, 283L, 312L, 283L,
+  57L,  85L, 312L, 142L, 113L,
+  227L, 283L, 255L, 340L, 142L,
+  113L, 312L, 227L,  85L, 170L,
+  255L, 198L, 113L, 227L, 255L)
+
+huxtable::huxtable(tab1_1, add_colnames = FALSE) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.8) |> 
+  set_caption("Weight loss (g) for 25 participants")
+```
+
+a) Enter these data into your software package.
+b) What type of data are these?
+c) Construct an appropriate graph to display the relative frequency of participants' weight loss. Your graph should start at 50 grams, with weight loss grouped into 50 gram bins. Provide appropriate labels for the axes and give the graph an appropriate title.
+
+### Activity 1.2 {-}
+Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The Stata file `Activity_S1.2.dta` contains data on the participants in the study. The file is located on Moodle in the Learning Activities section.
+
+Create a 2 by 2 table to show the proportions of low birth weight babies born to mothers who smoked during pregnancy and those that did not smoke during pregnancy. Answer the following questions:
+
+a) What was the total number of mothers who smoked during pregnancy?
+b) What proportion of mothers who smoked gave birth to low birth weight babies? What proportion of non-smoking mothers gave birth to low birth weight babies?
+c) Construct a stacked bar chart of the data to examine if there a difference in the proportion of babies born with a low birth weight in relation to the age group of the mother? Provide appropriate labels for the axes and give the graph an appropriate title. [Hint: plot the data using the `AgeGrp` variable]
+d) Using your answers to the question a) and b), write a brief conclusion about the relationship of low birth weight and mother’s age and smoking status.
+
+### Activity 1.3 {-}
+Estimate the mean, median, mode, standard deviation, range and interquartile range for the data Activity_S1.3.dta, available on Moodle.
+
+### Activity 1.4 {-}
+Data of diastolic blood pressure (BP) of a sample of study participants are provided in the dataset Activity_S1.4.dta. Compute the mean, median, range and SD of diastolic BP.
+
+### Activity 1.5 {-}
+In a study of 100 participants data were missing for 5 people. The missing data points were coded as ‘99’. The mean of the data was estimated as 45.0 with a standard deviation of 5.6; the smallest and greatest values are 16 and 65 respectively.
+
+If the researcher analysed the data as if the 99s were real data, would it make the following statistics larger, smaller, or stay the same?
+
+a) Mean 
+b) Standard Deviation 
+c) Range 
+
+### Activity 1.6 {-}
+
+Which of the following statements are true? The more dispersed, or spread out, a set of observations are:
+
+a) The smaller the mean value
+b) The larger the standard deviation
+c) The smaller the variance
+
+### Activity 1.7 {-}
+
+If the variance for a set of scores is equal to 9, what is the standard deviation?

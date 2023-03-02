@@ -1,0 +1,54 @@
+# **2** Learning Activities {-}
+
+### Activity 2.1 {-}
+
+In a Randomised Controlled Trial, the preference of a new drug was tested against an established drug by giving both drugs to each of 90 people. Assume that the two drugs are equally preferred, that is, the probability that a patient prefers either of the drugs is equal (50%). Use one of the binomial functions in Stata to compute the probability that 60 or more patients would prefer the new drug. In completing this question, determine:
+
+a)	The number of trials (n)
+b)	The number of successes we are interested in (k)
+c)	The probability of success for each trial (p)
+d)	The form of the Stata function: binomialp, binomial or binomialtail
+e)	The final probability.
+
+### Activity 2.2 {-}
+
+A case of Schistosomiasis is identified by the detection of schistosome ova in a faecal sample. In patients with a low level of infection, a field technique of faecal examination has a probability of 0.35 of detecting ova in any one faecal sample. If five samples are routinely examined for each patient, use Stata to compute the probability that a patient with a low level of infection:
+
+a)	Will not be identified?
+b)	Will be identified in two of the samples?
+c)	Will be identified in all the samples?
+d)	Will be identified in at most 3 of the samples?
+
+### Activity 2.3 {-}
+
+If weights of men are Normally distributed with a population mean $\mu$ = 87, and a population standard deviation, $\sigma$ = 8 kg:
+
+a)	What is the probability that a man will weigh 95 kg or more?  Draw a Normal curve of the area represented by this probability in the population (i.e. with $\mu$ = 87 kg and $\sigma$ = 8 kg).
+b)	What is the probability that a man will weigh more than 75 kg but less than 95 kg?  Draw the area represented by this probability on a standardised Normal curve.
+
+### Activity 2.4 {-}
+
+Using the health survey data (`Activity_S2.4.xlsx`) described in the Stata notes of this module (Section \@ref(import-excel)), create a new variable, BMI, which is equal to a person's weight (in kg) divided by their height (in metres) squared (i.e. $\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}$. Categorise BMI using the WHO categories provided in Section \@ref(recoding-data). Create a two-way table to display the distribution of BMI categories by sex (sex: 1 = respondent identifies as male; 2 = respondent identifies as female). Does there appear to be a difference in categorised BMI between males and females?
+
+### Activity 2.5 {-}
+
+The data in the file `Activity_S2.5.dta` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
+
+a.  Create a histogram to inspect the distribution of the variable;
+
+b.  Complete the following summary statistics for each variable:
+    - mean and median;
+    - standard deviation and interquartile range;
+    - skewness and kurtosis.
+
+Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.
+
+### Activity 2.6 {-}
+The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity2.6.csv`). Import this dataset into Stata. There are two variables in this dataset:
+
+- female: female=1; male=0
+- los: length of stay in days
+
+a)	Use Stata to examine the distribution of length of stay: overall; and separately for females and males. Comment on the distributions.
+b)	Use Stata to calculate measures of central tendency for hospital stay to obtain information about the average duration of hospital stay. Which summary statistics should you report and why? Report the appropriate statistics of the spread and measure of central tendency chosen.
+c)	Calculate the measures of central tendency for hospital duration separately for males and females. What can you conclude from comparing these measures for males and females? 

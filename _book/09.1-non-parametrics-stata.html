@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PHCM9795: Foundations of Biostatistics - 9 Stata resources</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./09.2-non-parametrics-R.html" rel="next">
+<link href="./09-non-parametrics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><strong>9</strong> Stata resources</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PHCM9795: Foundations of Biostatistics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01.1-intro-stata.html" class="sidebar-item-text sidebar-link"><strong>1</strong> An introduction to Stata</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01.2-intro-R.html" class="sidebar-item-text sidebar-link"><strong>1</strong> An introduction to R and RStudio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01.3-intro-activities.html" class="sidebar-item-text sidebar-link"><strong>1</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.1-probability-stata.html" class="sidebar-item-text sidebar-link"><strong>2</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.2-probability-R.html" class="sidebar-item-text sidebar-link"><strong>2</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.3-probability-activities.html" class="sidebar-item-text sidebar-link"><strong>2</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-precision.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.1-precision-stata.html" class="sidebar-item-text sidebar-link"><strong>3</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.2-precision-R.html" class="sidebar-item-text sidebar-link"><strong>3</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.3-precision-activities.html" class="sidebar-item-text sidebar-link"><strong>3</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.1-hypothesis-testing-stata.html" class="sidebar-item-text sidebar-link"><strong>4</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.2-hypothesis-testing-R.html" class="sidebar-item-text sidebar-link"><strong>4</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.3-hypothesis-testing-activities.html" class="sidebar-item-text sidebar-link"><strong>4</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.1-comparing-two-means-stata.html" class="sidebar-item-text sidebar-link"><strong>5</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.2-comparing-two-means-R.html" class="sidebar-item-text sidebar-link"><strong>5</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.3-comparing-two-means-activities.html" class="sidebar-item-text sidebar-link"><strong>5</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06.1-proportions-stata.html" class="sidebar-item-text sidebar-link"><strong>6</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06.2-proportions-R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06.3-proportions-activities.html" class="sidebar-item-text sidebar-link"><strong>6</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.1-correlation-and-regression-stata.html" class="sidebar-item-text sidebar-link"><strong>8</strong> Stata notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.2-correlation-and-regression-R.html" class="sidebar-item-text sidebar-link"><strong>8</strong> R notes</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.3-correlation-and-regression-activities.html" class="sidebar-item-text sidebar-link"><strong>8</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09.1-non-parametrics-stata.html" class="sidebar-item-text sidebar-link active"><strong>9</strong> Stata resources</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09.2-non-parametrics-R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09.3-non-parametrics-activities.html" class="sidebar-item-text sidebar-link"><strong>9</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10.1-sample-size-stata.html" class="sidebar-item-text sidebar-link"><strong>10</strong> Stata resources</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10.2-sample-size-R.html" class="sidebar-item-text sidebar-link"><strong>10</strong> R resources</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10.3-sample-size-activities.html" class="sidebar-item-text sidebar-link"><strong>10</strong> Learning Activities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#transforming-non-normally-distributed-variables" id="toc-transforming-non-normally-distributed-variables" class="nav-link active" data-scroll-target="#transforming-non-normally-distributed-variables">Transforming non-normally distributed variables</a></li>
+  <li><a href="#wilcoxon-ranked-sum-test" id="toc-wilcoxon-ranked-sum-test" class="nav-link" data-scroll-target="#wilcoxon-ranked-sum-test">Wilcoxon ranked-sum test</a></li>
+  <li><a href="#wilcoxon-matched-pairs-signed-rank-test" id="toc-wilcoxon-matched-pairs-signed-rank-test" class="nav-link" data-scroll-target="#wilcoxon-matched-pairs-signed-rank-test">Wilcoxon matched-pairs signed-rank test</a></li>
+  <li><a href="#estimating-rank-correlation-coefficients" id="toc-estimating-rank-correlation-coefficients" class="nav-link" data-scroll-target="#estimating-rank-correlation-coefficients">Estimating rank correlation coefficients</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><strong>9</strong> Stata resources</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="transforming-non-normally-distributed-variables" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-non-normally-distributed-variables">Transforming non-normally distributed variables</h2>
+<p>One option for dealing with a non-normally distributed varaible is to transform it into its square, square root or logarithmic value. The new transformed variable may be normally distributed and therefore a parametric test can be used. First we check the distribution of the variable for normality, e.g.&nbsp;by plotting a histogram (for example, Figure 9.1).</p>
+<p>You can calculate a new, transformed, variable using the generate command in Stata from the menu <strong>Data &gt; Create or change data &gt; Create new variable</strong>. Below are the instructions for creating a log to the base e, referred to as “ln” of the length of stay data for <code>Example_9.1.dta</code>.</p>
+<p>Go to <strong>Data &gt; Create or change data &gt; Create new variable</strong>. In the <strong>generate</strong> dialog box, type a name for your new variable into the <strong>Variable name:</strong> box: for example, <code>ln_los</code>. To include the <code>ln</code> function, you can either:</p>
+<ol type="1">
+<li>simply type <code>ln(los + 1)</code> directly into the <strong>Specify a value or an expression</strong> text box, or;</li>
+<li>click the <strong>Create</strong> button to bring up the <strong>Expression Builder</strong> dialog box. Double click on <strong>Functions</strong> to expand the list in the <strong>Categories</strong> box, then click on <strong>Mathematical</strong> to display the list of mathematical functions in the box on the right. Scroll down to the <strong>ln()</strong> function and double click on it to bring it to the main text box. Next scroll down the <strong>Categories</strong> box to <strong>Variables</strong> and click on it to check the variables you have in the dataset. In the text box, replace <code>x</code> with <code>los + 1</code> as shown below.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-gen-1.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p>Click the <strong>OK</strong> button when you are done to transfer the expression to the <strong>Specify a value or an expression</strong> box in the generate dialog box as shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-gen-2.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p>Click <strong>OK</strong> and the new variable will appear in your dataset. You can check in your Variables window or your Data Editor window.</p>
+<p>[Command: <code>gen ln_los=ln(los + 1)</code>]</p>
+<p>You can now check whether this variable is normally distributed as described in Module 2, for example with the <code>histogram</code> command as shown in Figure 9.2.</p>
+<p>To obtain the back-transformed mean shown in Output 9.1, go to <strong>Data &gt; Other Utilities &gt; Hand calculator</strong>. In the <strong>display</strong> dialog box, expand the <strong>Functions</strong> list in the <strong>Categories</strong> box and select <strong>Mathematical</strong>. On the right-hand-side box, double-click on <strong>exp()</strong>. Replace <code>x</code> with the mean, <code>3.407232</code> as shown below.</p>
+<p>Click <strong>OK</strong> when you are done, then <strong>OK</strong> or <strong>Submit</strong> in the <strong>display</strong> dialog box.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-calc.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p>[Command: <code>di exp(3.407232)</code>]</p>
+<p>If your transformed variable is approximately normally distributed, you can apply parametric tests such as the t-test. In the Worked Example 9.1 dataset, the variable <code>infect</code> (presence of nosocomial infection) is a binary categorical variable. To test the hypothesis that patients with nosocomial infection have a different length of stay to patients without infection, you can conduct a t-test on the <code>ln_los</code> variable. You will need to back transform your mean values, as shown in Worked Example 9.1 in the course notes when reporting your results.</p>
+</section>
+<section id="wilcoxon-ranked-sum-test" class="level2">
+<h2 class="anchored" data-anchor-id="wilcoxon-ranked-sum-test">Wilcoxon ranked-sum test</h2>
+<p>The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in <code>Example_9.1.dta</code>. To perform the Wilcoxon ranked-sum test go to: <strong>Statistics &gt; Summaries, tables, and tests &gt; Nonparametric tests of hypotheses &gt; Wilcoxon ranked-sum test</strong>.</p>
+<p>In the <strong>ranksum</strong> dialog box, select <code>los</code> as the <strong>Variable</strong> and select <code>infect</code> as the <strong>Grouping variable</strong> as shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-ranksum.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p>Click <strong>OK</strong> or <strong>Submit</strong> to obtain Output 9.3.</p>
+<p>[Command: <code>ranksum los, by(infect)</code>]</p>
+</section>
+<section id="wilcoxon-matched-pairs-signed-rank-test" class="level2">
+<h2 class="anchored" data-anchor-id="wilcoxon-matched-pairs-signed-rank-test">Wilcoxon matched-pairs signed-rank test</h2>
+<p>The Wilcoxon matched-pairs signed-rank test in Stata will be demonstrated using the dataset on the arthritis drug cross-over trial (<code>Example_9.2.dta</code>). Like the paired t-test the paired data need to be in separate columns.</p>
+<p>To do the analysis, go to: <strong>Statistics &gt; Summaries, tables, and tests &gt; Nonparametric tests of hypotheses &gt; Wilcoxon matched-pairs sign-rank test</strong>. In the <strong>signrank</strong> dialog box, select <code>drug_1</code> in the <strong>Variable</strong> box and type <code>drug_2</code> in the <strong>Expression</strong> box. The dialog box will look like:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-signrank.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p>Click <strong>OK</strong> or <strong>Submit</strong> to obtain Output 9.4. [Command: <code>signrank drug_1 = drug_2</code>]</p>
+</section>
+<section id="estimating-rank-correlation-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="estimating-rank-correlation-coefficients">Estimating rank correlation coefficients</h2>
+<p>The analyses for Spearman’s and Kendall’s rank correlation are conducted in similar ways.</p>
+<p><strong>Statistics &gt; Nonparametric analysis &gt; Tests of hypotheses &gt; Spearman’s rank correlation</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-spearman.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+<p><strong>Statistics &gt; Nonparametric analysis &gt; Tests of hypotheses &gt; Kendall’s rank correlation</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/mod09/stata/mod09-kendall.png" class="img-fluid" style="width:66.0%"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-non-parametrics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./09.2-non-parametrics-R.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -114,11 +114,11 @@ df <- tibble::tribble(
    17L,       "No",             17L,  20.5,            20.5,               NA
   )
 
-huxtable(df) %>%
-  set_align(everywhere, everywhere, "centre") %>% 
-  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
-  theme_article() %>% 
-  set_width(0.95) %>% 
+huxtable(df) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  set_number_format(everywhere, everywhere, fmt_pretty()) |> 
+  theme_article() |> 
+  set_width(0.95) |> 
   set_caption("Transforming data to ranks: first 21 participants")
 ```
 
@@ -188,11 +188,11 @@ df <- tibble::tribble(
                   11L,               7L,               8L,                "1"
           )
   
-huxtable(df) %>%
-  set_align(everywhere, everywhere, "centre") %>% 
-  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
-  theme_article() %>% 
-  set_width(0.8) %>% 
+huxtable(df) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  set_number_format(everywhere, everywhere, fmt_pretty()) |> 
+  theme_article() |> 
+  set_width(0.8) |> 
   set_caption("Arthritis symptom scores for 11 patients after administering two drugs")
 ```
 

@@ -1,0 +1,619 @@
+# **1** An introduction to Stata {-}
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(huxtable)
+```
+
+## Learning outcomes {-}
+
+By the end of these notes, you will be able to:
+
+- navigate the Stata interface
+- input and import data into Stata
+- use Stata menus to summarise data
+- perform basic data transformations
+- assign variable and value labels
+- understand the difference between saving data and saving Stata output
+- copy Stata output to a standard word processing package
+
+## Introduction {-}
+Stata is a powerful statistical package that is relatively easy to use. It is commonly used in health research, as well as in other fields such as econometrics and social science. The aim of these notes is to introduce the Stata environment, and to introduce the commands and procedures that are directly relevant to this course. There is much more to Stata that we will cover in these notes, and more information will be provided throughout the course.
+
+## Part 1: A simple Stata analysis {-}
+
+In this very brief section, we will introduce Stata by calculating the average of six ages. If you are using Windows, open Stata by clicking:	**Start > Stata 16 > Stata SE**
+
+If you are using MacOS, open Stata from the Applications folder. Note that while Stata is available for Windows and MacOS, most of the screenshots in these notes will be based on the Windows version.
+
+When you first open Stata, it will look something like the following.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "simple-01.png"))
+```
+
+Each Stata session has a number of windows, which we will discuss later. For now, look in the top row of icons and find the icons that look like two grids: one with a pencil, and one with a magnifying glass: ![](img/mod01/stata/data-browser-icons.png). Click the left icon, the one with the pencil. The following window will appear.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "simple-02.png"))
+```
+
+This window is known as the **Data Editor**, and is where data can be entered or changed. Enter the following six ages into Stata, starting at the top-left cell, by typing each number and then hitting Enter.
+
+	20	25	23	29	21	27
+
+If you make a mistake, simply click the incorrect cell, and enter the correct value. Your screen should look like this:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "simple-03.png"))
+```
+ 
+There are two things to note here:
+
+1.	Data in Stata are entered down a column. In Stata, columns represent variables, and rows represent observations. So our six observations of age are entered in one column.
+2.	Stata has given the name of `var1` to our column of ages. We will fix this in a moment.
+
+Close the **Data Editor** window to return to the main Stata window. You will notice that the main Stata window now has some text that you might not understand. We will explain why shortly.
+
+Let's rename our variable from `var1` to `age`. There are a few ways you can do this in Stata, but one of the most convenient is to use the **Variables Manager** which can be accessed via **Data > Variables Manager**:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "variables-manager-01.png"))
+```
+
+The **Variables Manager** is where you can change many variable properties, such as variable names or apply meaningful variable labels. Each variable is listed on a separate row, with aspects about each variable listed in the columns. To change the variable name, click `var1` in the **Name** column. Notice that information about that variable appears to the right of the window, in the **Variable properties** section.
+
+In the **Name** section within **Variable properties**, click `var1` and replace it with `age`. Click **Apply** and notice that the variable's name has been changed:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "variables-manager-02.png"))
+```
+
+Close the **Variables manager** window.
+
+Some important points about variable names in Stata: 
+- any name you choose must be no more than 32 characters long;
+- variable names must contain only letters, numbers and the underscore (_);
+- variable names should start with a letter;
+- variable names are case-sensitive (so age, Age and AGE could represent three different variables)
+
+Now that we have entered our six ages, let's calculate the mean age. Choose **Statistics > Summaries, tables and tests > Summary and descriptive statistics > Summary statistics**. The **summarize** dialog box will appear. From the **Variables** drop-down box, select `age` as below:
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "simple-05.png"))
+```
+
+Click **OK**, and the main Stata screen will appear as below.
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "simple-06.png"))
+```
+
+The final text in the main window provides a summary of `age`: there are 6 observations, with a mean age of 24.2 years, a standard deviation of 3.49 years, a minimum of 20 and a maximum of 29 years.
+
+### The Stata environment
+Now that we have seen a simple example of how to use Stata, let's describe the Stata environment. The largest window in Stata is the **Results** window. This is where the results of your analyses appear, as well as any information, warnings or error messages. You may have noticed that the **Results** window also contains commands used to conduct analyses. For example, there is a command above summary output for age:
+
+`. summarize age`
+
+This command is generated by Stata based on the entries in the **summarize** dialog box. Stata is inherently a command-driven program: the menus and dialog boxes simply generate commands that Stata interprets, and these commands (and their results) are included in the Results window. While most menu items and dialog boxes can be replicated using commands, it is easier to learn Stata using the menus and dialog boxes. In later Modules, we will include the commands that can be used as alternatives to using the Stata menus.
+
+The Stata windows are summarised below.
+
+| Window | Purpose |
+|---|---|
+| Results | Shows your issued commands, results output (e.g. tables) and error messages or warnings. |
+| Command | Where you can type in a command you want to run. The command window need not be used in this course |
+| Variables |     Gives a list of the variables in your currently opened dataset.    |
+| Properties |     Shows the properties of your currently selected variable (selected from the Variables window) and of your currently opened   dataset.    |
+| History |     Shows the history of your issued commands in your current session.    |
+| Data Editor (Edit) |     A separate window that allows you to edit or enter   data.    |
+| Data Editor (Browse) |     A separate window that allows you to view data: data   cannot be edited.    |
+
+
+Stata allows you to perform most of your work by selecting options from the appropriate menus at the top of the main Stata window. A brief description of the main menu bar options follows.
+
+**File** includes all the options you typically use in other programs, such as Open, Save, Exit. Note, that you can open or create various types of new files. The main type of file we open or create in this course is a Stata data file (.dta). In the Advanced Biostatistics and Statistical Computing course (PHCM9517), we will also use other file types such as a .do file for scripting (or writing) Stata commands.
+
+**Edit** includes the typical Copy, and Paste commands.
+
+**Data** allows you to open the **Data Editor**. You can also create new variables and change current variables using **Data > Create or change data**.
+
+**Graphics** includes the commands to create various types of graphs including box plots, histograms, scatterplots, line graphs, and bar charts.
+
+**Statistics** includes all the commands to carry out statistical analyses and perform power and sample size calculations. Much of this course will focus on using commands located in this menu.
+
+**User** is for saved files from other windows (e.g. saved graphs). You will not need to use this option in this course.
+
+**Window** can be used to select which window you want to view (e.g. Results, Data Editor).
+
+**Help** has many useful options including the viewing the PDF documentation, a Search function and other resources for using Stata. We will also demonstrate how to use helpful resources later in this introductory manual. Another useful Stata resource is the video tutorials produced by Stata: https://www.stata.com/links/video-tutorials/
+
+## Part 2: Obtaining basic descriptive statistics {-}
+
+In this exercise, we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from @therneau_grambsch10, Modeling Survival Data: Extending the Cox Model. By the end of this exercise, we will have completed the following table.
+
+```{r echo=FALSE}
+#| tbl-cap: Summary of 418 participants from the PBC study (Therneau and Grambsch, 2000)
+
+tab <- tibble::tribble(
+                     ~Characteristic,                   ~` `,                    ~Summary,
+                       "Age (years)",                     NA, "Mean (SD) or Median [IQR]",
+                               "Sex",                 "Male",                     "n (%)",
+                               "Sex",               "Female",                     "n (%)",
+                       "AST* (U/ml)",                     NA, "Mean (SD) or Median [IQR]",
+                   "Serum bilirubin",                     NA, "Mean (SD) or Median [IQR]",
+                             "Stage",                    "I",                     "n (%)",
+                             "Stage",                   "II",                     "n (%)",
+                             "Stage",                  "III",                     "n (%)",
+                             "Stage",                 "IIIV",                     "n (%)",
+         "Vital status at study end", "Alive: no transplant",                     "n (%)",
+         "Vital status at study end",    "Alive: transplant",                     "n (%)",
+         "Vital status at study end",             "Deceased",                     "n (%)"
+         )
+
+huxtable(tab) |> 
+  theme_article() |> 
+  merge_repeated_rows(everywhere, 1) |> 
+  set_width(0.95) |> 
+  add_footnote("* asparate aminotransferase")
+```
+This table is available in Table1.docx, saved on Moodle.
+
+### Opening a Stata data file
+Typing data directly into Stata is not common; we usually open data that have been saved as a Stata data file, or import data that have been entered into another package. Here, we will open a dataset that has been stored as a Stata data file (which has the `.dta` suffix).
+
+1. Locate the data set called `pbc.dta` on Moodle. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder. The description of this dataset (i.e. the metadata) have been saved as a plain text file: `pbc_info.txt`
+2. In Stata, choose **File > Open**. Browse to where you stored the dataset and click **Open**.
+3. You may get an error: "Data in memory have changed". This means that you have not saved a copy of your current data, and by importing a new dataset, your changes will be lost. As Stata can only open one set of data at a time, you can choose to: Save your current data, Don't Save your current data, or Cancel. We don't need to save the data from our simple analysis (the six ages), so we can choose Don't Save.
+
+After opening the data successfully, there will be 418 rows of data, and 20 variables. Examine the `pbc_info.txt` file for a description of each variable.
+
+### Assigning variable labels
+As we saw earlier, Stata has specific rules about variable names. Variable labels can be used to obtain more descriptive output. For example, the variable entered as bili can be labelled "Serum bilirubin (mg/dl)".
+
+To apply a variable label, open the Variables Manager: **Data > Variables Manager**. Here we can click the variable to be labelled, and enter the new variable label and click **Apply**:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "label-01.png"))
+```
+
+The variable label will now be used in place of the variable name in most output:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. summarize bili, detail
+
+                   Serum bilirubin (mg/dl)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           .4             .3
+ 5%           .5             .3
+10%           .6             .3       Obs                 418
+25%           .8             .4       Sum of Wgt.         418
+
+50%          1.4                      Mean           3.220813
+                        Largest       Std. Dev.      4.407506
+75%          3.4           22.5
+90%          8.1           24.5       Variance       19.42611
+95%           14           25.5       Skewness       2.707849
+99%         21.6             28       Kurtosis       10.95486
+```
+
+**TASK:** Assign meaningful variable labels to the variables used in Table 1.
+
+### Summarising continuous variables
+
+As we saw in Part 1, continuous variables can be summarised using **Statistics > Summaries, tables and tests > Summary and descriptive statistics > Summary statistics**. There are three continuous variables that we would like to summarise: age, AST and serum bilirubin. Each of these can be listed in the **summarize** dialog box, as shown below.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "summ-01.png"))
+```
+
+By default, the summarize command calculates the mean, standard deviation, minimum and maximum. We may be interested in obtaining the median and interquartile ranges, so we select the **Display additional statistics** option:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "summ-02.png"))
+```
+ 
+Summary statistics are produced for each of the three variables. We will use describe the output for age:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "summ-03.png"))
+```
+
+The output for a detailed summary in Stata should be read as three separate columns. The right-most column lists the number of observations, the mean and standard deviation and other numeric statistics. The left-most column contains the Percentiles: median (50%), lower quartile (25%) and upper quartile (75%). The middle column lists the four smallest and four largest observations, so that we can assess whether the smallest and largest observations are plausible.
+
+For each of our three continuous variables, we need to decide whether to present the mean and standard deviation, or the median and interquartile range. This decision can be made after examining a histogram and boxplot for each variable.
+
+### Producing a histogram
+To produce a histogram, go to menu **Graphics > Histogram**. Choose the variable to be plotted in the **Variable** box, and choose the **Frequency** radio button so that a frequency histogram is produced. Note that only one variable can be plotted at a time, so this procedure will need to be repeated for each continuous variable.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "hist-01.png"))
+```
+
+The default histogram for age appears below. 
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "hist-02.png"))
+```
+ 
+Stata will automatically choose the number of bins and the width of each bin, however these decisions may not always produce the most optimal histogram. These options can be altered by defining either: the number of bins, or the bin width (but not both); and/or the lower limit of the first bin.
+
+Looking at the command window, Stata has used the following parameters to define the histogram: bin=20, start=26.277892, width=2.6080767. This means that Stata has chosen 20 bins to represent the data, with the first bin starting at 26.2 years and each bin representing 2.6 years. A more easily read histogram might have a bin-width of 5, starting at 25 years of age, so that age categories represent 25 to less than 30, 30 to less than 35 etc, as defined below:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "hist-03.png"))
+```
+
+This results in a histogram with fewer bars and more sensible cut-points: 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "hist-04.png"))
+```
+
+### Producing a boxplot
+The boxplot dialog box is similar to the histogram dialog box. While it is possible to specify more than one variable to be plotted, this is not recommended when variables are measured on very different scales as all variables are plotted on a chart with the same scale.
+
+**TASK:** Obtain histograms and boxplots for age, AST and bilirubin. Based on these plots, decide whether the mean or the median is the appropriate summary to use for each variable. Transfer your summary statistics to Table 1.
+
+### Producing a one-way frequency table
+
+We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables.
+
+Choose **Statistics > Summaries, tables, and tests > Frequency tables > One-way table**. Choose the variable to be summarised as the **Categorical variable**, and leave all other options unchanged:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "tab-01.png"))
+```
+
+Click **OK** to obtain the following table:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+        sex |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         44       10.53       10.53
+          2 |        374       89.47      100.00
+------------+-----------------------------------
+      Total |        418      100.00
+```
+
+### Assigning value labels to categorical variables
+
+You will notice that the table above, in its current form, is uninterpretable as the 1 and 2 categories are not labelled. In this course, all variables including categorical variables are numerically coded. This is because “string” or "character" variables (e.g. entered as "male" or "female") cannot be used in many of the analysis commands of Stata. Instead, we use numerical codes and assign labels to the categories.
+
+There are two parts to applying value labels to categorical variables: 1) defining the labels, and 2) applying the labels to a variable. This may seem cumbersome, but there are times where we can apply value labels to a collection of variables (for example, multiple variables comprising yes/no categories, or Likert scales such as: strongly disagree, disagree, neutral, agree, strongly agree). Both parts can be done within the Variables Manager.
+
+**Part 1:** Defining the value labels 
+
+1. Open the Variables Manager: **Data > Variables Manager** and select the variable you want to assign labels to (in this case, `sex`). You will see that the **Value label** in the **Properties** section is blank. To create a value label, click **Manage**.
+
+Alternatively, choose **Data > Data utilities > Label utilities > Manage value labels**.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "value-labels-01.png"))
+```
+
+In the **Manage value labels** dialog box, click the **Create label** button.
+
+2. In the next dialog box, enter a name for the value label such as `sex_label` in the **Label name:** box. You can use the same name of the variable for the label, or choose a different name. Note: as for variables, the value label name is case-sensitive.
+
+3. Next, we specify what each category (i.e. 1 and 2) represents. By checking the metadata document, we see that `1` represents "Male" and `2` represents "Female". Type the number `1` in the **Value:** box and the word `Male` in the **Label:** box; then click the **Add** button. Then type the number `2` in the **Value:** box and the word `Female` in the **Label:** box; click the **Add** button again. The defined value labels for males and females should appear in the box on the left-hand side. When you are done, click the **OK** button.
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "value-labels-02.png"))
+```
+
+You will be returned to the **Manage value labels** dialog box, which will now have a record for `sex_label`. By clicking the arrow next to the label name, you will see the codes that you have defined:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "value-labels-03.png"))
+```
+
+At this point, you can close the **Manage value labels** dialog box by clicking **Close**.
+
+**Part 2:** Applying the value labels to a variable
+
+Now that the labels are defined, we need to attach them to the relevant variables. Within the Variables Manager, click the variable to be labelled (here, `sex`). The previously defined label can be assigned to this variable by clicking the **Value label** drop-down menu, and choosing the appropriate label (here, `sex_label`), and clicking **Apply**:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "value-labels-04-1.png"))
+```
+
+Alternatively, go to **Data > Data utilities > Label utilities > Assign value label to variables**. Select `sex` from the **Variables:** dropdown box, and select `sex_label` from the **Value label:** dropdown box. Click **OK**.
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "value-labels-04.png"))
+```
+
+There are a number of ways that we can confirm that the labelling has been done correctly. One of the easiest ways is to use the `codebook` command to investigate the coding of sex: **Data > Describe data > Describe data contents (codebook)**.
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. codebook sex
+
+----------------------------------------------------------------------------------------
+sex                                                                          (unlabeled)
+----------------------------------------------------------------------------------------
+
+                  type:  numeric (long)
+                 label:  sex_label
+
+                 range:  [1,2]                        units:  1
+         unique values:  2                        missing .:  0/418
+
+            tabulation:  Freq.   Numeric  Label
+                            44         1  Male
+                           374         2  Female
+```
+
+Here we can see that the codes for male and female have been applied correctly. We can also examine the Data Browser and confirm that sex has been labelled.
+
+Note: If you want to see the original coded values of the labelled groups in the Data Browser window, you can hide the value labels by choosing **Tools > Value labels > Hide all value labels** for Windows, or **View > Value labels > Hide all value labels** for Mac from the menu bar in the Data Browser window.
+
+**TASK:** create and apply value labels for Vital Status.
+
+Now that our categorical variables are labelled, we can produce the one-way frequency tables. As before, choose **Statistics > Summaries, tables, and tests > Frequency tables > One-way table**. Our newly labelled table for sex appears as below.
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+        sex |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       Male |         44       10.53       10.53
+     Female |        374       89.47      100.00
+------------+-----------------------------------
+      Total |        418      100.00
+```
+
+**TASK:** produce one-way frequency tables for the other categorical variables in Table 1 (stage and vital status).
+
+### Producing a two-way frequency table
+To produce tables summarising two categorical variables, go to **Statistics - Summaries, tables, and tests - Frequency tables - Two-way table with measures of association**.
+
+To produce a two-way table showing stage of disease by sex using the pbc.dta data, do the following. In the **tabulate2 – two way table with measures of association dialog box**, select the variable `sex` as the **Row variable:**, and `stage` as the **Column variable:** as shown below.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "mod01-twoway.png"))
+```
+
+Click **OK** to obtain the output below.
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. tabulate sex stage
+
+           |                    stage
+       sex |   Stage 1    Stage 2    Stage 3    Stage 4 |     Total
+-----------+--------------------------------------------+----------
+      Male |         3          8         16         17 |        44 
+    Female |        18         84        139        127 |       368 
+-----------+--------------------------------------------+----------
+     Total |        21         92        155        144 |       412 
+```
+
+You may notice in the above that the number of observations is now 412. This is because there are missing observations for either sex or stage: which is it, and how would you determine this?
+
+From the cross-tabulation, you can see the individual frequencies of participants in each of the categories in each cell. For example, there are 3 male participants who have Stage 1 disease. You can also read the totals for each row and column. For example, there are 44 males, and 144 participants have Stage 4 disease.
+
+You can also add percentages into your table. For example, in the **tabulate2 – two way table with measures of association** dialog box tick the box **Within-column relative frequencies** for separate percentages of sex within each stage.
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. tabulate sex stage, column
+
++-------------------+
+| Key               |
+|-------------------|
+|     frequency     |
+| column percentage |
++-------------------+
+
+           |                    stage
+       sex |   Stage 1    Stage 2    Stage 3    Stage 4 |     Total
+-----------+--------------------------------------------+----------
+      Male |         3          8         16         17 |        44 
+           |     14.29       8.70      10.32      11.81 |     10.68 
+-----------+--------------------------------------------+----------
+    Female |        18         84        139        127 |       368 
+           |     85.71      91.30      89.68      88.19 |     89.32 
+-----------+--------------------------------------------+----------
+     Total |        21         92        155        144 |       412 
+           |    100.00     100.00     100.00     100.00 |    100.00 
+
+```
+
+We can see that the 3 male participants with Stage 1 disease made up 14% of those with Stage 1 disease.
+
+### Saving data from Stata
+Now that you have made some changes to the pbc data, it is good practice to save the dataset. Stata uses its own file format to save data. Data saved from Stata will end with the .dta suffix, and will contain useful information such as variable labels and value labels, as well as any new variables created. However, data saved by Stata will only be able to be opened by Stata - you will not easily be able to share your data with colleagues who do not have Stata. To save a Stata dataset, choose **File > Save**.
+
+If you want to share data with colleagues who do not have Stata, you can use **File > Export** to save your data in another file format (recognising that variable and value labels will not be exported.)
+
+### Copying output from Stata
+It is important to note that *saving data in Stata will not save your output*. Stata data and output are completely separate to one another. The easiest way to retain the output of your analyses is to copy the output into a word processor package (e.g. Microsoft Word) before closing Stata. Once Stata is closed, all the output (that is, all your hard work!) is lost.
+
+To copy output from Stata, you can select the output and choose **Edit > Copy**. This will copy the output as plain text for pasting into a Word document. If you select a single table for copying, you can also **Copy table** or **Copy table as HTML**. Whichever way you copy output into Word, you will need to make sure you reformat the table and relabel your header row and column properly for your assignments as described in Module 1. Alternatively, you can copy with the Copy table option for pasting into an Excel worksheet and reformat your table in Excel before pasting into Word.
+
+Copying output from Stata can get a little complicated to explain. We have included a video on Moodle to summarise the different ways output can be copied.
+
+**TASK:** complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.
+
+## Part 3: Creating other types of graphs {-}
+
+### Bar graphs
+
+Here we will create the bar chart shown in Figure \@ref(fig:fig-1-1) using the `pbc.dta` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
+
+To create a Bar chart, go to the Stata menu Graphics > Bar chart and the bar-chart dialog box will appear.
+
+#### Simple bar graph
+For most of our bar graphs, we will be plotting frequencies, so we choose **Graph of frequencies within categories**
+
+```{r, echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-01.png"))
+```                      
+
+For a simple bar graph, go to the **Categories** tab, tick the **Group 1** box and choose `stage` as your first grouping variable:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-02.png"))
+```
+
+Click the **Y axis** tab to include a more meaningful label for the y axis:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-03.png"))
+```
+
+Click **Submit** or **OK**, and the following graph will appear:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-04.png"))
+```
+
+Note: Value labels have been assigned to stage to create more meaningful output, and bar colours have been changed to allow for grey-scale printing.
+
+### Submit vs OK button
+
+You may note that most dialog boxes in Stata have two choices: the **Submit** button, and the **OK** button. Both buttons will submit the command to be run, and both will produce a graph. The **Submit** button will submit the command but leave the dialog box open, while the **OK** button will submit the command and close the dialog box. Given the building a graph often involves many incremental changes, the **Submit** button is a useful option.
+
+### Clustered bar graph
+
+To create a clustered bar chart as shown in Figure \@ref(fig:fig-1-2), go to: **Graphics > Bar chart** again. With the previous settings in place (i.e. stage as grouping variable and with appropriate axes labels), now choose `sex` as the **Group 1** variable, and tick **Group 2** and choose `stage` as the second grouping variable.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-05.png"))
+```
+
+In the **Options** tab, tick **Treat first category grouping as y variables**. When you are done, click  **OK** or **Submit**.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-06.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-07.png"))
+```
+ 
+In a clustered bar chart, the **Group 2** variable is the main variable grouping (here, `stage`), and each of the **Group 2** categories is split by the **Group 1** variable (here, `sex`).
+
+### Stacked bar graph
+To create a stacked bar chart shown in Figure \@ref(fig:fig-1-3), bring up the **Bar chart** dialog box, go to the **Options** tab and tick **Stack bars on y variables**.
+
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-08.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-10.png"))
+```
+
+### Stacked bar graph of relative frequencies
+
+If one wants to compare the sex distribution across the stage categories, it would be convenient if all the bars have the same height (100%). To generate such a bar chart in Stata, tick **Base bar heights on percentages** in the **Options** tab of the **Bar charts** dialog box. Change the y-axis title in the **Y axis** tab to `Percentage of students in each age group`.
+
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-11.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "bar-12.png"))
+```
+
+### Editing graphs in Stata
+There are two main approaches of editing many aspects of a graph (such as colours, labels, font-size etc). The first approach is to use options within the dialog boxes. For example, if we wanted to use a grey-and-white colour scheme for Figure X, we can define the colours of the bars in the Bars tab of the bar chart dialog box.
+
+Here, we will define Bar 1 to be `White`:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-01.png"))
+```
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-02.png"))
+```
+ 
+Bar 2 can be defined to be `Gray`, resulting in the graph below:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-03.png"))
+```
+
+The second approach to customising graphs is to use the **Graph Editor**. Each Stata graph window includes a Graph Editor button:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H", fig.cap="Graph editor button on Stata for Windows"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-04.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H", fig.cap="Graph editor button on Stata for MacOS"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-05.png"))
+```
+
+The **Graph Editor** window comprises two main sections: the graph that can be edited on the left, and a list of elements of the graph on the right. Most aspects of a graph's appearance can be edited in the Graph Editor, usually by double-clicking an element (e.g. a bar, or a bar segment) and changing its properties. There are too many ways to change a graph's appearance to document here: feel free to explore and experiment!
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H", fig.cap="Graph editor window: Windows"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-06.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H", fig.cap="Graph editor window: MacOS"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "edit-07.png"))
+```
+
+When you are done editing in the Graph Editor, click the Graph Editor icon again to stop the Graph Editor. You will be prompted to save your graph. You can click the **Save** button, choose **Save as** and choose to save using the **PNG (\*.png)** format. You can then insert your saved PNG file into your word processing package as usual.
+
+### Creating line graphs
+To demonstrate the graphing of aggregate data with Stata, we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered into Stata as `Example_1.2.dta`.
+
+If you look at the data in the **Data Editor** window, you will see that there are 20 rows - a row for each year of data. Each row contains the number of new cases (`NCases`), number of deaths (`NDeaths`), the incidence rate (`RCases`) and death rate (`RDeaths`).
+
+To create a line graph as in Figure \@ref(fig:fig-1-5) select **Graphics > Twoway graph (scatter, line, etc.)** and click the **Create...** button in the **twoway – Twoway graphs** dialog box to bring up a dialog box for defining Plot 1.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-01.png"))
+```
+
+Choose **Line** as the plot type, `rcases` as the **Y variable** and `year` as the **X variable** as shown below. 
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-02.png"))
+```
+
+Click **Accept**, and then click **Submit** to check how the graph looks.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-03.png"))
+```
+
+This looks ok, but we want to add the death rate to the plot. Click **Create...** again and add a Plot 2 for mortality rate:
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-03-1.png"))
+```
+
+Choose **Line** as the plot type again, `rdeaths` as the **Y** variable and `year` as the **X variable**. Click **Accept**, and then **Submit** to check how the graph looks like now. You should see both variables plotted:
+ 
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-04.png"))
+```
+
+To change the format of either line, click the relevant plot definition in the main **twoway** dialog box and click **Edit**. Click the **Line properties** button and choose a **Pattern** (e.g. Short-dash), then click **Submit** again.
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-05.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-06.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-07.png"))
+```
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-08.png"))
+```
+
+Next, we need an appropriate label for the y-axis. In the main **twoway** dialog box, click on the **Y axis** tab and label the title appropriately (e.g. `Age-standardardised rate` and then click **OK** or **Submit**. The graph below should be produced. 
+
+```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "stata", "line-09.png"))
+```
+ 
+[Command: `twoway (line rcases year) (line rdeaths year, lpattern(shortdash)), ytitle(Age-standardised rate)`]

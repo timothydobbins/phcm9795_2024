@@ -1,0 +1,542 @@
+# Introduction to statistics and presenting data
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(huxtable)
+library(tibble)
+```
+
+## Learning objectives {-}
+
+By the end of this module, you will be able to:
+
+- Define the term statistics;
+- Describe and identify the underpinning concepts of descriptive and inferential statistics;
+- Distinguish between different types of variables (i.e. quantitative – discrete and continuous; and qualitative – ordinal and nominal);
+- Construct appropriate frequency tables from raw data; 
+- Compute summary statistics to describe the centre and spread of data; 
+- Describe the (centre and spread of the) data using appropriate graphs (histogram and box plot); 
+- Present and interpret graphical summaries of variables using a variety of graphs (bar charts, line-graphs, histograms, boxplots, pie charts and others).
+
+## Readings {-}
+
+@kirkwood_sterne01; Chapters 2 and 3. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
+
+@bland15; Chapter 4. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730)
+
+@acock10; Chapter 5.
+
+Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18 [[UNSW Library Link]](https://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=http://dx.doi.org/10.1136/heartjnl-2017-311581)
+
+Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20 [[UNSW Library Link]](https://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=http://dx.doi.org/10.1016/j.eururo.2020.04.048)
+
+## An introduction to statistics
+The dictionary of statistics (Upton and Cook, 2008) defines statistics simply as: “The science of collecting, displaying, and analysing data.”
+
+Statistics is a branch of mathematics, together with theoretical/pure mathematics and applied mathematics. Within the field of statistics, there are two main divisions: mathematical statistics and applied statistics. Mathematical statistics deals with development of new methods of statistical inference and requires detailed knowledge of abstract mathematics for its implementation. Applied statistics applies the methods of mathematical statistics to specific subject areas, such as business, psychology, medicine and sociology.
+
+Biostatistics can be considered as the “application of statistical techniques to the medical and health fields”. However, biostatistics sometimes overlaps with mathematical statistics. For instance, given a certain biostatistical problem, if the standard methods do not apply then existing methods must be modified to develop a new method.
+
+### Scope of Biostatistics
+Research is essential in the practice of health care. Biostatistical knowledge helps health professionals in deciding whether to prescribe a new drug for the treatment of a disease or to advise a patient to give up drinking alcohol. To practice evidence-based healthcare, health professionals must keep abreast of the latest research, which requires understanding how the studies were designed, how data were collected and analysed, and how the results were interpreted. In clinical medicine, biostatistical methods are used to determine the accuracy of a measurement, the efficacy of a drug in treating a disease, in comparing different measurement techniques, assessing diagnostic tests, determining normal values, estimating prognosis and monitoring patients.  Public health professionals are concerned about the administration of medical services or ensuring that an intervention program reduces exposure to certain risk factors for disease such as life-style factors (e.g. smoking, obesity) or environmental contaminants. Knowledge of biostatistics helps determine them make decisions by understanding, from research findings, whether the prevalence of a disease is increasing or whether there is a causal association between an environmental factor and a disease.
+
+The value of biostatistics is to transform (sometimes vast amounts of) data into meaningful information, that can be used to solve problems, and then be translated into practice (i.e. to inform public health policy and decision making). When undertaking research having a biostatistician as part of a multidisciplinary team from the outset, together with scientists, clinicians, epidemiologists, healthcare specialists is vital, to ensure the validity of the research being undertaken and that information is interpreted appropriately.
+
+## Descriptive and inferential statistics
+To understand the concepts of statistics, it is important to realise there are two ways of using data: one is via descriptive statistics and the other is via inferential statistics.
+
+### Descriptive statistics
+Descriptive statistics provide a ‘picture’ of the characteristics of a population. Examples of descriptive statistics based on the population are given below.
+
+#### Births
+These examples on descriptive statistics consider all the births in Australia in 2019 (@australianinstituteofhealthandwelfare21). The Australian Institute of Health and Welfare produce comprehensive reports annually on the characteristics of Australia’s mothers and babies of the most recent year of data from the National Perinatal Data Collection (NPDC).
+
+One headline from the report is “Nearly two thirds of mothers were aged between 25 and 34 years (185,958 women in 2019)”, which is accompanied by a figure illustrating the age distribution of mothers in Australia giving birth in 2019. This example shows descriptive statistics that are presented as the actual number of women giving birth in 2019, together with a comparison of age distributions across Australian states. 
+
+Further descriptive statistics provide summary information, about the average (mean) age of women giving birth in 2019 (30.8 years) and the proportion of mothers who were Indigenous (4.8%). 
+
+#### Deaths
+In another example, consider characteristics of all the deaths in Australia in 2020 (@australianbureauofstatistics21). 
+
+> 	“During the pandemic many countries saw a change in mortality patterns, including COVID-19 becoming a leading cause of death.”
+
+The report presents the leading causes of death in 2020, comparing the age-standardised rates between 2019 and 2020:
+
+- "The top five leading causes of death remained the same as in 2019 (Ischaemic heart disease, Dementia including Alzheimer's disease, Cerebrovascular diseases, Lung cancer and Chronic lower respiratory diseases).
+- The age-standardised death rate decreased for all top five leading causes of death from 2019. 
+- Deaths due to chronic lower respiratory diseases (including emphysema) had the highest proportional rate decrease from 2019 at 17.8%.
+- The reduction in acute respiratory conditions such as pneumonia contributed to a decrease in the top five leading causes of death.
+- All top five leading causes of death are non-communicable diseases (they are not passed from person to person)."
+
+The information was also presented as a visualisation / infographic, demonstrating a simplistic, yet valuable way of presenting data and enabling rates of death for 2019 and 2020.
+
+```{r fig-1-1, echo=FALSE, out.width = "100%"}
+#| fig-cap: Age-standardised death rates for the top five leading causes, 2019-2020 (a, b, c, d, e, f)
+knitr::include_graphics(here::here("img", "mod01", "cause-death.png"))
+```
+
+### Inferential statistics
+Inferential statistics use data collected from a sample of the population, to make conclusions (inferences) about the whole population (that the sample was drawn from).
+
+The following example is about a sample of prisoners, from the National Prisoner Health Data Collection (NPHDC). The NPHDC is the main source of national data about the health of prisoners in Australia. It gathers information over a 2-week period from prison entrants, dischargees, prisoners visiting the prison health clinic, and prisoners taking prescribed medication.
+
+We have information about the population of prisoners, given as the number of prisoners in Australia’s prisons from the ABS website: ^[http://www.abs.gov.au/ausstats/abs@.nsf/Lookup/by%20Subject/4517.0~2015~Main%20Features~Prisoner%20characteristics,%20Australia~28] 
+
+> At 30 June 2015: There were 36,134 prisoners in Australian prisons, an increase of 7% (2,345 prisoners) from 30 June 2014.
+
+Characteristics (sex, age group and Indigenous status) of the sample of prisoners from the NPHDC are given in the following table. We can use this information to make inferences about the whole population of prisoners that the sample was drawn from (The health of Australia’s prisoners 2015). 
+
+```{r fig-1-2, echo=FALSE, out.width = "66%", fig.cap="Characteristics of the sample of prisoners from the NPHDC", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "prisoner-health.png"))
+```
+
+## Variables
+A variable is simply a characteristic that is being measured or observed. For example, height, weight, eye colour, income, country of birth are all types of variables.
+
+When we are examining associations between variables, we may also use the terms: outcome variable (sometimes called a dependent variable) and explanatory variable (sometimes called an independent variable).
+
+For example, some rural areas of Bangladesh have a very high concentration of arsenic in the drinking water. Children who consume arsenic-contaminated water become malnourished. In this example, being malnourished is the outcome variable which is being caused, or influenced, by the exposure variable: arsenic-contaminated water. Thus, the outcome variable is the variable of interest which may change in response to some exposure.
+
+### Types of data
+Data are groups of information that represent the qualitative or quantitative attributes of variables or a group of variables. For example, the ages of students attending a university gym in a particular hour were recorded. The thirty ages are given below:
+
+```{r tbl-1-ages, echo=FALSE}
+#| tbl-cap: Age of 30 gym attendees
+
+tab1_ages <- tibble::tribble(
+  ~v1, ~v2, ~v3, ~v4, ~v5, ~v6,
+   18L, 17L, 20L, 21L, 23L, 19L,
+   19L, 18L, 18L, 20L, 21L, 23L,
+   20L, 23L, 19L, 21L, 19L, 20L,
+   20L, 22L, 19L, 22L, 20L, 21L,
+   18L, 23L, 24L, 18L, 20L, 21L
+   )
+   
+huxtable::huxtable(tab1_ages, add_colnames = FALSE) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.8)
+```
+
+The variable here is age and there are 30 observations recorded.
+
+**Quantitative** data are numerical data that can be measured or counted such as age, weight, height, etc. These data can be discrete or continuous. Biostatistics mostly deals with quantitative variables or numerical data.
+
+A **discrete** variable can have only one of a distinct set of values. For a discrete variable, observations are based on a count where both ordering and magnitude are important, such that numbers represent actual measurable quantities rather than mere labels. 
+
+For example, the number of cancer cases in a specified area emerging over a certain period, the number of motorbike accidents in Sydney, the number of times a woman has given birth, the number of beds in a hospital.  It is noteworthy that natural ordering exists among the data points, that is, a hospital with 100 beds has more beds than a hospital with 75 beds. Moreover, a difference between 40 and 50 beds is the same as the difference between 80 and 90 beds. A discrete variable can take only non-negative integer values: a woman cannot have 5.7 births. However, we can calculate summaries of discrete variables that are not necessarily discrete. For instance, if one woman has given birth four times and another woman 5 times, then on average, these two women have 4.5 births.
+
+**Continuous** data can take any values within a defined range.
+
+For example, age, height, weight or blood pressure, are continuous variables because we can make any divisions we want on them, and they can be measured as small as the instrument allows.  As an illustration, if two people have the same blood pressure measured to the nearest millimetre of mercury, we may get a difference between them if the blood pressure is measured to the nearest tenth of millimetre. If they are still the same (to the nearest tenth of a millimetre), we can measure them with even finer gradations until we can see a difference.
+
+**Qualitative** data have values that describe a 'quality' or 'characteristic'. Categorical data are qualitative data and do not have measurable numeric values. These data can be nominal or ordinal.
+
+A **nominal** variable consists of unordered categories. For example, gender, race, ethnic group, religion, eye colour etc. Both the order and magnitude of a nominal variable are unimportant.  If a nominal variable takes on one of two distinct categories, such as black or white then it is called dichotomous or binary variable. Other examples would be male or female; smoker or non-smoker; exposed to arsenic or not exposed. A number is often used to represent (label) each of the categories; for example, males could be assigned the value 1 and females 0; in the case of exposed and unexposed, exposed could be assigned 1 and unexposed 0. A nominal variable can also have more than two categories, such as blood group, with labels and categories as follows (1=Group A, 2=Group B, 3=Group AB, 4=Group O). Numbers are used for the sake of convenience of analysis when using a computer package. 
+
+**Ordinal** data consist of ordered categories where differences between categories are important, such as socioeconomic status (low, medium, high) or student evaluation rating could be classified according to their level of satisfaction, where 1 represents excellent, 2 is satisfactory and 3 is unsatisfactory. Here natural order exists among the categories, where a smaller number represents higher satisfaction. 
+
+## Presenting data
+
+We will now look at ways to present frequency information numerically in tables and graphs.
+
+### Frequency tables
+
+#### Worked example
+
+Consider the ages of 30 students visiting a university gym in a particular hour presented in @tbl-1-ages. This information is difficult to interpret in its raw form, but becomes more clear if the ages are grouped in a frequency table as shown in @tbl-1-ages-freq1.
+
+```{r tbl-1-ages-freq1, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Frequency of ages of students visiting a gym
+
+tab1_2 <- tribble(
+  ~Age, ~Frequency,
+"17",	1L,
+"18",	5L,
+"19",	5L,
+"20",	7L,
+"21",	5L,
+"22",	2L,
+"23",	4L,
+"24",	1L,
+"Total", 30L
+)
+
+huxtable(tab1_2) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.6)
+```
+
+The frequency is a count of the number of individuals of each age in the corresponding row. Three more columns can be added to the frequency table to give further insight: relative frequency, cumulative frequency and cumulative relative frequency (@tbl-1-ages-freq2).
+
+```{r tbl-1-ages-freq2, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Frequency of ages of students visiting a gym
+
+tab1_3 <- tribble(
+  ~Age, ~Frequency, ~`Relative frequency (%)`, ~`Cumulative frequency`, ~`Cumulative relative frequency (%)`,
+  "17",	1L,   3L,	 1L,	3L,
+  "18",	5L,  17L,	 6L,   20L,
+  "19",	5L,  17L,	11L,   37L,
+  "20",	7L,  23L,	18L,   60L,
+  "21",	5L,  17L,	23L,   77L,
+  "22",	2L,   7L,	25L,   83L,
+  "23",	4L,  13L,	29L,   97L,
+  "24",	1L,   3L,	30L,  100L,
+  "Total", 30L, 100L,	NA,   NA
+)
+
+huxtable(tab1_3) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.9)
+```
+
+The relative frequency is the frequency expressed as a proportion or percentage of the total frequency.  For example, 5 out of 30 students are aged 21, so the relative frequency is (5/30) $\times$ 100 = 16.7%.
+
+The cumulative frequency here shows the total number of students less than or equal to a certain age, while the cumulative relative frequency is the percentage (of the total) who are less than a certain age.  For example, the cumulative frequency of students at the gym aged 19 years or less is 1 + 5 + 5 = 11, and the cumulative relative frequency is (11/30) $\times$ 100 = 36.7%.
+
+The information presented in @tbl-1-ages-freq2 is called the frequency distribution of the variable age.  Frequency distributions can also be presented for qualitative (categorical) data.
+
+For example, if we know that there are 12 males and 18 females in our data, this can be presented as in @tbl-1-sex-freq.  We should not interpret the cumulative frequency for nominal data (e.g. gender, eye colour or cancer types) as these data cannot be ranked. However, we can calculate the cumulative frequency for ordinal data (e.g. student satisfaction level, cancer stage).
+
+```{r tbl-1-sex-freq, echo=FALSE}
+#| tbl-cap: Frequency of sex of students visiting a gym
+
+tab1_4 <- tribble(
+  ~Sex, ~Frequency, ~`Relative frequency (%)`,
+  "Male",	12L,  40L,
+  "Female",	18L,  60L,
+  "Total", 30L, 100L
+)
+
+huxtable(tab1_4) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.9)
+```
+
+### Tables with more than one variable 
+So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than one variable in a table – called a cross tabulation, or a two-way (summarising two variables) table or multi-way (summarising more than two variables) table. However, tables become complex when more than two variables are incorporated (you may need to present the information as two tables or incorporate additional rows and columns).
+
+In our example above, if we have two categorical variables (e.g. sex with two categories male and female and BMI status with three categories Normal, Overweight and Obese) measured on each subject (student), we can classify the two variables simultaneously using two-way tables of frequency as shown in @tbl-1-sex-bmi-freq.
+
+```{r tbl-1-sex-bmi-freq, echo=FALSE}
+#| tbl-cap: Frequency of students visiting a gym by sex and BMI status*
+
+tab1_5 <- tibble::tribble(
+  ~Sex, ~`Not overweight`, ~`Overweight`, ~`Obese`, ~Total,
+  "Male",          1L,                9L,           2L,    12L,
+  "Female",         11L,                6L,           0L,    17L,
+  "Total",         12L,               15L,           3L,    29L
+)
+
+huxtable(tab1_5) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.9) |> 
+  add_footnote("*BMI was missing for 1 student")
+```
+
+### Tables containing more than two variables
+In @fig-1-2, characteristics of the sample of prisoners from the NPHDC were presented. This table contains information about sex, age group and Indigenous status from different groups of prisoners; prison entrants, discharges, and prisoners in custody. This type of condensed information is often found in reports and journal articles giving demographic information, by different groups considered in the study.
+
+We might also consider a table containing further pieces of information. The table presented in @fig-prison-education (from the health of Australia’s prisoners 2015 report) compares prison entrants and the general community by three variables: age group, Indigenous status, and highest level of completed education.
+
+Can you see any issues with the presentation of this table?
+
+```{r fig-prison-education, echo=FALSE, out.width = "66%", fig.cap="Highest level of completed education in prison entrants and the general community", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "prisoner-education.png"))
+```
+Source: Australian Institute of Health and Welfare 2015. The health of Australia’s prisoners 2015. Cat. no. PHE 207. Canberra: AIHW.
+
+Some issues in this table:
+
+- The title of the table does not contain full information about the variables in the table;
+- It is unclear how the percentages were calculated (which groupings added to 100%);
+- The ages are not labelled as such, thus without reading the text in report it is unclear that these are age groupings.
+
+### Table presentation guidelines (Woodward, 2013)
+
+1. Each table (and figure) should be self-explanatory, i.e. the reader should be able to understand it without reference to the text in the body of the report.
+    -	This can be achieved by using complete, meaningful labels for the rows and columns and giving a complete, meaningful title. 
+    - Footnotes can be used to enhance the explanation.
+2. Units of the variables (and if needed, method of calculation or derivation) should be given and missing records should be noted (e.g. in a footnote).
+3. A table should be visually uncluttered. 
+    - Avoid use of vertical lines. 
+    - Horizontal lines should not be used in every single row, but they can be used to group parts of the table. 
+    - Sensible use of white space also helps enormously; use equal spacing except where large spaces are left to separate distinct parts of the table. 
+    - Different typefaces (or fonts) may be used to provide discrimination, e.g. use of bold type and/or italics.
+4. The rows and columns of each table should be arranged in a natural order to help interpretation. For instance, when rows are ordered by the size of the numbers they contain for a nominal variable, it is immediately obvious where relatively big and small contributions come from.
+5. Tables should have a consistent appearance throughout the report so that the paper is easy to follow (and also for an aesthetic appearance). Conventions for labelling and ordering should be the same (for both tables as well as figures) for ease of comparison of different tables (and figures).
+6. Consider if there is a particular table orientation that makes a table easier to read. 
+
+Given the different possible formats of tables and their complexity, some further guidelines are given in the following excellent references: 
+
+- Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18
+- Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20
+
+## Graphical presentation
+
+### Bar graphs
+
+Using the PBC data from the Introduction to Stata or Introduction to R exercise, we can present the distribution of Stage of Disease graphically using a bar graph (@fig-bar-1). Bar graphs, which are suitable for plotting discrete or categorical variables, are defined by the fact that the bars do not touch.
+
+```{r fig-bar-1, echo=FALSE, out.width = "75%", fig.cap="Bar graph of stage of disease from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar.png"))
+```
+
+Information from more than one variable can be presented as clustered or multiple bar chart (bars side-by-side) (@fig-bar-2). This type of graph is useful when examining changes in the categories separately, but also comparing the grouping variable between the main bar variable. Here we can see that Stage 3 and Stage 4 disease is the most common for both males and females, but there are many more females within each stage of disease.
+
+```{r fig-bar-2, echo=FALSE, out.width = "75%", fig.cap="Bar graph of stage of disease by sex from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex.png"))
+```
+
+An alternative bar graph is a stacked or composite bar graph, which retains the overall height for each category, but differentiates the bars by another variable (@fig-bar-3).
+
+```{r fig-bar-3, echo=FALSE, out.width = "75%", fig.cap="Stacked bar graph of stage of disease by sex from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked.png"))
+```
+
+Finally, a stacked relative bar chart (@fig-bar-4) displays the proportion of grouping variable for each bar, where each overall bar represents 100%. These graphs allow the reader to compare the proportions between categories. We can easily see from @fig-bar-4 that the distribution of sex is similar across each stage of disease.
+
+```{r fig-bar-4, echo=FALSE, out.width = "75%", fig.cap="Relative frequency of sex within stage of disease from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked-relative.png"))
+```
+
+### Line graphs
+A line graph is effective to illustrate trends over time (e.g. change over several years). Let’s look at an example from cancer epidemiology.
+
+Cancer incidence is the number of new cases of cancer diagnosed in a population in a given time period. A useful comparison with the incidence rate is the mortality rate, revealing information about the deaths from cancer in the same period. @fig-line-1 shows the prostate cancer trend in the NSW male population in the period 1972-2014, specifically the age-standardised incidence and mortality rate per 100,000.
+
+```{r fig-line-1, echo=FALSE, out.width="66%", fig.pos="H", fig.cap="Prostate cancer age-standardised incidence and mortality rates (per 100,000), NSW, 1972-2014"}
+knitr::include_graphics(here::here("img", "mod01", "line-graph-prostate-cancer.png"))
+```
+Source: The Cancer Institute NSW (2018) Cancer statistics NSW. https://www.cancer.nsw.gov.au/cancer-statistics-nsw (Accessed: 24 Jan 2019).
+
+The age standardised incidence rate for prostate cancer increased steadily in the period 1972 – 1991, from 55.2 cases per 100,00 to 109.3 cases per 100,000. There were two notable peaks in incidence in the period 1972-2014. In particular, there was an increase between 1992-1994, and also between 2002-2009. Since 2009 (to 2014) the rates decreased from 198.9 per 100,000 to 148.2 per 100,000. Whilst the incidence rate for prostate cancer has fluctuated over the period, the age standardised mortality rate remained relatively stable (around 35 deaths per 100,000). Since 2009 the mortality rate appears to be decreasing and was at its lowest in 2014 at 22.1 per 100,000.  
+
+[The increase in prostate cancer incidence in the early 1990’s occurred at a time when blood testing of men for Prostate Specific Antigen (PSA) became more widespread. The more recent peak in incidence in the early 2000’s maybe explained by PSA being increasingly used as a screening test for men who did not have symptoms of prostate cancer.] 
+
+### Pie charts
+An example of graphical presentation that we would recommend avoiding, is a pie chart. These are often used to present the proportion of each category that contributed to the total. However, their use is limited and sometimes misleading, and the same information can be presented as a stacked bar chart of proportions. Here are some reasons why not to use pie charts:
+
+- Not ideal when there are many categories to compare
+- The use of percentages is not appropriate when the sample size is small
+- Can be misleading by using different size pies, different rotations and different colours to draw attention to specific groups
+- 3D and exploding bar charts further distort the effect of perspective and may confuse the reader
+
+### Graphical presentation guidelines
+Consider the following guidelines for the appropriate presentation of graphs in scientific journals and reports (Woodward, 2013).
+
+- Figures should be self-explanatory and have consistent appearance through the report. 
+- A title should give complete information. Note that figure titles are usually placed below the figure, whereas for tables titles are given above the table. 
+- Axes should be labelled appropriately 
+- Units of the variables should be given in the labelling of the axes. Use footnotes to indicate any calculation or derivation of variables and to indicate missing values
+- If the Y-axis has a natural origin, it should be included, or emphasised if it is not included. 
+- If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison 
+- Columns of bar charts should be separated by a space
+- Three dimensional graphs should be avoided unless the third dimension adds additional information 
+
+## Summary statistics and variation in data
+We often collect measurements that are continuous in nature, that is measurements such as height, weight, time, blood pressure etc which can be measured accurately to one or more decimal places. A useful way of describing the continuous data is via summary statistics. These include measures to describe the distribution of data points via the central tendency (e.g. mean, median) and spread (e.g. standard deviation and inter quartile range). We also examine the data visually by graphing it using histograms and box plots.
+
+### Mathematical and statistical notation
+When computing summary statistics or using more formal statistical methods, mathematical and statistical notation is often used. Below are some of the common statistical terms and interpretation that will be used in the course and which are seen in many text books.
+
+|   Notation       |   Interpretation|
+|:------------|:----------------|
+|  $x$        | An observation in your sample |
+|  $\sum x$   | Sum of all the observations |
+| $N$         |	Total population size |
+| $n$	        | Sample size |
+| $\mu$ (mu)  | Population mean |
+| $\sigma^2$  |	Population variance |
+| $\sigma$	  | Population standard deviation |
+| $\bar{x}$	  | Sample mean |
+| $s^2$	      | Sample variance |
+| $s$	        | Sample standard deviation |
+
+### Measures of central tendency
+
+#### Worked example
+
+In our random sample of 30 students attending a university gym on a given day, their weight in kilograms was measured (see below). Weight is a continuous measurement (similar to height, blood pressure etc) that in theory can be measured to infinitely small units, though in practice they can be measured accurately to one or two decimal places. 
+
+We will use these data to look at measures of central tendency and spread of the data and other summary statistics. 
+
+60.0					
+62.5	62.5	62.5			
+65.0	65.0	65.0			
+67.5	67.5	67.5	67.5	67.5	
+70.0	70.0	70.0	70.0	70.0	70.0
+72.5	72.5	72.5	72.5		
+75.0	75.0	75.0	75.0	75.0	
+77.5	77.5				
+80.0					
+
+#### Mean
+The most commonly used measure of the central tendency of the data is the mean value. The mean of a set of values is often referred to as the average of all the values. The mean ($\bar{x}$) of a sample dataset is calculated using the following formula:
+
+$$\bar{x} = \frac{\sum x}{n}$$
+
+From the weights example: $\bar{x}$ = 2100/30 = 70.0. Thus, the mean weight of this sample is 70.0 kg
+
+#### Median and mode
+Other measures of central tendency include the median and mode. The median is the true centre of the data, the value at which half of the measurements lie above it and half of the measurements lie below it. 
+
+To estimate the median, the data are ordered from the lowest to highest values, and the middle value is used. If the middle value is between two data points (if there are an even number of observations), the median is an average of the two values. 
+Using the weight example, the median would be 70.0 kg.
+
+For a set of eight exam results ranked in order: 
+
+48	51	55	59	63	64	69	75
+
+The median is the average of the two middle observations: 59 and 63. So the median is (59+63)/2 = 61
+
+The mode is the most frequent value in the distribution, in the weight example this would be 70.0 kg as this value features most frequently. The mode is not used frequently.
+
+### Describing the spread of the data
+In addition to measuring the centre of the data, we also need a robust estimate of the spread of the data points.
+
+#### Range
+The absolute measure of the spread of the data is the range, that is the difference between the highest and lowest values in the dataset. 
+
+Range = highest data value – lowest data value
+
+Using the weights example, Range = 80.0 - 60.0 = 20.0 kg
+
+Note that while the range is 20.0 kg, the range is often reported as the actual lowest and highest values e.g. Range 60 to 80 kg.
+
+The range is not always ideal as it only describes the extreme values, without considering how the bulk of the data is distributed between them. 
+
+#### Variance and standard deviation
+More useful statistics to describe the spread of the data around a mean value are the variance and standard deviation. These measures of variability depend on the difference between individual observations and the mean value (deviations). If all values are equal to the mean there would be no variability at all, all deviations would be zero; conversely large deviations indicate greater variability.
+
+One way of combining deviations in a single measure is to first square the deviations and then average the squares. Squaring is done because we are equally interested in negative deviations and positive deviations; if we averaged without squaring, negative and positive deviations would ‘cancel out’. This measure is called the variance of the set of observations. It is ‘the average squared deviation from the mean’. Because the variance is in ‘square’ units and not in the units of the measurement, a second measure is derived by taking the square root of the variance. This is the standard deviation (SD), and is the most commonly used measure of variability in practice, as it is a more intuitive interpretation since it is in the same units as the units of measurement (adapted from: Williams, 2015).
+
+The formula for the variance of a sample ($s^2$) is:
+
+$$ s^2 = \frac{\sum(x - \bar{x})^2}{n-1} $$
+
+Note that the deviations are first squared before they are summed to remove the negative values; once summed they are divided by the sample size minus 1.
+
+The sample standard deviation is the square root of the of the sample variance:
+
+$$s = \sqrt{s^2}$$
+For the worked weights example, we would calculate the sample variance:
+
+$$\begin{aligned}
+  s^2 &= \frac{(60.0 - 70.0)^2 + (62.5 - 70.0)^2 + \dots + (80.0 - 70.0)^2}{30-1} \\
+      &= \frac{737.5}{29} \\
+      &= 25.43 \text{ kg}^2
+  \end{aligned}$$ 
+
+
+with a sample standard deviation: $s = \sqrt{25.43} = 5.04 \text{ kg}$.
+
+Thus, in our sample of 30 students, we have an estimated mean weight of 70.0 kg, with a variance of 25.43 kg^2^ and a standard deviation of 5.04 kg.
+
+Characteristics of the standard deviation
+- It is affected by every measurement
+- It is in the same units as the measurements
+- It can be converted to measures of precision (standard error and 95% confidence intervals) (Module 3)
+
+Interquartile range
+The inter-quartile range (IQR) describes the range of measurements in the central 50% of values around the median i.e. the bottom 25% and top 25% of values are discarded and only the values in the 25%-75% range are quoted. The IQR is the preferred measure of spread when the median has been used to describe central tendency.
+
+In the weights example the IQR would be 67.5 – 75.0 (i.e. the middle 50% of values).
+
+## Population values: mean, variance and standard deviation
+The examples above show how the sample mean, range, variance and standard deviation are calculated from the sample of weight measures from 30 people. If we had information on the weight of the total population that the sample was drawn from, we could calculate all the summary statistics described above (for the sample) for the population.
+
+The equation for calculating the population mean is the same as that of sample mean, though now we denote the population mean as μ:
+
+$$ \mu = \frac{\sum{x}}{N} $$
+
+Where $\sum{x}$ represents the sum of the values in the population, and $N$ represents the total number of measurements in the population.
+
+To calculate the population variance ($\sigma^2$) and standard deviation($\sigma$), we use a slightly modified version of the equation for $s^2$:
+
+$$ \sigma^2 = \frac{\sum(x - \mu)^2}{N} $$
+
+with a population standard deviation of: $\sigma = \sqrt{\sigma^2}$.
+
+In practice, we rarely have the information for the entire population to be able to calculate the population mean and standard deviation. Theoretically, however, these statistics are important for two main purposes: 
+
+1. the characteristics of the normal distribution (the most important probability distribution discussed in later modules) are defined by the population mean and standard deviation;
+2. while calculating sample sizes (discussed in later modules) we need information about the population standard deviation, which is usually obtained from the existing literature.
+
+## Using graphs to display the centre and spread of the data
+As well as calculating measures of central tendency and spread to describe the characteristics of the data, a graphical plot is very helpful to better understand the characteristics and distribution of the measurements obtained. *Histograms* and *box plots* are excellent ways to graphically display continuous data.
+
+### Frequency histograms
+A histogram that plots the frequency of the grouped observations is called a frequency histogram. Some features of a frequency histogram:
+
+- The area under each rectangle is proportional to the frequency 
+- The rectangles are drawn without gaps between them (unlike a bar graph)
+- The data are ‘binned’ into discrete intervals (of (usually of equal width)
+- The mid-point of the histogram represents the centre (mean, median) of the data 
+
+If the rectangles are symmetrically distributed about the middle of the histogram, we say that the data are symmetric, and the mean and median will be approximately equal.
+
+If the histogram has a longer tail to the right, then the data are said to be positively skewed (or skewed to the right), and the mean will be greater than the median.
+
+If the histogram has an extended tail to the left, then the data are negatively skewed (or skewed to the left) and the mean will be smaller than the median.
+
+> The skewness of a distribution is defined by the location of the longer tail, not the location of the peak of the data.
+
+@fig-hist-1 presents two histograms from the PBC data from the Introduction to Stata exercise: for age and serum bilirubin. We can see that the distribution for age is roughly symmetric, while the distribution for serum bilirubin is highly positively skewed (or skewed to the right).
+
+```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histogram of age (left) and serum bilirubin (right) from PBC study data"}
+knitr::include_graphics(here::here("img", "mod01", "hist-symmetric-skewed.png"))
+```
+
+### Boxplots
+Another useful way to inspect the distribution of data is by using a box plot. In a box plot:
+
+- the line across the box shows the median value
+- the limits of the box show the 25-75% range (i.e. the inter-quartile range (IQR) where the middle 50% of the data lie)
+- the bars (or whiskers) indicate the most extreme values (highest and lowest) that fall within 1.5 times the interquartile range from each end of the box
+    - the upper whisker is the highest value falling within 75th percentile plus 1.5 × IQR
+    - the lower whisker is the lowest value falling within 25th percentile minus 1.5 × IQR
+-	any values in the dataset lying outside the whiskers are plotted individually.
+
+If the data are symmetric, the line across the box (the median value) will be in the centre of the box, and the tails will be roughly equal.
+
+@fig-box-1 presents two boxplots from the PBC data: for age and serum bilirubin. We can see that the boxplot for age has roughly equal tails, and the median (the horizontal line) lies roughly in the middle of the interquartile range (the shaded box). It would be reasonable to assume that age follows a symmetric distribution from this plot. The boxplot for serum bilirubin shows a much longer upper tail, and a median much closer to the bottom of the shaded box than the middle. The boxplot also shows a number of points above the 75th percentile plus 1.5 × IQR. As the upper tail is longer than the lower tail, this distribution is positively skewed.
+
+
+```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age (left) and serum bilirubin (right) from PBC study data"}
+knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
+```
+
+## How to report summary statistics
+When reporting summary statistics, it is important not to present results with too many decimal places. Doing so implies that your data have a higher level of precision than they do. For example, presenting a mean blood pressure of 100.2487 mmHg implies that blood pressure can be measured accurately to at least three decimal places.
+
+There are a number of guidelines that have been written to help in the presentation of numerical data. Many of these guidelines are based on the number of decimal places, while others are based on the number of significant figures. Briefly, the number of significant figures are "the number of digits from the first non-zero digit to the last meaningful digit, irrespective of the position of the decimal point. Thus, 1.002, 10.02, 100200 (if this number is expressed to the nearest 100) all have four significant digits." @armitage_etal13
+
+A summary of these guidelines that will be used in this course appear below.
+
+| Summary statistic                       | Guideline (reference)                                                                              |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------|
+| Mean                                    | It is usually appropriate to quote the mean to one extra decimal place compared with the raw data. (Altman)    |
+| Median, Interquartile range, Range      | As medians, interquartile ranges and ranges are based on individual data points, these values should be presented with the same precision as the original data.    |
+| Percentage                              | Percentages do not need to be given with more than one decimal place at most. When the sample size is less than 100, no decimal places should be given. (Altman) |
+| Standard deviation                      | “The standard deviation should usually be given to the same accuracy as the mean, or with one extra decimal place.” Altman    |
+| Standard error                          | As per Standard Deviation    |
+| Confidence interval                     | Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)    |
+| Test statistic                          | Test statistics should not be presented with more than two decimal places.         |
+| P-value                                 | Report p values to a single significant figure unless the p value is close to 0.05 (say, 0.01 – 0.2), in which case, report two significant figures. Do not report “not significant” for p values of 0.05 or higher. Very low p values can be reported as p < 0.001 or similar. A p value can indeed be 1, although some investigators prefer to report this as >0.9. (Assel)    |
+| Difference in means                     | As for the estimated means    |
+| Difference in proportions               | As for the estimated proportions    |
+| Odds ratio / Relative risk              | Hazard and odds ratios are normally reported to two   decimal places, although this can be avoided for high odds ratios (Assel)    |
+| Correlation coefficient                 | One or two decimal places, or more when very close to ±1   (Cole)    |
+| Regression coefficient                  | Use one more significant figure than the underlying data   (adapted from Cole)    |
+
+Sources:
+
+@altman90
+
+@cole15
+
+@assel_etal19

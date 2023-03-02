@@ -5,6 +5,9 @@
 There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and a copy of the data set, `Activity9.1.csv` is also available on Moodle.
 
 ```{r act-9-1, echo=FALSE}
+#| tab-cap: Urinary level of ascorbic acid (mg per 3 hours) of university students
+library(huxtable)
+
 tab9_1 <- tibble::tribble(
   ~`Living and dining in Hall (n.=.17)`, ~`Living and dining at Home (n = 13)`,
                                     34L,                                  163L,
@@ -26,11 +29,10 @@ tab9_1 <- tibble::tribble(
                                    121L,                                    NA
   )
 
-huxtable::huxtable(tab9_1) %>%
-  set_align(everywhere, everywhere, "centre") %>% 
-  theme_article() %>% 
-  set_width(0.8) %>% 
-  set_caption("Urinary level of ascorbic acid (mg per 3 hours) of university students")
+huxtable::huxtable(tab9_1) |>
+  set_align(everywhere, everywhere, "centre") |> 
+  theme_article() |> 
+  set_width(0.8)
 ```
 
 a) Examine the distribution of the data using a box-plot and histogram, and obtain descriptive statistics. How would you describe the distribution of ascorbic acid?

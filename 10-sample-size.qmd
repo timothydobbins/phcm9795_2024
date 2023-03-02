@@ -51,7 +51,7 @@ tab10_1 <- tibble::tribble(
   0.1, "10% or 90%",  
   0.15, "15% or 85%",
   0.2, "20% or 80%",
-  0.25, "25% or 75%") %>% 
+  0.25, "25% or 75%") |> 
   mutate(`1%` = ceiling(1.96^2 * P * (1-P)/(0.01^2)),
          `1.5%` = ceiling(1.96^2 * P * (1-P)/(0.015^2)),
          `2%` = ceiling(1.96^2 * P * (1-P)/(0.02^2)),
@@ -63,14 +63,14 @@ tab10_1 <- tibble::tribble(
          `10%` = ceiling(ifelse(P > 0.10, 1.96^2 * P * (1-P)/(0.10^2), NA)),
          `15%` = ceiling(ifelse(P > 0.15, 1.96^2 * P * (1-P)/(0.15^2), NA)))
 
-huxtable(select(tab10_1, -P)) %>%
-  set_align(2:6, everywhere, ".") %>% 
-  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
-  theme_article() %>% 
-  insert_row("", "Width of 95% confidence interval (precision)", "", "", "", "", "", "", "", "", "", after = 0) %>% 
-  merge_cells(1, 2:11) %>% 
-  set_align(1, everywhere, "centre") %>% 
-  set_width(0.95) %>% 
+huxtable(select(tab10_1, -P)) |>
+  set_align(2:6, everywhere, ".") |> 
+  set_number_format(everywhere, everywhere, fmt_pretty()) |> 
+  theme_article() |> 
+  insert_row("", "Width of 95% confidence interval (precision)", "", "", "", "", "", "", "", "", "", after = 0) |> 
+  merge_cells(1, 2:11) |> 
+  set_align(1, everywhere, "centre") |> 
+  set_width(0.95) |> 
   set_caption("Sample size required to calculate a 95\\% confidence interval with a given precision")
 ```
 
@@ -113,15 +113,15 @@ df <- tibble::tribble(
   "No evidence", "β", "✓"
 )
 
-huxtable(df) %>%
-  insert_row("Study result", "Truth", "", after=0) %>% 
-  merge_cells(1, 2:3) %>% 
-  theme_article() %>% 
-  set_align(everywhere, 2:3, "center") %>% 
-  set_width(0.8) %>% 
-  set_bold(1, everywhere, TRUE) %>% 
-  set_bold(2, everywhere, FALSE) %>% 
-  set_caption("Comparison of study result with the truth") %>% 
+huxtable(df) |>
+  insert_row("Study result", "Truth", "", after=0) |> 
+  merge_cells(1, 2:3) |> 
+  theme_article() |> 
+  set_align(everywhere, 2:3, "center") |> 
+  set_width(0.8) |> 
+  set_bold(1, everywhere, TRUE) |> 
+  set_bold(2, everywhere, FALSE) |> 
+  set_caption("Comparison of study result with the truth") |> 
   set_escape_contents(everywhere, everywhere, FALSE)
 ```
 
@@ -132,15 +132,15 @@ df <- tibble::tribble(
   "No evidence", "$\\beta$", "$\\checkmark$"
 )
 
-huxtable(df) %>%
-  insert_row("Study result", "Truth", "", after=0) %>% 
-  merge_cells(1, 2:3) %>% 
-  theme_article() %>% 
-  set_align(everywhere, 2:3, "center") %>% 
-  set_width(0.8) %>% 
-  set_bold(1, everywhere, TRUE) %>% 
-  set_bold(2, everywhere, FALSE) %>% 
-  set_caption("Comparison of study result with the truth") %>% 
+huxtable(df) |>
+  insert_row("Study result", "Truth", "", after=0) |> 
+  merge_cells(1, 2:3) |> 
+  theme_article() |> 
+  set_align(everywhere, 2:3, "center") |> 
+  set_width(0.8) |> 
+  set_bold(1, everywhere, TRUE) |> 
+  set_bold(2, everywhere, FALSE) |> 
+  set_caption("Comparison of study result with the truth") |> 
   set_escape_contents(everywhere, everywhere, FALSE)
 ```
 
@@ -421,11 +421,11 @@ tab <- tibble::tribble(
    10L,    0.1,   101L,   1006,   1107
   )
 
-huxtable::huxtable(tab) %>%
-  set_align(everywhere, everywhere, ".") %>% 
-  theme_article() %>% 
-  set_number_format(everywhere, everywhere, fmt_pretty()) %>% 
-  set_width(0.8) %>% 
+huxtable::huxtable(tab) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_number_format(everywhere, everywhere, fmt_pretty()) |> 
+  set_width(0.8) |> 
   set_caption("Increasing the number of controls per case")
 ```
 
