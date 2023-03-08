@@ -1,15 +1,33 @@
-# Preface {.unnumbered}
+# Course introduction {-}
 
-```{r message=FALSE, warning=FALSE}
-library(huxtable)
-library(magrittr)
-```
+Welcome to PHCM9795 Foundations of Biostatistics.
 
+This introductory course in biostatistics aims to provide students with core biostatistical skills to analyse and present quantitative data from different study types. These are essential skills required in your degree and throughout your career.
 
-This is a Quarto book.
+We hope you enjoy the course and will value your feedback and comment throughout the course.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Course information {-}
 
-```{r}
-1 + 1
-```
+Biostatistics is a foundational discipline needed for the analysis and interpretation of quantitative information and its application to population health policy and practice. 
+
+This course is central to becoming a population health practitioner as the concepts and techniques developed in the course are fundamental to your studies and practice in population health. In this course you will develop an understanding of, and skills in, the core concepts of biostatistics that are necessary for analysis and interpretation of population health data and health literature. 
+
+In designing this course, we provide a learning sequence that will allow you to obtain the required graduate capabilities identified for your program. This course is taught with an emphasis on formulating a hypothesis and quantifying the evidence in relation to a specific research question. You will have the opportunity to analyse data from different study types commonly seen in population health research.
+
+The course will allow those of you who have covered some of this material in your undergraduate and other professional education to consolidate your knowledge and skills.  Students exposed to biostatistics for the first time may find the course challenging at times. Based on student feedback, the key to success in this course is to devote time to it every week. We recommend that you spend an average of 10-15 hours per week on the course, including the time spent reading the course notes and readings, listening to lectures, and working through learning activities and completing your assessments. Please use the resources provided to assist you, including online support.
+
+## Units of credit {-}
+This course is a core course of the Master of Public Health, Master of Global Health and Master of Infectious Diseases Intelligence programs and associated dual degrees, comprising 6 units of credit towards the total required for completion of the study program. A value of 6 UOC requires a minimum of 150 hours work for the average student across the term.
+
+## Course aim {-}
+This course aims to provide students with the core biostatistical skills to apply appropriate statistical techniques to analyse and present population health data.
+
+## Learning outcomes {-}
+On successful completion of this course, you will be able to:
+
+1. Summarise and visualise data using statistical software.
+2. Demonstrate an understanding of statistical inference by interpreting p-values and confidence intervals.
+3. Apply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.
+4. Determine the appropriate sample size when planning a research study.
+5. Present and interpret statistical findings appropriate for a population health audience.
+

@@ -48,7 +48,7 @@ To understand the concepts of statistics, it is important to realise there are t
 Descriptive statistics provide a ‘picture’ of the characteristics of a population. Examples of descriptive statistics based on the population are given below.
 
 #### Births
-These examples on descriptive statistics consider all the births in Australia in 2019 (@australianinstituteofhealthandwelfare21). The Australian Institute of Health and Welfare produce comprehensive reports annually on the characteristics of Australia’s mothers and babies of the most recent year of data from the National Perinatal Data Collection (NPDC).
+These examples on descriptive statistics consider all the births in Australia in 2019 (@australianinstituteofhealthandwelfare21). The Australian Institute of Health and Welfare produce comprehensive reports annually on the characteristics of Australia’s mothers and babies of the most recent year of data from the National Perinatal Data Collection.
 
 One headline from the report is “Nearly two thirds of mothers were aged between 25 and 34 years (185,958 women in 2019)”, which is accompanied by a figure illustrating the age distribution of mothers in Australia giving birth in 2019. This example shows descriptive statistics that are presented as the actual number of women giving birth in 2019, together with a comparison of age distributions across Australian states. 
 
@@ -70,7 +70,7 @@ The report presents the leading causes of death in 2020, comparing the age-stand
 The information was also presented as a visualisation / infographic, demonstrating a simplistic, yet valuable way of presenting data and enabling rates of death for 2019 and 2020.
 
 ```{r fig-1-1, echo=FALSE, out.width = "100%"}
-#| fig-cap: Age-standardised death rates for the top five leading causes, 2019-2020 (a, b, c, d, e, f)
+#| fig-cap: Age-standardised death rates for the top five leading causes, 2019-2020
 knitr::include_graphics(here::here("img", "mod01", "cause-death.png"))
 ```
 
@@ -79,11 +79,11 @@ Inferential statistics use data collected from a sample of the population, to ma
 
 The following example is about a sample of prisoners, from the National Prisoner Health Data Collection (NPHDC). The NPHDC is the main source of national data about the health of prisoners in Australia. It gathers information over a 2-week period from prison entrants, dischargees, prisoners visiting the prison health clinic, and prisoners taking prescribed medication.
 
-We have information about the population of prisoners, given as the number of prisoners in Australia’s prisons from the ABS website: ^[http://www.abs.gov.au/ausstats/abs@.nsf/Lookup/by%20Subject/4517.0~2015~Main%20Features~Prisoner%20characteristics,%20Australia~28] 
+We have information about the population of prisoners, given as the number of prisoners in Australia’s prisons from the [ABS website](http://www.abs.gov.au/ausstats/abs@.nsf/Lookup/by%20Subject/4517.0~2015~Main%20Features~Prisoner%20characteristics,%20Australia~28): 
 
 > At 30 June 2015: There were 36,134 prisoners in Australian prisons, an increase of 7% (2,345 prisoners) from 30 June 2014.
 
-Characteristics (sex, age group and Indigenous status) of the sample of prisoners from the NPHDC are given in the following table. We can use this information to make inferences about the whole population of prisoners that the sample was drawn from (The health of Australia’s prisoners 2015). 
+Characteristics (sex, age group and Indigenous status) of the sample of prisoners from the NPHDC are given in the following table. We can use this information to make inferences about the whole population of prisoners that the sample was drawn from.
 
 ```{r fig-1-2, echo=FALSE, out.width = "66%", fig.cap="Characteristics of the sample of prisoners from the NPHDC", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "prisoner-health.png"))
@@ -123,7 +123,7 @@ The variable here is age and there are 30 observations recorded.
 
 A **discrete** variable can have only one of a distinct set of values. For a discrete variable, observations are based on a count where both ordering and magnitude are important, such that numbers represent actual measurable quantities rather than mere labels. 
 
-For example, the number of cancer cases in a specified area emerging over a certain period, the number of motorbike accidents in Sydney, the number of times a woman has given birth, the number of beds in a hospital.  It is noteworthy that natural ordering exists among the data points, that is, a hospital with 100 beds has more beds than a hospital with 75 beds. Moreover, a difference between 40 and 50 beds is the same as the difference between 80 and 90 beds. A discrete variable can take only non-negative integer values: a woman cannot have 5.7 births. However, we can calculate summaries of discrete variables that are not necessarily discrete. For instance, if one woman has given birth four times and another woman 5 times, then on average, these two women have 4.5 births.
+For example, the number of cancer cases in a specified area emerging over a certain period, the number of motorbike accidents in Sydney, the number of times a woman has given birth, the number of beds in a hospital.  It is noteworthy that natural ordering exists among the data points, that is, a hospital with 100 beds has more beds than a hospital with 75 beds. Moreover, a difference between 40 and 50 beds is the same as the difference between 80 and 90 beds. A discrete variable can take only non-negative integer values: a woman cannot have 5.7 births. However, we can calculate summaries of discrete variables that are not necessarily discrete. For instance, if one woman has given birth four times and another woman five times, then on average, these two women have 4.5 births.
 
 **Continuous** data can take any values within a defined range.
 
@@ -532,6 +532,35 @@ A summary of these guidelines that will be used in this course appear below.
 | Odds ratio / Relative risk              | Hazard and odds ratios are normally reported to two   decimal places, although this can be avoided for high odds ratios (Assel)    |
 | Correlation coefficient                 | One or two decimal places, or more when very close to ±1   (Cole)    |
 | Regression coefficient                  | Use one more significant figure than the underlying data   (adapted from Cole)    |
+
+
+```{r tbl-1-pres, echo=FALSE}
+#| tbl-cap: Guidelines for presentation of statistical results
+
+tab1_pres <- tibble::tribble(
+~`Summary statistic`,       ~`Guideline (reference)`,
+"Mean", "It is usually appropriate to quote the mean to one extra decimal place compared with the raw data. (Altman)",
+"Median, Interquartile range, Range", "As medians, interquartile ranges and ranges are based on individual data points, these values should be presented with the same precision as the original data.",
+"Percentage", "Percentages do not need to be given with more than one decimal place at most. When the sample size is less than 100, no decimal places should be given. (Altman)",
+"Standard deviation", "The standard deviation should usually be given to the same accuracy as the mean, or with one extra decimal place. (Altman)",
+"Standard error", "As per standard deviation",
+"Confidence interval", "Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)",
+"Test statistic", "Test statistics should not be presented with more than two decimal places.",
+"P-value", "Report p values to a single significant figure unless the p value is close to 0.05 (say, 0.01 – 0.2), in which case, report two significant figures. Do not report `not significant` for p values of 0.05 or higher. Very low p values can be reported as p < 0.001 or similar. A p value can indeed be 1, although some investigators prefer to report this as >0.9. (Assel)",
+"Difference in means", "As for the estimated means",
+"Difference in proportions", "As for the estimated proportions",
+"Odds ratio / Relative risk", "Hazard and odds ratios are normally reported to two decimal places, although this can be avoided for high odds ratios (Assel)",
+"Correlation coefficient", "One or two decimal places, or more when very close to ±1   (Cole)",
+"Regression coefficient", "Use one more significant figure than the underlying data   (adapted from Cole)"
+     )
+   
+huxtable::huxtable(tab1_pres) |>
+  theme_article() |> 
+  set_width(0.95) |> 
+  set_valign(everywhere, everywhere, "middle")
+```
+
+
 
 Sources:
 
