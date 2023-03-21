@@ -34,7 +34,7 @@ In stratified sampling, the population is divided into distinct non-overlapping 
 
 The purpose of using random sampling is to minimise selection bias to ensure that the sample enrolled in a study is representative of the population being studied. This is important because the summary statistics that are obtained can then be regarded as valid in that they can be applied (generalised) back to the population.
 
-A non-representative sample can occur when random sampling is used, simply by chance. However, non-random sampling methods, such as using a convenient study population, will often result in a non-representative sample being selected so that the summary statistics from the sample cannot be generalised back to the population from which the participants were drawn. The effects of non-random error are much more serious than the effects of random error. Concepts such as non-random error (i.e. systematic bias), selection bias, validity and generalisability are discussed in more detail in PHCM9476: Foundations of Epidemiology.
+A non-representative sample might occur when random sampling is used, simply by chance. However, non-random sampling methods, such as using a study population that does not represent the whole population, will often result in a non-representative sample being selected so that the summary statistics from the sample cannot be generalised back to the population from which the participants were drawn. The effects of non-random error are much more serious than the effects of random error. Concepts such as non-random error (i.e. systematic bias), selection bias, validity and generalisability are discussed in more detail in PHCM9796: Foundations of Epidemiology.
 
 ## Standard error and precision
 
@@ -122,13 +122,51 @@ If a variable $X$ is normally distributed and the population standard deviation 
 ### Worked Example 3.2
 The publication of a study using a sample of 30 patients reported a sample mean of 70 kg and a sample standard deviation of 6 kg. Find the 95% confidence interval estimate for the mean weight from this sample.
 
-In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset). This command uses the t-distribution, and the output is shown below:
+In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset) (@sec-cimean-stata-summ):
 
-#### Stata Output 3.2: 95%CI for a given sample mean, sample standard deviation and sample size {-}
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. cii means 30 70 6
+
     Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
 -------------+---------------------------------------------------------------
              |         30          70    1.095445        67.75956    72.24044
 ```
 
-We are 95% confident that the true mean weight of the population from which the sample was drawn lies between 67.8 kg and 72.2 kg.
+In R we use the `ci_mean` function provided in @sec-cimean-r-summ:
+
+```{r echo=FALSE}
+### Copy this section
+ci_mean <- function(n, mean, sd, width=0.95, digits=3){
+  lcl <- mean - qt(p=(1 - (1-width)/2), df=n-1) * sd/sqrt(n)
+  ucl <- mean + qt(p=(1 - (1-width)/2), df=n-1) * sd/sqrt(n)
+  
+  print(paste0(width*100, "%", " CI: ", format(round(lcl, digits=digits), nsmall = digits),
+               " to ", format(round(ucl, digits=digits), nsmall = digits) ))
+
+}
+### End of copy
+```
+
+```{r echo=TRUE}
+ci_mean(n=30, mean=70, sd=6, width=0.95)
+```
+
+Both commands use the t-distribution, and the output can be interpreted as: we are 95% confident that the true mean weight of the population from which the sample was drawn lies between 67.8 kg and 72.2 kg.
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 03.1-precision-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 03.2-precision-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 03.3-precision-activities.qmd >}}

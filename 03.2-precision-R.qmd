@@ -1,16 +1,13 @@
-# **3** R notes {-}
-
-## Calculating a 95% confidence interval of a mean
-
-### Individual data
+## Calculating a 95% confidence interval of a mean: individual data {#sec-cimean-r-ind}
 
 To demonstrate the computation of the 95% confidence interval of a mean we have used data from `Example_1.3.rds` which contains the weights of 30 students:
 
 ```{r}
-library(jmv)
-
 students <- readRDS("data/examples/Example_1.3.rds")
+```
 
+We can examine the data set using the `summary` command:
+```{r}
 summary(students)
 ```
 
@@ -25,7 +22,7 @@ The output of the `t.test()` function gives us the sample mean (70.0 kg) as well
 Note: the `descriptives()` function within the `jmv` package also calculates a 95% confidence interval around the mean. **It is recommended not to use this function** as it currently (as of June 2022) uses a *z* value to calculate the confidence interval, rather than a *t* value.
 
 
-### Summarised data
+## Calculating a 95% confidence interval of a mean: summarised data {#sec-cimean-r-summ}
 
 For Worked Example 3.2 where we are given the sample mean, sample standard deviation and sample size. R does not have a built-in function to calculate a confidence interval from summarised data, but we can write our own.
 
