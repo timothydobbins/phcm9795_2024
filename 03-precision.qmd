@@ -124,7 +124,7 @@ The publication of a study using a sample of 30 patients reported a sample mean 
 
 In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset) (@sec-cimean-stata-summ):
 
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 . cii means 30 70 6
 
     Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]

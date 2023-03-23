@@ -53,9 +53,11 @@ pdf-engine: xelatex
 format:
   html:
     theme: cosmo
+    highlight-style: monochrome
   pdf:
     papersize: A4
     documentclass: memoir
     mainfont: Roboto
     sansfont: Clancy
     include-in-header: preamble.tex
+    highlight-style: monochrome
