@@ -19,7 +19,7 @@ book:
     # - 03.1-precision-stata.qmd
     # - 03.2-precision-R.qmd
     # - 03.3-precision-activities.qmd
-    # - 04-hypothesis-testing.qmd
+    - 04-hypothesis-testing.qmd
     # - 04.1-hypothesis-testing-stata.qmd
     # - 04.2-hypothesis-testing-R.qmd
     # - 04.3-hypothesis-testing-activities.qmd

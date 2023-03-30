@@ -1,5 +1,3 @@
-# **4** R notes {-}
-
 ## One sample t-test
 
 We will use data from `Example_4.1.rds` to demonstrate how a one-sample t-test is conducted in R.
@@ -18,4 +16,10 @@ To test whether the mean diastolic blood pressure of the population from which t
 t.test(bloodpressure$dbp, mu=71)
 ```
 
-The output gives a test statistic, degrees of freedom and a P values from the two-sided test. The mean of the sample is provided, as well as the 95% confidence interval.
+The output provides:
+
+- a test statistic (t=3.07);
+- degrees of freedom for the test statistic (df = 732);
+- a P-value from the two-sided test (P=0.002);
+- the mean of the sample (72.4);
+- and the 95% confidence interval of the mean (71.6 to 73.3).

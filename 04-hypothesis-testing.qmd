@@ -246,7 +246,7 @@ R can display P-values in a very cryptic way: $\text{6.478546e-05}$ for example.
 
 $$
 \begin{aligned}
-\text{6.478546e-05} &= 6.478546 \times 10^{-5} \\
+6.478546e-05 &= 6.478546 \times 10^{-5} \\
   &= 6.478546 \times 0.00001 \\
   &= 0.00006478546
 \end{aligned}
@@ -258,3 +258,22 @@ As for the Stata output, such a P-value would be better presented as P<0.0001.
 In the following modules in this course, several formal statistical tests will be described to analyse different types of data sets that have been collected to test set null hypotheses. It is important that the correct statistical test is selected to generate P-values and estimate effect size. If an incorrect statistical test is used, the assumptions of the test may be violated, the effect size may be biased and the P value generated may be incorrect. 
 
 Selecting the correct test to use in each situation depends on the study design and the nature of the variables collected. Figure 1 in the Appendix shows a decision tree which enables you to decide the type of test to select based on the nature of the data.
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 04.1-hypothesis-testing-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 04.2-hypothesis-testing-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 04.3-hypothesis-testing-activities.qmd >}}
+

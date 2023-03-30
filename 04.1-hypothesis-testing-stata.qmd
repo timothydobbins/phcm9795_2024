@@ -1,5 +1,3 @@
-# **4** Stata notes {-}
-
 ## One sample t-test
 We will use data from `Example_4.1.csv` to demonstrate how a one-sample t-test is conducted in Stata. To perform the test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**.
 
