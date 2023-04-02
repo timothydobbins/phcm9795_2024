@@ -1,5 +1,3 @@
-# Summary statistics for binary data
-
 ## 95% confidence intervals for proportions
 We can use the `BinomCI(x=, n=, method=)` function within the `DescTools` package to compute 95% confidence intervals for proportions. Here we specify `x`: the number of successes, `n`: the sample size, and optionally, the `method` (which defaults to Wilson's method).
 

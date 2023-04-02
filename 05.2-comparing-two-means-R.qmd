@@ -1,5 +1,3 @@
-# **5** R notes {-}
-
 ## Setting an observation to missing
 
 Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor. While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.

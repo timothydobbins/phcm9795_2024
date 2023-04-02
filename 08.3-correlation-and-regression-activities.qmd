@@ -1,5 +1,3 @@
-# **8** Learning Activities {-}
-
 ### Activity 8.1 {-}
 
 To investigate how body weight (kg) effects blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95% confidence interval 52 to 84) and the intercept was −1570 (95% confidence interval −2655 to −492).

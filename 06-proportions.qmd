@@ -325,3 +325,22 @@ We can use Stata or R to estimate the odds ratio and its 95% confidence interval
 The odds ratio is estimated as 17.6, and its 95% confidence interval is estimated 9.0 to 34.3 (Cornfield, using Stata) or 9.0 to 34.5 (Woolf, using R).
 
 Risk statistics are usually only reported with one or two decimal places. The interpretation of the confidence intervals for both the relative risk and the odds ratio is the same as for the confidence intervals around other summary measures in that it shows the region in which we are 95% confident that the true population estimate lies.
+
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 06.1-proportions-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 06.2-proportions-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 06.3-proportions-activities.qmd >}}

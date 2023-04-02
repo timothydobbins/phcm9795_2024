@@ -1,5 +1,3 @@
-# **5** Learning Activities {-}
-
 ### Activity 5.1 {-}
 
 Indicate what type of t-test could be used to analyse the data from the following studies and provide reasons:

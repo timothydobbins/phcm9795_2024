@@ -1,5 +1,3 @@
-# **6** Learning Activities {-}
-
 ### Activity 6.1 {-}
 
 In a clinical trial involving a dietary intervention, 150 adult volunteers agreed to participate. The investigator wanted to know whether this sample was representative of the general population. One interesting finding was that 90 of the participants drink alcohol regularly compared to 70% of the general population.

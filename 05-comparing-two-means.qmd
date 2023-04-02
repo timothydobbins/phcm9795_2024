@@ -196,3 +196,22 @@ huxtable(df) |>
 ```
 
 The t-value is calculated as −0.96 with 106 degrees of freedom, providing a two-sided P-value of 0.34. Thus these data provide no evidence of a difference in systolic blood pressure between the two sites.
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 05.1-comparing-two-means-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 05.2-comparing-two-means-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 05.3-comparing-two-means-activities.qmd >}}
+

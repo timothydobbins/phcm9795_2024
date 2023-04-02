@@ -1,5 +1,3 @@
-# **6** Stata notes {-}
-
 ## 95% confidence intervals for proportions
 To compute the 95% confidence interval for proportions, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics >Proportion CI calculator**. In the `cii` dialog box as shown below, key in `215` as the **Sample size** and `47` as the number of **Successes**. Choose **Wald** for the normal approximation to binomial distribution CI [Command: cii 215 47, wald] or **Wilson** for Wilson CI [Command: cii 215 47, wilson].
 

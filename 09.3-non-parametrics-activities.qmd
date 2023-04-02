@@ -1,5 +1,3 @@
-# **9** Learning Activities {-}
-
 ### Activity 9.1 {-}
 
 There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and a copy of the data set, `Activity9.1.csv` is also available on Moodle.

@@ -1,5 +1,3 @@
-# Analysing non-normal data
-
 ## Transforming non-normally distributed variables
 
 One option for dealing with a non-normally distributed varaible is to transform it into its square, square root or logarithmic value. The new transformed variable may be normally distributed and therefore a parametric test can be used. First we check the distribution of the variable for normality, e.g. by plotting a histogram.

@@ -1,5 +1,3 @@
-# **8** R notes {-}
-
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(ggformula)
 library(jmv)

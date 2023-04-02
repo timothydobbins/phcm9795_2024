@@ -1,5 +1,3 @@
-# **5** Stata notes {-}
-
 ## Checking data for the independent samples t-test
 
 ### Producing histograms and boxplots by a second variable

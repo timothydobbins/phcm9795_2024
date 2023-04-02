@@ -1,5 +1,3 @@
-# **8** Stata notes {-}
-
 ## Creating a scatter plot
 
 We will demonstrate using Stata for correlation and simple linear regression using the dataset `Example_8.1.dta`.

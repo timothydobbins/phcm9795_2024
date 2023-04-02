@@ -42,7 +42,7 @@ c) rejecting the null hypothesis
 d) Not rejecting the null hypothesis 
 
 ### Activity 4.6 {-}
-For a fixed sample size setting the significance level at a very extreme cutoff such as P < 0.001 increases the chances of:
+For a fixed sample size setting the significance level at a very extreme cutoff such as P < 0.001 increases the chances of:
 a) obtaining a significant result
 b) rejecting the null hypothesis
 c) a Type I error

@@ -272,3 +272,22 @@ In the above example, we have only used a simple linear regression model of two 
 Multiple regression has an important role in investigating causality in epidemiology. The exposure variable under investigation must stay in the model and the effects of other variables which can be confounders or effect-modifiers are tested. The biological, psychological or social meaning of the variables in the model and their interactions are of great importance for interpreting theories of causality.
 
 Other multivariable models include binary logistic regression for use with a binary outcome variable, or Cox regression for survival analyses. These models, together with multiple regression, will be taught in **PHCM9517: Regression Methods in Biostatistics**.
+
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 08.1-correlation-and-regression-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 08.2-correlation-and-regression-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 08.3-correlation-and-regression-activities.qmd >}}

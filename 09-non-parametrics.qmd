@@ -246,30 +246,26 @@ In terms of which is the more appropriate measure to use, the following passage 
 
 We will illustrate estimating rank correlation using the Stata file `Example_8.1.dta`, which has information about height and lung function collected from a sample of 120 adults.
 
-#### Stata Output 9.5: Results from rank correlation analysis {-}
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-. spearman Height FVC
-
- Number of obs =     120
-Spearman's rho =       0.7476
-
-Test of Ho: Height and FVC are independent
-    Prob > |t| =       0.0000
-
-. ktau Height FVC
-
-  Number of obs =     120
-Kendall's tau-a =       0.5431
-Kendall's tau-b =       0.5609
-Kendall's score =    3878
-    SE of score =     439.463   (corrected for ties)
-
-Test of Ho: Height and FVC are independent
-     Prob > |z| =       0.0000  (continuity corrected)
-```
-
-The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC.
-Stata provides two versions of the Kendall rank correlation coefficient: we would use tau-b ($\tau_b$) as it allows for tied observations. The Kendall rank correlation coefficient is estimated as 0.56, again demonstrating a positive association between height and FVC.
+The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC. The Kendall rank correlation coefficient is estimated as 0.56, again demonstrating a positive association between height and FVC.
 
 ## Summary
 In this module, we have presented methods to conduct a hypothesis test with data that are not normally distributed. Non-parametric methods do not assume any distribution for the data and use significance tests based on ranks or sign (or both). A non-parametric test is always less powerful than its equivalent parametric test if the data are normally distributed and so whenever possible parametric significance tests should be used. In some cases when data are not normally distributed with a reasonably large sample size, the data can be transformed (most commonly by log transformation) to make the distribution normal. A parametric significance test should then be used with the transformed data to test the hypothesis.
+
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 09.1-non-parametrics-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 09.2-non-parametrics-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 09.3-non-parametrics-activities.qmd >}}
