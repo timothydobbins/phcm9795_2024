@@ -24,10 +24,10 @@ book:
     # - 08-correlation-and-regression.qmd
     # - 09-non-parametrics.qmd
 
-    # - 10-sample-size.qmd
-    # - 10.1-sample-size-stata.qmd
-    # - 10.2-sample-size-R.qmd
-    # - 10.3-sample-size-activities.qmd
+    - 10-sample-size.qmd
+    - 10.1-sample-size-stata.qmd
+    - 10.2-sample-size-R.qmd
+    - 10.3-sample-size-activities.qmd
     - references.qmd
 
 bibliography: PHCM9795.bib

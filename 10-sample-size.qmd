@@ -39,9 +39,11 @@ To estimate the sample size required for a descriptive study, we usually focus o
 - nominate the expected prevalence based on other available evidence;
 - nominate the required level of precision around the estimate. For this, the width of the 95% confidence interval (i.e. the distance equal to 1.96 $\times$ SE) is used.
 
-Table 10.1 is an abbreviated look-up table that we can use to estimate the sample size for this type of study. Note that the sample size required to detect an expected population prevalence of 5% is the same as to detect a prevalence of 95%. Similarly 10% is equivalent to 90% etc. It is symmetric about 50%.  From Table 10.1, you can see that the sample size required increases as the expected prevalence approaches 50% and as the precision increases (i.e. the required 95% CI becomes narrower).
+Table 10.1 is an abbreviated look-up table that we can use to estimate the sample size for this type of study. Note that the sample size required to detect an expected population prevalence of 5% is the same as to detect a prevalence of 95%. Similarly 10% is equivalent to 90% etc. It is symmetric about 50%.  From @tbl-10-1, you can see that the sample size required increases as the expected prevalence approaches 50% and as the precision increases (i.e. the required 95% CI becomes narrower).
 
-```{r tab-10-1, echo=FALSE, warning=FALSE, message=FALSE}
+```{r tbl-10-1, echo=FALSE, warning=FALSE, message=FALSE}
+#| tbl-cap: Sample size required to calculate a 95% confidence interval with a given precision
+
 library(tidyverse)
 library(huxtable)
 
@@ -70,8 +72,7 @@ huxtable(select(tab10_1, -P)) |>
   insert_row("", "Width of 95% confidence interval (precision)", "", "", "", "", "", "", "", "", "", after = 0) |> 
   merge_cells(1, 2:11) |> 
   set_align(1, everywhere, "centre") |> 
-  set_width(0.95) |> 
-  set_caption("Sample size required to calculate a 95\\% confidence interval with a given precision")
+  set_width(0.95)
 ```
 
 ### Worked Example {#wex10-1}
@@ -104,9 +105,12 @@ Above all, a study has to be practical in terms of the availability of a populat
 
 ### Power and significance level
 
-The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e. the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in Table 10.2.
+::: {.content-visible when-format="html"}
+The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e. the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in @tbl-truth-vs-study-html.
 
-```{r, eval=knitr::is_html_output(), echo=FALSE}
+```{r tbl-truth-vs-study-html, echo=FALSE}
+#| tbl-cap: Comparison of study result with the truth
+
 df <- tibble::tribble(
   ~` `, ~Effect, ~`No effect`,
   "Evidence", "✓", "ɑ",
@@ -121,11 +125,17 @@ huxtable(df) |>
   set_width(0.8) |> 
   set_bold(1, everywhere, TRUE) |> 
   set_bold(2, everywhere, FALSE) |> 
-  set_caption("Comparison of study result with the truth") |> 
   set_escape_contents(everywhere, everywhere, FALSE)
 ```
+:::
 
-```{r, eval=knitr::is_latex_output(), echo=FALSE}
+
+::: {.content-visible when-format="pdf"}
+The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e. the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in @tbl-truth-vs-study-pdf.
+
+```{r tbl-truth-vs-study-pdf, echo=FALSE}
+#| tbl-cap: Comparison of study result with the truth
+
 df <- tibble::tribble(
   ~` `, ~Effect, ~`No effect`,
   "Evidence", "$\\checkmark$", "$\\alpha$",
@@ -140,9 +150,9 @@ huxtable(df) |>
   set_width(0.8) |> 
   set_bold(1, everywhere, TRUE) |> 
   set_bold(2, everywhere, FALSE) |> 
-  set_caption("Comparison of study result with the truth") |> 
   set_escape_contents(everywhere, everywhere, FALSE)
 ```
+:::
 
 The power of a study is expressed as 1– β where β is the probability of a false negative (that is, the probability of a Type II error - incorrectly not rejecting the null hypothesis. In most research, power is generally set to 80% (a Type II error rate of 20%). However, in some studies, especially in some clinical trials where rigorous results are required, power is set to 90% (a Type II error rate of 10%).
 
@@ -151,13 +161,13 @@ The significance level, or α level, is the level at which the P value of a test
 The calculation of sample sizes for analytic studies are based on calculations that are somewhat tedious to compute by hand. Software packages are the standard method of calculating sample sizes for these types of study, and examples from both R and Stata will be provided.
 
 ## Detecting the difference between two means
-The test that is used to show that two mean values are significantly different from one another is the independent samples t-test (Module 5). The sample size needed for this test to have sufficient power can be calculated using R and Stata as shown in Worked Example @sec-wex10-2. **Do I need to add number-sections: true as per https://quarto.org/docs/authoring/cross-references.html#sections??? **
+The test that is used to show that two mean values are significantly different from one another is the independent samples t-test (Module 5). The sample size needed for this test to have sufficient power can be calculated using R and Stata as shown in the Worked Example below.
 
-### Worked Example {#sec-wex10-2}
+### Worked Example
 There is a hypothesis that the use of the oral contraceptive (OC) pill in premenopausal women can increase systolic blood pressure. A study was planned to test this hypothesis using a two sided t-test. The investigators are interesting in detecting an increase of at least 5 mm Hg systolic blood pressure in the women using OC compared to the non-OC users with 90% power at a 5% significance level. A pilot study shows that the SD of systolic blood pressure in the target group is 25 mm Hg and the mean systolic blood pressure of non-OC user women is 90 mm Hg. What is the minimum number of women in each group that need to be recruited for the study to detect this difference?
 
 **Solution**
-The effect size of interest is 5 mm Hg and the associated standard deviation is 25 mm Hg. For power of 90% and alpha of 5%, the sample size calculation using the Stata can be calculated using the `power twomeans` command @lst-stata:
+The effect size of interest is 5 mm Hg and the associated standard deviation is 25 mm Hg. For power of 90% and alpha of 5%, the sample size calculation using the Stata can be calculated using the `power twomeans` command:
 
 #### Stata Output 10.1: Two independent samples t-test sample size calculation {-}
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
@@ -429,7 +439,7 @@ huxtable::huxtable(tab) |>
   set_caption("Increasing the number of controls per case")
 ```
 
-This can be visualised graphically, as in Figure \@ref(fig:fig-unequal-controls).
+This can be visualised graphically, as in @fig-unequal-controls.
 
 ```{r fig-unequal-controls, echo=FALSE, fig.cap="Increasing the number of controls per case", out.width="66%"}
 tab <- tibble::tribble(
