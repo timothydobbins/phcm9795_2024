@@ -1,5 +1,3 @@
-# **1** An introduction to Stata {-}
-
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(huxtable)
 ```
@@ -16,10 +14,10 @@ By the end of these notes, you will be able to:
 - understand the difference between saving data and saving Stata output
 - copy Stata output to a standard word processing package
 
-## Introduction {-}
+## Introduction
 Stata is a powerful statistical package that is relatively easy to use. It is commonly used in health research, as well as in other fields such as econometrics and social science. The aim of these notes is to introduce the Stata environment, and to introduce the commands and procedures that are directly relevant to this course. There is much more to Stata that we will cover in these notes, and more information will be provided throughout the course.
 
-## Part 1: A simple Stata analysis {-}
+## Part 1: A simple Stata analysis
 
 In this very brief section, we will introduce Stata by calculating the average of six ages. If you are using Windows, open Stata by clicking:	**Start > Stata 16 > Stata SE**
 
@@ -128,7 +126,7 @@ Stata allows you to perform most of your work by selecting options from the appr
 
 **Help** has many useful options including the viewing the PDF documentation, a Search function and other resources for using Stata. We will also demonstrate how to use helpful resources later in this introductory manual. Another useful Stata resource is the video tutorials produced by Stata: https://www.stata.com/links/video-tutorials/
 
-## Part 2: Obtaining basic descriptive statistics {-}
+## Part 2: Obtaining basic descriptive statistics
 
 In this exercise, we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from @therneau_grambsch10, Modeling Survival Data: Extending the Cox Model. By the end of this exercise, we will have completed the following table.
 
@@ -432,7 +430,7 @@ Copying output from Stata can get a little complicated to explain. We have inclu
 
 **TASK:** complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.
 
-## Part 3: Creating other types of graphs {-}
+## Part 3: Creating other types of graphs
 
 ### Bar graphs
 

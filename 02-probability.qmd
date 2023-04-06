@@ -224,7 +224,7 @@ $$ P(X=k) = \frac{n!}{k! (n-k)!} \times p^k \times (1-p)^{n-k} $$
 
 where $n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1$.
 
-**Note that this formula is almost never calculated by hand.** Instructions for calculating binomial probabilities are given in the Stata notes at the end of this Module.
+**Note that this formula is almost never calculated by hand.** Instructions for calculating binomial probabilities are given in the Stata and R notes at the end of this Module.
 
 ### Mean and variance of a binomial variable
 The properties of the binomial distribution are useful in the statistical modelling of prevalence data. If *X* has a binomial distribution, then the mean of *X* is:
@@ -242,11 +242,11 @@ a) From a random sample of 6 people from the Australian population in 2007, what
 b) What is the probability that among the six persons, at least 4 will be smokers? 
 c) What is the probability that at most, 2 will be smokers?
 
-#### Solution {-}
+#### Stata Solution {-}
 
 a) The computation for binomial probabilities can be done using Stata from the main menu **Data > Other utilities > Hand calculator** as shown in the Stata Notes section.
 
-Of the three binomial functions in the Hand Calculator, we choose the binomialp function, which gives “the probability of observing k successes in n trials when the probability of a success on one trial is p”. 
+Of the three binomial functions in the Hand Calculator, we choose the `binomialp` function, which gives “the probability of observing k successes in n trials when the probability of a success on one trial is p”. 
 
 We complete the function using n=6, k=3, and p=0.198. This gives an answer of 0.08.
 [Command: `display binomialp(6, 4, 0.198)`]
@@ -278,8 +278,60 @@ Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
 
 This can also be done by using the `binomial` function (which gives “the probability of observing k or fewer successes in n trials when the probability of a success on one trial is p”).
 
-Here, n=6, k=2 and p=0.198, giving the same answer as above: 0.903.
+Here, n=6, k=2 and p=0.198, giving the same answer as above: 0.904 (note the discrepancy due to rounding error above).
 [Command: `display binomial(6, 2, 0.198)`]
+
+
+#### R Solution {-}
+
+The computation for binomial probabilities can be done in R using the `dbinom` and `pbinom` functions.
+
+a) Of the two binomial functions, we choose the `dbinom(x, size, prob)` function, which gives the probability of observing `x` successes in `size` trials when the probability of a success on one trial is `prob`.
+
+We complete the function using x=6, size=3, and prob=0.198. This gives an answer of 0.08:
+
+```{r}
+dbinom(x=3, size=6, prob=0.198)
+```
+
+b)	In common language, getting “at least 4” smokers means getting 4, 5 or 6 smokers. Since these are mutually exclusive events, we can apply the additive law to find the probability of getting at least 4 smokers:
+
+$$ P(X \ge 4) = P(X=4) + P(X=5) + P(X=6) $$
+Using the same binomial probability function as in the previous question,
+
+-	P(X=4) = 0.015 [Command: `dbinom(x=4, size=6, prob=0.198)`]
+-	P(X=5) = 0.001 [Command: `dbinom(x=5, size=6, prob=0.198)`]
+-	P(X=6) = 0.00006 [Command: `dbinom(x=6, size=6, prob=0.198)`]
+
+Answer: $P(X \ge 4) = 0.0148282 + 0.00146437 + 0.00006025 = 0.016$
+
+Alternatively, we can use the `pbinom(q, size, prob, lower.tail=FALSE)` function (which gives the probability of observing *more than `q`* successes in `size` trials when the probability of a success on one trial is `prob`).
+
+Here, q=3, size=6 and prob=0.198, giving the same answer as above: 0.016:
+
+
+```{r}
+pbinom(q=3, size=6, prob=0.198, lower.tail=FALSE)
+```
+
+
+c)	Observing at most two means observing 0, 1 or 2 smokers. Therefore, the probability of observing at most 2 smokers is:
+
+-	P(X $\le$ 2) = P(X=0) + P(X=1) + P(X=2)
+- P(X=0) = 0.266 [Command: `dbinom(x=0, size=6, prob=0.198)`]
+- P(X=1) = 0.394 [Command: `dbinom(x=1, size=6, prob=0.198)`]
+- P(X=2) = 0.243 [Command: `dbinom(x=2, size=6, prob=0.198)`]
+
+Answer: $P(X \le 2) = 0.266 + 0.394 + 0.243 = 0.903$
+
+This can also be done by using the `pbinom(q, size, prob)` function (which gives the probability of observing *`q` or fewer* successes in `size` trials when the probability of a success on one trial is `prob`).
+
+Here, q=2, size=6 and p=0.198, giving the same answer as above: 0.904 (note the discrepancy due to rounding error above).
+
+```{r}
+pbinom(q=2, size=6, prob=0.198)
+```
+
 
 ## Normal distribution
 
@@ -353,7 +405,7 @@ Other more formal measures of Normality such as skewness (whether the distributi
 ### Skewness and kurtosis
 Skewness is a measure of the lack of symmetry of a distribution. If the distribution is symmetric, the coefficient of skewness is 0. If the coefficient is negative, the median is usually greater than the mean and the distribution is said to be skewed left. If the coefficient is positive, the median is usually less than the mean and the distribution is said to be skewed right. 
 
-Kurtosis (from the Greek kyrtosis, meaning curvature) is a measure of peakiness of a distribution. The smaller the coefficient of kurtosis, the flatter the distribution. The Normal distribution has a coefficient of kurtosis of 3 and provides a convenient benchmark. If the distribution is more spread out, then the kurtosis will be greater than 3.
+Kurtosis (from the Greek kyrtosis, meaning curvature) is a measure of peakiness of a distribution. The smaller the coefficient of kurtosis, the flatter the distribution. The Normal distribution has a coefficient of kurtosis of 3 (0 in R) and provides a convenient benchmark. If the distribution is more spread out, then the kurtosis will be greater than 3 (0 in R).
 
 ```{r tbl-2-skew, echo=FALSE}
 #| tbl-cap: Interpretation of skewness statistics
@@ -380,7 +432,7 @@ huxtable::huxtable(tab2_skew) |>
 
 For your information: There are formal tests in Stata and R that test for Normality. These tests are beyond the scope of this course and will be discussed in the Advanced course.
 
-The skewness and kurtosis values for the 30 weights are close to 0 and 3 respectively which is consistent with the symmetrical bell-shaped distribution as shown by the histogram. The mean and median (50th percentile) values are identical, as would be expected for a Normal distribution. These statistics indicate that the data are Normally distributed. Finally, you can look at the histogram and boxplot (Figure \@ref(fig:fig-2-6)) for symmetry and outliers at either end of the distribution.
+The histogram for our 30 weights is approximately bell-shaped and roughly symmetrical. The mean and median (50th percentile) values are identical, as would be expected for a Normal distribution. These statistics indicate that the data are Normally distributed. Finally, you can look at the histogram and boxplot (@fig-2-6) to assess symmetry and outliers at either end of the distribution.
 
 ```{r fig-2-6, echo=FALSE, out.width = "90%", fig.cap="Histogram and boxplot of weight of 30 students attending a gym"}
 knitr::include_graphics(here::here("img", "mod02", "weights-hist-boxplot.png"))
@@ -395,7 +447,6 @@ tab2_norm <- tibble::tribble(
 ~Method, ~`Indication of Normality`,
 "Examine histogram", "Approximately bell shaped and symmetrical; may be difficult to determine if the sample size is small",
 "Compare mean and median values", "Values are approximately equal",
-"Compute skewness and kurtosis", "A Normal distribution would have a skewness of 0 and a kurtosis of 3",
 "Examine box plot", "Box plot symmetrical with no outliers"
   )
 
@@ -451,3 +502,21 @@ Many other probability distributions can be derived for functions which arise in
 The chi-squared distribution is a skewed distribution which allows us to determine the probability of a deviation between a count that we observe and a count that we expect for categorical data. One use of this is in conducting statistical tests for categorical data. See Module 7.
 
 A t-distribution is used when the population standard deviation is not known. The t-distribution is appropriate for small samples (<30) and its distribution is bell shaped similar to a Normal distribution but slightly flatter. The t-distribution is useful for comparing mean values.  See Module 4 and Module 5.
+
+{{< pagebreak >}}
+
+# Stata notes {-}
+
+{{< include 02.1-probability-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# R notes {-}
+
+{{< include 02.2-probability-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 02.3-probability-activities.qmd >}}

@@ -1,5 +1,3 @@
-# **2** R notes {-}
-
 ## Importing data into R
 
 We have described previously how to import data that have been saved as R .rds files. It is quite common to have data saved in other file types, such as Microsoft Excel, or plain text files. In this section, we will demonstrate how to import data from other packages into R.
@@ -232,7 +230,7 @@ descriptives(age)
 
 The `summary()` function has worked correctly, but the `descriptives()` function has given an error: `Error: Argument 'data' must be a data frame`. What on earth is going on here?
 
-The error gives us a clue here - the `descriptives()` function requires a data frame for analysis. We have provided the object `age`: a **vector**. As we saw in Section \@ref(data-structures), a vector is a single column of data, while a data frame is a collection of columns.
+The error gives us a clue here - the `descriptives()` function requires a data frame for analysis. We have provided the object `age`: a **vector**. As we saw in @sec-data-structures, a vector is a single column of data, while a data frame is a collection of columns.
 
 In order to summarise a vector using the `descriptives()` function, we must first convert the vector into a data frame using `as.data.frame()`. For example:
 
@@ -290,7 +288,7 @@ boxplot(survey_females$bmi, ylab="BMI (kg/m2)", main="Females")
 par(mfrow=c(1,1))
 ```
 
-## Recoding data {#recoding-data}
+## Recoding data {#sec-recoding-data}
 
 One task that is common in statistical computing is to recode variables. For example, we might want to group some categories of a categorical variable, or to present a continuous variable in a categorical way.
 

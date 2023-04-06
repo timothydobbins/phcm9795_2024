@@ -7,27 +7,16 @@ book:
   date: "Term 2, 2023"
   chapters:
     - index.qmd
-    # - 01-intro.qmd
-    # - 01.1-intro-stata.qmd
-    # - 01.2-intro-R.qmd
-    # - 01.3-intro-activities.qmd
-    # - 02-probability.qmd
-    # - 02.1-probability-stata.qmd
-    # - 02.2-probability-R.qmd
-    # - 02.3-probability-activities.qmd
-
-    # - 03-precision.qmd
-    # - 04-hypothesis-testing.qmd
-    # - 05-comparing-two-means.qmd
-    # - 06-proportions.qmd
-    # - 07-testing-proportions.qmd
-    # - 08-correlation-and-regression.qmd
-    # - 09-non-parametrics.qmd
-
+    - 01-intro.qmd
+    - 02-probability.qmd
+    - 03-precision.qmd
+    - 04-hypothesis-testing.qmd
+    - 05-comparing-two-means.qmd
+    - 06-proportions.qmd
+    - 07-testing-proportions.qmd
+    - 08-correlation-and-regression.qmd
+    - 09-non-parametrics.qmd
     - 10-sample-size.qmd
-    - 10.1-sample-size-stata.qmd
-    - 10.2-sample-size-R.qmd
-    - 10.3-sample-size-activities.qmd
     - references.qmd
 
 bibliography: PHCM9795.bib

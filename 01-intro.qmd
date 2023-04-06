@@ -569,3 +569,22 @@ Sources:
 @cole15
 
 @assel_etal19
+
+
+{{< pagebreak >}}
+
+# An introduction to Stata {-}
+
+{{< include 01.1-intro-stata.qmd >}}
+
+{{< pagebreak >}}
+
+# An introduction to R and RStudio {-}
+
+{{< include 01.2-intro-R.qmd >}}
+
+{{< pagebreak >}}
+
+# Activities {-}
+
+{{< include 01.3-intro-activities.qmd >}}

@@ -1,5 +1,3 @@
-# **2** Stata notes {-}
-
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(huxtable)
 ```
@@ -48,8 +46,6 @@ knitr::include_graphics(here::here("img", "mod02", "stata", "check-02.png"))
 ```
  
 By scrolling through the data, you will see that the values range from 53.8kg to 85.8kg with a very high value of 700.2kg. A value as high as 700kg is likely to be a data entry error (e.g. error in entering an extra zero) and is not a plausible weight value. Here, **you should check your original data**. You might find that the original weight was recorded as 70.2kg. You can change this in Stata by deleting a zero from cell with 700.2 in the **Data Editor (Edit)** window.
-
-[Command: `replace weight = 70.2 in 1000`]
 
 **Note:** if an extreme value lies within the range of biological plausibility it should not be removed from analysis.
 
