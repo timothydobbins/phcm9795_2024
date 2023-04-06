@@ -273,7 +273,7 @@ For example, to plot four figures in a single plot, filled by rows, we use `par(
 
 When we are done plotting multiple graphs, we can reset the graphics parameters by submitting `par(mfrow=c(1,1))`.
 
-```{r}
+```{r fig.height=7}
 # Set the graphics parameters to plot 2 rows and 2 columns:
 par(mfrow=c(2,2))
 
