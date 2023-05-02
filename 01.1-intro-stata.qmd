@@ -434,7 +434,7 @@ Copying output from Stata can get a little complicated to explain. We have inclu
 
 ### Bar graphs
 
-Here we will create the bar chart shown in Figure \@ref(fig:fig-1-1) using the `pbc.dta` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
+Here we will create the bar chart shown in @fig-bar-1 using the `pbc.dta` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
 
 To create a Bar chart, go to the Stata menu Graphics > Bar chart and the bar-chart dialog box will appear.
 
@@ -471,7 +471,7 @@ You may note that most dialog boxes in Stata have two choices: the **Submit** bu
 
 ### Clustered bar graph
 
-To create a clustered bar chart as shown in Figure \@ref(fig:fig-1-2), go to: **Graphics > Bar chart** again. With the previous settings in place (i.e. stage as grouping variable and with appropriate axes labels), now choose `sex` as the **Group 1** variable, and tick **Group 2** and choose `stage` as the second grouping variable.
+To create a clustered bar chart as shown in @fig-bar-2, go to: **Graphics > Bar chart** again. With the previous settings in place (i.e. stage as grouping variable and with appropriate axes labels), now choose `sex` as the **Group 1** variable, and tick **Group 2** and choose `stage` as the second grouping variable.
 
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "stata", "bar-05.png"))
@@ -490,7 +490,7 @@ knitr::include_graphics(here::here("img", "mod01", "stata", "bar-07.png"))
 In a clustered bar chart, the **Group 2** variable is the main variable grouping (here, `stage`), and each of the **Group 2** categories is split by the **Group 1** variable (here, `sex`).
 
 ### Stacked bar graph
-To create a stacked bar chart shown in Figure \@ref(fig:fig-1-3), bring up the **Bar chart** dialog box, go to the **Options** tab and tick **Stack bars on y variables**.
+To create a stacked bar chart shown in @fig-bar-3, bring up the **Bar chart** dialog box, go to the **Options** tab and tick **Stack bars on y variables**.
 
 
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
@@ -560,7 +560,7 @@ To demonstrate the graphing of aggregate data with Stata, we use the data on new
 
 If you look at the data in the **Data Editor** window, you will see that there are 20 rows - a row for each year of data. Each row contains the number of new cases (`NCases`), number of deaths (`NDeaths`), the incidence rate (`RCases`) and death rate (`RDeaths`).
 
-To create a line graph as in Figure \@ref(fig:fig-1-5) select **Graphics > Twoway graph (scatter, line, etc.)** and click the **Create...** button in the **twoway – Twoway graphs** dialog box to bring up a dialog box for defining Plot 1.
+To create a line graph as in @fig-bar-4 select **Graphics > Twoway graph (scatter, line, etc.)** and click the **Create...** button in the **twoway – Twoway graphs** dialog box to bring up a dialog box for defining Plot 1.
 
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "stata", "line-01.png"))

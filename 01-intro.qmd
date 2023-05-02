@@ -300,7 +300,7 @@ knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked.pn
 Finally, a stacked relative bar chart (@fig-bar-4) displays the proportion of grouping variable for each bar, where each overall bar represents 100%. These graphs allow the reader to compare the proportions between categories. We can easily see from @fig-bar-4 that the distribution of sex is similar across each stage of disease.
 
 ```{r fig-bar-4, echo=FALSE, out.width = "75%", fig.cap="Relative frequency of sex within stage of disease from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked-relative.png"))
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked-relative.jpg"))
 ```
 
 ### Line graphs
@@ -309,7 +309,7 @@ A line graph is effective to illustrate trends over time (e.g. change over sever
 Cancer incidence is the number of new cases of cancer diagnosed in a population in a given time period. A useful comparison with the incidence rate is the mortality rate, revealing information about the deaths from cancer in the same period. @fig-line-1 shows the prostate cancer trend in the NSW male population in the period 1972-2014, specifically the age-standardised incidence and mortality rate per 100,000.
 
 ```{r fig-line-1, echo=FALSE, out.width="66%", fig.pos="H", fig.cap="Prostate cancer age-standardised incidence and mortality rates (per 100,000), NSW, 1972-2014"}
-knitr::include_graphics(here::here("img", "mod01", "line-graph-prostate-cancer.png"))
+knitr::include_graphics(here::here("img", "mod01", "line-graph-prostate-cancer.jpg"))
 ```
 Source: The Cancer Institute NSW (2018) Cancer statistics NSW. https://www.cancer.nsw.gov.au/cancer-statistics-nsw (Accessed: 24 Jan 2019).
 
@@ -516,23 +516,6 @@ When reporting summary statistics, it is important not to present results with t
 There are a number of guidelines that have been written to help in the presentation of numerical data. Many of these guidelines are based on the number of decimal places, while others are based on the number of significant figures. Briefly, the number of significant figures are "the number of digits from the first non-zero digit to the last meaningful digit, irrespective of the position of the decimal point. Thus, 1.002, 10.02, 100200 (if this number is expressed to the nearest 100) all have four significant digits." @armitage_etal13
 
 A summary of these guidelines that will be used in this course appear below.
-
-| Summary statistic                       | Guideline (reference)                                                                              |
-|-----------------------------------------|----------------------------------------------------------------------------------------------------|
-| Mean                                    | It is usually appropriate to quote the mean to one extra decimal place compared with the raw data. (Altman)    |
-| Median, Interquartile range, Range      | As medians, interquartile ranges and ranges are based on individual data points, these values should be presented with the same precision as the original data.    |
-| Percentage                              | Percentages do not need to be given with more than one decimal place at most. When the sample size is less than 100, no decimal places should be given. (Altman) |
-| Standard deviation                      | “The standard deviation should usually be given to the same accuracy as the mean, or with one extra decimal place.” Altman    |
-| Standard error                          | As per Standard Deviation    |
-| Confidence interval                     | Use the same rule as for the corresponding effect size (be it mean, percentage, mean difference, regression coefficient, correlation coefficient or risk ratio) (Cole)    |
-| Test statistic                          | Test statistics should not be presented with more than two decimal places.         |
-| P-value                                 | Report p values to a single significant figure unless the p value is close to 0.05 (say, 0.01 – 0.2), in which case, report two significant figures. Do not report “not significant” for p values of 0.05 or higher. Very low p values can be reported as p < 0.001 or similar. A p value can indeed be 1, although some investigators prefer to report this as >0.9. (Assel)    |
-| Difference in means                     | As for the estimated means    |
-| Difference in proportions               | As for the estimated proportions    |
-| Odds ratio / Relative risk              | Hazard and odds ratios are normally reported to two   decimal places, although this can be avoided for high odds ratios (Assel)    |
-| Correlation coefficient                 | One or two decimal places, or more when very close to ±1   (Cole)    |
-| Regression coefficient                  | Use one more significant figure than the underlying data   (adapted from Cole)    |
-
 
 ```{r tbl-1-pres, echo=FALSE}
 #| tbl-cap: Guidelines for presentation of statistical results
