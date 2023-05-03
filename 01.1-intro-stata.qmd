@@ -35,11 +35,20 @@ Each Stata session has a number of windows, which we will discuss later. For now
 knitr::include_graphics(here::here("img", "mod01", "stata", "simple-02.png"))
 ```
 
-This window is known as the **Data Editor**, and is where data can be entered or changed. Enter the following six ages into Stata, starting at the top-left cell, by typing each number and then hitting Enter.
+This window is known as the **Data Editor**, and is where data can be entered or changed. 
 
-	20	25	23	29	21	27
+::: {.callout-note icon=false}
 
-If you make a mistake, simply click the incorrect cell, and enter the correct value. Your screen should look like this:
+## TASK
+
+Enter the following six ages into Stata, starting at the top-left cell, by typing each number and then hitting Enter:
+
+`20	25	23	29	21	27`
+
+If you make a mistake, simply click the incorrect cell, and enter the correct value. 
+:::
+
+Your screen should look like this:
 
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "stata", "simple-03.png"))
@@ -69,10 +78,20 @@ knitr::include_graphics(here::here("img", "mod01", "stata", "variables-manager-0
 Close the **Variables manager** window.
 
 Some important points about variable names in Stata: 
+
 - any name you choose must be no more than 32 characters long;
 - variable names must contain only letters, numbers and the underscore (_);
 - variable names should start with a letter;
 - variable names are case-sensitive (so age, Age and AGE could represent three different variables)
+
+::: {.callout-note icon=false}
+
+## TASK
+
+Rename the variable `_var1` with the name `age`.
+
+:::
+
 
 Now that we have entered our six ages, let's calculate the mean age. Choose **Statistics > Summaries, tables and tests > Summary and descriptive statistics > Summary statistics**. The **summarize** dialog box will appear. From the **Variables** drop-down box, select `age` as below:
  
@@ -86,7 +105,14 @@ Click **OK**, and the main Stata screen will appear as below.
 knitr::include_graphics(here::here("img", "mod01", "stata", "simple-06.png"))
 ```
 
-The final text in the main window provides a summary of `age`: there are 6 observations, with a mean age of 24.2 years, a standard deviation of 3.49 years, a minimum of 20 and a maximum of 29 years.
+::: {.callout-note icon=false}
+
+## TASK
+
+Calculate summary statisitics for `age` and confirm: there are 6 observations, with a mean age of 24.2 years, a standard deviation of 3.49 years, a minimum of 20 and a maximum of 29 years.
+
+:::
+
 
 ### The Stata environment
 Now that we have seen a simple example of how to use Stata, let's describe the Stata environment. The largest window in Stata is the **Results** window. This is where the results of your analyses appear, as well as any information, warnings or error messages. You may have noticed that the **Results** window also contains commands used to conduct analyses. For example, there is a command above summary output for age:
@@ -155,16 +181,33 @@ huxtable(tab) |>
   set_width(0.95) |> 
   add_footnote("* asparate aminotransferase")
 ```
-This table is available in Table1.docx, saved on Moodle.
+
+::: {.callout-note icon=false}
+
+## TASK
+
+Download the table shell, saved on Moodle as Table1.docx.
+
+:::
 
 ### Opening a Stata data file
 Typing data directly into Stata is not common; we usually open data that have been saved as a Stata data file, or import data that have been entered into another package. Here, we will open a dataset that has been stored as a Stata data file (which has the `.dta` suffix).
+
+::: {.callout-note icon=false}
+
+## TASK
+
+Load the sample data set called `pbc.dta` into Stata using the following steps:
 
 1. Locate the data set called `pbc.dta` on Moodle. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder. The description of this dataset (i.e. the metadata) have been saved as a plain text file: `pbc_info.txt`
 2. In Stata, choose **File > Open**. Browse to where you stored the dataset and click **Open**.
 3. You may get an error: "Data in memory have changed". This means that you have not saved a copy of your current data, and by importing a new dataset, your changes will be lost. As Stata can only open one set of data at a time, you can choose to: Save your current data, Don't Save your current data, or Cancel. We don't need to save the data from our simple analysis (the six ages), so we can choose Don't Save.
 
-After opening the data successfully, there will be 418 rows of data, and 20 variables. Examine the `pbc_info.txt` file for a description of each variable.
+Confirm that there are 418 rows of data, and 20 variables.
+
+Examine the `pbc_info.txt` file for a description of each variable.
+
+:::
 
 ### Assigning variable labels
 As we saw earlier, Stata has specific rules about variable names. Variable labels can be used to obtain more descriptive output. For example, the variable entered as bili can be labelled "Serum bilirubin (mg/dl)".
@@ -196,7 +239,14 @@ The variable label will now be used in place of the variable name in most output
 99%         21.6             28       Kurtosis       10.95486
 ```
 
-**TASK:** Assign meaningful variable labels to the variables used in Table 1.
+::: {.callout-note icon=false}
+
+## TASK
+
+Assign meaningful variable labels to the variables used in Table 1.
+
+:::
+
 
 ### Summarising continuous variables
 
@@ -243,15 +293,27 @@ Looking at the command window, Stata has used the following parameters to define
 knitr::include_graphics(here::here("img", "mod01", "stata", "hist-03.png"))
 ```
 
+
 This results in a histogram with fewer bars and more sensible cut-points: 
+
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "stata", "hist-04.png"))
 ```
 
+
 ### Producing a boxplot
 The boxplot dialog box is similar to the histogram dialog box. While it is possible to specify more than one variable to be plotted, this is not recommended when variables are measured on very different scales as all variables are plotted on a chart with the same scale.
 
-**TASK:** Obtain histograms and boxplots for age, AST and bilirubin. Based on these plots, decide whether the mean or the median is the appropriate summary to use for each variable. Transfer your summary statistics to Table 1.
+::: {.callout-note icon=false}
+
+## TASK
+
+Obtain histograms and boxplots for age, AST and bilirubin.
+
+Based on these plots, decide whether the mean or the median is the appropriate summary to use for each variable.
+
+:::
+
 
 ### Producing a one-way frequency table
 
@@ -346,8 +408,6 @@ Here we can see that the codes for male and female have been applied correctly. 
 
 Note: If you want to see the original coded values of the labelled groups in the Data Browser window, you can hide the value labels by choosing **Tools > Value labels > Hide all value labels** for Windows, or **View > Value labels > Hide all value labels** for Mac from the menu bar in the Data Browser window.
 
-**TASK:** create and apply value labels for Vital Status.
-
 Now that our categorical variables are labelled, we can produce the one-way frequency tables. As before, choose **Statistics > Summaries, tables, and tests > Frequency tables > One-way table**. Our newly labelled table for sex appears as below.
 
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
@@ -359,7 +419,15 @@ Now that our categorical variables are labelled, we can produce the one-way freq
       Total |        418      100.00
 ```
 
-**TASK:** produce one-way frequency tables for the other categorical variables in Table 1 (stage and vital status).
+
+::: {.callout-note icon=false}
+
+## TASK
+
+Create and apply value labels for Sex and Vital Status. Produce one-way frequency tables for the categorical variables in Table 1.
+
+:::
+
 
 ### Producing a two-way frequency table
 To produce tables summarising two categorical variables, go to **Statistics - Summaries, tables, and tests - Frequency tables - Two-way table with measures of association**.
@@ -428,7 +496,13 @@ To copy output from Stata, you can select the output and choose **Edit > Copy**.
 
 Copying output from Stata can get a little complicated to explain. We have included a video on Moodle to summarise the different ways output can be copied.
 
-**TASK:** complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.
+::: {.callout-note icon=false}
+
+## TASK
+
+Complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.
+
+:::
 
 ## Part 3: Creating other types of graphs
 

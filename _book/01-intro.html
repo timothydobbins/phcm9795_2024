@@ -112,7 +112,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./02-probability.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -184,6 +184,51 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-precision.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1015,9 +1060,23 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>This window is known as the <strong>Data Editor</strong>, and is where data can be entered or changed. Enter the following six ages into Stata, starting at the top-left cell, by typing each number and then hitting Enter.</p>
-<pre><code>20  25  23  29  21  27</code></pre>
-<p>If you make a mistake, simply click the incorrect cell, and enter the correct value. Your screen should look like this:</p>
+<p>This window is known as the <strong>Data Editor</strong>, and is where data can be entered or changed.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Enter the following six ages into Stata, starting at the top-left cell, by typing each number and then hitting Enter:</p>
+<p><code>20 25  23  29  21  27</code></p>
+<p>If you make a mistake, simply click the incorrect cell, and enter the correct value.</p>
+</div>
+</div>
+<p>Your screen should look like this:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1055,7 +1114,26 @@ div.csl-indent {
 </div>
 </div>
 <p>Close the <strong>Variables manager</strong> window.</p>
-<p>Some important points about variable names in Stata: - any name you choose must be no more than 32 characters long; - variable names must contain only letters, numbers and the underscore (_); - variable names should start with a letter; - variable names are case-sensitive (so age, Age and AGE could represent three different variables)</p>
+<p>Some important points about variable names in Stata:</p>
+<ul>
+<li>any name you choose must be no more than 32 characters long;</li>
+<li>variable names must contain only letters, numbers and the underscore (_);</li>
+<li>variable names should start with a letter;</li>
+<li>variable names are case-sensitive (so age, Age and AGE could represent three different variables)</li>
+</ul>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rename the variable <code>_var1</code> with the name <code>age</code>.</p>
+</div>
+</div>
 <p>Now that we have entered our six ages, let’s calculate the mean age. Choose <strong>Statistics &gt; Summaries, tables and tests &gt; Summary and descriptive statistics &gt; Summary statistics</strong>. The <strong>summarize</strong> dialog box will appear. From the <strong>Variables</strong> drop-down box, select <code>age</code> as below:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1076,7 +1154,19 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>The final text in the main window provides a summary of <code>age</code>: there are 6 observations, with a mean age of 24.2 years, a standard deviation of 3.49 years, a minimum of 20 and a maximum of 29 years.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calculate summary statisitics for <code>age</code> and confirm: there are 6 observations, with a mean age of 24.2 years, a standard deviation of 3.49 years, a minimum of 20 and a maximum of 29 years.</p>
+</div>
+</div>
 <section id="the-stata-environment" class="level3" data-number="1.11.1">
 <h3 data-number="1.11.1" class="anchored" data-anchor-id="the-stata-environment"><span class="header-section-number">1.11.1</span> The Stata environment</h3>
 <p>Now that we have seen a simple example of how to use Stata, let’s describe the Stata environment. The largest window in Stata is the <strong>Results</strong> window. This is where the results of your analyses appear, as well as any information, warnings or error messages. You may have noticed that the <strong>Results</strong> window also contains commands used to conduct analyses. For example, there is a command above summary output for age:</p>
@@ -1175,16 +1265,42 @@ div.csl-indent {
 
 </div>
 </div>
-<p>This table is available in Table1.docx, saved on Moodle.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the table shell, saved on Moodle as Table1.docx.</p>
+</div>
+</div>
 <section id="opening-a-stata-data-file" class="level3" data-number="1.12.1">
 <h3 data-number="1.12.1" class="anchored" data-anchor-id="opening-a-stata-data-file"><span class="header-section-number">1.12.1</span> Opening a Stata data file</h3>
 <p>Typing data directly into Stata is not common; we usually open data that have been saved as a Stata data file, or import data that have been entered into another package. Here, we will open a dataset that has been stored as a Stata data file (which has the <code>.dta</code> suffix).</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Load the sample data set called <code>pbc.dta</code> into Stata using the following steps:</p>
 <ol type="1">
 <li>Locate the data set called <code>pbc.dta</code> on Moodle. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder. The description of this dataset (i.e.&nbsp;the metadata) have been saved as a plain text file: <code>pbc_info.txt</code></li>
 <li>In Stata, choose <strong>File &gt; Open</strong>. Browse to where you stored the dataset and click <strong>Open</strong>.</li>
 <li>You may get an error: “Data in memory have changed”. This means that you have not saved a copy of your current data, and by importing a new dataset, your changes will be lost. As Stata can only open one set of data at a time, you can choose to: Save your current data, Don’t Save your current data, or Cancel. We don’t need to save the data from our simple analysis (the six ages), so we can choose Don’t Save.</li>
 </ol>
-<p>After opening the data successfully, there will be 418 rows of data, and 20 variables. Examine the <code>pbc_info.txt</code> file for a description of each variable.</p>
+<p>Confirm that there are 418 rows of data, and 20 variables.</p>
+<p>Examine the <code>pbc_info.txt</code> file for a description of each variable.</p>
+</div>
+</div>
 </section>
 <section id="assigning-variable-labels" class="level3" data-number="1.12.2">
 <h3 data-number="1.12.2" class="anchored" data-anchor-id="assigning-variable-labels"><span class="header-section-number">1.12.2</span> Assigning variable labels</h3>
@@ -1201,24 +1317,36 @@ div.csl-indent {
 </div>
 <p>The variable label will now be used in place of the variable name in most output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>. summarize bili, detail</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                   Serum <span class="fu">bilirubin</span> (mg<span class="sc">/</span>dl)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-------------------------------------------------------------</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      Percentiles      Smallest</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>%           .<span class="dv">4</span>             .<span class="dv">3</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>%           .<span class="dv">5</span>             .<span class="dv">3</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>%           .<span class="dv">6</span>             .<span class="dv">3</span>       Obs                 <span class="dv">418</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span>%           .<span class="dv">8</span>             .<span class="dv">4</span>       Sum of Wgt.         <span class="dv">418</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dv">50</span>%          <span class="fl">1.4</span>                      Mean           <span class="fl">3.220813</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                        Largest       Std. Dev.      <span class="fl">4.407506</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span>%          <span class="fl">3.4</span>           <span class="fl">22.5</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dv">90</span>%          <span class="fl">8.1</span>           <span class="fl">24.5</span>       Variance       <span class="fl">19.42611</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dv">95</span>%           <span class="dv">14</span>           <span class="fl">25.5</span>       Skewness       <span class="fl">2.707849</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span>%         <span class="fl">21.6</span>             <span class="dv">28</span>       Kurtosis       <span class="fl">10.95486</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>. summarize bili, detail</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                   Serum <span class="fu">bilirubin</span> (mg<span class="sc">/</span>dl)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-------------------------------------------------------------</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      Percentiles      Smallest</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>%           .<span class="dv">4</span>             .<span class="dv">3</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>%           .<span class="dv">5</span>             .<span class="dv">3</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>%           .<span class="dv">6</span>             .<span class="dv">3</span>       Obs                 <span class="dv">418</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span>%           .<span class="dv">8</span>             .<span class="dv">4</span>       Sum of Wgt.         <span class="dv">418</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">50</span>%          <span class="fl">1.4</span>                      Mean           <span class="fl">3.220813</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        Largest       Std. Dev.      <span class="fl">4.407506</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span>%          <span class="fl">3.4</span>           <span class="fl">22.5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dv">90</span>%          <span class="fl">8.1</span>           <span class="fl">24.5</span>       Variance       <span class="fl">19.42611</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dv">95</span>%           <span class="dv">14</span>           <span class="fl">25.5</span>       Skewness       <span class="fl">2.707849</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span>%         <span class="fl">21.6</span>             <span class="dv">28</span>       Kurtosis       <span class="fl">10.95486</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>TASK:</strong> Assign meaningful variable labels to the variables used in Table 1.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assign meaningful variable labels to the variables used in Table 1.</p>
+</div>
+</div>
 </section>
 <section id="summarising-continuous-variables" class="level3" data-number="1.12.3">
 <h3 data-number="1.12.3" class="anchored" data-anchor-id="summarising-continuous-variables"><span class="header-section-number">1.12.3</span> Summarising continuous variables</h3>
@@ -1288,12 +1416,34 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>This results in a histogram with fewer bars and more sensible cut-points: ::: {.cell} ::: {.cell-output-display} <img src="img/mod01/stata/hist-04.png" class="img-fluid" style="width:75.0%" data-fig-pos="H"> ::: :::</p>
+<p>This results in a histogram with fewer bars and more sensible cut-points:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mod01/stata/hist-04.png" class="img-fluid figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="producing-a-boxplot" class="level3" data-number="1.12.5">
 <h3 data-number="1.12.5" class="anchored" data-anchor-id="producing-a-boxplot"><span class="header-section-number">1.12.5</span> Producing a boxplot</h3>
 <p>The boxplot dialog box is similar to the histogram dialog box. While it is possible to specify more than one variable to be plotted, this is not recommended when variables are measured on very different scales as all variables are plotted on a chart with the same scale.</p>
-<p><strong>TASK:</strong> Obtain histograms and boxplots for age, AST and bilirubin. Based on these plots, decide whether the mean or the median is the appropriate summary to use for each variable. Transfer your summary statistics to Table 1.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obtain histograms and boxplots for age, AST and bilirubin.</p>
+<p>Based on these plots, decide whether the mean or the median is the appropriate summary to use for each variable.</p>
+</div>
+</div>
 </section>
 <section id="producing-a-one-way-frequency-table" class="level3" data-number="1.12.6">
 <h3 data-number="1.12.6" class="anchored" data-anchor-id="producing-a-one-way-frequency-table"><span class="header-section-number">1.12.6</span> Producing a one-way frequency table</h3>
@@ -1310,12 +1460,12 @@ div.csl-indent {
 </div>
 <p>Click <strong>OK</strong> to obtain the following table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">|</span>      Freq.     Percent        Cum.</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">|</span>         <span class="dv">44</span>       <span class="fl">10.53</span>       <span class="fl">10.53</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span> <span class="sc">|</span>        <span class="dv">374</span>       <span class="fl">89.47</span>      <span class="fl">100.00</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      Total <span class="sc">|</span>        <span class="dv">418</span>      <span class="fl">100.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">|</span>      Freq.     Percent        Cum.</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">|</span>         <span class="dv">44</span>       <span class="fl">10.53</span>       <span class="fl">10.53</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span> <span class="sc">|</span>        <span class="dv">374</span>       <span class="fl">89.47</span>      <span class="fl">100.00</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      Total <span class="sc">|</span>        <span class="dv">418</span>      <span class="fl">100.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="assigning-value-labels-to-categorical-variables" class="level3" data-number="1.12.7">
@@ -1384,35 +1534,46 @@ div.csl-indent {
 </div>
 <p>There are a number of ways that we can confirm that the labelling has been done correctly. One of the easiest ways is to use the <code>codebook</code> command to investigate the coding of sex: <strong>Data &gt; Describe data &gt; Describe data contents (codebook)</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>. codebook sex</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">----------------------------------------------------------------------------------------</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sex</span>                                                                          (unlabeled)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">----------------------------------------------------------------------------------------</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                  type<span class="sc">:</span>  <span class="fu">numeric</span> (long)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                 label<span class="sc">:</span>  sex_label</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                 range<span class="sc">:</span>  [<span class="dv">1</span>,<span class="dv">2</span>]                        units<span class="sc">:</span>  <span class="dv">1</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         unique values<span class="sc">:</span>  <span class="dv">2</span>                        missing .<span class="sc">:</span>  <span class="dv">0</span><span class="sc">/</span><span class="dv">418</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            tabulation<span class="sc">:</span>  Freq.   Numeric  Label</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">44</span>         <span class="dv">1</span>  Male</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">374</span>         <span class="dv">2</span>  Female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>. codebook sex</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">----------------------------------------------------------------------------------------</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sex</span>                                                                          (unlabeled)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">----------------------------------------------------------------------------------------</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                  type<span class="sc">:</span>  <span class="fu">numeric</span> (long)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                 label<span class="sc">:</span>  sex_label</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                 range<span class="sc">:</span>  [<span class="dv">1</span>,<span class="dv">2</span>]                        units<span class="sc">:</span>  <span class="dv">1</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         unique values<span class="sc">:</span>  <span class="dv">2</span>                        missing .<span class="sc">:</span>  <span class="dv">0</span><span class="sc">/</span><span class="dv">418</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            tabulation<span class="sc">:</span>  Freq.   Numeric  Label</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">44</span>         <span class="dv">1</span>  Male</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">374</span>         <span class="dv">2</span>  Female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we can see that the codes for male and female have been applied correctly. We can also examine the Data Browser and confirm that sex has been labelled.</p>
 <p>Note: If you want to see the original coded values of the labelled groups in the Data Browser window, you can hide the value labels by choosing <strong>Tools &gt; Value labels &gt; Hide all value labels</strong> for Windows, or <strong>View &gt; Value labels &gt; Hide all value labels</strong> for Mac from the menu bar in the Data Browser window.</p>
-<p><strong>TASK:</strong> create and apply value labels for Vital Status.</p>
 <p>Now that our categorical variables are labelled, we can produce the one-way frequency tables. As before, choose <strong>Statistics &gt; Summaries, tables, and tests &gt; Frequency tables &gt; One-way table</strong>. Our newly labelled table for sex appears as below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">|</span>      Freq.     Percent        Cum.</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       Male <span class="sc">|</span>         <span class="dv">44</span>       <span class="fl">10.53</span>       <span class="fl">10.53</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     Female <span class="sc">|</span>        <span class="dv">374</span>       <span class="fl">89.47</span>      <span class="fl">100.00</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      Total <span class="sc">|</span>        <span class="dv">418</span>      <span class="fl">100.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">|</span>      Freq.     Percent        Cum.</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>       Male <span class="sc">|</span>         <span class="dv">44</span>       <span class="fl">10.53</span>       <span class="fl">10.53</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     Female <span class="sc">|</span>        <span class="dv">374</span>       <span class="fl">89.47</span>      <span class="fl">100.00</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">------------+-----------------------------------</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      Total <span class="sc">|</span>        <span class="dv">418</span>      <span class="fl">100.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>TASK:</strong> produce one-way frequency tables for the other categorical variables in Table 1 (stage and vital status).</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create and apply value labels for Sex and Vital Status. Produce one-way frequency tables for the categorical variables in Table 1.</p>
+</div>
+</div>
 </section>
 <section id="producing-a-two-way-frequency-table" class="level3" data-number="1.12.8">
 <h3 data-number="1.12.8" class="anchored" data-anchor-id="producing-a-two-way-frequency-table"><span class="header-section-number">1.12.8</span> Producing a two-way frequency table</h3>
@@ -1429,40 +1590,40 @@ div.csl-indent {
 </div>
 <p>Click <strong>OK</strong> to obtain the output below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>. tabulate sex stage</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>                    stage</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       sex <span class="sc">|</span>   Stage <span class="dv">1</span>    Stage <span class="dv">2</span>    Stage <span class="dv">3</span>    Stage <span class="dv">4</span> <span class="sc">|</span>     Total</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      Male <span class="sc">|</span>         <span class="dv">3</span>          <span class="dv">8</span>         <span class="dv">16</span>         <span class="dv">17</span> <span class="sc">|</span>        <span class="dv">44</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    Female <span class="sc">|</span>        <span class="dv">18</span>         <span class="dv">84</span>        <span class="dv">139</span>        <span class="dv">127</span> <span class="sc">|</span>       <span class="dv">368</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     Total <span class="sc">|</span>        <span class="dv">21</span>         <span class="dv">92</span>        <span class="dv">155</span>        <span class="dv">144</span> <span class="sc">|</span>       <span class="dv">412</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>. tabulate sex stage</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>                    stage</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       sex <span class="sc">|</span>   Stage <span class="dv">1</span>    Stage <span class="dv">2</span>    Stage <span class="dv">3</span>    Stage <span class="dv">4</span> <span class="sc">|</span>     Total</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      Male <span class="sc">|</span>         <span class="dv">3</span>          <span class="dv">8</span>         <span class="dv">16</span>         <span class="dv">17</span> <span class="sc">|</span>        <span class="dv">44</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    Female <span class="sc">|</span>        <span class="dv">18</span>         <span class="dv">84</span>        <span class="dv">139</span>        <span class="dv">127</span> <span class="sc">|</span>       <span class="dv">368</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>     Total <span class="sc">|</span>        <span class="dv">21</span>         <span class="dv">92</span>        <span class="dv">155</span>        <span class="dv">144</span> <span class="sc">|</span>       <span class="dv">412</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You may notice in the above that the number of observations is now 412. This is because there are missing observations for either sex or stage: which is it, and how would you determine this?</p>
 <p>From the cross-tabulation, you can see the individual frequencies of participants in each of the categories in each cell. For example, there are 3 male participants who have Stage 1 disease. You can also read the totals for each row and column. For example, there are 44 males, and 144 participants have Stage 4 disease.</p>
 <p>You can also add percentages into your table. For example, in the <strong>tabulate2 – two way table with measures of association</strong> dialog box tick the box <strong>Within-column relative frequencies</strong> for separate percentages of sex within each stage.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>. tabulate sex stage, column</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+-------------------+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Key               <span class="sc">|</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">-------------------</span><span class="er">|</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="er">|</span>     frequency     <span class="sc">|</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> column percentage <span class="sc">|</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+-------------------+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="er">|</span>                    stage</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>       sex <span class="sc">|</span>   Stage <span class="dv">1</span>    Stage <span class="dv">2</span>    Stage <span class="dv">3</span>    Stage <span class="dv">4</span> <span class="sc">|</span>     Total</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      Male <span class="sc">|</span>         <span class="dv">3</span>          <span class="dv">8</span>         <span class="dv">16</span>         <span class="dv">17</span> <span class="sc">|</span>        <span class="dv">44</span> </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>     <span class="fl">14.29</span>       <span class="fl">8.70</span>      <span class="fl">10.32</span>      <span class="fl">11.81</span> <span class="sc">|</span>     <span class="fl">10.68</span> </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    Female <span class="sc">|</span>        <span class="dv">18</span>         <span class="dv">84</span>        <span class="dv">139</span>        <span class="dv">127</span> <span class="sc">|</span>       <span class="dv">368</span> </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>     <span class="fl">85.71</span>      <span class="fl">91.30</span>      <span class="fl">89.68</span>      <span class="fl">88.19</span> <span class="sc">|</span>     <span class="fl">89.32</span> </span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>     Total <span class="sc">|</span>        <span class="dv">21</span>         <span class="dv">92</span>        <span class="dv">155</span>        <span class="dv">144</span> <span class="sc">|</span>       <span class="dv">412</span> </span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>    <span class="fl">100.00</span>     <span class="fl">100.00</span>     <span class="fl">100.00</span>     <span class="fl">100.00</span> <span class="sc">|</span>    <span class="fl">100.00</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>. tabulate sex stage, column</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+-------------------+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Key               <span class="sc">|</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">-------------------</span><span class="er">|</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="er">|</span>     frequency     <span class="sc">|</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> column percentage <span class="sc">|</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+-------------------+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>           <span class="er">|</span>                    stage</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       sex <span class="sc">|</span>   Stage <span class="dv">1</span>    Stage <span class="dv">2</span>    Stage <span class="dv">3</span>    Stage <span class="dv">4</span> <span class="sc">|</span>     Total</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      Male <span class="sc">|</span>         <span class="dv">3</span>          <span class="dv">8</span>         <span class="dv">16</span>         <span class="dv">17</span> <span class="sc">|</span>        <span class="dv">44</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>     <span class="fl">14.29</span>       <span class="fl">8.70</span>      <span class="fl">10.32</span>      <span class="fl">11.81</span> <span class="sc">|</span>     <span class="fl">10.68</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    Female <span class="sc">|</span>        <span class="dv">18</span>         <span class="dv">84</span>        <span class="dv">139</span>        <span class="dv">127</span> <span class="sc">|</span>       <span class="dv">368</span> </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>     <span class="fl">85.71</span>      <span class="fl">91.30</span>      <span class="fl">89.68</span>      <span class="fl">88.19</span> <span class="sc">|</span>     <span class="fl">89.32</span> </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+--------------------------------------------+----------</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>     Total <span class="sc">|</span>        <span class="dv">21</span>         <span class="dv">92</span>        <span class="dv">155</span>        <span class="dv">144</span> <span class="sc">|</span>       <span class="dv">412</span> </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>           <span class="sc">|</span>    <span class="fl">100.00</span>     <span class="fl">100.00</span>     <span class="fl">100.00</span>     <span class="fl">100.00</span> <span class="sc">|</span>    <span class="fl">100.00</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can see that the 3 male participants with Stage 1 disease made up 14% of those with Stage 1 disease.</p>
 </section>
@@ -1476,7 +1637,19 @@ div.csl-indent {
 <p>It is important to note that <em>saving data in Stata will not save your output</em>. Stata data and output are completely separate to one another. The easiest way to retain the output of your analyses is to copy the output into a word processor package (e.g.&nbsp;Microsoft Word) before closing Stata. Once Stata is closed, all the output (that is, all your hard work!) is lost.</p>
 <p>To copy output from Stata, you can select the output and choose <strong>Edit &gt; Copy</strong>. This will copy the output as plain text for pasting into a Word document. If you select a single table for copying, you can also <strong>Copy table</strong> or <strong>Copy table as HTML</strong>. Whichever way you copy output into Word, you will need to make sure you reformat the table and relabel your header row and column properly for your assignments as described in Module 1. Alternatively, you can copy with the Copy table option for pasting into an Excel worksheet and reformat your table in Excel before pasting into Word.</p>
 <p>Copying output from Stata can get a little complicated to explain. We have included a video on Moodle to summarise the different ways output can be copied.</p>
-<p><strong>TASK:</strong> complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TASK
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete Table 1 using the output generated in this exercise. You should decide on whether to present continuous variables by their means or medians, and present the most appropriate measure of spread. Include footnotes to indicate if any variables contain missing observations.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="part-3-creating-other-types-of-graphs" class="level2" data-number="1.13">
@@ -1948,12 +2121,12 @@ TASK
 <p>To begin, open a new R Script by choosing <strong>File &gt; New file &gt; R Script</strong> . A script (or a program) is a collection of commands that are sequentially processed by R. You can also type Ctrl+Shift+N in Windows, or Command+Shift+N in MacOS to open a new script in RStudio, or click the <strong>New File</strong> button at the top of the RStudio window.</p>
 <p>You should now see four window panes, as below. In the top-left window, type the following (replacing my name with yours, and including today’s date):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Timothy Dobbins</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 5 April 2022</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: My first R script</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Timothy Dobbins</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 5 April 2022</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: My first R script</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Note: R is case-sensitive</strong>, so you should enter the text exactly as written in these notes.</p>
 <p>Your screen should look something like:</p>
@@ -1964,15 +2137,15 @@ TASK
 </div>
 <p>To run your script, choose <strong>Code &gt; Run Region &gt; Run All</strong>. You will see your code appear in the bottom-left window, with the following output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Author: Timothy Dobbins</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Date: 5 April 2022</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Purpose: My first R script</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(age)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fl">20.00</span>   <span class="fl">21.50</span>   <span class="fl">24.00</span>   <span class="fl">24.17</span>   <span class="fl">26.50</span>   <span class="fl">29.00</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Author: Timothy Dobbins</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Date: 5 April 2022</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Purpose: My first R script</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(age)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fl">20.00</span>   <span class="fl">21.50</span>   <span class="fl">24.00</span>   <span class="fl">24.17</span>   <span class="fl">26.50</span>   <span class="fl">29.00</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will explain the key parts of this script later, but for now, you have entered six ages and calculated the mean age (along with five other summary statistics).</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
@@ -2027,12 +2200,12 @@ TASK
 <p>Objects in R are created using the <strong>assignment operator</strong>. The most common form of the assignment operator looks like an arrow: <code>&lt;-</code> and is typed as the <code>&lt;</code> and <code>-</code> symbols. The simplest way of reading <code>&lt;-</code> is as the words “is defined as”. Note that it possible to use <code>-&gt;</code> and even <code>=</code> as assignment operators, but their use is less frequent.</p>
 <p>Let’s see an example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This command creates a new object called <code>x</code>, which is defined as the number 42 (or in words, “<code>x</code> is defined as 42”). Running this command gives no output in the console, but the new object appears in the top-right <strong>Environment</strong> panel. We can view the object in the console by typing its name:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the object x</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the object x</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 42</code></pre>
 </div>
@@ -2045,7 +2218,7 @@ TASK
 <p>There are two main structures we will use to work with data in this course: <strong>vectors</strong> and <strong>data frames</strong>. A <strong>vector</strong> is a combination of data values, all of the same type. For example, our six ages that we entered earlier is a vector. You could think of a vector as a column of data (even though R prints vectors as rows!) And technically, even an object with only one value is a vector, a vector of size 1.</p>
 <p>The easiest way of creating a vector in R is by using the <code>c()</code> function, where c stands for ‘combine’. In our previous Simple Analysis in R (<a href="#sec-simpleR"><span>Section&nbsp;1.14.4</span></a>), we wrote the command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This command created a new object called <code>age</code>, and <em>combined</em> the six values of age into one vector.</p>
 <p>Just as having a vector of size 1 is unusual, having just one column of data to analyse is also pretty unusual. The other structure we will describe here is a <strong>data frame</strong> which is essentially a collection of vectors, each of the same size. You could think of a data frame as being like a spreadsheet, with columns representing variables, and rows representing observations.</p>
@@ -2075,24 +2248,24 @@ TASK
 </div>
 <p>There are two things to note here. First, notice that the first two inputs are listed with no = symbol, but all other inputs are listed with = symbols (with values provided after the = symbol). This means that everything apart from <code>data</code> and <code>vars</code> have <strong>default</strong> values. We are free to not specify values for these inputs if we are happy with the defaults provided. For example, by default the variance is not calculated (as <code>variance = FALSE</code>). To obtain the variance as well as the standard deviation, we can change this default to <code>variance = TRUE</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only the standard deviation is provided as the measure of variability</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Additionally request the variance to be calculated</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age, <span class="at">variance=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only the standard deviation is provided as the measure of variability</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Additionally request the variance to be calculated</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age, <span class="at">variance=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Second, for functions with multiple inputs, we can specify the input name and its value, or we can ignore the input name and specify just the input values <strong>in the order listed in the Usage section</strong>. So the following are equivalent:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can specify that the dataset to be summarised is pbc,</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   and the variable to summarise is age:</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We can omit the input name, as long as we keep the inputs in the correct order - </span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   that is, dataset first, variable second:</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(pbc, age)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the order of the inputs, as long as we specify the input name:</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">vars=</span>age, <span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can specify that the dataset to be summarised is pbc,</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   and the variable to summarise is age:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span>age)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We can omit the input name, as long as we keep the inputs in the correct order - </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   that is, dataset first, variable second:</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(pbc, age)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the order of the inputs, as long as we specify the input name:</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">vars=</span>age, <span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this course, we will usually provide all the input names, even when they are not required. As you become more familiar with R, you will start to use the shortcut method.</p>
 </section>
@@ -2114,7 +2287,7 @@ TASK
 <h4 data-number="1.14.7.1" class="anchored" data-anchor-id="how-to-install-a-package"><span class="header-section-number">1.14.7.1</span> How to install a package</h4>
 <p>There are a couple of ways to install a package. You can use the <code>install.packages()</code> function if you know the exact name of the package. Let’s use an example of installing the <code>skimr</code> package, which gives a very nice, high-level overview of any data frame. We can install <code>skimr</code> by typing the following into the console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"skimr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"skimr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note the use of the quotation marks.</p>
 <p>Alternatively, RStudio offers a graphical way of installing packages that can be accessed via <strong>Tools &gt; Install Packages</strong>, or via the <strong>Install</strong> button at the top of the <strong>Packages</strong> tab in the bottom-right window. You can begin typing the name of the package in the dialog box that appears, and RStudio will use predictive text to offer possible packages:</p>
@@ -2129,7 +2302,7 @@ TASK
 <h4 data-number="1.14.7.2" class="anchored" data-anchor-id="how-to-load-a-package"><span class="header-section-number">1.14.7.2</span> How to load a package</h4>
 <p>When you begin a new session in RStudio, i.e.&nbsp;when you open RStudio, only certain core packages are automatically loaded. You can use the <code>library()</code> function to load a package that you has previously been installed. For example, now that we have installed <code>skimr</code>, we need to load it before we can use it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that quotation marks are not required for the <code>library()</code> function (although they can be included if you really like quotation marks!).</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
@@ -2253,13 +2426,13 @@ TASK
 <p>1 - Confirm that the <code>pbc.rds</code> file is in the <code>activities</code> sub-folder within the <code>data</code> folder (as per the previous steps).</p>
 <p>2 - Load the <code>skimr</code> package, and use the <code>readRDS()</code> function to read the file into R, assigning it to a data frame called <code>pbc</code>. Because we set up our project, we can locate our data easily by telling R to use the file: <code>"data/activities/pbc.rds"</code>, which translates as: the file <code>pbc.rds</code> which is located in the <code>activities</code> sub-folder within the <code>data</code> folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>pbc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/activities/pbc.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>pbc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/activities/pbc.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>3 - We can now use the <code>summary()</code> function to examine the pbc dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       id             time          status            trt       
  Min.   :  1.0   Min.   :  41   Min.   :0.0000   Min.   :1.000  
@@ -2305,7 +2478,7 @@ TASK
 </div>
 <p>An alternative to the <code>summary()</code> function is the <code>skim()</code> function in the <code>skimr</code> package, which produces summary statistics as well as rudimentary histograms:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2325,9 +2498,9 @@ TASK
 </ul>
 <p>We can summarise the three continuous variables in the pbc data: age, AST and serum bilirubin, as shown below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span><span class="fu">c</span>(age, ast, bili))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span><span class="fu">c</span>(age, ast, bili))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -2348,7 +2521,7 @@ TASK
 </div>
 <p>By default, the <code>descriptives</code> function presents the mean, median, standard deviation, minimum and maximum. We can request additional statistics, such as the quartiles (which are called the percentiles, or pc, in the descriptives function):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span><span class="fu">c</span>(age, ast, bili), <span class="at">pc=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>pbc, <span class="at">vars=</span><span class="fu">c</span>(age, ast, bili), <span class="at">pc=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -2375,27 +2548,27 @@ TASK
 <h3 data-number="1.15.4" class="anchored" data-anchor-id="producing-a-histogram-1"><span class="header-section-number">1.15.4</span> Producing a histogram</h3>
 <p>We can use the <code>hist()</code> function to produce a histogram, specifying the dataframe to use and the variable to be plotted as <code>dataframe$variable</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pbc<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pbc<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-92-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The histogram function does a remarkably good job of choosing cutpoints and binwidths, and these rarely need to be changed. However, the labelling of the histogram should be improved by using <code>xlab=" "</code> and <code>main=" "</code> to assign labels for the x-axis and overall title respectively:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pbc<span class="sc">$</span>age, <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pbc<span class="sc">$</span>age, <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-93-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>By default, the <code>hist()</code> function plots a <strong>frequency histogram</strong>, with counts on the y-axis. We can tweak the histogram using the following code to plot a histogram of the <strong>relative frequencies</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(pbc<span class="sc">$</span>age, <span class="at">plot=</span><span class="cn">FALSE</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>density <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Relative frequency (%)"</span>,</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(pbc<span class="sc">$</span>age, <span class="at">plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>density <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Relative frequency (%)"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-94-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2405,7 +2578,7 @@ TASK
 <h3 data-number="1.15.5" class="anchored" data-anchor-id="producing-a-boxplot-1"><span class="header-section-number">1.15.5</span> Producing a boxplot</h3>
 <p>The <code>boxplot</code> function is used to produce boxplots, again specifying the dataframe to use and the variable to be plotted as <code>dataframe$variable</code>. Labels can be applied in the same way as the histogram:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pbc<span class="sc">$</span>age, <span class="at">xlab=</span><span class="st">"Age (years)"</span>, <span class="at">main=</span><span class="st">"Boxplot of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pbc<span class="sc">$</span>age, <span class="at">xlab=</span><span class="st">"Age (years)"</span>, <span class="at">main=</span><span class="st">"Boxplot of participant age from pbc study data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-95-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2415,9 +2588,9 @@ TASK
 <h3 data-number="1.15.6" class="anchored" data-anchor-id="producing-a-one-way-frequency-table-1"><span class="header-section-number">1.15.6</span> Producing a one-way frequency table</h3>
 <p>We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(summarytools)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 pbc$sex  
@@ -2442,11 +2615,11 @@ Type: Numeric
 </ul>
 <p>To define our variable sex as a factor, we use:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pbc<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(pbc<span class="sc">$</span>sex, <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pbc<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(pbc<span class="sc">$</span>sex, <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can confirm the coding by re-running a frequency table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 pbc$sex  
@@ -2464,8 +2637,8 @@ Type: Factor
 <p>Task: define <code>stage</code> and <code>status</code> (Vital Status) as factors, and produce one-way frequency tables. Refer to the file <code>pbc_info.txt</code> to view the labels for each variable. For example, for Stage:</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pbc<span class="sc">$</span>stage <span class="ot">&lt;-</span> <span class="fu">factor</span>(pbc<span class="sc">$</span>stage, <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Stage 1"</span>, <span class="st">"Stage 2"</span>, <span class="st">"Stage 3"</span>, <span class="st">"Stage 4"</span>))</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>stage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pbc<span class="sc">$</span>stage <span class="ot">&lt;-</span> <span class="fu">factor</span>(pbc<span class="sc">$</span>stage, <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Stage 1"</span>, <span class="st">"Stage 2"</span>, <span class="st">"Stage 3"</span>, <span class="st">"Stage 4"</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(pbc<span class="sc">$</span>stage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 pbc$stage  
@@ -2488,7 +2661,7 @@ Type: Factor
 <p>To produce tables summarising two categorical variables, we can use the <code>contTables()</code> function within the <code>jmv</code> package. The minimal inputs to include are <code>data</code>: the name of the data frame to be analysed, <code>rows</code>: the variable representing the rows of the table, and <code>cols</code>: the name of the columns of the table.</p>
 <p>For example, to produce a two-way table showing stage of disease by sex using the pbc data frame, we use:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>pbc, <span class="at">rows=</span>sex, <span class="at">cols=</span>stage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>pbc, <span class="at">rows=</span>sex, <span class="at">cols=</span>stage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  CONTINGENCY TABLES
@@ -2517,7 +2690,7 @@ Type: Factor
 <p>From the cross-tabulation, you can see the individual frequencies of participants in each of the categories in each cell. For example, there are 3 male participants who have Stage 1 disease. You can also read the totals for each row and column. For example, there are 44 males, and 144 participants have Stage 4 disease.</p>
 <p>You can also add percentages into your table using <code>pcCol=TRUE</code> to include column percents, and <code>pcRow=TRUE</code> for row percents. For example, to calculate the relative frequencies (i.e.&nbsp;percentages) of sex within each stage, we would request <strong>column percents</strong> with the option: <code>pcCol=TRUE</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>pbc, <span class="at">rows=</span>sex, <span class="at">cols=</span>stage, <span class="at">pcCol=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>pbc, <span class="at">rows=</span>sex, <span class="at">cols=</span>stage, <span class="at">pcCol=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  CONTINGENCY TABLES
@@ -2581,9 +2754,9 @@ TASK
 <p>The simplest way to use the <code>plot()</code> function is by specifying an object to be plotted. As with the <code>hist()</code> function, to plot a single variable from a data frame, we must define it using: <code>dataframe$variable</code>.</p>
 <p>Here we will create the bar chart shown in Figure 1.3 of the statistics notes using the <code>pbc.rds</code> dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pbc<span class="sc">$</span>stage, </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Bar graph of stage of disease from PBC study"</span>, </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Number of participants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pbc<span class="sc">$</span>stage, </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Bar graph of stage of disease from PBC study"</span>, </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Number of participants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-102-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2593,8 +2766,8 @@ TASK
 <h4 data-number="1.16.1.1" class="anchored" data-anchor-id="clustered-bar-graph-1"><span class="header-section-number">1.16.1.1</span> Clustered bar graph</h4>
 <p>To create a clustered bar chart as shown in Figure 1.4 of the statistics notes, we need to do a bit of manipulation. We first need to tabulate the data using the <code>table()</code> function. We want to plot stage of disease broken down by sex, so we specify <code>sex</code> as the first variable, and <code>stage</code> as the second variable for the <code>table()</code> command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">table</span>(pbc<span class="sc">$</span>sex, pbc<span class="sc">$</span>stage)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">table</span>(pbc<span class="sc">$</span>sex, pbc<span class="sc">$</span>stage)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Stage 1 Stage 2 Stage 3 Stage 4
@@ -2604,8 +2777,8 @@ TASK
 </div>
 <p>After tabulating the data, we use the <code>barplot()</code> function to plot the summarised data. We specify the main title using <code>main=" "</code>, specify that the stages be plotted separately by sex (<code>beside=TRUE</code>), specify the legend be defined by sex, and position the legend in the top-left of the graph:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Bar graph of stage of disease by sex from PBC study"</span>,</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Bar graph of stage of disease by sex from PBC study"</span>,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-104-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2615,8 +2788,8 @@ TASK
 <h4 data-number="1.16.1.2" class="anchored" data-anchor-id="stacked-bar-graph-1"><span class="header-section-number">1.16.1.2</span> Stacked bar graph</h4>
 <p>A stacked bar graph can be constructed as for the clustered bar graph, but we specify <code>beside=FALSE</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Bar graph of stage of disease by sex from PBC study"</span>,</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside=</span><span class="cn">FALSE</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Bar graph of stage of disease by sex from PBC study"</span>,</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside=</span><span class="cn">FALSE</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-105-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2627,8 +2800,8 @@ TASK
 <p>To plot relative frequencies, we need to transform our table of frequencies (<code>counts</code>) into proportions, by using the <code>prop.table()</code> function. The prop.table() function takes two arguments: a table of counts, and <code>margin</code>, which defines whether we want proportions calculated by row (<code>margin=1</code>) or column (<code>margin=2</code>).</p>
 <p>We want to calculate the relative frequency of sex within each stage category. From our <code>counts</code> table above, this equates to calculating <em>column</em> proportions, so we specify <code>margin=2</code>. We also multiply the resulting table by 100 to obtain percentages (rather than proportions):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(counts, <span class="at">margin=</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>percent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(counts, <span class="at">margin=</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>percent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
            Stage 1   Stage 2   Stage 3   Stage 4
@@ -2638,9 +2811,9 @@ TASK
 </div>
 <p>After calculating the percentages, we use <code>barplot()</code> again, similar to the stacked bar graph:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(percent, </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Relative frequency of sex within stage of disease from PBC study"</span>,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">beside=</span><span class="cn">FALSE</span>, <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topright"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(percent, </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Relative frequency of sex within stage of disease from PBC study"</span>,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">beside=</span><span class="cn">FALSE</span>, <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topright"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-107-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2651,8 +2824,8 @@ TASK
 <h3 data-number="1.16.2" class="anchored" data-anchor-id="creating-line-graphs-1"><span class="header-section-number">1.16.2</span> Creating line graphs</h3>
 <p>To demonstrate the graphing of aggregate data , we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered as <code>Example_1.2.rds</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>cancer <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/Example_1.2.rds"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cancer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cancer <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/Example_1.2.rds"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cancer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      year          ncases        ndeaths           rcases         rdeaths     
  Min.   :1987   Min.   :1567   Min.   : 645.0   Min.   : 81.8   Min.   :31.10  
@@ -2665,31 +2838,31 @@ TASK
 </div>
 <p>We begin by plotting cancer cases (as the <em>y</em> variable) against year (the <em>x</em> variable).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-109-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Let’s define the plot to be joined by lines (<code>type="l"</code>), in the colour red (<code>col="red"</code>), providing meaningful labels for the x-axis and y-axis, and changing the scale of the y-axis to be between 0 and 200 (<code>ylim=c(0,200)</code>):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases, </span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Year"</span>, </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Age-standardised rate (per 100,000)"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases, </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Year"</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Age-standardised rate (per 100,000)"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-110-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We can now add a second line to the plot using the <code>lines()</code> function, specifying a dashed line (<code>lty=2</code>), and add a legend to the plot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Year"</span>, <span class="at">ylab =</span> <span class="st">"Age-standardised rate (per 100,000)"</span>, </span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cancer<span class="sc">$</span>year, cancer<span class="sc">$</span>rdeaths, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Incidence"</span>, <span class="st">"Deaths"</span>), </span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>cancer<span class="sc">$</span>year, <span class="at">y=</span>cancer<span class="sc">$</span>rcases, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Year"</span>, <span class="at">ylab =</span> <span class="st">"Age-standardised rate (per 100,000)"</span>, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>))</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cancer<span class="sc">$</span>year, cancer<span class="sc">$</span>rdeaths, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Incidence"</span>, <span class="st">"Deaths"</span>), </span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="01-intro_files/figure-html/unnamed-chunk-111-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2959,8 +3132,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-probability.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -140,7 +140,7 @@ library(jmv)
 descriptives(data=sample, vars=weight_clean, skew=TRUE, kurt=TRUE)
 ```
 
-## Importing Excel data into R {#import-excel}
+## Importing Excel data into R
 
 Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `health-survey.xlsx`.
 
@@ -224,7 +224,7 @@ age <- c(20, 25, 23, 29, 21, 27)
 # Use "summary" to obtain descriptive statistics
 summary(age)
 
-# Use "descriptives" to obtain descriptive statistics
+# Use the "descriptives" function from jmv to obtain descriptive statistics
 descriptives(age)
 ```
 

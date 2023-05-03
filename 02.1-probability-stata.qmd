@@ -84,7 +84,7 @@ knitr::include_graphics(here::here("img", "mod02", "stata", "desc-01.png"))
 
 You can similarly repeat this using the dataset `Example_1.3.dta` used for creating these in the course notes for this module.
 
-## Importing Excel data into Stata {#import-excel}
+## Importing Excel data into Stata
 Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `health-survey.xlsx`.
 
 The health survey data contains 1140 records, comprising:
