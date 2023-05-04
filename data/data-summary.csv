@@ -1,0 +1,17 @@
+﻿Name,Module,Purpose,New name
+pbc.dta,1,Sample data to create a Table 1,mod01_pbc
+Example_1.2.dta,1,Prostate cancer date to create a line graph,mod01_prostate_cancer
+Example_1.3.dta,2 & 3,Weights and genders,mod02_weight
+Example_4.1.dta,4,Pima blood pressure,mod04_blood_pressure
+Example_5.1.dta,5,Birthweight by gender,mod05_birthweight
+Example_5.2.dta,5,Paired BP by ankle site,mod05_ankle_bp
+Example_6.3.dta,6,Smoking status,mod06_smoking_status
+Example_6.4.dta,6,Nausea by drug,mod06_nausea
+Example_7.1.dta,7,Nausea by drug - duplicate,
+Example_7.2.dta,7,Allergy and asthma data,mod07_allergy
+Example_7.3.dta,7,Paired proportions - drug response,mod07_drug_response
+Example_8.1.dta,8,Height and lung function,mod08_lung_function
+Example_9.1.dta,9,Length of stay by infection,mod09_infection
+Example_9.2.dta,9,Arthritis pain scores,mod09_arthritis
+health-survey.xls,2,1000 heights and weights,mod02_health_survey
+Weight_S2.csv,2,1140 heights and weights (why?),mod02_

@@ -40,6 +40,6 @@ ci_mean <- function(n, mean, sd, width=0.95, digits=3){
 }
 ### End of copy
 
-ci_mean(n=30, mean=70, sd=6, width=0.95)
-ci_mean(n=30, mean=70, sd=6, width=0.99)
+ci_mean(n=242, mean=128.4, sd=19.56, width=0.95)
+ci_mean(n=242, mean=128.4, sd=19.56, width=0.99)
 ```

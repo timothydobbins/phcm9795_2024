@@ -14,7 +14,7 @@ Click **OK** or **Submit** to obtain Output 3.1.
 
 ## Calculating a 95% confidence interval of a mean: Summarised data {#sec-cimean-stata-summ}
 
-For Worked Example 3.2 where we are given the sample mean, sample standard deviation and sample size, we use the `cii means` command. To calculate the 95% CI, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Normal mean CI calculator**. In the **cii** dialog box, check that the **Normal mean** button is selected, and enter `30` as the **Sample size**, `70` as the **Sample mean**, `6` as the **Sample standard deviation** and check that `95` in entered as the **Confidence level**.
+For Worked Example 3.2 where we are given the sample mean, sample standard deviation and sample size, we use the `cii means` command. To calculate the 95% CI, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Normal mean CI calculator**. In the **cii** dialog box, check that the **Normal mean** button is selected, and enter `242` as the **Sample size**, `128.4` as the **Sample mean**, `19.56` as the **Sample standard deviation** and check that `95` in entered as the **Confidence level**.
 
 ```{r fig-mod3-cii, echo=FALSE, out.width = "66%"}
 #| fig-cap: Calculating a confidence interval from summarised data
@@ -26,11 +26,11 @@ Click **OK** or **Submit** to obtain the following output:
 
 #### Stata Output 3.2: 95%CI for a given sample mean, sample standard deviation and sample size {-}
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-. cii means 30 70 6
+. cii means 242 128.4 19.56
 
     Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
 -------------+---------------------------------------------------------------
-             |         30          70    1.095445        67.75956    72.24044
+             |        242       128.4    1.257364        125.9232    130.8768
 ```
 
 

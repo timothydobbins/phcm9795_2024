@@ -120,16 +120,16 @@ knitr::include_graphics(here::here("img", "mod03", "mod03-z-t-dist.png"))
 If a variable $X$ is normally distributed and the population standard deviation $\sigma$ is known, using the normal distribution is appropriate. However, if $\sigma$ is not known then one should use the student t-distribution with ($n – 1$) degrees of freedom.
 
 ### Worked Example 3.2
-The publication of a study using a sample of 30 patients reported a sample mean of 70 kg and a sample standard deviation of 6 kg. Find the 95% confidence interval estimate for the mean weight from this sample.
+The publication of a study using a sample of 242 participants reported a sample mean systolic blood pressure of 128.4 mmHg and a sample standard deviation of 19.56 mmhg. Find the 95% confidence interval for the mean systolic blood pressure.
 
 In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset) (@sec-cimean-stata-summ):
 
 ```{r, echo=TRUE, eval=FALSE}
-. cii means 30 70 6
+. cii means 242 128.4 19.56
 
     Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
 -------------+---------------------------------------------------------------
-             |         30          70    1.095445        67.75956    72.24044
+             |        242       128.4    1.257364        125.9232    130.8768
 ```
 
 In R we use the `ci_mean` function provided in @sec-cimean-r-summ:
@@ -148,10 +148,10 @@ ci_mean <- function(n, mean, sd, width=0.95, digits=3){
 ```
 
 ```{r echo=TRUE}
-ci_mean(n=30, mean=70, sd=6, width=0.95)
+ci_mean(n=242, mean=128.4, sd=19.56, width=0.95)
 ```
 
-Both commands use the t-distribution, and the output can be interpreted as: we are 95% confident that the true mean weight of the population from which the sample was drawn lies between 67.8 kg and 72.2 kg.
+Both commands use the t-distribution, and the output can be interpreted as: we are 95% confident that the true mean systolic blood pressure of the population from which the sample was drawn lies between 125.9 kg and 130.9 mmHg.
 
 {{< pagebreak >}}
 
