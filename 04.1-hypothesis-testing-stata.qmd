@@ -1,5 +1,5 @@
 ## One sample t-test
-We will use data from `Example_4.1.csv` to demonstrate how a one-sample t-test is conducted in Stata. To perform the test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**.
+We will use data from `mod04_blood_pressure.csv` to demonstrate how a one-sample t-test is conducted in Stata. To perform the test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**.
 
 Ensure that the **One-sample** option is selected, then choose `dbp` as the **Variable name** from the drop-down list. Enter the **Hypothesised mean** value (`71` in this example) as shown below. 
 

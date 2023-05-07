@@ -242,7 +242,7 @@ The principles of this test can be used for applications such as testing whether
 ### Worked Example
 The mean diastolic blood pressure (BP) of the general US population is known to be 71 mm Hg. The diastolic blood pressure of 733 female Pima indigenous Americans was measured and a histogram showed that the data were approximately normally distributed. The mean diastolic blood pressure in the sample was 72.4 mm Hg with a standard deviation of 12.38 mm Hg.
 
-We can use Stata or R to conduct a one sample t-test using the data available on Moodle (`Example_4.1.csv`). The results from this test are summarised below.
+We can use Stata or R to conduct a one sample t-test using the data available on Moodle (`mod04_blood_pressure.csv`). The results from this test are summarised below.
 
 
 | n   | Mean | Standard deviation | Standard error | 95% confidence interval of the mean |

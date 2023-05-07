@@ -717,10 +717,10 @@ barplot(percent,
 
 ### Creating line graphs
 
-To demonstrate the graphing of aggregate data , we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered as `Example_1.2.rds`.
+To demonstrate the graphing of aggregate data , we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered as `mod01_prostate_cancer.rds`.
 
 ```{r}
-cancer <- readRDS("data/examples/Example_1.2.rds")
+cancer <- readRDS("data/examples/mod01_prostate_cancer.rds")
 summary(cancer)
 ```
 

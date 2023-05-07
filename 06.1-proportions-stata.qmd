@@ -30,7 +30,7 @@ knitr::include_graphics(here::here("img", "mod06", "stata", "cii.png"))
 ```
 
 ## Significance test for single proportion
-To perform a binomial test using the data from `Example_6.3.dta`, it is a good idea to check that the variable is dichotomous and numerically coded in 0 and 1 by using the `codebook` command. [Command: codebook smoking_status]
+To perform a binomial test using the data from `mod06_smoking_status.dta`, it is a good idea to check that the variable is dichotomous and numerically coded in 0 and 1 by using the `codebook` command. [Command: codebook smoking_status]
 
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
 . codebook smoking_status 

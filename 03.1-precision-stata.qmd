@@ -1,6 +1,6 @@
 ## Calculating a 95% confidence interval of a mean: Individual data {#sec-cimean-stata-ind}
 
-To demonstrate the computation of the 95% confidence interval of a mean we have used data from `Example_1.3.dta`. To calculate the 95% confidence interval, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Confidence intervals**. In the **ci** dialog box, select `weight` as the **Variable**.
+To demonstrate the computation of the 95% confidence interval of a mean we have used data from `mod02_weight_30.dta`. To calculate the 95% confidence interval, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Confidence intervals**. In the **ci** dialog box, select `weight` as the **Variable**.
 
 ```{r fig-mod3-ci, echo=FALSE, out.width = "66%"}
 #| fig-cap: Calculating a confidence interval from individual data

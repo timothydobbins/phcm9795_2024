@@ -9,7 +9,7 @@ Recall the `weights` data used in Module 2. In viewing a boxplot of `weight`, we
 ```{r}
 library(jmv)
 
-sample <- read.csv("data/examples/Weight_s2.csv")
+sample <- read.csv("data/examples/mod02_weight_1000.csv")
 
 boxplot(sample$weight, xlab="Weight (kg)", main="Boxplot of 1000 weights")
 
@@ -41,12 +41,12 @@ boxplot(sample$weight_clean, xlab="Weight (kg)", main="Boxplot of 999 weights",
 
 ### Producing histograms and boxplots by a second variable
 
-We have seen how to create histograms and boxplots separated by a second variable in Module 2 (REF). We will demonstrate using the birthweight data in `Example_5.1.rds`.
+We have seen how to create histograms and boxplots separated by a second variable in Module 2 (REF). We will demonstrate using the birthweight data in `mod05_birthweight.rds`.
 
 ```{r}
 library(jmv)
 
-bwt <- readRDS("data/examples/Example_5.1.rds")
+bwt <- readRDS("data/examples/mod05_birthweight.rds")
 
 summary(bwt)
 summary(bwt$gender)
@@ -103,10 +103,12 @@ Here we specify the mean, standard deviation and sample size for the first group
 
 ## Checking the assumptions for a Paired t-test
 
-Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `Example_5.2.rds` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.
+Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `mod05_ankle_bp.xls` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.
 
 ```{r}
-sbp <- readRDS("data/examples/Example_5.2.rds")
+library(readxl)
+
+sbp <- read_excel("data/examples/mod05_ankle_bp.xlsx")
 sbp$diff = sbp$sbp_dp - sbp$sbp_tp
 hist(sbp$diff, xlab="Blood pressure (mmHg)", main="Difference in systolic blood pressure")
 ```
@@ -130,7 +132,7 @@ While there is a large difference in blood pressure (around 60 mmHg) that warren
 
 ## Paired t-Test
 
-To perform a paired t-test we will use the dataset `Example_5.2.rds`. We can perform a paired t-test using the `ttestPS()` function within the `jmv` package, where we defined the paired observations as: `pairs=list(list(i1 = 'variable1', i2 = 'variable2'))
+To perform a paired t-test we will use the dataset `mod05_ankle_bp.xls`. We can perform a paired t-test using the `ttestPS()` function within the `jmv` package, where we defined the paired observations as: `pairs=list(list(i1 = 'variable1', i2 = 'variable2'))
 
 ```{r}
 ttestPS(data=sbp, pairs=list(list(i1 = 'sbp_dp', i2 = 'sbp_tp')), meanDiff=TRUE, ci=TRUE)

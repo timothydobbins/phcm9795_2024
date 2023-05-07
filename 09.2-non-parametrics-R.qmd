@@ -7,7 +7,7 @@ You can calculate a new, transformed, variable using standard commands. For exam
 ```{r}
 library(jmv)
 
-hospital <- readRDS("data/examples/Example_9.1.rds")
+hospital <- readRDS("data/examples/mod09_infection.rds")
 
 hospital$ln_los <- log(hospital$los+1)
 descriptives(data=hospital, vars=c(los, ln_los))
@@ -39,7 +39,7 @@ wilcox.test(continuous_variable ~ group_variable, data=df, correct=FALSE)
 ```
 
 
-The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `Example_9.1.rds`. Here, out continuous variable is `los` and the grouping variable is `infect`.
+The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `mod09_infection.rds`. Here, out continuous variable is `los` and the grouping variable is `infect`.
 
 ```{r}
 wilcox.test(los ~ infect, data=hospital)
@@ -53,10 +53,10 @@ The `wilcox.test` function can also be used to conduct the Wilcoxon matched-pair
 wilcox.test(df$continuous_variable_1, df$continuous_variable_1, paired=TRUE)
 ```
 
-We will demonstrate using the dataset on the arthritis drug cross-over trial (`Example_9.2.rds`). Like the paired t-test the paired data need to be in separate columns.
+We will demonstrate using the dataset on the arthritis drug cross-over trial (`mod09_arthritis.csv`). Like the paired t-test the paired data need to be in separate columns.
 
 ```{r}
-arthritis <- readRDS("data/examples/Example_9.2.rds")
+arthritis <- read.csv("data/examples/mod09_arthritis.csv")
 
 arthritis$difference = arthritis$drug_1 - arthritis$drug_2
 
@@ -70,7 +70,7 @@ wilcox.test(arthritis$drug_1, arthritis$drug_2,
 The analyses for Spearman's and Kendall's rank correlation are conducted in similar ways:
 
 ```{r}
-lung <- readRDS("data/examples/Example_8.1.rds")
+lung <- readRDS("data/examples/mod08_lung_function.rds")
 
 cor.test(lung$Height, lung$FVC, method="spearman")
 

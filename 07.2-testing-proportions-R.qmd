@@ -9,7 +9,7 @@ We will demonstrate how to use R to conduct a Pearson chi-squared test using Wor
 ```{r}
 library(jmv)
 
-nausea <- readRDS("data/examples/Example_7.1.rds")
+nausea <- readRDS("data/examples/mod06_nausea.rds")
 
 head(nausea)
 
@@ -59,10 +59,10 @@ drug_aggregated <- data.frame(
 The `contTables()` function is used in the usual way, specifying `count=n`.
 
 ## Chi-squared test for tables larger than 2-by-2
-Use the data in `Example_7.2.rds`. We use similar steps as described above for a 2-by-2 table.
+Use the data in `mod07_allergy.rds`. We use similar steps as described above for a 2-by-2 table.
 
 ```{r}
-allergy <- readRDS("data/examples/Example_7.2.rds")
+allergy <- readRDS("data/examples/mod07_allergy.rds")
 
 head(allergy)
 ```
@@ -76,10 +76,10 @@ contTables(data=allergy,
 
 ## McNemar’s test for paired proportions
 
-To perform this test in R, we will use the dataset `Example_7.3.rds`. 
+To perform this test in R, we will use the dataset `mod07_drug_response.rds`. 
 
 ```{r}
-drug <- readRDS("data/examples/Example_7.3.rds")
+drug <- readRDS("data/examples/mod07_drug_response.rds")
 
 head(drug)
 ```
@@ -149,8 +149,8 @@ diffU <- rdiff + (1/n) + qnorm(1 - 0.05/2) *
   (sqrt((a + d) * (b + c) + 4 * b * c)/(n * sqrt(n)))
 
 rdiff
-pL
-pU
+diffL
+diffU
 
 
 mcNemarDiff(data = drug, var1 = "druga", var2 = "drugb", digits = 2)

@@ -197,9 +197,9 @@ Typing data directly into Stata is not common; we usually open data that have be
 
 ## TASK
 
-Load the sample data set called `pbc.dta` into Stata using the following steps:
+Load the sample data set called `mod01_pbc.dta` into Stata using the following steps:
 
-1. Locate the data set called `pbc.dta` on Moodle. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder. The description of this dataset (i.e. the metadata) have been saved as a plain text file: `pbc_info.txt`
+1. Locate the data set called `mod01_pbc.dta` on Moodle. Click the file to download it, and then save it in a folder you will be able to locate later - for example, your OneDrive folder. The description of this dataset (i.e. the metadata) have been saved as a plain text file: `pbc_info.txt`
 2. In Stata, choose **File > Open**. Browse to where you stored the dataset and click **Open**.
 3. You may get an error: "Data in memory have changed". This means that you have not saved a copy of your current data, and by importing a new dataset, your changes will be lost. As Stata can only open one set of data at a time, you can choose to: Save your current data, Don't Save your current data, or Cancel. We don't need to save the data from our simple analysis (the six ages), so we can choose Don't Save.
 
@@ -432,7 +432,7 @@ Create and apply value labels for Sex and Vital Status. Produce one-way frequenc
 ### Producing a two-way frequency table
 To produce tables summarising two categorical variables, go to **Statistics - Summaries, tables, and tests - Frequency tables - Two-way table with measures of association**.
 
-To produce a two-way table showing stage of disease by sex using the pbc.dta data, do the following. In the **tabulate2 – two way table with measures of association dialog box**, select the variable `sex` as the **Row variable:**, and `stage` as the **Column variable:** as shown below.
+To produce a two-way table showing stage of disease by sex using the mod01_pbc.dta data, do the following. In the **tabulate2 – two way table with measures of association dialog box**, select the variable `sex` as the **Row variable:**, and `stage` as the **Column variable:** as shown below.
 
 ```{r , echo=FALSE, out.width = "75%", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "stata", "mod01-twoway.png"))
@@ -508,7 +508,7 @@ Complete Table 1 using the output generated in this exercise. You should decide 
 
 ### Bar graphs
 
-Here we will create the bar chart shown in @fig-bar-1 using the `pbc.dta` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
+Here we will create the bar chart shown in @fig-bar-1 using the `mod01_pbc.dta` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
 
 To create a Bar chart, go to the Stata menu Graphics > Bar chart and the bar-chart dialog box will appear.
 
@@ -630,7 +630,7 @@ knitr::include_graphics(here::here("img", "mod01", "stata", "edit-07.png"))
 When you are done editing in the Graph Editor, click the Graph Editor icon again to stop the Graph Editor. You will be prompted to save your graph. You can click the **Save** button, choose **Save as** and choose to save using the **PNG (\*.png)** format. You can then insert your saved PNG file into your word processing package as usual.
 
 ### Creating line graphs
-To demonstrate the graphing of aggregate data with Stata, we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered into Stata as `Example_1.2.dta`.
+To demonstrate the graphing of aggregate data with Stata, we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered into Stata as `mod01_prostate_cancer.dta`.
 
 If you look at the data in the **Data Editor** window, you will see that there are 20 rows - a row for each year of data. Each row contains the number of new cases (`NCases`), number of deaths (`NDeaths`), the incidence rate (`RCases`) and death rate (`RDeaths`).
 

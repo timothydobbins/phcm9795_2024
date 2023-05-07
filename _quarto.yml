@@ -7,7 +7,7 @@ book:
   date: "Term 2, 2023"
   chapters:
     - index.qmd
-    - 01-intro.qmd
+    # - 01-intro.qmd
     - 02-probability.qmd
     - 03-precision.qmd
     - 04-hypothesis-testing.qmd

@@ -37,7 +37,7 @@ We use correlation to measure the strength of a linear relationship between two 
 
 ### Worked Example
 
-The file `Example_8.1.csv` has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). We can obtain a *scatter-plot* shown in @fig-scatter-plot. This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
+The file `mod08_lung_function.csv` has information about height and lung function collected from a sample of 120 adults. A random sample of adults was approached to take part in the research study, but the response rate was low at 45%. Information was collected on height (cm) and lung function, which was measured as forced vital capacity (FVC). We can obtain a *scatter-plot* shown in @fig-scatter-plot. This shows that as height increases, lung function also increases, which is as expected. One or two of the data points are separated from the rest of the data but are not so far away as to be considered outliers because they do not seem to stand out of other observations.
 
 ```{r}
 #| echo: false

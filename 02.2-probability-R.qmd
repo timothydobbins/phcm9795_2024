@@ -8,7 +8,7 @@ There are two useful packages for importing data into R: `haven` (for data that 
 
 A `csv` file, or a "comma separated variables" file is commonly used to store data. These files have a very simple structure: they are plain text files, where data are separated by commas. csv files have the advantage that, as they are plain text files, they can be opened by a large number of programs (such as Notepad in Windows, TextEdit in MacOS, Microsoft Excel - even Microsoft Word). While they can be opened by Microsoft Excel, they can be opened by many other programs: the csv file can be thought of as the lingua-franca of data.
 
-In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `weight_s2.csv` available on Moodle.
+In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `mod02_weight_1000.csv` available on Moodle.
 
 To confirm that the file is readable by any text editor, here are the first ten lines of the file, opened in Notepad on Microsoft Windows, and TextEdit on MacOS.
 
@@ -19,7 +19,7 @@ knitr::include_graphics("img/mod02/import-01.png")
 We can use the `read.csv` function:
 
 ```{r}
-sample <- read.csv("data/examples/Weight_s2.csv")
+sample <- read.csv("data/examples/mod02_weight_1000.csv")
 ```
 
 Here, the `read.csv` function has the default that the first row of the dataset contains the variable names. If your data do not have column names, you can use `header=FALSE` in the function.
@@ -142,7 +142,7 @@ descriptives(data=sample, vars=weight_clean, skew=TRUE, kurt=TRUE)
 
 ## Importing Excel data into R
 
-Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `health-survey.xlsx`.
+Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `mod02_health_survey.xlsx`.
 
 The health survey data contains 1140 records, comprising:
 
@@ -155,7 +155,7 @@ To import data from Microsoft Excel, we can use the `read_excel()` function in t
 ```{r}
 library(readxl)
 
-survey <- read_excel("data/examples/health-survey.xlsx")
+survey <- read_excel("data/examples/mod02_health_survey.xlsx")
 summary(survey)
 ```
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,14 +17,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +39,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -86,11 +86,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">References</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -98,82 +103,89 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PHCM9795: Foundations of Biostatistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Course introduction</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></a>
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></a>
+  <a href="./03-precision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-precision.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></a>
+  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
+  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a>
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
+  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -183,7 +195,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">References</h1>
+<h1 class="title">References</h1>
 </div>
 
 
@@ -198,59 +210,23 @@ div.csl-indent {
 
 </header>
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-acock10" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-acock10" class="csl-entry" role="listitem">
 Acock, Alan C. 2010. <em>A <span>Gentle Introduction</span> to
 <span>Stata</span></em>. 3rd ed. <span>College Station, Tex</span>:
 <span>Stata Press</span>.
 </div>
-<div id="ref-altman90" class="csl-entry" role="doc-biblioentry">
-Altman, Douglas G. 1990. <em>Practical <span>Statistics</span> for
-<span>Medical Research</span></em>. 1st ed. <span>Boca Raton,
-Fla</span>: <span>Chapman and Hall/CRC</span>.
-</div>
-<div id="ref-armitage_etal13" class="csl-entry" role="doc-biblioentry">
-Armitage, Peter, Geoffrey Berry, and J. N. S. Matthews. 2013.
-<em>Statistical <span>Methods</span> in <span>Medical
-Research</span></em>. 4th ed. <span>Wiley-Blackwell</span>.
-</div>
-<div id="ref-assel_etal19" class="csl-entry" role="doc-biblioentry">
-Assel, Melissa, Daniel Sjoberg, Andrew Elders, Xuemei Wang, Dezheng Huo,
-Albert Botchway, Kristin Delfino, et al. 2019. <span>“Guidelines for
-Reporting of Statistics for Clinical Research in Urology.”</span>
-<em>BJU International</em> 123 (3): 401–10. <a href="https://doi.org/10.1111/bju.14640">https://doi.org/10.1111/bju.14640</a>.
-</div>
-<div id="ref-australianbureauofstatistics21" class="csl-entry" role="doc-biblioentry">
-Australian Bureau of Statistics. 2021. <span>“Causes of
-<span>Death</span>, <span>Australia</span>, 2020.”</span>
-https://www.abs.gov.au/statistics/health/causes-death/causes-death-australia/latest-release.
-</div>
-<div id="ref-australianinstituteofhealthandwelfare21" class="csl-entry" role="doc-biblioentry">
-Australian Institute of Health and Welfare. 2021. <span>“Australia’s
-Mothers and Babies.”</span>
-https://www.aihw.gov.au/reports/mothers-babies/australias-mothers-babies.
-</div>
-<div id="ref-bland15" class="csl-entry" role="doc-biblioentry">
+<div id="ref-bland15" class="csl-entry" role="listitem">
 Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical
 Statistics</span></em>. 4th ed. <span>Oxford, New York</span>:
 <span>Oxford University Press</span>.
 </div>
-<div id="ref-boers18" class="csl-entry" role="doc-biblioentry">
-Boers, Maarten. 2018. <span>“Graphics and Statistics for Cardiology:
-Designing Effective Tables for Presentation and Publication.”</span>
-<em>Heart</em> 104 (3): 192–200. <a href="https://doi.org/10.1136/heartjnl-2017-311581">https://doi.org/10.1136/heartjnl-2017-311581</a>.
-</div>
-<div id="ref-brown_etal01" class="csl-entry" role="doc-biblioentry">
+<div id="ref-brown_etal01" class="csl-entry" role="listitem">
 Brown, Lawrence D., T. Tony Cai, and Anirban DasGupta. 2001.
 <span>“Interval <span>Estimation</span> for a <span>Binomial
 Proportion</span>.”</span> <em>Statistical Science</em> 16 (2): 101–17.
 </div>
-<div id="ref-cole15" class="csl-entry" role="doc-biblioentry">
-Cole, T. J. 2015. <span>“Too Many Digits: The Presentation of Numerical
-Data.”</span> <em>Archives of Disease in Childhood</em> 100 (7): 608–9.
-<a href="https://doi.org/10.1136/archdischild-2014-307149">https://doi.org/10.1136/archdischild-2014-307149</a>.
-</div>
-<div id="ref-freiman_etal78" class="csl-entry" role="doc-biblioentry">
+<div id="ref-freiman_etal78" class="csl-entry" role="listitem">
 Freiman, Jennie A., Thomas C. Chalmers, Harry Smith, and Roy R. Kuebler.
 1978. <span>“The <span>Importance</span> of <span>Beta</span>, the
 <span>Type II Error</span> and <span>Sample Size</span> in the
@@ -258,31 +234,18 @@ Freiman, Jennie A., Thomas C. Chalmers, Harry Smith, and Roy R. Kuebler.
 <span>Randomized Control Trial</span>.”</span> <em>New England Journal
 of Medicine</em> 299 (13): 690–94. <a href="https://doi.org/10.1056/NEJM197809282991304">https://doi.org/10.1056/NEJM197809282991304</a>.
 </div>
-<div id="ref-kirkwood_sterne01" class="csl-entry" role="doc-biblioentry">
+<div id="ref-kirkwood_sterne01" class="csl-entry" role="listitem">
 Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of
 <span>Medical Statistics</span></em>. 2nd ed. <span>Malden, Mass</span>:
 <span>Wiley-Blackwell</span>.
 </div>
-<div id="ref-therneau_grambsch10" class="csl-entry" role="doc-biblioentry">
-Therneau, Terry M., and Patricia M. Grambsch. 2010. <em>Modeling
-<span>Survival Data</span>: <span>Extending</span> the <span>Cox
-Model</span></em>. <span>New York Berlin Heidelberg</span>:
-<span>Springer</span>.
-</div>
-<div id="ref-vickers_etal20" class="csl-entry" role="doc-biblioentry">
-Vickers, Andrew J., Melissa J. Assel, Daniel D. Sjoberg, Rui Qin, Zhiguo
-Zhao, Tatsuki Koyama, Albert Botchway, et al. 2020. <span>“Guidelines
-for <span>Reporting</span> of <span>Figures</span> and
-<span>Tables</span> for <span>Clinical Research</span> in
-<span>Urology</span>.”</span> <em>European Urology</em>, May. <a href="https://doi.org/10.1016/j.eururo.2020.04.048">https://doi.org/10.1016/j.eururo.2020.04.048</a>.
-</div>
-<div id="ref-webb_etal16" class="csl-entry" role="doc-biblioentry">
+<div id="ref-webb_etal16" class="csl-entry" role="listitem">
 Webb, Penny, Chris Bain, and Andrew Page. 2016. <em>Essential
 <span>Epidemiology</span>: <span>An Introduction</span> for
 <span>Students</span> and <span>Health Professionals</span></em>. 3rd
 ed. <span>Cambridge</span>: <span>Cambridge University Press</span>.
 </div>
-<div id="ref-woodward13" class="csl-entry" role="doc-biblioentry">
+<div id="ref-woodward13" class="csl-entry" role="listitem">
 Woodward, Mark. 2013. <em>Epidemiology: <span>Study Design</span> and
 <span>Data Analysis</span></em>. 3rd ed. <span>Chapman and
 Hall/CRC</span>.
@@ -319,9 +282,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -386,6 +363,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -428,7 +491,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./10-sample-size.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

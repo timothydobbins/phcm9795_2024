@@ -2,7 +2,7 @@
 
 ### Producing histograms and boxplots by a second variable
 
-To obtain the histograms in @fig-mod05-bwt-gender using the `Example_5.1.dta` data, go to **Graphics > Histogram**. Select `birthweight` as the **Variable** in the **Main** tab. Next go to the **By** tab, tick **Draw subgraphs for unique values of variable** and select `gender` as the **variable** as shown below:
+To obtain the histograms in @fig-mod05-bwt-gender using the `mod05_birthweight.dta` data, go to **Graphics > Histogram**. Select `birthweight` as the **Variable** in the **Main** tab. Next go to the **By** tab, tick **Draw subgraphs for unique values of variable** and select `gender` as the **variable** as shown below:
 
 ```{r hist-by-1, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod05", "stata", "hist-by-1.png"))
@@ -26,7 +26,7 @@ Click **OK** or **Submit** to produce the box plot.
 
 ### Producing split summary statistics
 
-To produce summary statistics for a continuous variable, split by a second binary categorical variable, as in Worked Example 5.1 using `Example_5.1.dta`, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Summary statistics** . In the **summarize** dialog box, select `birthweight` as the **Variable** in the **Main** tab of the dialog box. Next go to the **by/if/in** tab, tick **Repeat command by groups** and select `gender` as the **Variable that define groups** as shown below.
+To produce summary statistics for a continuous variable, split by a second binary categorical variable, as in Worked Example 5.1 using `mod05_birthweight.dta`, go to **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Summary statistics** . In the **summarize** dialog box, select `birthweight` as the **Variable** in the **Main** tab of the dialog box. Next go to the **by/if/in** tab, tick **Repeat command by groups** and select `gender` as the **Variable that define groups** as shown below.
  
 ```{r summ-by-1, echo=FALSE, out.width = "66%",}
 knitr::include_graphics(here::here("img", "mod05", "stata", "summ-by-1.png"))
@@ -131,7 +131,7 @@ Ho: diff = 0                                     degrees of freedom =       98
 
 ## Checking the assumptions for a Paired t-test
 
-Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `Example_5.2.dta` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences.
+Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset `mod05_ankle_bp.xls` to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences.
 
 Go to **Data > Create new variable**.
 
@@ -157,7 +157,7 @@ knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-3.png"))
  
 ## Paired t-Test
 
-To perform a paired t-test we will use the dataset `Example_5.2.dta`. For a paired t-test, data must be organised into two variables (i.e. two columns). Go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)** as you had for the Independent samples t-test. In the **ttest** dialog box, choose the **Paired** button then Select `sbp_dp` from the dropdown list under **First variable** and select `sbp_tp` from the dropdown list under **Second variable**. The dialog box will look like: 
+To perform a paired t-test we will use the dataset `mod05_ankle_bp.xls`. For a paired t-test, data must be organised into two variables (i.e. two columns). Go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)** as you had for the Independent samples t-test. In the **ttest** dialog box, choose the **Paired** button then Select `sbp_dp` from the dropdown list under **First variable** and select `sbp_tp` from the dropdown list under **Second variable**. The dialog box will look like: 
 
 ```{r ttest-4, echo=FALSE, out.width = "66%",}
 knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-4.png"))

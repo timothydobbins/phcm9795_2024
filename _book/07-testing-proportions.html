@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHCM9795: Foundations of Biostatistics - 7&nbsp; Hypothesis testing for categorical data</title>
+<title>PHCM9795: Foundations of Biostatistics - 6&nbsp; Hypothesis testing for categorical data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,14 +17,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +39,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -80,6 +80,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -88,11 +89,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-testing-proportions.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -100,82 +106,89 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PHCM9795: Foundations of Biostatistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Course introduction</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></a>
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></a>
+  <a href="./03-precision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-precision.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></a>
+  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a>
+  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a>
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
+  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -184,24 +197,24 @@ div.csl-indent {
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="toc-section-number">7.1</span>  Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="toc-section-number">7.1.1</span>  Worked Example</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="header-section-number">6.1.1</span> Worked Example</a></li>
   </ul></li>
-  <li><a href="#chi-squared-test-for-independent-proportions" id="toc-chi-squared-test-for-independent-proportions" class="nav-link" data-scroll-target="#chi-squared-test-for-independent-proportions"><span class="toc-section-number">7.2</span>  Chi-squared test for independent proportions</a>
+  <li><a href="#chi-squared-test-for-independent-proportions" id="toc-chi-squared-test-for-independent-proportions" class="nav-link" data-scroll-target="#chi-squared-test-for-independent-proportions"><span class="header-section-number">6.2</span> Chi-squared test for independent proportions</a>
   <ul class="collapse">
-  <li><a href="#assumptions-for-using-a-pearsons-chi-squared-test" id="toc-assumptions-for-using-a-pearsons-chi-squared-test" class="nav-link" data-scroll-target="#assumptions-for-using-a-pearsons-chi-squared-test"><span class="toc-section-number">7.2.1</span>  Assumptions for using a Pearson’s chi-squared test</a></li>
-  <li><a href="#interpreting-chi-squared-tests" id="toc-interpreting-chi-squared-tests" class="nav-link" data-scroll-target="#interpreting-chi-squared-tests"><span class="toc-section-number">7.2.2</span>  Interpreting chi-squared tests</a></li>
+  <li><a href="#assumptions-for-using-a-pearsons-chi-squared-test" id="toc-assumptions-for-using-a-pearsons-chi-squared-test" class="nav-link" data-scroll-target="#assumptions-for-using-a-pearsons-chi-squared-test"><span class="header-section-number">6.2.1</span> Assumptions for using a Pearson’s chi-squared test</a></li>
+  <li><a href="#interpreting-chi-squared-tests" id="toc-interpreting-chi-squared-tests" class="nav-link" data-scroll-target="#interpreting-chi-squared-tests"><span class="header-section-number">6.2.2</span> Interpreting chi-squared tests</a></li>
   </ul></li>
-  <li><a href="#chi-squared-tests-for-tables-larger-than-2-by-2" id="toc-chi-squared-tests-for-tables-larger-than-2-by-2" class="nav-link" data-scroll-target="#chi-squared-tests-for-tables-larger-than-2-by-2"><span class="toc-section-number">7.3</span>  Chi-squared tests for tables larger than 2-by-2</a>
+  <li><a href="#chi-squared-tests-for-tables-larger-than-2-by-2" id="toc-chi-squared-tests-for-tables-larger-than-2-by-2" class="nav-link" data-scroll-target="#chi-squared-tests-for-tables-larger-than-2-by-2"><span class="header-section-number">6.3</span> Chi-squared tests for tables larger than 2-by-2</a>
   <ul class="collapse">
-  <li><a href="#worked-example-1" id="toc-worked-example-1" class="nav-link" data-scroll-target="#worked-example-1"><span class="toc-section-number">7.3.1</span>  Worked Example</a></li>
+  <li><a href="#worked-example-1" id="toc-worked-example-1" class="nav-link" data-scroll-target="#worked-example-1"><span class="header-section-number">6.3.1</span> Worked Example</a></li>
   </ul></li>
-  <li><a href="#mcnemars-test-for-categorical-paired-data" id="toc-mcnemars-test-for-categorical-paired-data" class="nav-link" data-scroll-target="#mcnemars-test-for-categorical-paired-data"><span class="toc-section-number">7.4</span>  McNemar’s test for categorical paired data</a>
+  <li><a href="#mcnemars-test-for-categorical-paired-data" id="toc-mcnemars-test-for-categorical-paired-data" class="nav-link" data-scroll-target="#mcnemars-test-for-categorical-paired-data"><span class="header-section-number">6.4</span> McNemar’s test for categorical paired data</a>
   <ul class="collapse">
-  <li><a href="#worked-example-7.3" id="toc-worked-example-7.3" class="nav-link" data-scroll-target="#worked-example-7.3"><span class="toc-section-number">7.4.1</span>  Worked Example 7.3</a></li>
+  <li><a href="#worked-example-7.3" id="toc-worked-example-7.3" class="nav-link" data-scroll-target="#worked-example-7.3"><span class="header-section-number">6.4.1</span> Worked Example 7.3</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">7.5</span>  Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.5</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -210,7 +223,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></h1>
 </div>
 
 
@@ -240,13 +253,13 @@ div.csl-indent {
 <p><span class="citation" data-cites="bland15">Bland (<a href="references.html#ref-bland15" role="doc-biblioref">2015</a>)</span>; Chapter 13. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730">[UNSW Library Link]</a></p>
 <p><span class="citation" data-cites="acock10">Acock (<a href="references.html#ref-acock10" role="doc-biblioref">2010</a>)</span>; Section 7.6.</p>
 </section>
-<section id="introduction" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
 <p>In Module 6, we estimated the 95% confidence intervals of proportions and measures of association for categorical data and conducted a significance test comparing a sample proportion to a known value.</p>
 <p>When both the outcome variable and the exposure variable are categorical, a chi-squared test can be used as a formal statistical test to assess whether the exposure and outcome are related. The P-value obtained from a chi-squared test gives the probability of obtaining the observed association (or more extreme) if there is in fact no association between the exposure and outcome.</p>
 <p>In this Module, we also include tests for a difference in proportion for paired data.</p>
-<section id="worked-example" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">7.1.1</span> Worked Example</h3>
+<section id="worked-example" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">6.1.1</span> Worked Example</h3>
 <p>We are using the randomised controlled trial as given in Worked Example 6.4 on the nauseating side effect of a drug.</p>
 <p>The research question is whether the active drug resulted in a different rate of nausea than the placebo drug. This is equivalent to testing whether there is an association between nausea and type of drug received (active or placebo). Thus, we will test the null hypothesis that the experience of nausea and the treatment are not related to one another. The null hypothesis is:</p>
 <ul>
@@ -258,8 +271,8 @@ div.csl-indent {
 </ul>
 </section>
 </section>
-<section id="chi-squared-test-for-independent-proportions" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="chi-squared-test-for-independent-proportions"><span class="header-section-number">7.2</span> Chi-squared test for independent proportions</h2>
+<section id="chi-squared-test-for-independent-proportions" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="chi-squared-test-for-independent-proportions"><span class="header-section-number">6.2</span> Chi-squared test for independent proportions</h2>
 <p>A chi-squared test is used to test the null hypothesis that of no association between two categorical variables. First a contingency table is drawn up and then we estimate the counts of each cell (i.e.&nbsp;a, b, c and d) that would be expected if the null hypothesis was true. The row and column totals are used to calculate expected counts in each cell of the contingency table as follows:</p>
 <p>Expected count = (Row count × Column count) / Total count</p>
 <p>Stata will do this for us, as described in the Stata Notes section in this Module.</p>
@@ -272,7 +285,7 @@ div.csl-indent {
 <p>The Stata output for Worked Example 7.1 for the study on nausea is shown in Output 7.1a. It is always important to request the percentages using the options in ‘Cells’ to show the proportion of patients who have the outcome in each exposure group, i.e.&nbsp;the row percents.</p>
 <div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;7.1: Nausea side-effect data</p>
+<p>Table&nbsp;6.1: Nausea side-effect data</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="tbl-panel-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
@@ -346,8 +359,8 @@ div.csl-indent {
 <p>We can see from the row percentages that 8% of patients in the placebo group experienced nausea compared to 30% of patients in the active group. If no association existed, we would expect to find approximately the same percent of patients with nausea in each group. The ‘Expected’ counts are higher for the groups with ‘No nausea’ because ‘No nausea’ is more prevalent in the sample than ‘Nausea’.</p>
 <p>While the <code>tab2</code> command will perform the chi-square test, the measure of effect is best obtained using the <code>cs</code> or <code>cc</code> commands, as discussed in Module 6. Using the relative risk obtained from Module 6, a conclusion from the above test can be written as:</p>
 <p>The proportion with nausea in those who received the active drug is 30%, compared to 8% in those who received the placebo drug. Nausea was more frequent in those who received the active drug (Relative Risk = 3.75, 95% CI: 1.34 to 10.51). There is strong evidence that the proportion with nausea differs between the two groups (<span class="math inline">\(\chi ^2\)</span> = 7.86 with 1 df, P=0.005).</p>
-<section id="assumptions-for-using-a-pearsons-chi-squared-test" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="assumptions-for-using-a-pearsons-chi-squared-test"><span class="header-section-number">7.2.1</span> Assumptions for using a Pearson’s chi-squared test</h3>
+<section id="assumptions-for-using-a-pearsons-chi-squared-test" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="assumptions-for-using-a-pearsons-chi-squared-test"><span class="header-section-number">6.2.1</span> Assumptions for using a Pearson’s chi-squared test</h3>
 <p>The assumptions that must be met when using Pearson’s chi-squared test are that:</p>
 <ul>
 <li>each observation must be independent;</li>
@@ -357,20 +370,20 @@ div.csl-indent {
 </ul>
 <p>The first two assumptions are dictated by the study design. The last two assumptions relate to the numbers in the cells and can be explored when running the test. There should not be too many cells with low expected counts. Sometimes, the only way to avoid small cell counts is to recruit a much larger sample size. If small cell counts cannot be avoided, Fisher’s exact test can be used instead. More information on Fisher’s exact test can be found in Chapter 13 of An Introduction to Medical Statistics, <span class="citation" data-cites="bland15">Bland (<a href="references.html#ref-bland15" role="doc-biblioref">2015</a>)</span>.</p>
 </section>
-<section id="interpreting-chi-squared-tests" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="interpreting-chi-squared-tests"><span class="header-section-number">7.2.2</span> Interpreting chi-squared tests</h3>
+<section id="interpreting-chi-squared-tests" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="interpreting-chi-squared-tests"><span class="header-section-number">6.2.2</span> Interpreting chi-squared tests</h3>
 <p>For the data being considered from Worked Example 7.1 all cells have an expected count greater than 5 and that the minimum cell count is 9.5. Therefore, it is appropriate to use the Pearson’s Chi-Squared test. If one or more cells have an expected cell count less than 5, then the Fisher’s exact test should be used. The P value associated with the Pearson’s chi-squared test is 0.005 indicating that we can reject the null hypothesis at a 5% level of significance. Thus, we can conclude that there is strong evidence that more patients who were randomised to receive the active treatment experienced nausea than patients randomised to the control (placebo) group.</p>
 </section>
 </section>
-<section id="chi-squared-tests-for-tables-larger-than-2-by-2" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="chi-squared-tests-for-tables-larger-than-2-by-2"><span class="header-section-number">7.3</span> Chi-squared tests for tables larger than 2-by-2</h2>
+<section id="chi-squared-tests-for-tables-larger-than-2-by-2" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="chi-squared-tests-for-tables-larger-than-2-by-2"><span class="header-section-number">6.3</span> Chi-squared tests for tables larger than 2-by-2</h2>
 <p>Chi-squared tests can also be used for tables larger than a 2-by-2 dimension. When a contingency table larger than 2-by-2 is used, say a 4-by-2 table if there were 4 exposure groups, the Pearson’s chi-squared can still be used.</p>
-<section id="worked-example-1" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="worked-example-1"><span class="header-section-number">7.3.1</span> Worked Example</h3>
-<p>The Stata file <code>Example_7.2.dta</code> contains information about the severity of allergic reaction, coded as absent, slight, moderate or severe. We can test the hypothesis that the severity of allergy is not different between males and females. To do this we can use a two-way tabulation in Stata to obtain Stata Output 7.2 which shows the percent of females and males who fall into each severity group for allergy. The table shows that the percentage of males is higher in each of the categories of severity (slight, moderate, severe) than the percentage of females. [Command: <code>tab allergy_severity sex, col</code>]</p>
+<section id="worked-example-1" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="worked-example-1"><span class="header-section-number">6.3.1</span> Worked Example</h3>
+<p>The Stata file <code>mod07_allergy.dta</code> contains information about the severity of allergic reaction, coded as absent, slight, moderate or severe. We can test the hypothesis that the severity of allergy is not different between males and females. To do this we can use a two-way tabulation in Stata to obtain Stata Output 7.2 which shows the percent of females and males who fall into each severity group for allergy. The table shows that the percentage of males is higher in each of the categories of severity (slight, moderate, severe) than the percentage of females. [Command: <code>tab allergy_severity sex, col</code>]</p>
 <div id="tbl-allergy" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;7.2: Allergy data</p>
+<p>Table&nbsp;6.2: Allergy data</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="tbl-allergy-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-allergy" style="flex-basis: 100.0%;justify-content: center;">
@@ -478,32 +491,51 @@ div.csl-indent {
 <p>The Pearson chi-squared statistic is calculated as 4.31, with 3 degrees of freedom, providing a P-value of 0.23. Therefore, there is little evidence of an association between gender and the severity of allergy.</p>
 </section>
 </section>
-<section id="mcnemars-test-for-categorical-paired-data" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="mcnemars-test-for-categorical-paired-data"><span class="header-section-number">7.4</span> McNemar’s test for categorical paired data</h2>
+<section id="mcnemars-test-for-categorical-paired-data" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="mcnemars-test-for-categorical-paired-data"><span class="header-section-number">6.4</span> McNemar’s test for categorical paired data</h2>
 <p>If a binary categorical outcome is measured in a paired study design, McNemar’s statistic is used. This statistic is a form of chi-square applied to a paired situation. A Pearson’s chi-squared test cannot be used because the measurements are not independent. However, McNemar’s test can be used to assess whether there is a significant change in proportions between two time points or between two conditions, or whether there is a significant difference in proportions between matched cases and controls.</p>
 <p>For McNemar’s test, the data are displayed as shown in Table 7.1. Cells ‘a’ and ‘d’ called concordant cells because the response was the same at both baseline and follow-up or between matched cases and controls. Cells ‘b’ and ‘c’ are called discordant cells because the responses between the pairs were different. For a follow-up study, the participants in cell ‘c’ had a positive response at baseline and a negative response at follow-up. Conversely, the participants in cell ‘b’ had a negative response at baseline and a positive response at follow-up.</p>
 <p>For other types of paired data such as twins or matched cases and controls, the data are similarly displayed with the responses of one of the pairs in the columns and the responses for the other of the pairs in the rows. For paired data, the grand total ‘N’ is always the number of pairs and not the total number of participants.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-7-1" class="anchored">
+<table id="tab:tbl-7-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;6.3: Table layout for testing matched proportions</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Negative at follow-up</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Positive at follow-up</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Negative at baseline</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">a</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">b</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">a + b</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Positive at baseline</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">c</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">d</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">c + d</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Total</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">a + c</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">b + d</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">N</td>
+</tr>
+</tbody>
+</table>
+</div>
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-7-1"><caption>Table&nbsp;7.3:  Table layout for testing matched proportions </caption>
-<colgroup><col><col><col><col></colgroup><tbody><tr>
-<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;"> </th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Negative at follow-up</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Positive at follow-up</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Total</th></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Negative at baseline</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">a</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">b</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">a + b</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Positive at baseline</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">c</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">d</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">c + d</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Total</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">a + c</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">b + d</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">N</td></tr>
-</tbody></table>
 
 </div>
 </div>
-</div>
-<section id="worked-example-7.3" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="worked-example-7.3"><span class="header-section-number">7.4.1</span> Worked Example 7.3</h3>
-<p>Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The dataset Example_7.3.dta is available on Moodle. The null hypothesis is as follows:</p>
+<section id="worked-example-7.3" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="worked-example-7.3"><span class="header-section-number">6.4.1</span> Worked Example 7.3</h3>
+<p>Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The dataset mod07_drug_response.dta is available on Moodle. The null hypothesis is as follows:</p>
 <ul>
 <li>H<sub>0</sub>: The proportion of patients who do better on drug A is the same as the proportion of patients who do better on drug B</li>
 </ul>
@@ -556,19 +588,19 @@ div.csl-indent {
 <p>ADD TEXT AROUND THE EXACT TEST BEING BASED ON BINOMIAL TEST KIRKWOOD RECOMMENDS B+C TO BE BIGGER THAN 10, OTHERWISE USE EXACT BINOMIAL TEST</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.5</span> Summary</h2>
+<section id="summary" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.5</span> Summary</h2>
 <p>In Module 6, we estimated proportions and measures of association for categorical data and conducted a one-sample test of proportions. In this module, we conduct significance tests for two or more independent proportions using the chi-squared test. The chi-squared test can also be used to conduct a significance test when there are more than two categories in both variables. The McNemar’s test is used when we have paired data.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-acock10" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-acock10" class="csl-entry" role="listitem">
 Acock, Alan C. 2010. <em>A <span>Gentle Introduction</span> to <span>Stata</span></em>. 3rd ed. <span>College Station, Tex</span>: <span>Stata Press</span>.
 </div>
-<div id="ref-bland15" class="csl-entry" role="doc-biblioentry">
+<div id="ref-bland15" class="csl-entry" role="listitem">
 Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical Statistics</span></em>. 4th ed. <span>Oxford, New York</span>: <span>Oxford University Press</span>.
 </div>
-<div id="ref-kirkwood_sterne01" class="csl-entry" role="doc-biblioentry">
+<div id="ref-kirkwood_sterne01" class="csl-entry" role="listitem">
 Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of <span>Medical Statistics</span></em>. 2nd ed. <span>Malden, Mass</span>: <span>Wiley-Blackwell</span>.
 </div>
 </div>
@@ -602,9 +634,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -669,6 +715,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -711,12 +843,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./06-proportions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08-correlation-and-regression.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

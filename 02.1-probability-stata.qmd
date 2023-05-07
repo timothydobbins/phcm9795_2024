@@ -9,7 +9,7 @@ We have described previously how to open data that have been saved as Stata .dta
 ### Importing plain text data into Stata
 A `csv` file, or a "comma separated variables" file is commonly used to store data. These files have a very simple structure: they are plain text files, where data are separated by commas. csv files have the advantage that, as they are plain text files, they can be opened by a large number of programs (such as Notepad in Windows, TextEdit in MacOS, Microsoft Excel - even Microsoft Word). While they can be opened by Microsoft Excel, they can be opened by many other programs: the csv file can be thought of as the lingua-franca of data.
 
-In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `weight_s2.csv` available on Moodle.
+In this demonstration, we will use data on the weight of 1000 people entered in a csv file called `mod02_weight_1000.csv` available on Moodle.
 To confirm that the file is readable by any text editor, here are the first ten lines of the file, opened in Notepad on Microsoft Windows, and TextEdit on MacOS.
  	 
 ```{r , echo=FALSE, out.width = "66%",}
@@ -82,10 +82,10 @@ All the descriptive statistics including Skewness and Kurtosis discussed in this
 knitr::include_graphics(here::here("img", "mod02", "stata", "desc-01.png"))
 ```
 
-You can similarly repeat this using the dataset `Example_1.3.dta` used for creating these in the course notes for this module.
+You can similarly repeat this using the dataset `mod02_weight_30.dta` used for creating these in the course notes for this module.
 
 ## Importing Excel data into Stata
-Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `health-survey.xlsx`.
+Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `mod02_health_survey.xlsx`.
 
 The health survey data contains 1140 records, comprising:
 
@@ -178,6 +178,7 @@ knitr::include_graphics(here::here("img", "mod02", "stata", "summ-by-02.png"))
 The by-variable will tell Stata to repeat the `summarize` command for each distinct value of `sex`. Hence, your by-variable must be a discrete variable with only a relatively small number of categories.
 
 The following results appear:
+
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
 . by sex, sort : summarize BMI
 

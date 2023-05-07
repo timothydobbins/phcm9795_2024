@@ -1,7 +1,7 @@
 # **7** Stata resources {-}
 
 ## Pearson’s chi-squared test
-To use Stata to perform the Chi-squared test on the data in `Example_7.1.dta` we need to have individual record data for the treatment group and presence of side effects. 
+To use Stata to perform the Chi-squared test on the data in `mod06_nausea.dta.dta` we need to have individual record data for the treatment group and presence of side effects. 
 
 As discussed in Module 7 course notes, in this dataset `group` is coded as “1=Active” and “0 = Placebo” and `side_effect` is coded as “1 = Nausea” and “0 = No nausea”.
 
@@ -30,7 +30,7 @@ knitr::include_graphics(here::here("img", "mod07", "stata", "tabi-1.png"))
 When you are done, click OK or Submit.
 
 ## Chi-squared test for tables larger than 2-by-2
-Use the data in `Example_7.2.dta`. We use similar steps as described above for a 2-by-2 table. Here we have defined the column based on sex, and we would like to obtain allergy severity by sex, so we choose "Within-column relative frequencies". We also request the expected cell counts to check the Pearson chi-squared test assumption that <20% of cells have expected cell count <5 and the minimum expected cell count is >1.
+Use the data in `mod07_allergy.dta`. We use similar steps as described above for a 2-by-2 table. Here we have defined the column based on sex, and we would like to obtain allergy severity by sex, so we choose "Within-column relative frequencies". We also request the expected cell counts to check the Pearson chi-squared test assumption that <20% of cells have expected cell count <5 and the minimum expected cell count is >1.
 
 ```{r tabulate2-2, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod07", "stata", "tabulate2-2.png"))
@@ -42,7 +42,7 @@ Click **OK** or **Submit** to obtain Stata Output 7.2.
 
 ## McNemar’s test for paired proportions
 
-To perform this test in Stata, we will use the dataset `Example_7.3.dta`. Responses to each drug should be in separate variables in the dataset as shown in Table 7.2 using the `tabulate2` command (**Statistics > Summaries, tables, and tests > Frequency tables > Two-way table with measures of association**). In the tabulate2 dialog box, tick **Relative frequencies** under **Cell contents** as shown below.
+To perform this test in Stata, we will use the dataset `mod07_drug_response.dta`. Responses to each drug should be in separate variables in the dataset as shown in Table 7.2 using the `tabulate2` command (**Statistics > Summaries, tables, and tests > Frequency tables > Two-way table with measures of association**). In the tabulate2 dialog box, tick **Relative frequencies** under **Cell contents** as shown below.
 
 ```{r tabulate2-3, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod07", "stata", "tabulate2-3.png"))

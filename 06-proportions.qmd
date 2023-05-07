@@ -128,7 +128,7 @@ knitr::include_graphics(here::here("img", "mod06", "z-curve.png"))
 We can use the binomial distribution to obtain an exact P-value for testing a single proportion. Historically, this was a time consuming process with much hand calculation. These days, Stata and other statistical software performs the calculations quickly and efficiently, and is the preferred method.
 
 ### Worked example
-The file `Example_6.3.csv` contains the data for this example. In the data file, smokers are coded as 1 and non-smokers are coded as 0.
+The file `mod06_smoking_status.csv` contains the data for this example. In the data file, smokers are coded as 1 and non-smokers are coded as 0.
 
 In Stata, we can use the `prtest` command to perform a z-test, or the `bitest` command to perform the exact binomial test. In R, we can use the `prop.test` function to perform a z-test, or the `binom.test` function to perform the exact binomial test.
 
@@ -138,7 +138,7 @@ The z-test provides a two-sided P-value of 0.39, while the binomial test gives a
 
 As introduced in PHCM9794: Foundations of Epidemiology, 2-by-2 contingency tables can be used to examine associations between two binary variables, most commonly an exposure and an outcome. The traditional form of a 2-by-2 contigency table is given in @tbl-2-by-2-trad.
 
-```{r tbl-2-by-2-trad, echo=FALSE}
+```{r tbl-2-by-2-trad, echo=FALSE, include=FALSE}
 #| tbl-cap: Traditional format for presenting a contingency table
 
 library(huxtable)
@@ -258,7 +258,7 @@ In some situations, related to how well controls are recruited into this study, 
 
 ### Worked Example
 
-A randomised controlled trial was conducted among a group of patients to estimate the side effects of a drug. Fifty patients were randomly allocated to receive the active drug and 50 patients were allocated to receive a placebo drug. The outcome measured was the experience of nausea. The data is given in the file Example_6.4.csv.
+A randomised controlled trial was conducted among a group of patients to estimate the side effects of a drug. Fifty patients were randomly allocated to receive the active drug and 50 patients were allocated to receive a placebo drug. The outcome measured was the experience of nausea. The data is given in the file mod06_nausea.dta.csv.
 
 A summary table can be constructed as in @tbl-rr-example.
 

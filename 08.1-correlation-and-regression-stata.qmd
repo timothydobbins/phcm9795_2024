@@ -1,6 +1,6 @@
 ## Creating a scatter plot
 
-We will demonstrate using Stata for correlation and simple linear regression using the dataset `Example_8.1.dta`.
+We will demonstrate using Stata for correlation and simple linear regression using the dataset `mod08_lung_function.dta`.
 
 To create a scatter plot to explore the association between height and FVC click: **Graphics > Twoway graph (scatter, line, etc.)**. In the `twoway` dialog box, click **Create...**
 
@@ -62,7 +62,7 @@ knitr::include_graphics(here::here("img", "mod08", "stata", "twoway-7.png"))
 
 ## Calculating a correlation coefficient
 
-To calculate the Pearson's correlation using the dataset `Example_8.1.dta` go to: **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Pairwise correlations**
+To calculate the Pearson's correlation using the dataset `mod08_lung_function.dta` go to: **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Pairwise correlations**
 
 Select the two variables, **FVC** and **Height** in the **Variables** box. You can click the **Submit** button to check the output. Next, tick the box for **Print significance level for each entry** to obtain the P-value and the box for **Print number of observations for each entry** to obtain the number of observations used as shown below.
 
@@ -76,7 +76,7 @@ Click the **OK** or the **Submit** button when you are done to produce **Output 
 
 ## Fitting a simple linear regression model
 
-We will fit a simple linear regression model with `Example_8.1.dta` to quantify the relationship between FVC and height.
+We will fit a simple linear regression model with `mod08_lung_function.dta` to quantify the relationship between FVC and height.
 
 Choose **Statistics > Linear models and related > Linear regression**
 

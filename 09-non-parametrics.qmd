@@ -34,7 +34,7 @@ In general, parametric statistics are preferred for reporting data because the s
 When a variable has a skewed distribution, one possibility is to transform the data to a new variable to try and obtain a normal or near normal distribution. Methods to transform non-normally distributed data include logarithmic transformation of each data point, or using the square root or the square or the inverse (i.e. 1/x) etc. 
 
 ### Worked Example
-We have data from 132 patients who had a hospital stay following admission to ICU available on Moodle (Example_9.1.csv). The distribution of the length of stay for these patients is shown in the histogram in @fig-mod09-los. As is common with variables that record time, the data are skewed with many patients having relatively short stays and a few patients having very long hospital stays. Clearly, it would be inappropriate to use parametric statistical methods for these data.
+We have data from 132 patients who had a hospital stay following admission to ICU available on Moodle (mod09_infection.dta.csv). The distribution of the length of stay for these patients is shown in the histogram in @fig-mod09-los. As is common with variables that record time, the data are skewed with many patients having relatively short stays and a few patients having very long hospital stays. Clearly, it would be inappropriate to use parametric statistical methods for these data.
 
 ```{r fig-mod09-los, echo=FALSE, out.width = "66%", fig.cap="Length of hospital stay for 132 patients"}
 knitr::include_graphics(here::here("img", "mod09", "mod09-los.png"))
@@ -86,7 +86,7 @@ As explained above, the estimated statistics would need to be converted back to 
 It is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g. length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.
 
 ### Ranking variables
-Table 9.1 shows how ranks are calculated for the first 21 patients in the length-of-stay data (Example_9.1.dta). First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
+Table 9.1 shows how ranks are calculated for the first 21 patients in the length-of-stay data (mod09_infection.dta.dta). First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
 
 ```{r tab-9-1, echo=FALSE}
 df <- tibble::tribble(
@@ -170,7 +170,7 @@ In this test, the absolute differences between the paired scores are ranked and 
 
 ### Worked Example
 
-A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in Stata datafile file Example_9.2.dta. The data are shown in Table 9.2. The descriptive statistics indicate that the differences are not normally distributed. You can use the Explore function in Stata to determine this.
+A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in Stata datafile file mod09_arthritis.csv. The data are shown in Table 9.2. The descriptive statistics indicate that the differences are not normally distributed. You can use the Explore function in Stata to determine this.
 
 ```{r tab-9-2, echo=FALSE}
 df <- tibble::tribble(
@@ -244,7 +244,7 @@ In terms of which is the more appropriate measure to use, the following passage 
 
 > "Why have two different rank correlation coefficients? Spearman’s $\rho$ is older than Kendall’s $\tau$, and can be thought of as a simple analogue of the product moment correlation coefficient, Pearson’s r. Kendall’s $\tau$ is a part of a more general and consistent system of ranking methods, and has a direct interpretation, as the difference between the proportions of concordant and discordant pairs. In general, the numerical value of $\rho$ is greater than that of $\tau$. It is not possible to calculate $\tau$ from $\rho$ or $\rho$ from $\tau$, they measure different sorts of correlation. $\rho$ gives more weight to reversals of order when data are far apart in rank than when there is a reversal close together in rank, $\tau$ does not. However, in terms of tests of significance, both have the same power to reject a false null hypothesis, so for this purpose it does not matter which is used."
 
-We will illustrate estimating rank correlation using the Stata file `Example_8.1.dta`, which has information about height and lung function collected from a sample of 120 adults.
+We will illustrate estimating rank correlation using the Stata file `mod08_lung_function.dta`, which has information about height and lung function collected from a sample of 120 adults.
 
 The Spearman rank correlation coefficient is estimated as 0.75, demonstrating a positive association between height and FVC. The Kendall rank correlation coefficient is estimated as 0.56, again demonstrating a positive association between height and FVC.
 

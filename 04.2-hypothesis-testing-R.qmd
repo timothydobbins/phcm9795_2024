@@ -1,11 +1,11 @@
 ## One sample t-test
 
-We will use data from `Example_4.1.rds` to demonstrate how a one-sample t-test is conducted in R.
+We will use data from `mod04_blood_pressure.csv` to demonstrate how a one-sample t-test is conducted in R.
 
 ```{r}
 library(jmv)
 
-bloodpressure <- read.csv("data/examples/Example_4.1.csv")
+bloodpressure <- read.csv("data/examples/mod04_blood_pressure.csv")
 
 descriptives(bloodpressure)
 ```

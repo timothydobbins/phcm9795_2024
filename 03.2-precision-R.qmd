@@ -1,12 +1,13 @@
 ## Calculating a 95% confidence interval of a mean: individual data {#sec-cimean-r-ind}
 
-To demonstrate the computation of the 95% confidence interval of a mean we have used data from `Example_1.3.rds` which contains the weights of 30 students:
+To demonstrate the computation of the 95% confidence interval of a mean we have used data from `mod02_weight_30.rds` which contains the weights of 30 students:
 
 ```{r}
-students <- readRDS("data/examples/Example_1.3.rds")
+students <- readRDS("data/examples/mod02_weight_30.rds")
 ```
 
 We can examine the data set using the `summary` command:
+
 ```{r}
 summary(students)
 ```

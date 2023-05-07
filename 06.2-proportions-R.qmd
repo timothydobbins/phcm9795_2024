@@ -30,7 +30,7 @@ We will use Worked Example 6.4 to demonstrate calculating a relative risk and it
 ```{r}
 library(jmv)
 
-drug <- readRDS("data/examples/Example_6.4.rds")
+drug <- readRDS("data/examples/mod06_nausea.rds")
 
 summary(drug)
 ```
