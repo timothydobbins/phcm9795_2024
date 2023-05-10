@@ -2,7 +2,7 @@
 
 One option for dealing with a non-normally distributed varaible is to transform it into its square, square root or logarithmic value. The new transformed variable may be normally distributed and therefore a parametric test can be used. First we check the distribution of the variable for normality, e.g. by plotting a histogram (for example, Figure 9.1).
 
-You can calculate a new, transformed, variable using the generate command in Stata from the menu **Data > Create or change data > Create new variable**. Below are the instructions for creating a log to the base e, referred to as “ln” of the length of stay data for `mod09_infection.dta.dta`.
+You can calculate a new, transformed, variable using the generate command in Stata from the menu **Data > Create or change data > Create new variable**. Below are the instructions for creating a log to the base e, referred to as “ln” of the length of stay data for `mod09_infection.dta`.
 
 Go to **Data > Create or change data > Create new variable**. In the **generate** dialog box, type a name for your new variable into the **Variable name:** box: for example, `ln_los`. To include the `ln` function, you can either:
 
@@ -41,7 +41,7 @@ If your transformed variable is approximately normally distributed, you can appl
 
 ## Wilcoxon ranked-sum test
 
-The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `mod09_infection.dta.dta`. To perform the Wilcoxon ranked-sum test go to: **Statistics > Summaries, tables, and tests > Nonparametric tests of hypotheses > Wilcoxon ranked-sum test**.
+The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in `mod09_infection.dta`. To perform the Wilcoxon ranked-sum test go to: **Statistics > Summaries, tables, and tests > Nonparametric tests of hypotheses > Wilcoxon ranked-sum test**.
 
 In the **ranksum** dialog box, select `los` as the **Variable** and select `infect` as the **Grouping variable** as shown below.
 

@@ -661,7 +661,7 @@ The `plot()` function, also known as *base graphics*, is the default method of p
 
 The simplest way to use the `plot()` function is by specifying an object to be plotted. As with the `hist()` function, to plot a single variable from a data frame, we must define it using: `dataframe$variable`.
 
-Here we will create the bar chart shown in Figure 1.3 of the statistics notes using the `pbc.rds` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
+Here we will create the bar chart shown in @fig-bar-1 of the statistics notes using the `pbc.rds` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
 
 ```{r}
 plot(pbc$stage, 
@@ -673,7 +673,7 @@ Note that stage is a categorical variable, that has been defined as a factor (in
 
 #### Clustered bar graph
 
-To create a clustered bar chart as shown in Figure 1.4 of the statistics notes, we need to do a bit of manipulation. We first need to tabulate the data using the `table()` function. We want to plot stage of disease broken down by sex, so we specify `sex` as the first variable, and `stage` as the second variable for the `table()` command.
+To create a clustered bar chart as shown in @fig-bar-2 of the statistics notes, we need to do a bit of manipulation. We first need to tabulate the data using the `table()` function. We want to plot stage of disease broken down by sex, so we specify `sex` as the first variable, and `stage` as the second variable for the `table()` command.
 
 ```{r}
 counts <- table(pbc$sex, pbc$stage)

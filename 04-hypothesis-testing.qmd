@@ -42,11 +42,12 @@ Hypothesis testing is a statistical technique that is used to quantify the evide
 
 H~0~ = there is no difference in mean systolic blood pressure between a group taking a conventional drug and a group taking a newly developed drug
 
-We also have an alternative hypothesis that is opposite or contrasting to the null hypothesis. In our example above, the alternative hypothesis above we be that there is a difference between groups. The alternative hypothesis is usually of most interest to the researcher but in practice, formal statistical tests are used to test the null hypothesis (not the alternative hypothesis). The hypotheses are always in reference to the population from which the sample is drawn, not the sample itself.
+We also have an alternative hypothesis that is opposite or contrasting to the null hypothesis. In our example above, the alternative hypothesis for the above null hypothesis is that there is a difference between groups. The alternative hypothesis is usually of most interest to the researcher but in practice, formal statistical tests are used to test the null hypothesis (not the alternative hypothesis). The hypotheses are always in reference to the population from which the sample is drawn, not the sample itself.
 
 After setting up our null and alternative hypotheses, we use the data to generate a test statistic. The particular test statistic differs depending on the type of data being analyses (e.g. continuous or categorical), the study design (e.g. paired or independent) and the question being asked.
 
 The test statistic is then compared to a known distribution to calculate the probability of observing a test statistic which is as large or larger than the observed test statistic, if the null hypothesis was true. The probability is known as the P-value.
+
 Informally, the P-value can be interpreted as the probability of observing data like ours, or more extreme, if the null hypothesis was true.
 
 If the P-value is small, it is unlikely that we would observe data like ours or more extreme if the null hypothesis was true. In other words, our data are not consistent with the null hypothesis, and we conclude that we have evidence against the null hypothesis. If the P-value is not small, the probability of observing data like ours or more extreme is not unlikely. We therefore have little or no evidence against the null hypothesis. In hypothesis testing, the null hypothesis cannot be proven or accepted; we can only find evidence to refute the null hypothesis.
@@ -63,7 +64,7 @@ Historically, a value of 0.05 has been used as a cut-point for finding evidence 
 #| tbl-cap: Interpretation of P-values
 
 tab4_1 <- tibble::tribble(
-  ~`Size of P value`, ~`Strength of evidence`,
+  ~`Size of P-value`, ~`Strength of evidence`,
   "<0.001",	"Very strong evidence",
   "0.001 to <0.01",	"Strong evidence",
   "0.01 to <0.05", "Evidence",
@@ -97,7 +98,7 @@ Conversely, it is possible to obtain a large, clinically important difference be
 
 For example, consider a study to measure the rate of hospital admissions. We may find that 80% of children who present to the Emergency Department are admitted before an intervention is introduced compared to only 65% of children after the intervention. However, the P value may be calculated as 0.11 and is non-significant. This is because only 60 children were surveyed in each period. Here, the reduction in the admission rate by 15% represents a clinically important difference, but not statistically significant. This situation is represented in scenario (d) of @fig-practical-importance.
 
-The important thing to remember is that statistical significance does not always correspond to clinical importance. A statistically significant result may be clinically unimportant, and a statistically non-significant results may be clinically important.
+The important thing to remember is that statistical significance does not always correspond to practical importance. A statistically significant result may be practically unimportant, and a statistically non-significant results may be practically important.
 
 ## Errors in significance testing
 There are two conclusions we can draw when conducting a hypothesis test: if the P-value is small, there is strong evidence against the null hypothesis and we reject the null hypothesis. If the P-value is not small, there is little evidence against the null hypothesis and we fail to reject the null hypothesis. As discussed above, the “small” cut-point for the P-value is often taken as 0.05. We refer to this value as $\alpha$ (alpha).

@@ -30,10 +30,10 @@ b)	What happens to the standard error as the sample size increases? What can you
 
 ### Activity 3.3 {-}
 
-The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is Activity1.4.dta on Moodle.
+The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is `Activity1.4.dta` or `Activity1.4.rds` on Moodle.
 
 a) Plot a histogram of diastolic BP and describe the distribution.
-b) Use Stata to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.
+b) Use Stata or R to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.
 c) Interpret the 95% confidence interval for the mean diastolic blood pressure.
 
 ### Activity 3.4 {-}

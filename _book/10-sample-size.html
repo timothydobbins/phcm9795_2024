@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHCM9795: Foundations of Biostatistics - 9&nbsp; Sample size estimation</title>
+<title>PHCM9795: Foundations of Biostatistics - 5&nbsp; Sample size estimation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,10 +17,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,19 +46,48 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging-indent div.csl-entry {
+.hanging div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -73,7 +101,8 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}</style>
+}
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -83,7 +112,6 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
 <link href="./09-non-parametrics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +142,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -123,16 +150,11 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-sample-size.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sample size estimation</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -140,89 +162,52 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PHCM9795: Foundations of Biostatistics</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course introduction</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Course introduction</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span></a>
+  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-precision.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Precision, standard errors and confidence intervals</span></span></a>
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></span></a>
+  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-proportions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-non-parametrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sample size estimation</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -231,57 +216,57 @@ div.csl-indent {
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">9.1</span> Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="toc-section-number">5.1</span>  Introduction</a>
   <ul class="collapse">
-  <li><a href="#under-and-over-sized-studies" id="toc-under-and-over-sized-studies" class="nav-link" data-scroll-target="#under-and-over-sized-studies"><span class="header-section-number">9.1.1</span> Under and over-sized studies</a></li>
+  <li><a href="#under-and-over-sized-studies" id="toc-under-and-over-sized-studies" class="nav-link" data-scroll-target="#under-and-over-sized-studies"><span class="toc-section-number">5.1.1</span>  Under and over-sized studies</a></li>
   </ul></li>
-  <li><a href="#sample-size-estimation-for-descriptive-studies" id="toc-sample-size-estimation-for-descriptive-studies" class="nav-link" data-scroll-target="#sample-size-estimation-for-descriptive-studies"><span class="header-section-number">9.2</span> Sample size estimation for descriptive studies</a>
+  <li><a href="#sample-size-estimation-for-descriptive-studies" id="toc-sample-size-estimation-for-descriptive-studies" class="nav-link" data-scroll-target="#sample-size-estimation-for-descriptive-studies"><span class="toc-section-number">5.2</span>  Sample size estimation for descriptive studies</a>
   <ul class="collapse">
-  <li><a href="#wex10-1" id="toc-wex10-1" class="nav-link" data-scroll-target="#wex10-1"><span class="header-section-number">9.2.1</span> Worked Example</a></li>
+  <li><a href="#wex10-1" id="toc-wex10-1" class="nav-link" data-scroll-target="#wex10-1"><span class="toc-section-number">5.2.1</span>  Worked Example</a></li>
   </ul></li>
-  <li><a href="#sample-size-estimation-for-analytic-studies" id="toc-sample-size-estimation-for-analytic-studies" class="nav-link" data-scroll-target="#sample-size-estimation-for-analytic-studies"><span class="header-section-number">9.3</span> Sample size estimation for analytic studies</a>
+  <li><a href="#sample-size-estimation-for-analytic-studies" id="toc-sample-size-estimation-for-analytic-studies" class="nav-link" data-scroll-target="#sample-size-estimation-for-analytic-studies"><span class="toc-section-number">5.3</span>  Sample size estimation for analytic studies</a>
   <ul class="collapse">
-  <li><a href="#factors-to-be-considered" id="toc-factors-to-be-considered" class="nav-link" data-scroll-target="#factors-to-be-considered"><span class="header-section-number">9.3.1</span> Factors to be considered</a></li>
-  <li><a href="#power-and-significance-level" id="toc-power-and-significance-level" class="nav-link" data-scroll-target="#power-and-significance-level"><span class="header-section-number">9.3.2</span> Power and significance level</a></li>
+  <li><a href="#factors-to-be-considered" id="toc-factors-to-be-considered" class="nav-link" data-scroll-target="#factors-to-be-considered"><span class="toc-section-number">5.3.1</span>  Factors to be considered</a></li>
+  <li><a href="#power-and-significance-level" id="toc-power-and-significance-level" class="nav-link" data-scroll-target="#power-and-significance-level"><span class="toc-section-number">5.3.2</span>  Power and significance level</a></li>
   </ul></li>
-  <li><a href="#detecting-the-difference-between-two-means" id="toc-detecting-the-difference-between-two-means" class="nav-link" data-scroll-target="#detecting-the-difference-between-two-means"><span class="header-section-number">9.4</span> Detecting the difference between two means</a>
+  <li><a href="#detecting-the-difference-between-two-means" id="toc-detecting-the-difference-between-two-means" class="nav-link" data-scroll-target="#detecting-the-difference-between-two-means"><span class="toc-section-number">5.4</span>  Detecting the difference between two means</a>
   <ul class="collapse">
-  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="header-section-number">9.4.1</span> Worked Example</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="toc-section-number">5.4.1</span>  Worked Example</a></li>
   </ul></li>
-  <li><a href="#detecting-the-difference-between-two-proportions" id="toc-detecting-the-difference-between-two-proportions" class="nav-link" data-scroll-target="#detecting-the-difference-between-two-proportions"><span class="header-section-number">9.5</span> Detecting the difference between two proportions</a>
+  <li><a href="#detecting-the-difference-between-two-proportions" id="toc-detecting-the-difference-between-two-proportions" class="nav-link" data-scroll-target="#detecting-the-difference-between-two-proportions"><span class="toc-section-number">5.5</span>  Detecting the difference between two proportions</a>
   <ul class="collapse">
-  <li><a href="#wex10-3" id="toc-wex10-3" class="nav-link" data-scroll-target="#wex10-3"><span class="header-section-number">9.5.1</span> Worked Example</a></li>
+  <li><a href="#wex10-3" id="toc-wex10-3" class="nav-link" data-scroll-target="#wex10-3"><span class="toc-section-number">5.5.1</span>  Worked Example</a></li>
   </ul></li>
-  <li><a href="#detecting-an-association-using-a-relative-risk" id="toc-detecting-an-association-using-a-relative-risk" class="nav-link" data-scroll-target="#detecting-an-association-using-a-relative-risk"><span class="header-section-number">9.6</span> Detecting an association using a relative risk</a>
+  <li><a href="#detecting-an-association-using-a-relative-risk" id="toc-detecting-an-association-using-a-relative-risk" class="nav-link" data-scroll-target="#detecting-an-association-using-a-relative-risk"><span class="toc-section-number">5.6</span>  Detecting an association using a relative risk</a>
   <ul class="collapse">
-  <li><a href="#wex10-4" id="toc-wex10-4" class="nav-link" data-scroll-target="#wex10-4"><span class="header-section-number">9.6.1</span> Worked Example</a></li>
+  <li><a href="#wex10-4" id="toc-wex10-4" class="nav-link" data-scroll-target="#wex10-4"><span class="toc-section-number">5.6.1</span>  Worked Example</a></li>
   </ul></li>
-  <li><a href="#detecting-an-association-using-an-odds-ratio" id="toc-detecting-an-association-using-an-odds-ratio" class="nav-link" data-scroll-target="#detecting-an-association-using-an-odds-ratio"><span class="header-section-number">9.7</span> Detecting an association using an odds ratio</a>
+  <li><a href="#detecting-an-association-using-an-odds-ratio" id="toc-detecting-an-association-using-an-odds-ratio" class="nav-link" data-scroll-target="#detecting-an-association-using-an-odds-ratio"><span class="toc-section-number">5.7</span>  Detecting an association using an odds ratio</a>
   <ul class="collapse">
-  <li><a href="#wex10-5" id="toc-wex10-5" class="nav-link" data-scroll-target="#wex10-5"><span class="header-section-number">9.7.1</span> Worked Example</a></li>
+  <li><a href="#wex10-5" id="toc-wex10-5" class="nav-link" data-scroll-target="#wex10-5"><span class="toc-section-number">5.7.1</span>  Worked Example</a></li>
   </ul></li>
-  <li><a href="#factors-that-influence-power" id="toc-factors-that-influence-power" class="nav-link" data-scroll-target="#factors-that-influence-power"><span class="header-section-number">9.8</span> Factors that influence power</a>
+  <li><a href="#factors-that-influence-power" id="toc-factors-that-influence-power" class="nav-link" data-scroll-target="#factors-that-influence-power"><span class="toc-section-number">5.8</span>  Factors that influence power</a>
   <ul class="collapse">
-  <li><a href="#dropouts" id="toc-dropouts" class="nav-link" data-scroll-target="#dropouts"><span class="header-section-number">9.8.1</span> Dropouts</a></li>
-  <li><a href="#unequal-groups" id="toc-unequal-groups" class="nav-link" data-scroll-target="#unequal-groups"><span class="header-section-number">9.8.2</span> Unequal groups</a></li>
+  <li><a href="#dropouts" id="toc-dropouts" class="nav-link" data-scroll-target="#dropouts"><span class="toc-section-number">5.8.1</span>  Dropouts</a></li>
+  <li><a href="#unequal-groups" id="toc-unequal-groups" class="nav-link" data-scroll-target="#unequal-groups"><span class="toc-section-number">5.8.2</span>  Unequal groups</a></li>
   </ul></li>
-  <li><a href="#limitations-in-sample-size-estimations" id="toc-limitations-in-sample-size-estimations" class="nav-link" data-scroll-target="#limitations-in-sample-size-estimations"><span class="header-section-number">9.9</span> Limitations in sample size estimations</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.10</span> Summary</a></li>
+  <li><a href="#limitations-in-sample-size-estimations" id="toc-limitations-in-sample-size-estimations" class="nav-link" data-scroll-target="#limitations-in-sample-size-estimations"><span class="toc-section-number">5.9</span>  Limitations in sample size estimations</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">5.10</span>  Summary</a></li>
   <li><a href="#stata-notes" id="toc-stata-notes" class="nav-link" data-scroll-target="#stata-notes">Stata notes</a>
   <ul class="collapse">
-  <li><a href="#sample-size-calculation-for-two-independent-samples-t-test" id="toc-sample-size-calculation-for-two-independent-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-two-independent-samples-t-test"><span class="header-section-number">9.11</span> Sample size calculation for two independent samples t-test</a></li>
-  <li><a href="#sample-size-calculation-for-paired-samples-t-test" id="toc-sample-size-calculation-for-paired-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-paired-samples-t-test"><span class="header-section-number">9.12</span> Sample size calculation for paired samples t-test</a></li>
-  <li><a href="#sample-size-calculation-for-difference-between-two-independent-proportions" id="toc-sample-size-calculation-for-difference-between-two-independent-proportions" class="nav-link" data-scroll-target="#sample-size-calculation-for-difference-between-two-independent-proportions"><span class="header-section-number">9.13</span> Sample size calculation for difference between two independent proportions</a></li>
-  <li><a href="#sample-size-calculation-with-relative-risk-and-odds-ratio" id="toc-sample-size-calculation-with-relative-risk-and-odds-ratio" class="nav-link" data-scroll-target="#sample-size-calculation-with-relative-risk-and-odds-ratio"><span class="header-section-number">9.14</span> Sample size calculation with relative risk and odds ratio</a></li>
+  <li><a href="#sample-size-calculation-for-two-independent-samples-t-test" id="toc-sample-size-calculation-for-two-independent-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-two-independent-samples-t-test"><span class="toc-section-number">5.11</span>  Sample size calculation for two independent samples t-test</a></li>
+  <li><a href="#sample-size-calculation-for-paired-samples-t-test" id="toc-sample-size-calculation-for-paired-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-paired-samples-t-test"><span class="toc-section-number">5.12</span>  Sample size calculation for paired samples t-test</a></li>
+  <li><a href="#sample-size-calculation-for-difference-between-two-independent-proportions" id="toc-sample-size-calculation-for-difference-between-two-independent-proportions" class="nav-link" data-scroll-target="#sample-size-calculation-for-difference-between-two-independent-proportions"><span class="toc-section-number">5.13</span>  Sample size calculation for difference between two independent proportions</a></li>
+  <li><a href="#sample-size-calculation-with-relative-risk-and-odds-ratio" id="toc-sample-size-calculation-with-relative-risk-and-odds-ratio" class="nav-link" data-scroll-target="#sample-size-calculation-with-relative-risk-and-odds-ratio"><span class="toc-section-number">5.14</span>  Sample size calculation with relative risk and odds ratio</a></li>
   </ul></li>
   <li><a href="#r-notes" id="toc-r-notes" class="nav-link" data-scroll-target="#r-notes">R notes</a>
   <ul class="collapse">
-  <li><a href="#sample-size-calculation-for-the-independent-samples-t-test" id="toc-sample-size-calculation-for-the-independent-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-the-independent-samples-t-test"><span class="header-section-number">9.15</span> Sample size calculation for the independent samples t-test</a></li>
-  <li><a href="#sample-size-calculation-for-the-paired-t-test" id="toc-sample-size-calculation-for-the-paired-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-the-paired-t-test"><span class="header-section-number">9.16</span> Sample size calculation for the paired t-test</a></li>
-  <li><a href="#sample-size-calculation-for-difference-between-two-independent-proportions-1" id="toc-sample-size-calculation-for-difference-between-two-independent-proportions-1" class="nav-link" data-scroll-target="#sample-size-calculation-for-difference-between-two-independent-proportions-1"><span class="header-section-number">9.17</span> Sample size calculation for difference between two independent proportions</a></li>
-  <li><a href="#sample-size-calculation-with-a-relative-risk" id="toc-sample-size-calculation-with-a-relative-risk" class="nav-link" data-scroll-target="#sample-size-calculation-with-a-relative-risk"><span class="header-section-number">9.18</span> Sample size calculation with a relative risk</a></li>
-  <li><a href="#sample-size-calculation-with-an-odds-ratio" id="toc-sample-size-calculation-with-an-odds-ratio" class="nav-link" data-scroll-target="#sample-size-calculation-with-an-odds-ratio"><span class="header-section-number">9.19</span> Sample size calculation with an odds ratio</a></li>
-  <li><a href="#estimating-sample-sizes-with-unequal-groups" id="toc-estimating-sample-sizes-with-unequal-groups" class="nav-link" data-scroll-target="#estimating-sample-sizes-with-unequal-groups"><span class="header-section-number">9.20</span> Estimating sample sizes with unequal groups</a></li>
+  <li><a href="#sample-size-calculation-for-the-independent-samples-t-test" id="toc-sample-size-calculation-for-the-independent-samples-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-the-independent-samples-t-test"><span class="toc-section-number">5.15</span>  Sample size calculation for the independent samples t-test</a></li>
+  <li><a href="#sample-size-calculation-for-the-paired-t-test" id="toc-sample-size-calculation-for-the-paired-t-test" class="nav-link" data-scroll-target="#sample-size-calculation-for-the-paired-t-test"><span class="toc-section-number">5.16</span>  Sample size calculation for the paired t-test</a></li>
+  <li><a href="#sample-size-calculation-for-difference-between-two-independent-proportions-1" id="toc-sample-size-calculation-for-difference-between-two-independent-proportions-1" class="nav-link" data-scroll-target="#sample-size-calculation-for-difference-between-two-independent-proportions-1"><span class="toc-section-number">5.17</span>  Sample size calculation for difference between two independent proportions</a></li>
+  <li><a href="#sample-size-calculation-with-a-relative-risk" id="toc-sample-size-calculation-with-a-relative-risk" class="nav-link" data-scroll-target="#sample-size-calculation-with-a-relative-risk"><span class="toc-section-number">5.18</span>  Sample size calculation with a relative risk</a></li>
+  <li><a href="#sample-size-calculation-with-an-odds-ratio" id="toc-sample-size-calculation-with-an-odds-ratio" class="nav-link" data-scroll-target="#sample-size-calculation-with-an-odds-ratio"><span class="toc-section-number">5.19</span>  Sample size calculation with an odds ratio</a></li>
+  <li><a href="#estimating-sample-sizes-with-unequal-groups" id="toc-estimating-sample-sizes-with-unequal-groups" class="nav-link" data-scroll-target="#estimating-sample-sizes-with-unequal-groups"><span class="toc-section-number">5.20</span>  Estimating sample sizes with unequal groups</a></li>
   </ul></li>
   <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a>
   <ul class="collapse">
@@ -298,7 +283,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sample size estimation</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sample size estimation</span></h1>
 </div>
 
 
@@ -325,127 +310,56 @@ div.csl-indent {
 </section>
 <section id="readings" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="readings">Readings</h2>
-<p><span class="citation" data-cites="kirkwood_sterne01">Kirkwood and Sterne (<a href="references.html#ref-kirkwood_sterne01" role="doc-biblioref">2001</a>)</span>; Chapter 35. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728">[UNSW Library Link]</a></p>
-<p><span class="citation" data-cites="bland15">Bland (<a href="references.html#ref-bland15" role="doc-biblioref">2015</a>)</span>; Chapter 18. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730">[UNSW Library Link]</a></p>
-<p>For interest: <span class="citation" data-cites="woodward13">Woodward (<a href="references.html#ref-woodward13" role="doc-biblioref">2013</a>)</span>; Chapter 8. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=1575748">[UNSW Library Link]</a></p>
+<p><span class="citation" data-cites="kirkwood_sterne01">Kirkwood and Sterne (<a href="#ref-kirkwood_sterne01" role="doc-biblioref">2001</a>)</span>; Chapter 35. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728">[UNSW Library Link]</a></p>
+<p><span class="citation" data-cites="bland15">Bland (<a href="#ref-bland15" role="doc-biblioref">2015</a>)</span>; Chapter 18. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730">[UNSW Library Link]</a></p>
+<p>For interest: <span class="citation" data-cites="woodward13">Woodward (<a href="#ref-woodward13" role="doc-biblioref">2013</a>)</span>; Chapter 8. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=1575748">[UNSW Library Link]</a></p>
 </section>
-<section id="introduction" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">9.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">5.1</span> Introduction</h2>
 <p>Determining the appropriate sample size (the number of participants in a study) is one of the most critical issues when designing a research study. A common question when planning a project is “How many participants do I need?” The sample size needs to be large enough to ensure that the results can be generalised to the population and will be accurate, but small enough for the study question to be answered with the resources available. In general, the larger the sample size, the more precise the study results will be.</p>
 <p>Unfortunately, estimating the sample size required for a study is not straightforward and the method used varies with the study design and the type of statistical test that will be conducted on the data collected. In the past, researchers calculated the sample size by hand using complicated mathematical formula. More recently, look-up tables have been created which has removed the need for hand calculations. Now, most researchers use computer programs where parameters relevant to the particular study design are entered and the sample size is automatically calculated. In this module, we will use an abbreviated look-up table to demonstrate the parameters that need to be considered when estimating sample sizes for a confidence interval and use software for all other sample size calculations. The look-up table allows you to see at a glance, the impact of different factors on the sample size estimation.</p>
-<section id="under-and-over-sized-studies" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="under-and-over-sized-studies"><span class="header-section-number">9.1.1</span> Under and over-sized studies</h3>
+<section id="under-and-over-sized-studies" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="under-and-over-sized-studies"><span class="header-section-number">5.1.1</span> Under and over-sized studies</h3>
 <p>In health research, there are different implications for interpreting the results if the sample size is too small or too large.</p>
 <p>An under-sized study is one which lacks the power to find an effect or association when, in truth, one exists. If the sample size is too small, an important difference between groups may not be statistically significant and so will not be detected by the study. In fact, it is considered unethical to conduct a health study which is poorly designed so that it is not possible to detect an effect or association if it exists. Often, Ethics Committees request evidence of sample size calculations before a study is approved.</p>
-<p>A classic paper by Freiman et al examined 71 randomised controlled trials which reported an absence of clinical effect between two treatments.<span class="citation" data-cites="freiman_etal78">(<a href="references.html#ref-freiman_etal78" role="doc-biblioref">Freiman et al. 1978</a>)</span> Many of the trials were too small to show that a clinically important difference was statistically significant. If the sample size of an analytic study is too small, then only very limited conclusions can be drawn about the results.</p>
+<p>A classic paper by Freiman et al examined 71 randomised controlled trials which reported an absence of clinical effect between two treatments.<span class="citation" data-cites="freiman_etal78">(<a href="#ref-freiman_etal78" role="doc-biblioref">Freiman et al. 1978</a>)</span> Many of the trials were too small to show that a clinically important difference was statistically significant. If the sample size of an analytic study is too small, then only very limited conclusions can be drawn about the results.</p>
 <p>In general, the larger the sample size the more precise the estimates will be. However, large sample sizes have their own effect on the interpretation of the results. An over-sized study is one in which a small difference between groups, which is not important in clinical or public health terms, is statistically significant. When the study sample is large, the null hypothesis could be rejected in error and research resources may be wasted. This type of study may be unethical due to the unnecessary enrolment of a large number of people.</p>
 </section>
 </section>
-<section id="sample-size-estimation-for-descriptive-studies" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="sample-size-estimation-for-descriptive-studies"><span class="header-section-number">9.2</span> Sample size estimation for descriptive studies</h2>
+<section id="sample-size-estimation-for-descriptive-studies" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sample-size-estimation-for-descriptive-studies"><span class="header-section-number">5.2</span> Sample size estimation for descriptive studies</h2>
 <p>To estimate the sample size required for a descriptive study, we usually focus on specifying the width of the confidence interval around our primary estimate. For example, to estimate the sample size for a study designed to measure a prevalence we need to:</p>
 <ul>
 <li>nominate the expected prevalence based on other available evidence;</li>
 <li>nominate the required level of precision around the estimate. For this, the width of the 95% confidence interval (i.e.&nbsp;the distance equal to 1.96 <span class="math inline">\(\times\)</span> SE) is used.</li>
 </ul>
-<p>Table 10.1 is an abbreviated look-up table that we can use to estimate the sample size for this type of study. Note that the sample size required to detect an expected population prevalence of 5% is the same as to detect a prevalence of 95%. Similarly 10% is equivalent to 90% etc. It is symmetric about 50%. From <a href="#tbl-10-1">Table&nbsp;<span>9.1</span></a>, you can see that the sample size required increases as the expected prevalence approaches 50% and as the precision increases (i.e.&nbsp;the required 95% CI becomes narrower).</p>
+<p>Table 10.1 is an abbreviated look-up table that we can use to estimate the sample size for this type of study. Note that the sample size required to detect an expected population prevalence of 5% is the same as to detect a prevalence of 95%. Similarly 10% is equivalent to 90% etc. It is symmetric about 50%. From <a href="#tbl-10-1">Table&nbsp;<span>5.1</span></a>, you can see that the sample size required increases as the expected prevalence approaches 50% and as the precision increases (i.e.&nbsp;the required 95% CI becomes narrower).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-10-1" class="anchored">
-<table id="tab:tbl-10-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;9.1: Sample size required to calculate a 95% confidence interval with a given precision</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td colspan="10" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Width of 95% confidence interval (precision)</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Prevalence</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">1%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">1.5%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">2%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">2.5%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">3%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">3.5%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">4%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">5%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">10%</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">15%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">5% or 95%</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,825</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">812</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">457</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">292</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">203</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">149</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">115</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">10% or 90%</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3,458</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,537</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">865</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">554</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">385</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">283</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">217</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">139</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">15% or 85%</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4,899</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2,177</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,225</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">784</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">545</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">400</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">307</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">196</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">49</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">20% or 80%</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6,147</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2,732</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,537</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">984</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">683</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">502</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">385</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">246</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">62</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">28</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">25% or 75%</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">7,203</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3,202</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,801</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,153</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">801</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">588</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">451</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">289</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">73</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">33</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 95%; margin-left: auto; margin-right: auto;  " id="tab:tbl-10-1"><caption>Table&nbsp;5.1:  Sample size required to calculate a 95% confidence interval with a given precision </caption>
+<colgroup><col><col><col><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td colspan="10" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Width of 95% confidence interval (precision)</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Prevalence</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">1%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">1.5%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">2%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">2.5%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">3%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">3.5%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">4%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">5%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">10%</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">15%</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">5% or 95%</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,825</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">812</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">457</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">292</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">203</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">149</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">115</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">10% or 90%</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3,458</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,537</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">865</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">554</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">385</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">283</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">217</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">139</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">15% or 85%</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4,899</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2,177</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,225</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">784</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">545</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">400</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">307</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">196</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">49</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">20% or 80%</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6,147</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2,732</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,537</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">984</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">683</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">502</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">385</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">246</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">62</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">28</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">25% or 75%</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">7,203</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3,202</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,801</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,153</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">801</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">588</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">451</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">289</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">73</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">33</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<section id="wex10-1" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="wex10-1"><span class="header-section-number">9.2.1</span> Worked Example</h3>
+</div>
+<section id="wex10-1" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="wex10-1"><span class="header-section-number">5.2.1</span> Worked Example</h3>
 <p>A descriptive cross-sectional study is designed to measure the prevalence of bronchitis in children age 0-2 years with a 95% CI of <span class="math inline">\(\pm\)</span> 4%. The prevalence is expected to be 20%. From the table, a sample size of at least 385 will be required for the width of the 95% CI to be <span class="math inline">\(\pm\)</span> 4% (i.e.&nbsp;the reported precision of the summary statistic will be 20% (95% CI 16% to 24%)).</p>
 <p>If the prevalence turns out to be higher than the researchers expected or if they decided that they wanted a narrower 95% CI (i.e.&nbsp;increase precision), a larger sample size would be required.</p>
 <ul>
@@ -454,11 +368,11 @@ div.csl-indent {
 </ul>
 </section>
 </section>
-<section id="sample-size-estimation-for-analytic-studies" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="sample-size-estimation-for-analytic-studies"><span class="header-section-number">9.3</span> Sample size estimation for analytic studies</h2>
+<section id="sample-size-estimation-for-analytic-studies" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sample-size-estimation-for-analytic-studies"><span class="header-section-number">5.3</span> Sample size estimation for analytic studies</h2>
 <p>Analytic study designs are used to compare characteristics between different groups in the population. The main study designs are analytic cross-sectional studies, case-control studies, cohort studies and randomised controlled trials. For analytic study designs, the outcome measure of interest can be a mean value, a proportion or a relative risk if a random sample has been enrolled. For case-control studies the most appropriate measure of association is an odds ratio.</p>
-<section id="factors-to-be-considered" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="factors-to-be-considered"><span class="header-section-number">9.3.1</span> Factors to be considered</h3>
+<section id="factors-to-be-considered" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="factors-to-be-considered"><span class="header-section-number">5.3.1</span> Factors to be considered</h3>
 <p>The first important decision in estimating a required sample size for an analytic study is to select the type of statistical test that will be used to report or analyse the data. Each type of test is associated with a different method of sample size estimation.</p>
 <p>Once the statistical method has been determined, the following issues need to be decided:</p>
 <ul>
@@ -470,39 +384,27 @@ div.csl-indent {
 </ul>
 <p>In addition to deciding the level of power and probability that will be used, the difference between groups that is regarded as being important has to be estimated. The smallest difference between study groups that we want to detect is described as the minimum expected effect size. This is determined on the basis of clinical judgement, public health importance and expertise in the condition being researched, or may it be need to be determined from a pilot study or a literature review. The smaller the expected effect or association, the larger the sample size will need to obtain statistical significance. We also need some knowledge of how variable the measurement is expected to be. For this we often use the standard deviation for a continuous measure. As measurement variability increases, the sample size will need to increase in order to detect the expected difference between the groups. Above all, a study has to be practical in terms of the availability of a population from which to draw sufficient numbers for the study and in terms of the funds that are available to conduct the study.</p>
 </section>
-<section id="power-and-significance-level" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="power-and-significance-level"><span class="header-section-number">9.3.2</span> Power and significance level</h3>
-<p>The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e.&nbsp;the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in <a href="#tbl-truth-vs-study-html">Table&nbsp;<span>9.2</span></a>.</p>
+<section id="power-and-significance-level" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="power-and-significance-level"><span class="header-section-number">5.3.2</span> Power and significance level</h3>
+<div>
+<p>The power of a study, which was discussed in Module 4, is the chance of finding a statistically significant difference when one exists, i.e.&nbsp;the probability of correctly rejecting the null hypothesis. The relationship between the power of a study and statistical significance is shown in <a href="#tbl-truth-vs-study-html">Table&nbsp;<span>5.2</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-truth-vs-study-html" class="anchored">
-<table id="tab:tbl-truth-vs-study-html" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;9.2: Comparison of study result with the truth</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Study result</td>
-<td colspan="2" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Truth</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Effect</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">No effect</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Evidence</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">✓</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">ɑ</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">No evidence</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">β</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">✓</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-truth-vs-study-html"><caption>Table&nbsp;5.2:  Comparison of study result with the truth </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Study result</td><td colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Truth</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;"> </th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Effect</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">No effect</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Evidence</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">✓</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">ɑ</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">No evidence</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">β</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">✓</td></tr>
+</tbody></table>
+
 </div>
-
-
+</div>
 </div>
 </div>
 <p>The power of a study is expressed as 1– β where β is the probability of a false negative (that is, the probability of a Type II error - incorrectly not rejecting the null hypothesis. In most research, power is generally set to 80% (a Type II error rate of 20%). However, in some studies, especially in some clinical trials where rigorous results are required, power is set to 90% (a Type II error rate of 10%).</p>
@@ -510,11 +412,11 @@ div.csl-indent {
 <p>The calculation of sample sizes for analytic studies are based on calculations that are somewhat tedious to compute by hand. Software packages are the standard method of calculating sample sizes for these types of study, and examples from both R and Stata will be provided.</p>
 </section>
 </section>
-<section id="detecting-the-difference-between-two-means" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="detecting-the-difference-between-two-means"><span class="header-section-number">9.4</span> Detecting the difference between two means</h2>
+<section id="detecting-the-difference-between-two-means" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="detecting-the-difference-between-two-means"><span class="header-section-number">5.4</span> Detecting the difference between two means</h2>
 <p>The test that is used to show that two mean values are significantly different from one another is the independent samples t-test (Module 5). The sample size needed for this test to have sufficient power can be calculated using R and Stata as shown in the Worked Example below.</p>
-<section id="worked-example" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">9.4.1</span> Worked Example</h3>
+<section id="worked-example" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">5.4.1</span> Worked Example</h3>
 <p>There is a hypothesis that the use of the oral contraceptive (OC) pill in premenopausal women can increase systolic blood pressure. A study was planned to test this hypothesis using a two sided t-test. The investigators are interesting in detecting an increase of at least 5 mm Hg systolic blood pressure in the women using OC compared to the non-OC users with 90% power at a 5% significance level. A pilot study shows that the SD of systolic blood pressure in the target group is 25 mm Hg and the mean systolic blood pressure of non-OC user women is 90 mm Hg. What is the minimum number of women in each group that need to be recruited for the study to detect this difference?</p>
 <p><strong>Solution</strong> The effect size of interest is 5 mm Hg and the associated standard deviation is 25 mm Hg. For power of 90% and alpha of 5%, the sample size calculation using the Stata can be calculated using the <code>power twomeans</code> command:</p>
 <section id="output-10.1-two-independent-samples-t-test-sample-size-calculation" class="level4 unnumbered">
@@ -616,13 +518,13 @@ NOTE: n is number of *pairs*</code></pre>
 </section>
 </section>
 </section>
-<section id="detecting-the-difference-between-two-proportions" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="detecting-the-difference-between-two-proportions"><span class="header-section-number">9.5</span> Detecting the difference between two proportions</h2>
+<section id="detecting-the-difference-between-two-proportions" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="detecting-the-difference-between-two-proportions"><span class="header-section-number">5.5</span> Detecting the difference between two proportions</h2>
 <p>The statistical test for deciding if there is a significant difference between two independent proportions is a Pearson’s chi-squared test (Module 7).</p>
 <p>Other than the power and alpha required for the test, the expected prevalence or incidence rate of the outcome factor needs to be estimated for each of the two groups being compared, based on what is known from other studies or what is expected. Occasionally, we may not know the expected proportion in one of the groups, e.g.&nbsp;in a randomised control trial of a novel intervention. In the sample size calculation for such a study, we should instead justify the minimum expected difference between the proportions based on what is important from a clinical or public health perspective. Based on the minimum difference, we can then derive the expected proportion for both groups. Note that the smaller the difference, the larger the sample size required.</p>
 <p>The sample size required in each group to observe a difference in two independent proportions can be calculated using the power twoproportions command in Stata.</p>
-<section id="wex10-3" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="wex10-3"><span class="header-section-number">9.5.1</span> Worked Example</h3>
+<section id="wex10-3" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="wex10-3"><span class="header-section-number">5.5.1</span> Worked Example</h3>
 <p>If we expect that the prevalence of smoking in two comparison groups (e.g.&nbsp;males and females) will be 35% and 20%. The sample size required in each group to show that the prevalences are significantly different at P&lt;0.05 with 80% power is shown in Output 10.3.</p>
 <section id="output-10.3-sample-size-calculation-for-two-independent-proportions" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="output-10.3-sample-size-calculation-for-two-independent-proportions">Output 10.3: Sample size calculation for two independent proportions</h4>
@@ -674,16 +576,16 @@ $or
 </section>
 </section>
 </section>
-<section id="detecting-an-association-using-a-relative-risk" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="detecting-an-association-using-a-relative-risk"><span class="header-section-number">9.6</span> Detecting an association using a relative risk</h2>
+<section id="detecting-an-association-using-a-relative-risk" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="detecting-an-association-using-a-relative-risk"><span class="header-section-number">5.6</span> Detecting an association using a relative risk</h2>
 <p>The relative risk is used to describe the association between an exposure and an outcome variable if the sample has been randomly selected from the population. This statistic is often used to describe the effect or association of an exposure in a cross-sectional or cohort study or the effect/association of a treatment in an randomised controlled trial. To estimate the sample size required for the RR to have a statistically significant P value, i.e.&nbsp;to show a significant association, we need to define: - the size of the RR that is considered to be of clinical or public health importance; - the event rate (rate of outcome) among the group who are not exposed to the factor of interest (reference group); - the desired level of significance (usually 0.05); - the desired power of the study (usually 80% or 90%).</p>
 <p>In general, a RR of 2.0 or greater is considered to be of public health importance, however, a smaller RR can be important when exposure is high. For example, there may be a relatively small risk of respiratory infection among young children with a parent who smokes (RR ~ 1.2). If 25% of children are exposed to smoking in their home, then the high exposure rate leads to a very large number of children who have preventable respiratory infections across the community.</p>
-<section id="wex10-4" class="level3" data-number="9.6.1">
-<h3 data-number="9.6.1" class="anchored" data-anchor-id="wex10-4"><span class="header-section-number">9.6.1</span> Worked Example</h3>
+<section id="wex10-4" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="wex10-4"><span class="header-section-number">5.6.1</span> Worked Example</h3>
 <p>A study is planned to investigate the effect of an environmental exposure on the incidence of a certain common disease. In the general (unexposed) population the incidence rate of the disease is 50% and it is assumed that the incidence rate would be 75% in the exposed population. Thus the relative risk of interest would be 1.5 (i.e.&nbsp;0.75 / 0.50). We want to detect this effect with 90% power at a 5% level of significance.</p>
 <p>We can use the Stata command <code>power twoproportions</code> as below:</p>
-<section id="output-10.4-sample-size-calculation-for-relative-risk" class="level4" data-number="9.6.1.1">
-<h4 data-number="9.6.1.1" class="anchored" data-anchor-id="output-10.4-sample-size-calculation-for-relative-risk"><span class="header-section-number">9.6.1.1</span> Output 10.4: Sample size calculation for relative risk</h4>
+<section id="output-10.4-sample-size-calculation-for-relative-risk" class="level4" data-number="5.6.1.1">
+<h4 data-number="5.6.1.1" class="anchored" data-anchor-id="output-10.4-sample-size-calculation-for-relative-risk"><span class="header-section-number">5.6.1.1</span> Output 10.4: Sample size calculation for relative risk</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Estimated sample sizes <span class="cf">for</span> a two<span class="sc">-</span>sample proportions test</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Pearson<span class="st">'s chi-squared test </span></span>
@@ -731,8 +633,8 @@ $or
 </section>
 </section>
 </section>
-<section id="detecting-an-association-using-an-odds-ratio" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="detecting-an-association-using-an-odds-ratio"><span class="header-section-number">9.7</span> Detecting an association using an odds ratio</h2>
+<section id="detecting-an-association-using-an-odds-ratio" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="detecting-an-association-using-an-odds-ratio"><span class="header-section-number">5.7</span> Detecting an association using an odds ratio</h2>
 <p>If we are designing a case-control study, the appropriate measure of effect is an odds ratio. The method for estimating the sample size required to detect an odds ratio of interest is slightly different to that for the relative risk. However, the same parameters are required for the estimation:</p>
 <ul>
 <li>the minimum OR to be considered clinically important;</li>
@@ -740,8 +642,8 @@ $or
 <li>the desired level of significance (usually 0.05);</li>
 <li>the desired power of the study (usually 80% or 90%).</li>
 </ul>
-<section id="wex10-5" class="level3" data-number="9.7.1">
-<h3 data-number="9.7.1" class="anchored" data-anchor-id="wex10-5"><span class="header-section-number">9.7.1</span> Worked Example</h3>
+<section id="wex10-5" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="wex10-5"><span class="header-section-number">5.7.1</span> Worked Example</h3>
 <p>A case-control study is designed to examine an association between an exposure and outcome factor. Existing literature shows that 30% of the controls are expected to be exposed. We want to detect a minimum OR of 2.0 with 90% power and 5% level of significance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>. power twoproportions .<span class="dv">3</span>, <span class="fu">test</span>(chi2) <span class="fu">oratio</span>(<span class="dv">2</span>) <span class="fu">power</span>(<span class="fl">0.9</span>)</span>
@@ -787,10 +689,10 @@ $OR
 <p>This sample size would be smaller if we increased the effect size (OR) or reduced the study power to 80%. You could try this in either Stata or R (answer: 141 per group if power is reduced to 80%).</p>
 </section>
 </section>
-<section id="factors-that-influence-power" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="factors-that-influence-power"><span class="header-section-number">9.8</span> Factors that influence power</h2>
-<section id="dropouts" class="level3" data-number="9.8.1">
-<h3 data-number="9.8.1" class="anchored" data-anchor-id="dropouts"><span class="header-section-number">9.8.1</span> Dropouts</h3>
+<section id="factors-that-influence-power" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="factors-that-influence-power"><span class="header-section-number">5.8</span> Factors that influence power</h2>
+<section id="dropouts" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="dropouts"><span class="header-section-number">5.8.1</span> Dropouts</h3>
 <p>It is common to increase estimated sample sizes to allow for drop-outs or non-response. To account for drop-outs, the estimated sample size can be divided by (1 minus the dropout rate). Consider the following case:</p>
 <ul>
 <li>n-completed: the number who will complete the study (i.e.&nbsp;n after drop-out)</li>
@@ -800,107 +702,49 @@ $OR
 <p>Then n-completed = n-recruited × (1 - d)</p>
 <p>Re-arranging this formula gives: n-recruited = n-completed ÷ (1 - d).</p>
 </section>
-<section id="unequal-groups" class="level3" data-number="9.8.2">
-<h3 data-number="9.8.2" class="anchored" data-anchor-id="unequal-groups"><span class="header-section-number">9.8.2</span> Unequal groups</h3>
+<section id="unequal-groups" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="unequal-groups"><span class="header-section-number">5.8.2</span> Unequal groups</h3>
 <p>Many factors that come into play in a study can reduce the estimated power of a study. In clinical trials, it is not unusual for recruitment goals to be much harder to achieve than expected and therefore for the target sample size to be impossible to realise within the timeframe planned for recruitment.</p>
 <p>In case-control studies, the number of potential case participants available may be limited but study power can be maintained by enrolling a greater number of controls than cases. Or in an experimental study, more participants may be randomised to the new treatment group to test its effects accurately when much is known about the effect of standard care and a more precise estimate of the new treatment effect is required.</p>
 <p>However, there is a trade-off between increasing the ratio of group size and the total number that needs to be enrolled. Consider Worked Example @ref(wex10-5): selecting an equal number of controls and cases would require 188 cases and 188 controls, a total of 376 participants.</p>
 <p>We may want to reduce the number of cases required, by selecting 2 controls for every case. When performing sample size calculations with unequal groups, Stata refers to cases as N2, and controls as N1. Selecting 2 controls (N1) per case (N2) (corresponding to a ratio of N2/N1 0.5 in Stata) would require 140 cases and 280 controls, a total of 420 participants. We can extend this example and investigate the impact of changing the ratio of controls per case.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table id="tab:tab-unequal-controls" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Increasing the number of controls per case</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Controls per case</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Stata's allocation ratio (N2/N1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Number of cases required</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Number of controls required</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Total participants required</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">1</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">188</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">188</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">376</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">2</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.5&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">140</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">280</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">420</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">3</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.3333</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">124</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">371</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">495</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">4</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.25&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">116</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">462</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">578</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">5</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.2&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">111</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">553</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">664</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">6</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1666</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">108</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">644</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">752</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">7</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1429</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">105</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">734</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">839</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">8</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.125&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">104</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">825</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">929</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">9</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1111</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">102</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">916</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">1,018</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">10</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">101</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,006</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">1,107</td>
-</tr>
-</tbody>
-</table>
 
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tab-unequal-controls">
+<caption style="caption-side: top; text-align: center;">Increasing the number of controls per case</caption><colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Controls per case</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Stata's allocation ratio (N2/N1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Number of cases required</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Number of controls required</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Total participants required</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">188</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">188</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">376</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.5&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">140</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">280</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">420</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.3333</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">124</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">371</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">495</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.25&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">116</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">462</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">578</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.2&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">111</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">553</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">664</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1666</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">108</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">644</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">752</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1429</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">105</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">734</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">839</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.125&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">104</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">825</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">929</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1111</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">102</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">916</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">1,018</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.1&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">101</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1,006</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">1,107</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>This can be visualised graphically, as in <a href="#fig-unequal-controls">Figure&nbsp;<span>9.1</span></a>.</p>
+<p>This can be visualised graphically, as in <a href="#fig-unequal-controls">Figure&nbsp;<span>5.1</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-unequal-controls" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-sample-size_files/figure-html/fig-unequal-controls-1.png" class="img-fluid figure-img" style="width:66.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.1: Increasing the number of controls per case</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: Increasing the number of controls per case</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -945,13 +789,13 @@ $OR
 </table>
 </section>
 </section>
-<section id="limitations-in-sample-size-estimations" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="limitations-in-sample-size-estimations"><span class="header-section-number">9.9</span> Limitations in sample size estimations</h2>
+<section id="limitations-in-sample-size-estimations" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="limitations-in-sample-size-estimations"><span class="header-section-number">5.9</span> Limitations in sample size estimations</h2>
 <p>In this module we have seen how to use Stata for estimating the sample size requirement of a study given the statistical test that will be used and the expected characteristics of the sample. However, once a study is underway, it is not unusual for sample size to be compromised by the lack of research resources, difficulties in recruiting participants or, in a clinical trial, participants wanting to change groups when information about the new experimental treatment rapidly becomes available in the press or on the internet.</p>
 <p>One approach that is increasingly being used is to conduct a blinded interim analysis say when 50% of the total data that are planned have been collected. In this, a statistician external to the research team who is blinded to the interpretation of the group code is asked to measure the effect size in the data with the sole aim of validating the sample size requirement. It is rarely a good idea to use an interim analysis to reduce the planned sample size and terminate a trial early because the larger the sample size, the greater the precision with which the treatment effect is estimated. However, interim analyses are useful for deciding whether the sample size needs to be increased in order to answer the study question and avoid a Type II error.</p>
 </section>
-<section id="summary" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.10</span> Summary</h2>
+<section id="summary" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.10</span> Summary</h2>
 <p>In this module we have discussed the importance of conducting a clinical or epidemiological study with enough participants so that an effect or association can be identified if it exists (i.e.&nbsp;study power), and how this has to be balanced by the need to not enrol more participants than necessary because of resource issues. We have looked at the parameters that need to be considered when estimating the sample size for different studies and have used a look-up table to estimate required sample size for a prevalence study and Stata to estimate appropriate sample sizes in epidemiological research under the most straightforward situations. The common requirement in all the situations is that the researchers need to specify the minimum effect measure (e.g.&nbsp;difference in means, OR, RR etc) they want to detect with a given probability (usually 80% to 90%) at a certain level of significance (usually P&lt;0.05). The ultimate decision on the sample size depends on a compromise among different objectives such as power, minimum effect size, and available resources. To make the final decision, it is helpful to do some trial calculations using revised power and the minimum detectable effect measure.</p>
 <div style="page-break-after: always;"></div>
 </section>
@@ -969,8 +813,8 @@ $OR
 <p><img src="img/mod10/stata/mod10-menu-3.png" class="img-fluid" style="width:66.0%"></p>
 </div>
 </div>
-<section id="sample-size-calculation-for-two-independent-samples-t-test" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="sample-size-calculation-for-two-independent-samples-t-test"><span class="header-section-number">9.11</span> Sample size calculation for two independent samples t-test</h2>
+<section id="sample-size-calculation-for-two-independent-samples-t-test" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="sample-size-calculation-for-two-independent-samples-t-test"><span class="header-section-number">5.11</span> Sample size calculation for two independent samples t-test</h2>
 <p>To do the problem discussed in Worked Example 10.2, you can expand the <strong>Means</strong> item under <strong>Population parameter</strong> on the left-hand-side of the <strong>Power and sample-size analysis</strong> dialog box, then choose <strong>Two independent</strong> samples. On the right-hand-side of the dialog box, choose <strong>Test comparing two independent means</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -986,8 +830,8 @@ $OR
 <p>Click <strong>OK</strong> or <strong>Submit</strong> to produce Output 10.1.</p>
 <p>[Command: <code>power twomeans 90 95, sd(25) power(0.9)</code>]</p>
 </section>
-<section id="sample-size-calculation-for-paired-samples-t-test" class="level2" data-number="9.12">
-<h2 data-number="9.12" class="anchored" data-anchor-id="sample-size-calculation-for-paired-samples-t-test"><span class="header-section-number">9.12</span> Sample size calculation for paired samples t-test</h2>
+<section id="sample-size-calculation-for-paired-samples-t-test" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="sample-size-calculation-for-paired-samples-t-test"><span class="header-section-number">5.12</span> Sample size calculation for paired samples t-test</h2>
 <p>For a paired sample t-test, go back to the <strong>Power and sample-size analysis</strong> dialog box and click on <strong>Two paired samples</strong> under <strong>Means</strong> on the left-hand-side, then choose <strong>Paired test comparing two correlated means, specify correlation between paired observations</strong> as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1003,8 +847,8 @@ $OR
 <p>Click <strong>OK</strong> or <strong>Submit</strong> to produce Output 10.2.</p>
 <p>[Command: <code>power pairedmeans 90 95, corr(0) power(0.9) sd(25)</code>]</p>
 </section>
-<section id="sample-size-calculation-for-difference-between-two-independent-proportions" class="level2" data-number="9.13">
-<h2 data-number="9.13" class="anchored" data-anchor-id="sample-size-calculation-for-difference-between-two-independent-proportions"><span class="header-section-number">9.13</span> Sample size calculation for difference between two independent proportions</h2>
+<section id="sample-size-calculation-for-difference-between-two-independent-proportions" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="sample-size-calculation-for-difference-between-two-independent-proportions"><span class="header-section-number">5.13</span> Sample size calculation for difference between two independent proportions</h2>
 <p>To do the problem discussed in Worked Example 10.3, you can expand the <strong>Proportions</strong> item under <strong>Population parameter</strong> on the left-hand-side of the Power and sample-size analysis dialog box, then choose <strong>Two independent samples</strong>. On the right-hand-side of the dialog box, choose <strong>Chi-squared test comparing two independent proportions</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1027,8 +871,8 @@ $OR
 </div>
 </div>
 </section>
-<section id="sample-size-calculation-with-relative-risk-and-odds-ratio" class="level2" data-number="9.14">
-<h2 data-number="9.14" class="anchored" data-anchor-id="sample-size-calculation-with-relative-risk-and-odds-ratio"><span class="header-section-number">9.14</span> Sample size calculation with relative risk and odds ratio</h2>
+<section id="sample-size-calculation-with-relative-risk-and-odds-ratio" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="sample-size-calculation-with-relative-risk-and-odds-ratio"><span class="header-section-number">5.14</span> Sample size calculation with relative risk and odds ratio</h2>
 <p>Using information from Worked Example 10.4, we change <strong>Power</strong> to <code>0.9</code>, enter <code>0.5</code> as the <strong>Control Proportion</strong>. As we are working with a relative risk, choose <strong>Relative risk</strong> as the effect size, and enter <code>1.5</code> as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1078,8 +922,8 @@ $OR
 <ul>
 <li><code>pwr.t.test</code> estimate the sample size to compare means from a paired study</li>
 </ul>
-<section id="sample-size-calculation-for-the-independent-samples-t-test" class="level2" data-number="9.15">
-<h2 data-number="9.15" class="anchored" data-anchor-id="sample-size-calculation-for-the-independent-samples-t-test"><span class="header-section-number">9.15</span> Sample size calculation for the independent samples t-test</h2>
+<section id="sample-size-calculation-for-the-independent-samples-t-test" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="sample-size-calculation-for-the-independent-samples-t-test"><span class="header-section-number">5.15</span> Sample size calculation for the independent samples t-test</h2>
 <p>To do the problem discussed in Worked Example 10.2, we use the <code>epi.sscompc</code> function:</p>
 <pre><code>epi.sscompc(treat, control, n, sigma, power, 
    r = 1, design = 1, sided.test = 2, nfractional = FALSE, conf.level = 0.95)</code></pre>
@@ -1115,8 +959,8 @@ $delta
 <p>The results indicate that we need 526 participants in each group, or 1052 in total. Note that these numbers are slightly different from the Stata estimates (527 in each group).</p>
 <p>We can define whether we want unequal numbers in each group by specifying <code>r</code>: the number in the treatment group divided by the number in the control group.</p>
 </section>
-<section id="sample-size-calculation-for-the-paired-t-test" class="level2" data-number="9.16">
-<h2 data-number="9.16" class="anchored" data-anchor-id="sample-size-calculation-for-the-paired-t-test"><span class="header-section-number">9.16</span> Sample size calculation for the paired t-test</h2>
+<section id="sample-size-calculation-for-the-paired-t-test" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="sample-size-calculation-for-the-paired-t-test"><span class="header-section-number">5.16</span> Sample size calculation for the paired t-test</h2>
 <p>Calculating the sample size required for a paired t-test is a little more cumbersome. We can use the following code to specify:</p>
 <ul>
 <li><code>m1</code>: the mean of the first paired observations</li>
@@ -1151,8 +995,8 @@ NOTE: n is number of *pairs*</code></pre>
 </div>
 <p>As per the Stata calculations, we require 528 pairs of observations (noting that <strong>sample sizes are always rounded up</strong>).</p>
 </section>
-<section id="sample-size-calculation-for-difference-between-two-independent-proportions-1" class="level2" data-number="9.17">
-<h2 data-number="9.17" class="anchored" data-anchor-id="sample-size-calculation-for-difference-between-two-independent-proportions-1"><span class="header-section-number">9.17</span> Sample size calculation for difference between two independent proportions</h2>
+<section id="sample-size-calculation-for-difference-between-two-independent-proportions-1" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="sample-size-calculation-for-difference-between-two-independent-proportions-1"><span class="header-section-number">5.17</span> Sample size calculation for difference between two independent proportions</h2>
 <p>To do the problem discussed in Worked Example 10.3, we use the <code>epi.sscohortc</code> function:</p>
 <pre><code>epi.sscohortc(irexp1, irexp0, pexp = NA, n = NA, power = 0.80, 
    r = 1, N, design = 1, sided.test = 2, finite.correction = FALSE, 
@@ -1188,8 +1032,8 @@ $or
 </div>
 <p>Note: It doesn’t matter if you swap the proportions for the <strong>exposed</strong> and <strong>unexposed</strong> groups, i.e.&nbsp;the command <code>epi.sscohortc(irexp1=0.2, irexp0=0.35, n=NA, power=0.8)</code> gives the same results.</p>
 </section>
-<section id="sample-size-calculation-with-a-relative-risk" class="level2" data-number="9.18">
-<h2 data-number="9.18" class="anchored" data-anchor-id="sample-size-calculation-with-a-relative-risk"><span class="header-section-number">9.18</span> Sample size calculation with a relative risk</h2>
+<section id="sample-size-calculation-with-a-relative-risk" class="level2" data-number="5.18">
+<h2 data-number="5.18" class="anchored" data-anchor-id="sample-size-calculation-with-a-relative-risk"><span class="header-section-number">5.18</span> Sample size calculation with a relative risk</h2>
 <p>The <code>epiR</code> package does not have a function to estimate sample size and power directly for a relative risk, but we can use the <code>epi.sscohortc</code> function. To do this, we recognise that the assumed rate in the exposed group will equal the rate in the unexposed group multiplied by the relative risk.</p>
 <p>Here we will replicate Output 10.4, where p0=0.5 and the desired relative risk to detect is 1.5. So we specify <code>irexp0 = 0.5</code> and <code>irexp1 = 1.5 * 0.5</code>:</p>
 <div class="cell">
@@ -1216,8 +1060,8 @@ $or
 </div>
 <p>Hence we require 77 participants in each group, or 154 participants in total.</p>
 </section>
-<section id="sample-size-calculation-with-an-odds-ratio" class="level2" data-number="9.19">
-<h2 data-number="9.19" class="anchored" data-anchor-id="sample-size-calculation-with-an-odds-ratio"><span class="header-section-number">9.19</span> Sample size calculation with an odds ratio</h2>
+<section id="sample-size-calculation-with-an-odds-ratio" class="level2" data-number="5.19">
+<h2 data-number="5.19" class="anchored" data-anchor-id="sample-size-calculation-with-an-odds-ratio"><span class="header-section-number">5.19</span> Sample size calculation with an odds ratio</h2>
 <p>We can use the <code>epi.sscc</code> function to calculate a sample size based on an odds ratio in a case-control study:</p>
 <pre><code>epi.sscc(OR, p1 = NA, p0, n, power, r = 1, 
    phi.coef = 0, design = 1, sided.test = 2, nfractional = FALSE, 
@@ -1290,8 +1134,8 @@ $OR
 </div>
 <p>or a total of 282 participants to detect an odds ratio of 2.0 with 80% power.</p>
 </section>
-<section id="estimating-sample-sizes-with-unequal-groups" class="level2" data-number="9.20">
-<h2 data-number="9.20" class="anchored" data-anchor-id="estimating-sample-sizes-with-unequal-groups"><span class="header-section-number">9.20</span> Estimating sample sizes with unequal groups</h2>
+<section id="estimating-sample-sizes-with-unequal-groups" class="level2" data-number="5.20">
+<h2 data-number="5.20" class="anchored" data-anchor-id="estimating-sample-sizes-with-unequal-groups"><span class="header-section-number">5.20</span> Estimating sample sizes with unequal groups</h2>
 <p>To change the allocation ratio in any of these study type, we can specify <code>r</code>. Note that the definition of <code>r</code> differs slightly depending on the function used, so it pays to check the help-file for each function. In summary:</p>
 <ul>
 <li>for <code>epi.sscompc()</code>, <code>r</code> is the number in the treatment group divided by the number in the control group</li>
@@ -1349,17 +1193,17 @@ $OR
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-bland15" class="csl-entry" role="listitem">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-bland15" class="csl-entry" role="doc-biblioentry">
 Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical Statistics</span></em>. 4th ed. <span>Oxford, New York</span>: <span>Oxford University Press</span>.
 </div>
-<div id="ref-freiman_etal78" class="csl-entry" role="listitem">
+<div id="ref-freiman_etal78" class="csl-entry" role="doc-biblioentry">
 Freiman, Jennie A., Thomas C. Chalmers, Harry Smith, and Roy R. Kuebler. 1978. <span>“The <span>Importance</span> of <span>Beta</span>, the <span>Type II Error</span> and <span>Sample Size</span> in the <span>Design</span> and <span>Interpretation</span> of the <span>Randomized Control Trial</span>.”</span> <em>New England Journal of Medicine</em> 299 (13): 690–94. <a href="https://doi.org/10.1056/NEJM197809282991304">https://doi.org/10.1056/NEJM197809282991304</a>.
 </div>
-<div id="ref-kirkwood_sterne01" class="csl-entry" role="listitem">
+<div id="ref-kirkwood_sterne01" class="csl-entry" role="doc-biblioentry">
 Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of <span>Medical Statistics</span></em>. 2nd ed. <span>Malden, Mass</span>: <span>Wiley-Blackwell</span>.
 </div>
-<div id="ref-woodward13" class="csl-entry" role="listitem">
+<div id="ref-woodward13" class="csl-entry" role="doc-biblioentry">
 Woodward, Mark. 2013. <em>Epidemiology: <span>Study Design</span> and <span>Data Analysis</span></em>. 3rd ed. <span>Chapman and Hall/CRC</span>.
 </div>
 </div>
@@ -1394,23 +1238,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -1475,92 +1305,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1603,13 +1347,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./09-non-parametrics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

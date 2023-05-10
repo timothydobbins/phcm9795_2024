@@ -258,7 +258,7 @@ In some situations, related to how well controls are recruited into this study, 
 
 ### Worked Example
 
-A randomised controlled trial was conducted among a group of patients to estimate the side effects of a drug. Fifty patients were randomly allocated to receive the active drug and 50 patients were allocated to receive a placebo drug. The outcome measured was the experience of nausea. The data is given in the file mod06_nausea.dta.csv.
+A randomised controlled trial was conducted among a group of patients to estimate the side effects of a drug. Fifty patients were randomly allocated to receive the active drug and 50 patients were allocated to receive a placebo drug. The outcome measured was the experience of nausea. The data is given in the files `mod06_nausea.dta` and `mod06_nausea.rds`.
 
 A summary table can be constructed as in @tbl-rr-example.
 

@@ -1,7 +1,7 @@
 # **7** Stata resources {-}
 
 ## Pearson’s chi-squared test
-To use Stata to perform the Chi-squared test on the data in `mod06_nausea.dta.dta` we need to have individual record data for the treatment group and presence of side effects. 
+To use Stata to perform the Chi-squared test on the data in `mod06_nausea.dta` we need to have individual record data for the treatment group and presence of side effects. 
 
 As discussed in Module 7 course notes, in this dataset `group` is coded as “1=Active” and “0 = Placebo” and `side_effect` is coded as “1 = Nausea” and “0 = No nausea”.
 

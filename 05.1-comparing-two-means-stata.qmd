@@ -1,3 +1,7 @@
+## Setting an observation to missing
+
+Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor (make sure you are in Edit mode). Click the cell containing the data to be set to missing, press the **Delete** key, and the press **Enter**.
+
 ## Checking data for the independent samples t-test
 
 ### Producing histograms and boxplots by a second variable

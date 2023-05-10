@@ -12,7 +12,7 @@ e)	The final probability.
 
 ### Activity 2.2 {-}
 
-A case of Schistosomiasis is identified by the detection of schistosome ova in a faecal sample. In patients with a low level of infection, a field technique of faecal examination has a probability of 0.35 of detecting ova in any one faecal sample. If five samples are routinely examined for each patient, use Stata to compute the probability that a patient with a low level of infection:
+A case of Schistosomiasis is identified by the detection of schistosome ova in a faecal sample. In patients with a low level of infection, a field technique of faecal examination has a probability of 0.35 of detecting ova in any one faecal sample. If five samples are routinely examined for each patient, use Stata or R to compute the probability that a patient with a low level of infection:
 
 a)	Will not be identified?
 b)	Will be identified in two of the samples?
@@ -41,7 +41,7 @@ Create a two-way table to display the distribution of BMI categories by sex (sex
 
 ### Activity 2.5 {-}
 
-The data in the file `Activity_S2.5.dta` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
+The data in the files `Activity_S2.5.dta` and `Activity_S2.5.rds` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
 
 a.  Create a histogram to inspect the distribution of the variable;
 
@@ -53,11 +53,11 @@ b.  Complete the following summary statistics for each variable:
 Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.
 
 ### Activity 2.6 {-}
-The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity2.6.csv`). Import this dataset into Stata. There are two variables in this dataset:
+The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (`Activity2.6.csv`). Import this dataset into Stata or R. There are two variables in this dataset:
 
 - female: female=1; male=0
 - los: length of stay in days
 
-a)	Use Stata to examine the distribution of length of stay: overall; and separately for females and males. Comment on the distributions.
-b)	Use Stata to calculate measures of central tendency for hospital stay to obtain information about the average duration of hospital stay. Which summary statistics should you report and why? Report the appropriate statistics of the spread and measure of central tendency chosen.
+a)	Use Stata or R to examine the distribution of length of stay: overall; and separately for females and males. Comment on the distributions.
+b)	Use Stata or R to calculate measures of central tendency for hospital stay to obtain information about the average duration of hospital stay. Which summary statistics should you report and why? Report the appropriate statistics of the spread and measure of central tendency chosen.
 c)	Calculate the measures of central tendency for hospital duration separately for males and females. What can you conclude from comparing these measures for males and females? 

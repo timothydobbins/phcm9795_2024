@@ -163,21 +163,20 @@ tab <- tibble::tribble(
                      ~Characteristic,                   ~` `,                    ~Summary,
                        "Age (years)",                     NA, "Mean (SD) or Median [IQR]",
                                "Sex",                 "Male",                     "n (%)",
-                               "Sex",               "Female",                     "n (%)",
+                                  NA,               "Female",                     "n (%)",
                        "AST* (U/ml)",                     NA, "Mean (SD) or Median [IQR]",
                    "Serum bilirubin",                     NA, "Mean (SD) or Median [IQR]",
                              "Stage",                    "I",                     "n (%)",
-                             "Stage",                   "II",                     "n (%)",
-                             "Stage",                  "III",                     "n (%)",
-                             "Stage",                 "IIIV",                     "n (%)",
+                                  NA,                   "II",                     "n (%)",
+                                  NA,                  "III",                     "n (%)",
+                                  NA,                 "IIIV",                     "n (%)",
          "Vital status at study end", "Alive: no transplant",                     "n (%)",
-         "Vital status at study end",    "Alive: transplant",                     "n (%)",
-         "Vital status at study end",             "Deceased",                     "n (%)"
+                                  NA,    "Alive: transplant",                     "n (%)",
+                                  NA,             "Deceased",                     "n (%)"
          )
 
 huxtable(tab) |> 
   theme_article() |> 
-  merge_repeated_rows(everywhere, 1) |> 
   set_width(0.95) |> 
   add_footnote("* asparate aminotransferase")
 ```
@@ -589,7 +588,7 @@ knitr::include_graphics(here::here("img", "mod01", "stata", "bar-12.png"))
 ```
 
 ### Editing graphs in Stata
-There are two main approaches of editing many aspects of a graph (such as colours, labels, font-size etc). The first approach is to use options within the dialog boxes. For example, if we wanted to use a grey-and-white colour scheme for Figure X, we can define the colours of the bars in the Bars tab of the bar chart dialog box.
+There are two main approaches of editing many aspects of a graph (such as colours, labels, font-size etc). The first approach is to use options within the dialog boxes. For example, if we wanted to use a grey-and-white colour scheme for our bar chart, we can define the colours of the bars in the Bars tab of the bar chart dialog box.
 
 Here, we will define Bar 1 to be `White`:
 

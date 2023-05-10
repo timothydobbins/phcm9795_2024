@@ -370,7 +370,7 @@ The z-score is simply how far an observation lies from the population mean value
 We can use z-scores to estimate probabilities, as shown in Worked Example 2.2.
 
 #### Worked Example {-}
-This example extends the example of diastolic blood pressure shown in Figure 2.1. Assume that the mean diastolic blood pressure for men is 77.9 mmHg, with a standard deviation of 11. What is the probability that a man selected at random will have high blood pressure (i.e. diastolic blood pressure ≥ 90)?
+This example extends the example of diastolic blood pressure shown in @fig-2-1. Assume that the mean diastolic blood pressure for men is 77.9 mmHg, with a standard deviation of 11. What is the probability that a man selected at random will have high blood pressure (i.e. diastolic blood pressure ≥ 90)?
 
 To estimate the probability that diastolic blood pressure ≥ 90 (i.e. the upper tail probability), we first need to calculate the z-score that corresponds to 90 mmHg.
 

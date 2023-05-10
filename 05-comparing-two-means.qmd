@@ -42,7 +42,7 @@ An independent samples t-test is a parametric test that is used to assess whethe
 
 The null hypothesis is that the mean values of the two groups are not different, that is:
 
-H~0~: (Mean~2~ - Mean~1~) = 0
+H~0~: (Mean~2~ $-$ Mean~1~) = 0
 
 Rejecting the null hypothesis using an independent samples t-test indicates that the difference between the means of the two groups is large in relation to the variability in the samples and is unlikely to be due to chance or to sampling variation.
 
@@ -65,12 +65,12 @@ The final assumption is homogeneity of variance between the groups. This can be 
 
 In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.
 
-Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using **Graphics > Box plot** is shown in Figure @fig-mod05-bwt-gender. The dataset mod05_birthweight.dta is available on Moodle.
+Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using **Graphics > Box plot** is shown in @fig-mod05-bwt-gender. The datasets `mod05_birthweight.dta` and `mod05_birthweight.rds` are available on Moodle.
 
 ```{r fig-mod05-bwt-gender, echo=FALSE, out.width = "100%", fig.cap="Histograms and box plots of birth weight by gender"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-bwt-gender.png"))
 ```
-The plots show that the data are approximately normally distributed: the histograms are relatively bell shaped and symmetric, and the boxes are fairly symmetrical, there are no outliers as indicated by dots, and the spread is similar in both groups as the similar length of the whiskers suggesting that the variance is homogenous.
+The plots show that the data are approximately normally distributed: the histograms are relatively bell shaped and symmetric, and the boxes are fairly symmetrical, there are no outliers, and the spread is similar in both groups as the similar length of the whiskers suggesting that the variance is homogenous.
 
 We can also describe the data using summary statistics:
 
@@ -106,13 +106,11 @@ $$t = \frac{{\overline{x}}_{1} - {\overline{x}}_{2}}{SE({\overline{x}}_{1} - {\o
 
 with *n~1~ + n~2~* -- 2 degrees of freedom.
 
-Looking at the formula for the t-statistic, we can see that the $t$ is an estimate of how different the mean values are compared to their variability. So $t$ will become larger as the difference in means increases with respect to the variability.
+Looking at the formula for the t-statistic, we can see that the $t$ is an estimate of how different the mean values are compared to the variability of the difference in means. So $t$ will become larger as the difference in means increases with respect to the variability.
 
 Statistical software will calculate both the t and P values. If the t-value is large, the P value will be small, providing evidence against the null hypothesis of no difference between the groups.
 
-@tbl-ind-t summarises the results of an independent samples t-test using mod05_birthweight.dta. The process of conducting the t-test is summarised for Stata and R in the following sections.
-
-**Present SD or SE??? Inconsistent between the previous two tables**
+@tbl-ind-t summarises the results of an independent samples t-test using `mod05_birthweight.dta` or `mod05_birthweight.rds`. The process of conducting the t-test is summarised for Stata and R in the following sections.
 
 ```{r, echo=FALSE}
 #| label: tbl-ind-t
@@ -132,15 +130,15 @@ huxtable(df) |>
   set_width(0.8)
 ```
 
-Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference lies between 0.02 and 0.31. Note that this interval does not contain the null value of 0.
+Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference of weight between girls and boys lies between 0.02 and 0.31 kg. Note that this interval does not contain the null value of 0.
 
-Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.297 with 98 degrees of freedom, and yields a two-sided P value of 0.024, providing evidence of a difference in mean birthweight between sex.
+Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.30 with 98 degrees of freedom, and yields a two-sided P value of 0.024, providing evidence of a difference in mean birthweight between sex.
 
 ## Paired t-tests
 
 If the outcome of interest is the difference in the continuously outcome measurement between each pair of observations, a paired t-test is used. In effect, a paired t-test is used to assess whether the mean of the differences between the two related measurements is significantly different from zero. In this sense, a paired t-test is very closely aligned with a one sample t-test.
 
-When using a paired t-test, the variation *between* the pairs of measurements is the most important statistic. The variation *between* the participants is of little interest.
+When using a paired t-test, the variation *between the pairs* of measurements is the most important statistic. The variation between the participants is of little interest.
 
 For related measurements, the data for each pair of values must be entered on the same row of the spreadsheet. Thus, the number of rows in the data sheet is the number of pairs of observations. Thus, the effective sample size is the total number of pairs and not the total number of measurements.
 

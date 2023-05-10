@@ -104,7 +104,7 @@ Chi-squared tests can also be used for tables larger than a 2-by-2 dimension. Wh
 
 ### Worked Example
 
-The Stata file `mod07_allergy.dta` contains information about the severity of allergic reaction, coded as absent, slight, moderate or severe. We can test the hypothesis that the severity of allergy is not different between males and females. To do this we can use a two-way tabulation in Stata to obtain Stata Output 7.2 which shows the percent of females and males who fall into each severity group for allergy. The table shows that the percentage of males is higher in each of the categories of severity (slight, moderate, severe) than the percentage of females. [Command: `tab allergy_severity sex, col`]
+The files `mod07_allergy.dta` and `mod07_allergy.rds` contain information about the severity of allergic reaction, coded as absent, slight, moderate or severe. We can test the hypothesis that the severity of allergy is not different between males and females. To do this we can use a two-way tabulation to obtain @tbl-allergy which shows the counts, expected counts and the percent of females and males who fall into each severity group for allergy. The table shows that the percentage of males is higher in each of the categories of severity (slight, moderate, severe) than the percentage of females.
 
 ::: {#tbl-allergy layout-nrow=2}
 
@@ -155,7 +155,7 @@ huxtable(tab7_1) |>
 ```
 
 ### Worked Example 7.3
-Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The dataset mod07_drug_response.dta is available on Moodle. The null hypothesis is as follows:
+Two drugs labelled A and B have been administered to patients in random order so that each patient acts as their own control. The datasets `mod07_drug_response.dta` and `mod07_drug_response.rds` are available on Moodle. The null hypothesis is as follows:
 
 - H~0~: The proportion of patients who do better on drug A is the same as the proportion of patients who do better on drug B
 

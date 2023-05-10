@@ -22,12 +22,12 @@ huxtable::huxtable(tab1_1, add_colnames = FALSE) |>
   set_caption("Weight loss (g) for 25 participants")
 ```
 
-a) Enter these data into your software package.
+a) These data have been saved as `Activity_S1.1.dta` and `Activity_S1.1.rds`. Read the data into your software package.
 b) What type of data are these?
 c) Construct an appropriate graph to display the relative frequency of participants' weight loss. Your graph should start at 50 grams, with weight loss grouped into 50 gram bins. Provide appropriate labels for the axes and give the graph an appropriate title.
 
 ### Activity 1.2 {-}
-Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The Stata file `Activity_S1.2.dta` contains data on the participants in the study. The file is located on Moodle in the Learning Activities section.
+Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The Stata file `Activity_S1.2.dta` and the R file `Activity_S1.2.rds` contain data on the participants in the study. The file is located on Moodle in the Learning Activities section.
 
 Create a 2 by 2 table to show the proportions of low birth weight babies born to mothers who smoked during pregnancy and those that did not smoke during pregnancy. Answer the following questions:
 
@@ -37,10 +37,10 @@ c) Construct a stacked bar chart of the data to examine if there a difference in
 d) Using your answers to the question a) and b), write a brief conclusion about the relationship of low birth weight and mother’s age and smoking status.
 
 ### Activity 1.3 {-}
-Estimate the mean, median, mode, standard deviation, range and interquartile range for the data Activity_S1.3.dta, available on Moodle.
+Estimate the mean, median, mode, standard deviation, range and interquartile range for the data `Activity_S1.3.dta` or `Activity_S1.3.rds`, available on Moodle.
 
 ### Activity 1.4 {-}
-Data of diastolic blood pressure (BP) of a sample of study participants are provided in the dataset Activity_S1.4.dta. Compute the mean, median, range and SD of diastolic BP.
+Data of diastolic blood pressure (BP) of a sample of study participants are provided in the datasets `Activity_S1.4.dta` and `Activity_S1.4.rds`. Compute the mean, median, range and SD of diastolic BP.
 
 ### Activity 1.5 {-}
 In a study of 100 participants data were missing for 5 people. The missing data points were coded as ‘99’. The mean of the data was estimated as 45.0 with a standard deviation of 5.6; the smallest and greatest values are 16 and 65 respectively.
