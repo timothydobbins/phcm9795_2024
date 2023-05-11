@@ -48,7 +48,7 @@ where the standard error of a proportion is computed as:
 
 $$\text{SE}(p) = \sqrt{\frac{p \times (1 - p)}{n}}$$
 
-### Worked Example
+### Worked Example 6.1
 
 In a cross-sectional study of children living in a rural village, 47 children from a random sample of 215 children were found to have scabies. Here $n=215$ and $k=47$, so the proportion of children with scabies is estimated as:
 
@@ -99,7 +99,7 @@ $$
 
 This z-statistic is then compared to the standard Normal distribution to calculate the P-value.
 
-### Worked Example {#z-prop-example}
+### Worked Example 6.2 {#z-prop-example}
 
 A national census in a country shows that 20% of the population are smokers. A survey of a community within the country that has received a public health anti-smoking intervention shows that 54 of 300 people sampled are smokers (18%). We can calculate a 95% confidence interval around this proportion using the Wilson method, which is calculated as 14.1% to 22.7%.
 
@@ -127,7 +127,7 @@ knitr::include_graphics(here::here("img", "mod06", "z-curve.png"))
 
 We can use the binomial distribution to obtain an exact P-value for testing a single proportion. Historically, this was a time consuming process with much hand calculation. These days, statistical software performs the calculations quickly and efficiently, and is the preferred method.
 
-### Worked example
+### Worked example 6.3
 The file `mod06_smoking_status.csv` contains the data for this example. In the data file, smokers are coded as 1 and non-smokers are coded as 0.
 
 In Stata, we can use the `prtest` command to perform a z-test, or the `bitest` command to perform the exact binomial test. In R, we can use the `prop.test` function to perform a z-test, or the `binom.test` function to perform the exact binomial test.
@@ -256,7 +256,7 @@ The interpretation of an odds ratio is discussed in detail in PHCM9794: Foundati
 In some situations, related to how well controls are recruited into this study, the odds ratio is a close approximation of the relative risk. Therefore, you may see in some published papers of case control studies the OR interpreted as you would interpret a RR. This should be avoided in this course.
 
 
-### Worked Example
+### Worked Example 6.4
 
 A randomised controlled trial was conducted among a group of patients to estimate the side effects of a drug. Fifty patients were randomly allocated to receive the active drug and 50 patients were allocated to receive a placebo drug. The outcome measured was the experience of nausea. The data is given in the files `mod06_nausea.dta` and `mod06_nausea.rds`.
 

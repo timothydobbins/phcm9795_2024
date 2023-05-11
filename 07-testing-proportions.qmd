@@ -60,36 +60,6 @@ As for many statistics, the deviations between the observed and expected values 
 
 If the expected counts are close to the observed counts, the chi-squared statistic will be close to zero, and the P-value will be close to 1. The larger the difference between the observed and expected counts, the larger the chi-squared statistic becomes (and the smaller the P-value). A large chi-squared statistic provides more evidence of an association between the exposure and outcome.
 
-A chi-squared test to examine whether two independent proportions are associated can be obtained in Stata using the *Tables for Epidemiologists*: `cc` and `cs` commands. The test can also be conducted using the `tab2` command, with the advantage that the `tab2` command shows the expected counts. We will show why this is important shortly.
-
-The Stata output for Worked Example 7.1 for the study on nausea is shown in Output 7.1a. It is always important to request the percentages using the options in 'Cells' to show the proportion of patients who have the outcome in each exposure group, i.e. the row percents.
-
-::: {#tbl-panel layout-ncol=2}
-|         |   Nausea | No nausea |      Total |
-|---------|---------:|----------:|-----------:|
-| Active  | 35 (70%) |  15 (30%) |  50 (100%) |
-| Placebo | 46 (92%) |    4 (8%) |  50 (100%) |
-| Total   | 81 (81%) |  19 (19%) | 100 (100%) |
-
-: Observed counts
-
-|         |   Nausea | No nausea |      Total |
-|---------|---------:|----------:|-----------:|
-| Active  |     40.5 |       9.5 |        50  |
-| Placebo |     40.5 |       9.5 |        50  |
-| Total   |       81 |        19 |       100  |
-
-: Expected counts
-
-Nausea side-effect data
-:::
-
-We can see from the row percentages that 8% of patients in the placebo group experienced nausea compared to 30% of patients in the active group. If no association existed, we would expect to find approximately the same percent of patients with nausea in each group. The 'Expected' counts are higher for the groups with 'No nausea' because 'No nausea' is more prevalent in the sample than 'Nausea'.
-
-While the `tab2` command will perform the chi-square test, the measure of effect is best obtained using the `cs` or `cc` commands, as discussed in Module 6. Using the relative risk obtained from Module 6, a conclusion from the above test can be written as:
-
-The proportion with nausea in those who received the active drug is 30%, compared to 8% in those who received the placebo drug. Nausea was more frequent in those who received the active drug (Relative Risk = 3.75, 95% CI: 1.34 to 10.51). There is strong evidence that the proportion with nausea differs between the two groups ($\chi ^2$ = 7.86 with 1 df, P=0.005).
-
 ### Assumptions for using a Pearson's chi-squared test
 
 The assumptions that must be met when using Pearson's chi-squared test are that:
@@ -99,17 +69,41 @@ The assumptions that must be met when using Pearson's chi-squared test are that:
 - at least 80% of the expected cell counts should exceed a value of five;
 - all expected cell counts should exceed a value of one.
 
-The first two assumptions are dictated by the study design. The last two assumptions relate to the numbers in the cells and can be explored when running the test. There should not be too many cells with low expected counts. Sometimes, the only way to avoid small cell counts is to recruit a much larger sample size. If small cell counts cannot be avoided, Fisher's exact test can be used instead. More information on Fisher's exact test can be found in Chapter 13 of An Introduction to Medical Statistics, @bland15.
+The first two assumptions are dictated by the study design. The last two assumptions relate to the numbers in the cells and should be explored when running the test. There should not be too many cells with low expected counts. Sometimes, the only way to avoid small cell counts is to recruit a much larger sample size. If small cell counts cannot be avoided, Fisher's exact test can be used instead. More information on Fisher's exact test can be found in Chapter 13 of An Introduction to Medical Statistics, @bland15.
 
-### Interpreting chi-squared tests
+### Worked Example 7.1
 
-For the data being considered from Worked Example 7.1 all cells have an expected count greater than 5 and that the minimum cell count is 9.5. Therefore, it is appropriate to use the Pearson's Chi-Squared test. If one or more cells have an expected cell count less than 5, then the Fisher's exact test should be used. The P value associated with the Pearson's chi-squared test is 0.005 indicating that we can reject the null hypothesis at a 5% level of significance. Thus, we can conclude that there is strong evidence that more patients who were randomised to receive the active treatment experienced nausea than patients randomised to the control (placebo) group.
+We will revisit Worked Example 6.4, investigating the relationship between nausea and drug exposure:
+
+|         |   Nausea | No nausea |      Total |
+|---------|---------:|----------:|-----------:|
+| Active  | 35 (70%) |  15 (30%) |  50 (100%) |
+| Placebo | 46 (92%) |    4 (8%) |  50 (100%) |
+| Total   | 81 (81%) |  19 (19%) | 100 (100%) |
+
+: Nausea status by drug exposure {#tbl-rr-observed}
+
+We can see from the row percentages that 8% of patients in the placebo group experienced nausea compared to 30% of patients in the active group. If no association existed, we would expect to find approximately the same percent of patients with nausea in each group. Statistical software can calculate the values we would expect if there was no association between nausea and drug exposure (i.e. the expected counts):
+
+|         |   Nausea | No nausea |      Total |
+|---------|---------:|----------:|-----------:|
+| Active  |     40.5 |       9.5 |        50  |
+| Placebo |     40.5 |       9.5 |        50  |
+| Total   |       81 |        19 |       100  |
+
+: Expected counts of nausea status by drug exposure {#tbl-rr-exp}
+
+For the data being considered from Worked Example 7.1 all cells have an expected count greater than 5 and that the minimum cell count is 9.5. Therefore, it is appropriate to use the Pearson's Chi-Squared test. Note that the 'Expected' counts are higher for the groups with 'No nausea' because 'No nausea' is more prevalent in the sample than 'Nausea'.
+
+The chi-squared statistic is calculated as 7.86 with 1 df, giving a P-value of 0.005. Combining these results with the estimated relative risk (from Module 6), we can state: 
+
+The proportion with nausea in those who received the active drug is 30%, compared to 8% in those who received the placebo drug. Nausea was more frequent in those who received the active drug (Relative Risk = 3.75, 95% CI: 1.34 to 10.51). There is strong evidence that the proportion with nausea differs between the two groups ($\chi ^2$ = 7.86 with 1 df, P=0.005).
 
 ## Chi-squared tests for tables larger than 2-by-2
 
 Chi-squared tests can also be used for tables larger than a 2-by-2 dimension. When a contingency table larger than 2-by-2 is used, say a 4-by-2 table if there were 4 exposure groups, the Pearson's chi-squared can still be used.
 
-### Worked Example
+### Worked Example 7.2
 
 The files `mod07_allergy.dta` and `mod07_allergy.rds` contain information about the severity of allergic reaction, coded as absent, slight, moderate or severe. We can test the hypothesis that the severity of allergy is not different between males and females. To do this we can use a two-way tabulation to obtain @tbl-allergy which shows the counts, expected counts and the percent of females and males who fall into each severity group for allergy. The table shows that the percentage of males is higher in each of the categories of severity (slight, moderate, severe) than the percentage of females.
 

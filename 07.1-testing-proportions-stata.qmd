@@ -17,6 +17,11 @@ To request for expected frequencies, tick the box for **Expected frequencies** a
 
 Click **OK** or **Submit** to obtain the Output 7.1 in the course notes.
 
+INCLUDE THIS!!!
+
+While the `tab2` command will perform the chi-square test, the measure of effect is best obtained using the `cs` or `cc` commands, as discussed in Module 6. Using the relative risk obtained from Module 6, a conclusion from the above test can be written as:
+
+
 The last line labelled Pearson chi2(1) reports the appropriate Chi-squared test statistic which has a value of 7.862 with 1 degree of freedom and a P value of 0.005.
 
 When you only have the cross-tabulated data, you can use the `tabi` command from **Statistics > Summaries, tables, and tests > Frequency tables > Table calculator**. In the `tabi` dialog box, enter the table in the **User-supplied cell frequencies** box as `46 4 \ 35 15` to obtain the same table as in the Output 7.1. As explained in the dialog box, each row of frequencies is separated by the backslash “\”. You can tick the same additional outputs and tests as in the tab2 command above.
