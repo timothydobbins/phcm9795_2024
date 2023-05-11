@@ -24,9 +24,9 @@ A study is conducted to test the hypothesis that the observed frequency of a cer
 
 ### Activity 6.5 {-}
 
-In an experiment to test the effect of Vitamin C on IQ scores, the following confidence intervals were estimated around the percentage with improved scores for five different populations:
+In an experiment to test the effect of Vitamin C on IQ scores, the following confidence intervals were estimated around the percentage with improved scores for five different populations (@tbl-act-6-5):
 
-```{r act-6-5, echo=FALSE}
+```{r tbl-act-6-5, echo=FALSE}
 library(huxtable)
 
 tab6_5 <- tibble::tribble(

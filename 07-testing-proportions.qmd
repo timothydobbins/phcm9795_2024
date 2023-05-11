@@ -1,3 +1,10 @@
+<!-- NEED TO FIX UP SECTIONS AROUND USING TAB2 IN STATA, AND MAKE THINGS MORE SOFTWARE AGNOSTIC -->
+
+<!-- FOR MCNEMAR'S TEST - ADD TEXT AROUND THE EXACT TEST BEING BASED ON BINOMIAL TEST -->
+<!-- KIRKWOOD RECOMMENDS B+C TO BE BIGGER THAN 10, OTHERWISE USE EXACT BINOMIAL TEST -->
+
+
+
 # Hypothesis testing for categorical data
 
 ## Learning objectives {-}
@@ -41,13 +48,13 @@ A chi-squared test is used to test the null hypothesis that of no association be
 
 Expected count = (Row count × Column count) / Total count
 
-Stata will do this for us, as described in the Stata Notes section in this Module.
+Statistical software will do this for us, as described in the Stata or R sections in this Module.
 
 A chi-squared value is then calculated to compare the expected counts (E) in each cell with the observed (actual) cell counts (O). The calculation is as follows:
 
-$\chi ^ 2 = \sum \frac{(O - E)}{E} ^2$
+  $\chi ^ 2 = \sum \frac{(O - E)}{E} ^2$
 
-With [Number of rows $-$ 1] $\times$ [Number of columns $-$ 1] degrees of freedom.
+with [Number of rows $-$ 1] $\times$ [Number of columns $-$ 1] degrees of freedom.
 
 As for many statistics, the deviations between the observed and expected values are squared to prevent the negative and positive values balancing one another out.
 
@@ -133,7 +140,7 @@ The Pearson chi-squared statistic is calculated as 4.31, with 3 degrees of freed
 
 If a binary categorical outcome is measured in a paired study design, McNemar's statistic is used. This statistic is a form of chi-square applied to a paired situation. A Pearson's chi-squared test cannot be used because the measurements are not independent. However, McNemar's test can be used to assess whether there is a significant change in proportions between two time points or between two conditions, or whether there is a significant difference in proportions between matched cases and controls.
 
-For McNemar's test, the data are displayed as shown in Table 7.1. Cells 'a' and 'd' called concordant cells because the response was the same at both baseline and follow-up or between matched cases and controls. Cells 'b' and 'c' are called discordant cells because the responses between the pairs were different. For a follow-up study, the participants in cell 'c' had a positive response at baseline and a negative response at follow-up. Conversely, the participants in cell 'b' had a negative response at baseline and a positive response at follow-up.
+For McNemar's test, the data are displayed as shown in @tbl-7-1. Cells 'a' and 'd' called concordant cells because the response was the same at both baseline and follow-up or between matched cases and controls. Cells 'b' and 'c' are called discordant cells because the responses between the pairs were different. For a follow-up study, the participants in cell 'c' had a positive response at baseline and a negative response at follow-up. Conversely, the participants in cell 'b' had a negative response at baseline and a positive response at follow-up.
 
 For other types of paired data such as twins or matched cases and controls, the data are similarly displayed with the responses of one of the pairs in the columns and the responses for the other of the pairs in the rows. For paired data, the grand total 'N' is always the number of pairs and not the total number of participants.
 
@@ -184,10 +191,6 @@ with 1 degree of freedom. Using our worked example, the McNemar's chi-squared st
 As described above, the difference in proportions can be calculated. A 95% confidence interval for this difference can be obtained using statistical software.
 
 In this study of 60 participants, where each participant received both drugs, 41 (68%) responded to Drug A and 35 (58%) responded to Drug B. The difference in the proportions responding is estimated as 10% (95% CI -11% to 31%). There is no evidence that the response differed between the two drugs (McNemar's chi-square=1.06 with 1 degree of freedom, P=0.3).
-
-ADD TEXT AROUND THE EXACT TEST BEING BASED ON BINOMIAL TEST
-KIRKWOOD RECOMMENDS B+C TO BE BIGGER THAN 10, OTHERWISE USE EXACT BINOMIAL TEST
-
 
 ## Summary
 

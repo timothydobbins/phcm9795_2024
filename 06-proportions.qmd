@@ -6,7 +6,7 @@ By the end of this module you will be able to:
 
 - Compute and interpret 95% confidence intervals for proportions;
 - Conduct and interpret a significance test for a one-sample proportion;
-- Use Stata to compute 95% confidence intervals for a difference in proportions, a relative risk and an odds ratio.
+- Use statistical software to compute 95% confidence intervals for a difference in proportions, a relative risk and an odds ratio.
 
 ## Readings {-}
 
@@ -69,19 +69,19 @@ The prevalence of scabies among children in the village is 21.9% (95% CI 16.3%, 
 
 ### Calculating the 95% confidence interval of a proportion (Wilson method)
 
-Another method to calculate the confidence interval of a proportion is the Wilson (sometimes also called the 'score') method. We can use it in situations where it is not appropriate to use the normal approximation to the binomial distribution as described above i.e. if the sample size is small ($n < 30$) or the number of subjects with the rarer outcome is 5 or fewer. This method much more difficult to implement by hand than the standard confidence interval, and so we will not discuss the hand calculation using the mathematical equation in this course. Instead, we use statistical software to do this.
+Another method to calculate the confidence interval of a proportion is the Wilson (sometimes also called the 'score') method. We can use it in situations where it is not appropriate to use the normal approximation to the binomial distribution as described above i.e. if the sample size is small ($n < 30$) or the number of subjects with the rarer outcome is 5 or fewer. This method much more difficult to implement by hand than the standard confidence interval, and so we will not discuss the hand calculation using the mathematical equation in this course. Instead, we use statistical software to do this (see the Stata or R notes for detail).
 
 When using software, our worked example provides a 95% confidence interval of the prevalence of scabies of 16.9% to 27.9%.
 
 ### Wald vs Wilson methods
 
-We have presented two methods for calculating the 95% confidence interval for a proportion. The Wald method, which assumes that the underlying proportion follows a Normal distribution, is easy to calculate and follows the form of other confidence intervals. The Wilson method, which is difficult to calculate by hand, has nicer mathematical properties. There are also a number of other methods for calculating confidence intervals for proportions, but we do not discuss these in this course.
+The Wald method, which assumes that the underlying proportion follows a Normal distribution, is easy to calculate and follows the form of other confidence intervals. The Wilson method, which is difficult to calculate by hand, has nicer mathematical properties. There are also a number of other methods for calculating confidence intervals for proportions, but we do not discuss these in this course.
 
-A paper by Brown, Cai and DasGupta (@brown_etal01) has compared the properties of the Wald and Wilson methods (among others) and concluded that the Wilson method is preferred over the Wald method.
+A paper by Brown, Cai and DasGupta (@brown_etal01) has compared the properties of the Wald and Wilson methods (among others) and concluded that the Wilson method is preferred over the Wald method. **Therefore, we recommend the Wilson method be used to calculate 95% confidence intervals for a proportion.**
 
 ## Hypothesis testing for one sample proportion
 
-We can carry out a hypothesis test to compare a sample proportion to a hypothesised proportion. In much the same way as a one sample t-test was used in Module 5 to test a sample mean against a hypothesised mean, we can perform a one-sample test to test a sample proportion against a hypothesised proportion. The significance test will provide a P value to assess the evidence against the null hypothesis, while the 95% confidence interval will provide the range in which we are 95% confident that the true proportion lies.
+We can carry out a hypothesis test to compare a sample proportion to a hypothesised proportion. In much the same way as a one sample t-test was used in Module 5 to test a sample mean against a hypothesised mean, we can perform a one-sample test to test a sample proportion against a hypothesised proportion. The significance test will provide a P-value to assess the evidence against the null hypothesis, while the 95% confidence interval will provide the range in which we are 95% confident that the true proportion lies.
 
 For example, we can test the following null hypothesis:
 
@@ -125,7 +125,7 @@ knitr::include_graphics(here::here("img", "mod06", "z-curve.png"))
 
 ### Binomial test for testing one sample proportion
 
-We can use the binomial distribution to obtain an exact P-value for testing a single proportion. Historically, this was a time consuming process with much hand calculation. These days, Stata and other statistical software performs the calculations quickly and efficiently, and is the preferred method.
+We can use the binomial distribution to obtain an exact P-value for testing a single proportion. Historically, this was a time consuming process with much hand calculation. These days, statistical software performs the calculations quickly and efficiently, and is the preferred method.
 
 ### Worked example
 The file `mod06_smoking_status.csv` contains the data for this example. In the data file, smokers are coded as 1 and non-smokers are coded as 0.
@@ -159,7 +159,7 @@ huxtable::huxtable(v1) |>
 **Note for Stata users:** It is important to note that Stata presents the exposure or intervention (present, absent) in the columns and the outcome or disease (present, absent) in the rows (e.g. @tbl-2-by-2-stata). This is opposite to the way most epidemiological tables are presented, with exposure in rows and outcome in columns. Care must be taken when reading 2-by-2 tables generated from Stata.
 
 
-```{r tbl-2-by-2-stata, echo=FALSE}
+```{r tbl-2-by-2-stata, echo=FALSE, include=FALSE}
 #| tbl-cap: Stata format for presenting a contingency table
 v2 <- tibble::tribble(
   ~` `, ~`Exposure present`, ~`Exposure absent`, ~`Total`,
@@ -174,7 +174,7 @@ huxtable::huxtable(v2)  |>
   set_width(0.8)
 ```
 
-When using a statistics program such, it is recommended that the outcome and exposure variables are coded by assigning 'absent' as 0 and 'present' as 1, for example 'No' = 0 and 'Yes' = 1. This is needed for some of the commands to work (e.g. the epidemiology table commands). This coding ensures that measures of association, such as the odds ratio or relative risk, are computed correctly by Stata.
+When using a statistics program, it is recommended that the outcome and exposure variables are coded by assigning 'absent' as 0 and 'present' as 1, for example 'No' = 0 and 'Yes' = 1. This is needed for some of the commands to work (e.g. the epidemiology table commands). This coding ensures that measures of association, such as the odds ratio or relative risk, are computed correctly by Stata. While R does not require this coding to be followed, it is good practice nonetheless.
 
 ## A brief summary of epidemiological study types
 
@@ -220,7 +220,7 @@ For cohort studies, randomised controlled trials and cross-section studies, we c
 
 For case-control studies, as we sample participants based on their outcome, we can not estimate the risk of the outcome. Hence, calculating a relative risk or risk difference is inappropriate. Instead of calculating risks in a case-control study, we instead calculate *odds*, where the odds of an event are calculated as the number with the event divided by the number without the event. 
 
-```{r tbl-cc, echo=FALSE}
+```{r tbl-cc, echo=FALSE, include=FALSE}
 #| tbl-cap: Contingency table for a case-control study
 v1 <- tibble::tribble(
   ~` `, ~`Cases`, ~`Controls`, ~`Total`,
@@ -276,7 +276,7 @@ tibble::tribble(
   set_width(0.8)
 ```
 
-We can use Stata or R to calculate the relative risk (RR=3.75) and its 95% confidence interval (1.34, 10.51). This tells us that nausea is 3.75 times more likely to occur in the active drug group compared with the placebo group. Because this is a randomised controlled trial, the relative risk would be an appropriate measure of association.
+We can use Stata or R to calculate the relative risk (RR=3.75) and its 95% confidence interval (1.34 to 10.51). This tells us that nausea is 3.75 times more likely to occur in the active drug group compared with the placebo group. Because this is a randomised controlled trial, the relative risk would be an appropriate measure of association.
 
 We can confirm the estimated relative risk:
 
@@ -293,7 +293,7 @@ $$
 
 A case-control study investigated the association between human papillomavirus and oropharyngeal cancer (D\'Souza, et al. NEJM 2007), and the results appear in @tbl-6-nejm.
 
-```{r tbl-6-nejm, echo=FALSE}
+```{r tbl-6-nejm, echo=FALSE, include=FALSE}
 #| tbl-cap: Association between human papillomavirus and oropharyngeal cancer
 
 df <- tibble::tribble(
@@ -324,7 +324,7 @@ We can use Stata or R to estimate the odds ratio and its 95% confidence interval
 
 The odds ratio is estimated as 17.6, and its 95% confidence interval is estimated 9.0 to 34.3 (Cornfield, using Stata) or 9.0 to 34.5 (Woolf, using R).
 
-Risk statistics are usually only reported with one or two decimal places. The interpretation of the confidence intervals for both the relative risk and the odds ratio is the same as for the confidence intervals around other summary measures in that it shows the region in which we are 95% confident that the true population estimate lies.
+The interpretation of the confidence intervals for both the relative risk and the odds ratio is the same as for the confidence intervals around other summary measures in that it shows the region in which we are 95% confident that the true population estimate lies.
 
 
 {{< pagebreak >}}

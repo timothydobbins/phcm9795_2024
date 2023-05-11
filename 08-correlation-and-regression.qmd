@@ -115,9 +115,9 @@ The nature of a relationship between two variables is more fully described using
 
 The second purpose for using a regression model is for testing the hypothesis that there is a linear relationship between one or more explanatory variables and an outcome variable. For example, a regression model can be used to test the extent to which age predicts BMI or to test the hypothesis that two groups with a different dietary regime have significantly different BMI values after adjusting for age differences.
 
-From Worked Example 8.1, we can be also plot a regression line through the scatter. Figure \@ref(fig:scatter-plot-line) shows the data overlayed with the fitted regression line.
+From Worked Example 8.1, we can be also plot a regression line through the scatter. @fig-scatter-plot-line shows the data overlayed with the fitted regression line.
 
-```{r scatter-plot-line, echo=FALSE, out.width = "66%", fig.cap="Association between height and lung function in 120 adults"}
+```{r fig-scatter-plot-line, echo=FALSE, out.width = "66%", fig.cap="Association between height and lung function in 120 adults"}
 knitr::include_graphics(here::here("img", "mod08", "scatterplot-line-fvc-height.png"))
 ```
 

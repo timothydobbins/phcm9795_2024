@@ -49,7 +49,35 @@ In the **ranksum** dialog box, select `los` as the **Variable** and select `infe
 knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-ranksum.png"))
 ```
 
-Click **OK** or **Submit** to obtain Output 9.3.
+Click **OK** or **Submit** to obtain the following output:
+
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+      infect |      obs    rank sum    expected
+-------------+---------------------------------
+          No |      106        6620        7049
+         Yes |       26        2158        1729
+-------------+---------------------------------
+    combined |      132        8778        8778
+
+unadjusted variance    30545.67
+adjustment for ties      -53.87
+                     ----------
+adjusted variance      30491.80
+
+Ho: los(infect==No) = los(infect==Yes)
+             z =  -2.457
+    Prob > |z| =   0.0140
+    Exact Prob =   0.0135
+```
+
+For the length of stay data in the Worked Example 9.1, we first get a ranks table as shown in Output 9.3. The rank sum table gives us a direction of effect that the ranks are higher than expected in patients who had nosocomial infection. While the positive infection group has a lower sum of ranks because there were fewer people who contracted an infection, it is higher than expected, i.e. they have a longer length of stay compared with the negative infection group. This ranks table does not provide any summary statistics of direction of effect, central tendency or spread that describe the data.
+
+The test statistics are shown under the rank sum table in Output 9.3. The variance shown immediately under the table are used to conduct the test, and are not reported on. 
+
+From Output 9.3, there are two P-values shown: one assuming normality of the ranks (not the underlying data), and an "Exact" P-value. The exact P-value is calculated when the sample size is not too large (less than 200), and is preferred. The rounded exact P value is 0.014 which indicates that the there is evidence of a difference in length of stay between the groups. 
+
 
 [Command: `ranksum los, by(infect)`]
 

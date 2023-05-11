@@ -77,7 +77,7 @@ If we were testing the hypothesis that there was a difference in length of stay 
 
 Here, a two-sample t-test gives a test statistic of 2.59 with 130 degrees of freedom, and a P-value of 0.01. 
 
-As explained above, the estimated statistics would need to be converted back to the units in which the variable was measured. From Output 9.2, we can take the exponential of the corresponding log-transformed values:
+As explained above, the estimated statistics would need to be converted back to the units in which the variable was measured. From @tbl-los-ttest, we can take the exponential of the corresponding log-transformed values:
 
 - the geometric mean of the infected group is approximately 41.5 days with a 95% confidence interval from 31.4 to 55.0 days.
 - the geometric mean of the uninfected group is approximately 27.9 days with a 95% confidence interval from 24.4 to 31.9 days.
@@ -126,39 +126,13 @@ By assigning ranks to individuals, we lose information about their actual values
 
 ## Non-parametric test for two independent samples (Wilcoxon ranked sum test)
 
-The non-parametric equivalent to an independent samples t-test (Module 5) is the Wilcoxon ranked sum test, also known as the Mann-Whitney U test. In Stata, this can be obtained using the ranksum command. 
+The non-parametric equivalent to an independent samples t-test (Module 5) is the Wilcoxon ranked sum test, also known as the Mann-Whitney U test. This can be obtained using the `ranksum` command in Stata, and the `wilcox.test` in R. 
 
 The assumption for this test is that the distributions of the two populations have the same general shape. If this assumption is met, then this test evaluates the null hypothesis that the medians of the two populations are equal. This test does not assume that the populations are normally distributed, nor that their variances are equal.
 
-For the length of stay data in the Worked Example 9.1, we first get a ranks table as shown in Output 9.3. The rank sum table gives us a direction of effect that the ranks are higher than expected in patients who had nosocomial infection. While the positive infection group has a lower sum of ranks because there were fewer people who contracted an infection, it is higher than expected, i.e. they have a longer length of stay compared with the negative infection group. This ranks table does not provide any summary statistics of direction of effect, central tendency or spread that describe the data.
+Conducting the Wilcoxon ranked sum test for our length of stay data yields a P-value of 0.014, providing strong evidence of a difference in the median length of stay between the groups.
 
-#### Stata Output 9.3: Wilcoxon rank-sum test {-}
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-Two-sample Wilcoxon rank-sum (Mann-Whitney) test
-
-      infect |      obs    rank sum    expected
--------------+---------------------------------
-          No |      106        6620        7049
-         Yes |       26        2158        1729
--------------+---------------------------------
-    combined |      132        8778        8778
-
-unadjusted variance    30545.67
-adjustment for ties      -53.87
-                     ----------
-adjusted variance      30491.80
-
-Ho: los(infect==No) = los(infect==Yes)
-             z =  -2.457
-    Prob > |z| =   0.0140
-    Exact Prob =   0.0135
-```
-
-The test statistics are shown under the rank sum table in Output 9.3. The variance shown immediately under the table are used to conduct the test, and are not reported on. 
-
-From Output 9.3, there are two P-values shown: one assuming normality of the ranks (not the underlying data), and an "Exact" P-value. The exact P-value is calculated when the sample size is not too large (less than 200), and is preferred. The rounded exact P value is 0.014 which indicates that the there is evidence of a difference in length of stay between the groups. This P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges.
-
-Using the summary command with the detail option in Stata and splitting the LOS variable by the Infect variable (as shown in Module 5), we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection.
+This P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges. In our example, we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection.
 
 ## Non-parametric test for paired data (Wilcoxon signed-rank test)
 

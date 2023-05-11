@@ -105,7 +105,7 @@ knitr::include_graphics(here::here("img", "mod06", "stata", "bitesti.png"))
 
 ## Computing a relative risk and its 95% confidence interval
 
-Using data file from Worked Example 6.4, to obtain relative risk and its 95% CI, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Cohort study risk ratio etc...**
+Using the data file from Worked Example 6.4, to obtain relative risk and its 95% CI, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Cohort study risk ratio etc...**
 
 ```{r s-cs-1, echo=FALSE, out.width = "66%",}
 knitr::include_graphics(here::here("img", "mod06", "stata", "cs-1.png"))

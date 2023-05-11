@@ -12,12 +12,12 @@ book:
     # - 03-precision.qmd
     # - 04-hypothesis-testing.qmd
     # - 05-comparing-two-means.qmd
-    - 06-proportions.qmd
+    # - 06-proportions.qmd
     - 07-testing-proportions.qmd
-    - 08-correlation-and-regression.qmd
+    # - 08-correlation-and-regression.qmd
     - 09-non-parametrics.qmd
-    - 10-sample-size.qmd
-    # - references.qmd
+    # - 10-sample-size.qmd
+    - references.qmd
 
 bibliography: PHCM9795.bib
 

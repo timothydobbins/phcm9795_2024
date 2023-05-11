@@ -88,8 +88,11 @@ drug_aggregated <- data.frame(
 We need to define group and side_effect as factors. Here we must define the `levels` **in the order we want the categories to appear in the table**. Note that as group and side_effect are entered as text variables, we can omit `labels` command when defining the factors, and the factor will be labelled using the text entry:
 
 ```{r}
-drug_aggregated$group <- factor(drug_aggregated$group, levels=c("Active", "Placebo"))
-drug_aggregated$side_effect <- factor(drug_aggregated$side_effect, levels=c("Nausea", "No nausea"))
+drug_aggregated$group <- factor(drug_aggregated$group, 
+                                levels=c("Active", "Placebo"))
+
+drug_aggregated$side_effect <- factor(drug_aggregated$side_effect, 
+                                      levels=c("Nausea", "No nausea"))
 ```
 
 We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the `counts` command:
