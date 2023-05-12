@@ -44,7 +44,7 @@ When data are positively skewed, as shown in @fig-mod09-los, a logarithmic trans
 
 We would generate a new variable, as shown in the Stata or R notes. As the minimum length of stay in these sample data was 0, we have added 1 to each length of stay before taking the logarithm. The distribution of the logarithm of (length of stay + 1) is shown in @fig-mod09-lnlos.
 
-```{r fig-mod09-lnlos, echo=FALSE, out.width = "66%", fig.cap="istribution of log transformed (length of stay + 1)"}
+```{r fig-mod09-lnlos, echo=FALSE, out.width = "66%", fig.cap="Distribution of log transformed (length of stay + 1)"}
 knitr::include_graphics(here::here("img", "mod09", "mod09-lnlos.png"))
 ```
 
@@ -140,27 +140,28 @@ There are two types of non-parametric tests for paired data, called the Sign tes
 
 If the differences between two paired measurements are not normally distributed, a non-parametric equivalent of a paired t-test (Module 5) should be used. The equivalent test is the Wilcoxon matched-pairs signed rank test, also simply called the Wilcoxon matched-pairs test. This test is resistant to outliers in the data, however the proportion of outliers in the sample should be small. This test evaluates the null hypothesis that the median of the paired differences is equal to zero.
 
-In this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e. scores where there is no difference between the pairs) are excluded. Thus, the test is not suitable when a large proportion of the differences are zero because the effective sample size is reduced considerably.
+In this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e. scores where there is no difference between the pairs) are excluded. Note that the power of the test (the ability to detect an effect if there truly is an effect) reduces in the presence of zero differences, as the effective sample size (the number of non-zero differences) is reduced.
 
 ### Worked Example
 
-A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in Stata datafile file mod09_arthritis.csv. The data are shown in Table 9.2. The descriptive statistics indicate that the differences are not normally distributed. You can use the Explore function in Stata to determine this.
+A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in Table 9.2.
 
 ```{r tab-9-2, echo=FALSE}
 df <- tibble::tribble(
-          ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,        ~`Difference (Drug 2 – Drug 1)`,
-                   1L,               3L,               4L,                "1",
-                   2L,               2L,               7L,                "5",
-                   3L,               3L,               4L,                "1",
-                   4L,               8L,              10L,                "2",
-                   5L,               6L,               8L,                "2",
-                   6L,               6L,               1L,               "-5",
-                   7L,               2L,               6L,                "4",
-                   8L,               3L,               7L,                "4",
-                   9L,               5L,               8L,                "3",
-                  10L,               9L,              10L,                "1",
-                  11L,               7L,               8L,                "1"
-          )
+          ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,
+                   1L,               3L,               4L,  
+                   2L,               2L,               7L,  
+                   3L,               3L,               4L,  
+                   4L,               8L,              10L,  
+                   5L,               6L,               8L,  
+                   6L,               6L,               1L,  
+                   7L,               2L,               6L,  
+                   8L,               3L,               7L,  
+                   9L,               5L,               8L,  
+                  10L,               9L,              10L,  
+                  11L,               7L,               8L  
+          ) |> 
+  dplyr::mutate(`Difference (Drug 2 - Drug 1)` = `Score: Drug 2` - `Score: Drug 1`)
   
 huxtable(df) |>
   set_align(everywhere, everywhere, "centre") |> 
@@ -170,43 +171,19 @@ huxtable(df) |>
   set_caption("Arthritis symptom scores for 11 patients after administering two drugs")
 ```
 
-Before doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in Figure \@ref(fig:mod09-diff-hist).
+The data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs.
 
-```{r mod09-diff-hist, echo=FALSE, out.width = "66%", fig.cap="Distribution of difference in symptom scores between Drug 1 and Drug 2"}
+Before doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in @fig-mod09-diff-hist.
+
+```{r fig-mod09-diff-hist, echo=FALSE, out.width = "66%", fig.cap="Distribution of difference in symptom scores between Drug 1 and Drug 2"}
 knitr::include_graphics(here::here("img", "mod09", "mod09-diff-hist.png"))
 ```
 
 The histogram shows that the differences are not normally distributed. The data looks negatively skewed with a gap in the histogram between the values of -5 and 0. Therefore, it would not be appropriate to conduct a paired t-test. Hence, we conduct a non-parametric paired test (Wilcoxon matched-pairs signed-rank test).
 
-A non-parametric paired test can be obtained in Stata using the signrank command and the results of the test are shown in Output 9.4.
+A non-parametric paired test can be obtained in Stata using the `signrank` command, or in R using the `wilcox.test` (specifying `paired=TRUE`).
 
-#### Stata Output 9.4: Wilcoxon matched-pairs signed-rank test {-}
-```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-Wilcoxon signed-rank test
-
-        sign |      obs   sum ranks    expected
--------------+---------------------------------
-    positive |        1        10.5          33
-    negative |       10        55.5          33
-        zero |        0           0           0
--------------+---------------------------------
-         all |       11          66          66
-
-unadjusted variance      126.50
-adjustment for ties       -1.63
-adjustment for zeros       0.00
-                     ----------
-adjusted variance        124.88
-
-Ho: drug_1 = drug_2
-             z =  -2.013
-    Prob > |z| =   0.0441
-    Exact Prob =   0.0459
-```
-
-The table in Output 9.4 shows that there is 1 person who has a positive difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs. The difference scores are ranked and the observed and expected sum of the ranks are shown in the output. This provides no intuitive summary statistics except to indicate which drug has higher ranks.
-
-The test statistics are also shown under the table in Output 9.4. From the output, the exact P value of 0.046 indicates that there is evidence of a difference in symptom score between the two drugs.
+The P-value obtained from Stata is 0.044, and the P-value obtained from R is 0.049. The reason these two P-values differ is that R uses a so-called "continuity correction" which makes the test more conservative (i.e. makes the test less likely to reject the null-hypothesis when the null-hypothesis is true). In both cases, there is evidence of a difference in symptom scores between the two drugs.
 
 ## Non-parametric estimates of correlation
 

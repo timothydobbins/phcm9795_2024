@@ -72,12 +72,11 @@ Ho: los(infect==No) = los(infect==Yes)
     Exact Prob =   0.0135
 ```
 
-For the length of stay data in the Worked Example 9.1, we first get a ranks table as shown in Output 9.3. The rank sum table gives us a direction of effect that the ranks are higher than expected in patients who had nosocomial infection. While the positive infection group has a lower sum of ranks because there were fewer people who contracted an infection, it is higher than expected, i.e. they have a longer length of stay compared with the negative infection group. This ranks table does not provide any summary statistics of direction of effect, central tendency or spread that describe the data.
+For the length of stay data in the Worked Example 9.1, we first get a ranks table. The rank sum table gives us a direction of effect that the ranks are higher than expected in patients who had nosocomial infection. While the positive infection group has a lower sum of ranks because there were fewer people who contracted an infection, it is higher than expected, i.e. they have a longer length of stay compared with the negative infection group. This ranks table does not provide any summary statistics of direction of effect, central tendency or spread that describe the data.
 
-The test statistics are shown under the rank sum table in Output 9.3. The variance shown immediately under the table are used to conduct the test, and are not reported on. 
+The test statistics are shown under the rank sum table. The variance shown immediately under the table are used to conduct the test, and are not reported on. 
 
-From Output 9.3, there are two P-values shown: one assuming normality of the ranks (not the underlying data), and an "Exact" P-value. The exact P-value is calculated when the sample size is not too large (less than 200), and is preferred. The rounded exact P value is 0.014 which indicates that the there is evidence of a difference in length of stay between the groups. 
-
+Finally, two P-values are shown: one assuming normality of the ranks (not the underlying data), and an "Exact" P-value. In all but very small studies, the standard P-value (labelled "Prob > |z|") is appropriate. The P-value of 0.014 indicates that the there is evidence of a difference in length of stay between the groups.
 
 [Command: `ranksum los, by(infect)`]
 
@@ -90,9 +89,36 @@ To do the analysis, go to: **Statistics > Summaries, tables, and tests > Nonpara
 knitr::include_graphics(here::here("img", "mod09", "stata", "mod09-signrank.png"))
 ```
 
+Click **OK** or **Submit** to obtain the following output: 
 
-Click **OK** or **Submit** to obtain Output 9.4. 
-[Command: `signrank drug_1 = drug_2`]
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. signrank drug_1 = drug_2
+
+Wilcoxon signed-rank test
+
+        sign |      obs   sum ranks    expected
+-------------+---------------------------------
+    positive |        1        10.5          33
+    negative |       10        55.5          33
+        zero |        0           0           0
+-------------+---------------------------------
+         all |       11          66          66
+
+unadjusted variance      126.50
+adjustment for ties       -1.63
+adjustment for zeros       0.00
+                     ----------
+adjusted variance        124.88
+
+Ho: drug_1 = drug_2
+             z =  -2.013
+    Prob > |z| =   0.0441
+    Exact Prob =   0.0459
+```
+
+The difference scores are ranked and the observed and expected sum of the ranks are shown in the output. This provides no intuitive summary statistics except to indicate which drug has higher ranks.
+
+From the output, the standard P-value of 0.044 indicates that there is evidence of a difference in symptom score between the two drugs.
 
 ## Estimating rank correlation coefficients
 The analyses for Spearman's and Kendall's rank correlation are conducted in similar ways.

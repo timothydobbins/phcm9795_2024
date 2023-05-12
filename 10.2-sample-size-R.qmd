@@ -149,3 +149,5 @@ To change the allocation ratio in any of these study type, we can specify `r`. N
 - for `epi.sscompc()`,  `r` is the number in the treatment group divided by the number in the control group
 - for `epi.sscohortc()`, `r` is the number in the exposed group divided by the number in the unexposed group
 - for `epi.sscc()`, `r` is the number in the control group divided by the number in the case group
+
+As of writing (May, 2023), there is some inconsistency in this allocation ratio which leads to inconsistent results between Stata and R for case-control studies with unequal group sizes. We recommend using an alternative sample-size calculator (such as https://vbiostatps.app.vumc.org/ps/dichot) for case-control studies with unequal group sizes while this is being investigated.

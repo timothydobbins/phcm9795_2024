@@ -1,8 +1,4 @@
-# Hypothesis testing for categorical data
-
-## Pearson’s chi-squared test
-
-### Individual data
+## Pearson’s chi-squared test for individual-level data
 
 We will demonstrate how to use R to conduct a Pearson chi-squared test using Worked Example 7.1.
 
@@ -45,7 +41,8 @@ contTables(data=nausea,
            fisher = TRUE)
 ```
 
-### Summarised data
+## Pearson’s chi-squared test for summarised data
+
 When you only have the summarised date (for example, the cross-tabulated data), you need to enter the summarised data manually. As we did in Module 6, the 2-by-2 table can be entered as four lines of data:
 
 ```{r}
@@ -84,12 +81,16 @@ drug <- readRDS("data/examples/mod07_drug_response.rds")
 head(drug)
 ```
 
-As usual, we should check that the variables being tabulated are factors, with the first level of the factor being the outcome of interest. We can use the `relevel()` function to re-order levels as necessary.
+As usual, we should check that the variables being tabulated are factors, with the first level of the factor being the outcome of interest.
 
 ```{r}
 str(drug$druga)
 str(drug$drugb)
+```
 
+Here we see that the first level of the factor is "No" - we need to use the `relevel()` function to re-order the levels so "Yes" is the first level:
+
+```{r}
 drug$druga <- relevel(drug$druga, ref="Yes")
 drug$drugb <- relevel(drug$drugb, ref="Yes")
 
@@ -105,11 +106,11 @@ contTablesPaired(data=drug, rows=druga, cols=drugb)
 
 Note that `contTablesPaired()` does not calculate an exact P-value.
 
-To estimate the proportion in each of the paired samples, its difference, and the 95% confidence interval of the difference, we can use the `mcNemarDiff()` function which is stored in Microsoft Teams and [here](https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R).
+To estimate the proportion in each of the paired samples, its difference, and the 95% confidence interval of the difference, we can use the `mcNemarDiff()` function which can be downloaded [here](https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R).
 
 ```{r}
 
-### Copied from Microsoft Teams
+### Copied from gist.githubusercontent.com
 mcNemarDiff <- function(data, var1, var2, digits = 3) {
   if (!requireNamespace("epibasix", quietly = TRUE)) {
     stop("This function requires epibasix to be installed")

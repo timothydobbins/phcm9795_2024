@@ -1,5 +1,3 @@
-# **7** Learning Activities {-}
-
 ### Activity 7.1 {-}
 
 Use the files `Activity_S7.1.dta` or `Activity_S7.1.rds` to further investigate whether there is a gender difference in asthma in a random sample of 514 upper primary school children:

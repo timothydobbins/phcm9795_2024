@@ -58,7 +58,7 @@ We will demonstrate using the dataset on the arthritis drug cross-over trial (`m
 ```{r}
 arthritis <- read.csv("data/examples/mod09_arthritis.csv")
 
-arthritis$difference = arthritis$drug_1 - arthritis$drug_2
+arthritis$difference = arthritis$drug_2 - arthritis$drug_1
 
 hist(arthritis$difference, xlab="Difference", main="Histogram of differences in pain scores")
 
