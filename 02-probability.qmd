@@ -180,7 +180,7 @@ huxtable(tab2_5) |>
   set_width(0.8)
 ```
 
-@tbl-2-5 gives the probability of each of the blood type combinations we could observe in three people. The probability of observing a certain number of people (say, k) with Type A blood from a sample of three people can be calculated by summing the combinations:
+@tbl-2-6 gives the probability of each of the blood type combinations we could observe in three people. The probability of observing a certain number of people (say, k) with Type A blood from a sample of three people can be calculated by summing the combinations:
 
 ```{r tbl-2-6, echo=FALSE, fig.pos="H"}
 #| tbl-cap: Probabilities of observing numbers of people with Type A blood in a sample of three people

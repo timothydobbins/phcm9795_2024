@@ -493,8 +493,6 @@ It is important to note that *saving data in Stata will not save your output*. S
 
 To copy output from Stata, you can select the output and choose **Edit > Copy**. This will copy the output as plain text for pasting into a Word document. If you select a single table for copying, you can also **Copy table** or **Copy table as HTML**. Whichever way you copy output into Word, you will need to make sure you reformat the table and relabel your header row and column properly for your assignments as described in Module 1. Alternatively, you can copy with the Copy table option for pasting into an Excel worksheet and reformat your table in Excel before pasting into Word.
 
-Copying output from Stata can get a little complicated to explain. We have included a video on Moodle to summarise the different ways output can be copied.
-
 ::: {.callout-note icon=false}
 
 ## TASK

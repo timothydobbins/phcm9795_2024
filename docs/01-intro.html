@@ -113,6 +113,12 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #ffdc00;
+      }
+</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -138,7 +144,23 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -217,6 +239,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./10-sample-size.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sample size estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98.1-appendix1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -355,24 +383,10 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and presenting data</span></h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
 
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
@@ -1848,7 +1862,6 @@ TASK
 <h3 data-number="1.12.10" class="anchored" data-anchor-id="copying-output-from-stata"><span class="header-section-number">1.12.10</span> Copying output from Stata</h3>
 <p>It is important to note that <em>saving data in Stata will not save your output</em>. Stata data and output are completely separate to one another. The easiest way to retain the output of your analyses is to copy the output into a word processor package (e.g.&nbsp;Microsoft Word) before closing Stata. Once Stata is closed, all the output (that is, all your hard work!) is lost.</p>
 <p>To copy output from Stata, you can select the output and choose <strong>Edit &gt; Copy</strong>. This will copy the output as plain text for pasting into a Word document. If you select a single table for copying, you can also <strong>Copy table</strong> or <strong>Copy table as HTML</strong>. Whichever way you copy output into Word, you will need to make sure you reformat the table and relabel your header row and column properly for your assignments as described in Module 1. Alternatively, you can copy with the Copy table option for pasting into an Excel worksheet and reformat your table in Excel before pasting into Word.</p>
-<p>Copying output from Stata can get a little complicated to explain. We have included a video on Moodle to summarise the different ways output can be copied.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2213,15 +2226,12 @@ TASK
 <ol type="a">
 <li>for Windows: <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></li>
 <li>for MacOS: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a></li>
-</ol>
-<ul>
-<li><strong>Note for Windows users:</strong> as at May 27, 2022, R Version 4.2.0 has compatability issues with RStudio. You should download and install R from <a href="https://cran.r-project.org/bin/windows/base/rpatched.html" class="uri">https://cran.r-project.org/bin/windows/base/rpatched.html</a></li>
-</ul></li>
+</ol></li>
 <li><p>Install R by running the installer and following the installation instructions. The default settings are fine.</p>
 <ul>
-<li><strong>Note for macOS:</strong> if you are running macOS 10.8 or later, you will need to install an additional application called XQuartz, which is available at <a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a>. Download the latest installer (XQuartz-2.8.1.dmg as of April 2022), and install it in the usual way.</li>
+<li><strong>Note for macOS:</strong> if you are running macOS 10.8 or later, you will need to install an additional application called XQuartz, which is available at <a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a>. Download the latest installer (XQuartz-2.8.5.dmg as of May 2023), and install it in the usual way.</li>
 </ul></li>
-<li><p>Open the R program. You should see a screen as below:</p></li>
+<li><p>Open the R program. You should see a screen similar to below:</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -2237,9 +2247,9 @@ TASK
 <h4 data-number="1.14.2.2" class="anchored" data-anchor-id="to-install-rstudio-on-your-computer"><span class="header-section-number">1.14.2.2</span> To install RStudio on your computer</h4>
 <ol type="1">
 <li>Make sure you have already installed R, and verified that it is working.</li>
-<li>Download the RStudio desktop installer at: <a href="https://www.rstudio.com/products/rstudio/download" class="uri">https://www.rstudio.com/products/rstudio/download</a>. Ensure that you select the RStudio Desktop (Free) installer in the first column.</li>
+<li>Download the RStudio desktop installer at: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>. The website should detect your operating system and link to the appropriate installer for your computer.</li>
 <li>Install RStudio by running the installer and following the installation instructions. The default settings are fine.</li>
-<li>Open RStudio, which will appear as below:</li>
+<li>Open RStudio, which will appear similar to the screenshot below:</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">

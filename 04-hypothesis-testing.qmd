@@ -58,7 +58,7 @@ To summarise:
 -	a P-value that is not small provides little or no evidence against null hypothesis;
 -	the smaller the P-value, the stronger the evidence against the null hypothesis.
 
-Historically, a value of 0.05 has been used as a cut-point for finding evidence against the null hypothesis. A P-value less than 0.05 would be interpreted as "statistically significant", and would allow us to "reject the null hypothesis". A P-value greater than 0.05 would be interpreted as "not significant", and we would "fail to reject the null hypothesis". This arbitrary dichotomy is overly simplistic, and a more nuanced view is now recommended. Possible interpretations for P-values are given in @tbl-4-1.
+Historically, a value of 0.05 has been used as a cut-point for finding evidence against the null hypothesis. A P-value less than 0.05 would be interpreted as "statistically significant", and would allow us to "reject the null hypothesis". A P-value greater than 0.05 would be interpreted as "not significant", and we would "fail to reject the null hypothesis". This arbitrary dichotomy is overly simplistic, and a more nuanced view is now recommended. Recommended interpretations for P-values are given in @tbl-4-1.
 
 ```{r tbl-4-1, echo=FALSE}
 #| tbl-cap: Interpretation of P-values
@@ -299,7 +299,7 @@ $$
 \end{aligned}
 $$
 
-As for the Stata output, such a P-value would be better presented as P<0.0001.
+As for the Stata output, such a P-value should be presented as P<0.0001.
 
 ## Decision Tree
 In the following modules in this course, several formal statistical tests will be described to analyse different types of data sets that have been collected to test set null hypotheses. It is important that the correct statistical test is selected to generate P-values and estimate effect size. If an incorrect statistical test is used, the assumptions of the test may be violated, the effect size may be biased and the P value generated may be incorrect. 

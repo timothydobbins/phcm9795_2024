@@ -113,6 +113,12 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #ffdc00;
+      }
+</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -138,7 +144,23 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -221,6 +243,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./98.1-appendix1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -276,24 +304,10 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analysing non-normal data</span></h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
 
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
@@ -435,11 +449,15 @@ div.csl-indent {
 <p>It is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g.&nbsp;length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.</p>
 <section id="ranking-variables" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="ranking-variables"><span class="header-section-number">9.3.1</span> Ranking variables</h3>
-<p>Table 9.1 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table id="tab:tab-9-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Transforming data to ranks: first 21 participants</caption>
+<p><a href="#tbl-9-1">Table&nbsp;<span>9.3</span></a> shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.</p>
+<div id="tbl-9-1" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;9.3: <strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-9-1-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-9-1" style="flex-basis: 100.0%;justify-content: center;">
+<table id="tab:tbl-9-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>(a) Transforming data to ranks: first 21 participants</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">ID</td>
@@ -619,8 +637,13 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 
 
+</div>
 </div>
 </div>
 <p>By assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups.</p>
@@ -640,11 +663,15 @@ div.csl-indent {
 <p>In this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e.&nbsp;scores where there is no difference between the pairs) are excluded. Note that the power of the test (the ability to detect an effect if there truly is an effect) reduces in the presence of zero differences, as the effective sample size (the number of non-zero differences) is reduced.</p>
 <section id="worked-example-1" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="worked-example-1"><span class="header-section-number">9.5.1</span> Worked Example</h3>
-<p>A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in Table 9.2.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table id="tab:tab-9-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Arthritis symptom scores for 11 patients after administering two drugs</caption>
+<p>A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in <a href="#tbl-9-2">Table&nbsp;<span>9.4</span></a>.</p>
+<div id="tbl-9-2" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;9.4: <strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-9-2-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-9-2" style="flex-basis: 100.0%;justify-content: center;">
+<table id="tab:tbl-9-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>(a) Arthritis symptom scores for 11 patients after administering two drugs</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Patient ID</td>
@@ -720,8 +747,13 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 
 
+</div>
 </div>
 </div>
 <p>The data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs.</p>

@@ -138,7 +138,8 @@ The z-test provides a two-sided P-value of 0.39, while the binomial test gives a
 
 As introduced in PHCM9794: Foundations of Epidemiology, 2-by-2 contingency tables can be used to examine associations between two binary variables, most commonly an exposure and an outcome. The traditional form of a 2-by-2 contigency table is given in @tbl-2-by-2-trad.
 
-```{r tbl-2-by-2-trad, echo=FALSE, include=FALSE}
+```{r, echo=FALSE}
+#| label: tbl-2-by-2-trad
 #| tbl-cap: Traditional format for presenting a contingency table
 
 library(huxtable)
@@ -159,7 +160,7 @@ huxtable::huxtable(v1) |>
 **Note for Stata users:** It is important to note that Stata presents the exposure or intervention (present, absent) in the columns and the outcome or disease (present, absent) in the rows (e.g. @tbl-2-by-2-stata). This is opposite to the way most epidemiological tables are presented, with exposure in rows and outcome in columns. Care must be taken when reading 2-by-2 tables generated from Stata.
 
 
-```{r tbl-2-by-2-stata, echo=FALSE, include=FALSE}
+```{r tbl-2-by-2-stata, echo=FALSE}
 #| tbl-cap: Stata format for presenting a contingency table
 v2 <- tibble::tribble(
   ~` `, ~`Exposure present`, ~`Exposure absent`, ~`Total`,
@@ -220,7 +221,7 @@ For cohort studies, randomised controlled trials and cross-section studies, we c
 
 For case-control studies, as we sample participants based on their outcome, we can not estimate the risk of the outcome. Hence, calculating a relative risk or risk difference is inappropriate. Instead of calculating risks in a case-control study, we instead calculate *odds*, where the odds of an event are calculated as the number with the event divided by the number without the event. 
 
-```{r tbl-cc, echo=FALSE, include=FALSE}
+```{r tbl-cc, echo=FALSE}
 #| tbl-cap: Contingency table for a case-control study
 v1 <- tibble::tribble(
   ~` `, ~`Cases`, ~`Controls`, ~`Total`,
@@ -262,7 +263,7 @@ A randomised controlled trial was conducted among a group of patients to estimat
 
 A summary table can be constructed as in @tbl-rr-example.
 
-```{r tbl-rr-example}
+```{r tbl-rr-example, echo=FALSE}
 #| tbl-cap: Nausea status by drug exposure
 
 tibble::tribble(
@@ -293,7 +294,7 @@ $$
 
 A case-control study investigated the association between human papillomavirus and oropharyngeal cancer (D\'Souza, et al. NEJM 2007), and the results appear in @tbl-6-nejm.
 
-```{r tbl-6-nejm, echo=FALSE, include=FALSE}
+```{r tbl-6-nejm, echo=FALSE}
 #| tbl-cap: Association between human papillomavirus and oropharyngeal cancer
 
 df <- tibble::tribble(

@@ -86,9 +86,9 @@ As explained above, the estimated statistics would need to be converted back to 
 It is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g. length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.
 
 ### Ranking variables
-Table 9.1 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
+@tbl-9-1 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
 
-```{r tab-9-1, echo=FALSE}
+```{r tbl-9-1, echo=FALSE}
 df <- tibble::tribble(
    ~ID, ~Infection, ~`Length of stay`, ~Rank, ~`Infection=no`, ~`Infection=Yes`,
    32L,       "No",              0L,     1,               1,               NA,
@@ -144,9 +144,9 @@ In this test, the absolute differences between the paired scores are ranked and 
 
 ### Worked Example
 
-A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in Table 9.2.
+A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in @tbl-9-2.
 
-```{r tab-9-2, echo=FALSE}
+```{r tbl-9-2, echo=FALSE}
 df <- tibble::tribble(
           ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,
                    1L,               3L,               4L,  

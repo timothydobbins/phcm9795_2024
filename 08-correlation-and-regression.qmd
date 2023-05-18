@@ -42,7 +42,7 @@ The file `mod08_lung_function.csv` has information about height and lung functio
 ```{r}
 #| echo: false
 #| label: fig-scatter-plot
-#| fig-cap: "Plot"
+#| fig-cap: "Association between height and lung function in 120 adults"
 
 knitr::include_graphics(here::here("img", "mod08", "scatterpng.png"))
 ```

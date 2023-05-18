@@ -62,7 +62,7 @@ bwt_f <- subset(bwt, bwt$gender=="Female")
 
 We can now create histograms and boxplots for males and females separately, in the usual way, using the `par` function to set the graphics parameters to display graphs in a 2-by-2 grid:
 
-```{r}
+```{r fig.height=7}
 par(mfrow=c(2,2))
 hist(bwt_m$birthweight, xlim=c(2.5, 4.5), xlab="Birthweight (kg)", main="Males")
 hist(bwt_f$birthweight, xlim=c(2.5, 4.5), xlab="Birthweight (kg)", main="Females")

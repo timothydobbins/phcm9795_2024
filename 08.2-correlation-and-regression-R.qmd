@@ -31,24 +31,6 @@ plot(x=lung$Height, y=lung$FVC,
 abline(lm(lung$FVC ~ lung$Height))
 ```
 
-Or using the `ggformula` package, we form the basic plot using the following:
-
-```{r}
-gf_point(FVC ~ Height, data=lung,
-     xlab="Height (cm)", 
-     ylab="Forced vital capacity (L)") |>
-  gf_theme(theme = theme_minimal())
-```
-
-We can add an estimated linear regression line by piping the command `gf_lm()`:
-
-```{r}
-gf_point(FVC ~ Height, data=lung,
-     xlab="Height (cm)", 
-     ylab="Forced vital capacity (L)") |>
-  gf_lm() |>
-  gf_theme(theme = theme_minimal())
-```
 
 ## Calculating a correlation coefficient {-}
 
@@ -96,16 +78,4 @@ hist(residuals, probability = TRUE,
 
 curve(dnorm(x, mean=mean(residuals), sd=sd(residuals)), 
       col="darkblue", lwd=2, add=TRUE)
-```
-
-Using `ggformula`, we can plot the residuals as a histogram:
-
-```{r}
-gf_dhistogram(~ residuals, data=model) |>
-  gf_dist("norm", 
-          params=list(mean=mean(model$residuals), 
-                      sd=sd(model$residuals)))
-
-gf_dhistogram(~ residuals, data=model) |>
-  gf_dens()
 ```

@@ -39,13 +39,11 @@ In summary, we recommend you use RStudio to write R code.
     a.  for Windows: <https://cran.r-project.org/bin/windows/base/>
     b.  for MacOS: <https://cran.r-project.org/bin/macosx/>
 
-    -   **Note for Windows users:** as at May 27, 2022, R Version 4.2.0 has compatability issues with RStudio. You should download and install R from <https://cran.r-project.org/bin/windows/base/rpatched.html>
-
 2.  Install R by running the installer and following the installation instructions. The default settings are fine.
 
-    -   **Note for macOS:** if you are running macOS 10.8 or later, you will need to install an additional application called XQuartz, which is available at <https://www.xquartz.org/>. Download the latest installer (XQuartz-2.8.1.dmg as of April 2022), and install it in the usual way.
+    -   **Note for macOS:** if you are running macOS 10.8 or later, you will need to install an additional application called XQuartz, which is available at <https://www.xquartz.org/>. Download the latest installer (XQuartz-2.8.5.dmg as of May 2023), and install it in the usual way.
 
-3.  Open the R program. You should see a screen as below:
+3.  Open the R program. You should see a screen similar to below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/R-screenshot.png")
@@ -62,9 +60,9 @@ At this point, close R - we will not interact with R like this in the future. Yo
 #### To install RStudio on your computer
 
 1.  Make sure you have already installed R, and verified that it is working.
-2.  Download the RStudio desktop installer at: <https://www.rstudio.com/products/rstudio/download>. Ensure that you select the RStudio Desktop (Free) installer in the first column.
+2.  Download the RStudio desktop installer at: <https://posit.co/download/rstudio-desktop/>. The website should detect your operating system and link to the appropriate installer for your computer.
 3.  Install RStudio by running the installer and following the installation instructions. The default settings are fine.
-4.  Open RStudio, which will appear as below:
+4.  Open RStudio, which will appear similar to the screenshot below:
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
 knitr::include_graphics("img/mod01/RStudio-screenshot-01.png")

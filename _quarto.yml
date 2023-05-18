@@ -19,6 +19,7 @@ book:
     - 08-correlation-and-regression.qmd
     - 09-non-parametrics.qmd
     - 10-sample-size.qmd
+    - 98.1-appendix1.qmd
     - references.qmd
 
 bibliography: PHCM9795.bib
@@ -29,6 +30,8 @@ format:
   html:
     theme: cosmo
     highlight-style: monochrome
+    title-block-banner: "#ffdc00"
+    mainfont: Roboto
   pdf:
     papersize: A4
     documentclass: memoir
