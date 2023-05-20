@@ -5,7 +5,7 @@ project:
 book:
   title: "PHCM9795: Foundations of Biostatistics"
   author: "Timothy Dobbins"
-  date: "12-May-2023"
+  date: "18-May-2023"
   date-format: "DD MMMM, YYYY"
   chapters:
     - index.qmd
