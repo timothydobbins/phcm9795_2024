@@ -31,7 +31,6 @@ format:
     theme: cosmo
     highlight-style: monochrome
     title-block-banner: "#ffdc00"
-    mainfont: Roboto
   pdf:
     papersize: A4
     documentclass: memoir
