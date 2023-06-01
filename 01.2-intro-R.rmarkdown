@@ -2,6 +2,7 @@
 library(huxtable)
 ```
 
+
 ## Learning outcomes {-}
 
 By the end of this Module, you will be able to:
@@ -45,9 +46,11 @@ In summary, we recommend you use RStudio to write R code.
 
 3.  Open the R program. You should see a screen similar to below:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/R-screenshot.png")
 ```
+
 
 Near the bottom of the R screen, you will find the "\>" symbol which represents the command line. If you type `1 + 2` into the command line and then hit enter you should get:
 
@@ -64,9 +67,11 @@ At this point, close R - we will not interact with R like this in the future. Yo
 3.  Install RStudio by running the installer and following the installation instructions. The default settings are fine.
 4.  Open RStudio, which will appear similar to the screenshot below:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
 knitr::include_graphics("img/mod01/RStudio-screenshot-01.png")
 ```
+
 
 Locate the command line symbol "\>" at the bottom of the left-hand panel. Type `1 + 2` into the command line and hit enter, and you will see:
 
@@ -99,9 +104,11 @@ By default, RStudio will retain data, scripts and other objects when you quit yo
 
 and **deselect "Restore .RData into workplace at startup"**, and choose: "**Save workspace to .RData on exit:** **Never"**.
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/RStudio-preferences.png")
 ```
+
 
 #### Set up a project
 
@@ -111,29 +118,37 @@ We will create a project called **PHCM9795** to store all the data you will use 
 
 Step 1: Choose **File \> New Project...** in RStudio to open the **Create Project** dialog box:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-1.png")
 ```
 
+
 Step 2: Click the first option to create a project in a **New directory**
+
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-2.png")
 ```
 
+
 Step 3: Click the first option: **New Project**. Give the project a name, by typing PHCM9795 in the "Directory name", and choose where you want to store the project by clicking the **Browse** button.
+
 
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-3.png")
 ```
 
+
 Step 4: Click **Create** to create your project.
 
 You will now have a new folder in your directory, which contains only one file: PHCM9795.Rproj, and the two right-hand panes of RStudio will appear as below:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewProject-4.png")
 ```
+
 
 ::: {.callout-note icon=false}
 
@@ -153,6 +168,7 @@ To begin, open a new R Script by choosing **File \> New file \> R Script** . A s
 
 You should now see four window panes, as below. In the top-left window, type the following (replacing my name with yours, and including today's date):
 
+
 ```{r eval=FALSE}
 # Author: Timothy Dobbins
 # Date: 5 April 2022
@@ -162,15 +178,19 @@ age <- c(20, 25, 23, 29, 21, 27)
 summary(age)
 ```
 
+
 **Note: R is case-sensitive**, so you should enter the text exactly as written in these notes.
 
 Your screen should look something like:
+
 
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
 knitr::include_graphics("img/mod01/RStudio-screenshot-02.png")
 ```
 
+
 To run your script, choose **Code \> Run Region \> Run All**. You will see your code appear in the bottom-left window, with the following output:
+
 
 ```{r eval=FALSE}
 > # Author: Timothy Dobbins
@@ -183,6 +203,7 @@ To run your script, choose **Code \> Run Region \> Run All**. You will see your 
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   20.00   21.50   24.00   24.17   26.50   29.00 
 ```
+
 
 We will explain the key parts of this script later, but for now, you have entered six ages and calculated the mean age (along with five other summary statistics).
 
@@ -201,9 +222,11 @@ Save your script within the PHCM9795 project by using **File \> Save As**, using
 
 Now that we have seen a simple example of how to use R within RStudio, let's describe the RStudio environment. Let's assume that you have just run your first R script, and you have four windows as below:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="100%"}
 knitr::include_graphics("img/mod01/RStudio-screenshot-03.png")
 ```
+
 
 The top-left window is call the **Source** window, and is where you write and edit your R scripts. Scripts can be saved by clicking **File \> Save As** or by clicking on the symbol of a floppy disk at the top of the script. The file will have an extension of .R, for example script.R. Remember to give your script a meaningful title and remember to periodically save as you go.
 
@@ -243,16 +266,20 @@ Objects in R are created using the **assignment operator**. The most common form
 
 Let's see an example:
 
+
 ```{r}
 x <- 42
 ```
 
+
 This command creates a new object called `x`, which is defined as the number 42 (or in words, "`x` is defined as 42"). Running this command gives no output in the console, but the new object appears in the top-right **Environment** panel. We can view the object in the console by typing its name:
+
 
 ```{r}
 # Print the object x
 x
 ```
+
 
 Now we see the contents of `x` in the console.
 
@@ -264,9 +291,11 @@ There are two main structures we will use to work with data in this course: **ve
 
 The easiest way of creating a vector in R is by using the `c()` function, where c stands for 'combine'. In our previous Simple Analysis in R (@sec-simpleR), we wrote the command:
 
+
 ```{r eval=FALSE}
 age <- c(20, 25, 23, 29, 21, 27)
 ```
+
 
 This command created a new object called `age`, and *combined* the six values of age into one vector.
 
@@ -280,25 +309,32 @@ If objects are the nouns of R, functions are the verbs. Essentially, functions t
 
 R functions are specified by their arguments (or inputs). The arguments that can be supplied for each function can be inspected by examining the help notes for that function. To obtain help for a function, we can submit `help(summary)` (or equivalently `?summary`) in the console, or we can use the **Help** tab in the bottom-right window of RStudio. For example, the first part of the help notes for `summary` appear as:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/help-1.png")
 ```
+
 
 The help notes in R can be quite cryptic, but the **Usage** section details what inputs should be specified for the function to run. Here, `summary` requires an object to be specified. In our case, we specified `age`, which is our object defined as the vector of six ages.
 
 Most help pages also include some examples of how you might use the function. These can be found at the very bottom of the help page.
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/help-2.png")
 ```
 
+
 The `summary()` function is quite simple, in that it only requires one input, the object to be summarised. More complex functions might require a number of inputs. For example, the help notes for the `descriptives()` function in the `jmv` package show a large number of inputs can be specified:
+
 
 ```{r echo=FALSE, fig.show="hold", out.width="80%"}
 knitr::include_graphics("img/mod01/help-3.png")
 ```
 
+
 There are two things to note here. First, notice that the first two inputs are listed with no = symbol, but all other inputs are listed with = symbols (with values provided after the = symbol). This means that everything apart from `data` and `vars` have **default** values. We are free to not specify values for these inputs if we are happy with the defaults provided. For example, by default the variance is not calculated (as `variance = FALSE`). To obtain the variance as well as the standard deviation, we can change this default to `variance = TRUE`:
+
 
 ```{r, eval=FALSE}
 # Only the standard deviation is provided as the measure of variability
@@ -308,7 +344,9 @@ descriptives(data=pbc, vars=age)
 descriptives(data=pbc, vars=age, variance=TRUE)
 ```
 
+
 Second, for functions with multiple inputs, we can specify the input name and its value, or we can ignore the input name and specify just the input values **in the order listed in the Usage section**. So the following are equivalent:
+
 
 ```{r, eval=FALSE}
 # We can specify that the dataset to be summarised is pbc,
@@ -322,6 +360,7 @@ descriptives(pbc, age)
 # We can change the order of the inputs, as long as we specify the input name:
 descriptives(vars=age, data=pbc)
 ```
+
 
 In this course, we will usually provide all the input names, even when they are not required. As you become more familiar with R, you will start to use the shortcut method.
 
@@ -349,17 +388,21 @@ Like installing an app on a smartphone, you only need to *install* a package onc
 
 There are a couple of ways to install a package. You can use the `install.packages()` function if you know the exact name of the package. Let's use an example of installing the `skimr` package, which gives a very nice, high-level overview of any data frame. We can install `skimr` by typing the following into the console:
 
+
 ```{r, eval=FALSE}
 install.packages("skimr")
 ```
+
 
 Note the use of the quotation marks.
 
 Alternatively, RStudio offers a graphical way of installing packages that can be accessed via **Tools \> Install Packages**, or via the **Install** button at the top of the **Packages** tab in the bottom-right window. You can begin typing the name of the package in the dialog box that appears, and RStudio will use predictive text to offer possible packages:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="60%"}
 knitr::include_graphics("img/mod01/install-packages.png")
 ```
+
 
 While writing code is usually the recommended way to use R, installing packages is an exception. Using **Tools \> Install Packages** is perfectly fine, because you only need to install a package once.
 
@@ -367,9 +410,11 @@ While writing code is usually the recommended way to use R, installing packages 
 
 When you begin a new session in RStudio, i.e. when you open RStudio, only certain core packages are automatically loaded. You can use the `library()` function to load a package that you has previously been installed. For example, now that we have installed `skimr`, we need to load it before we can use it:
 
+
 ```{r}
 library(skimr)
 ```
+
 
 Note that quotation marks are not required for the `library()` function (although they can be included if you really like quotation marks!).
 
@@ -418,6 +463,7 @@ In saying all of this, I think the tidyverse is an excellent set of packages, wh
 
 In this exercise, we will analyse data to complete a descriptive table from a research study. The data come from a study in primary biliary cirrhosis, a condition of the liver, from Modeling Survival Data: Extending the Cox Model @therneau_grambsch10. By the end of this exercise, we will have completed the following table.
 
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(magrittr)
@@ -446,6 +492,7 @@ huxtable::huxtable(tab) |>
   huxtable::add_footnote("* asparate aminotransferase")
 ```
 
+
 This table is available in Table1.docx, saved on Moodle.
 
 ### Set up your data
@@ -454,9 +501,11 @@ We created a project in the previous step. We will now create a folder to store 
 
 Create a new folder by clicking the **New Folder** icon in the **Files** tab at the bottom-right:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/NewFolder-1.png")
 ```
+
 
 Call the new folder **data**.
 
@@ -466,9 +515,11 @@ Download the "Data sets: for learning activities" from Moodle, and use Windows E
 
 Your **activities** folder should look like:
 
+
 ```{r echo=FALSE, fig.show="hold", out.width="75%"}
 knitr::include_graphics("img/mod01/data-folder.png")
 ```
+
 
 Click the two dots next to the up-arrow at the top of the folder contents to move back up the folder structure. Note that you need to click the dots, and not the up-facing green arrow!
 
@@ -484,19 +535,24 @@ Typing data directly into R is not common; we usually read data that have been p
 
 2 - Load the `skimr` package, and use the `readRDS()` function to read the file into R, assigning it to a data frame called `pbc`. Because we set up our project, we can locate our data easily by telling R to use the file: `"data/activities/mod01_pdc.rds"`, which translates as: the file `mod01_pdc.rds` which is located in the `activities` sub-folder within the `data` folder.
 
+
 ```{r}
 library(skimr)
 
 pbc <- readRDS("data/activities/mod01_pbc.rds")
 ```
 
+
 3 - We can now use the `summary()` function to examine the pbc dataset:
+
 
 ```{r}
 summary(pbc)
 ```
 
+
 An alternative to the `summary()` function is the `skim()` function in the `skimr` package, which produces summary statistics as well as rudimentary histograms:
+
 
 ```{r, eval=FALSE}
 skim(pbc)
@@ -505,6 +561,7 @@ skim(pbc)
 ```{r echo=FALSE, fig.show="hold", out.width="90%"}
 knitr::include_graphics("img/mod01/skim-pbc.png")
 ```
+
 
 :::
 
@@ -519,34 +576,43 @@ One of the most flexible functions for summarising continuous variables is the `
 
 We can summarise the three continuous variables in the pbc data: age, AST and serum bilirubin, as shown below.
 
+
 ```{r}
 library(jmv)
 
 descriptives(data=pbc, vars=c(age, ast, bili))
 ```
 
+
 By default, the `descriptives` function presents the mean, median, standard deviation, minimum and maximum. We can request additional statistics, such as the quartiles (which are called the percentiles, or pc, in the descriptives function):
+
 
 ```{r}
 descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE)
 ```
 
+
 ### Producing a histogram
 
 We can use the `hist()` function to produce a histogram, specifying the dataframe to use and the variable to be plotted as `dataframe$variable`:
+
 
 ```{r}
 hist(pbc$age)
 ```
 
+
 The histogram function does a remarkably good job of choosing cutpoints and binwidths, and these rarely need to be changed. However, the labelling of the histogram should be improved by using `xlab=" "` and `main=" "` to assign labels for the x-axis and overall title respectively:
+
 
 ```{r}
 hist(pbc$age, xlab="Age (years)", 
      main="Histogram of participant age from pbc study data")
 ```
 
+
 By default, the `hist()` function plots a **frequency histogram**, with counts on the y-axis. We can tweak the histogram using the following code to plot a histogram of the **relative frequencies**:
+
 
 ```{r}
 h <- hist(pbc$age, plot=FALSE)
@@ -557,23 +623,28 @@ plot(h, freq=FALSE,
      main="Histogram of participant age from pbc study data")
 ```
 
+
 ### Producing a boxplot
 
 The `boxplot` function is used to produce boxplots, again specifying the dataframe to use and the variable to be plotted as `dataframe$variable`. Labels can be applied in the same way as the histogram:
+
 
 ```{r}
 boxplot(pbc$age, xlab="Age (years)", main="Boxplot of participant age from pbc study data")
 ```
 
+
 ### Producing a one-way frequency table
 
 We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables.
+
 
 ```{r message=FALSE}
 library(summarytools)
 
 freq(pbc$sex)
 ```
+
 
 #### Defining categorical variables as factors {#sec-cat-as-factors}
 
@@ -588,22 +659,28 @@ We specify:
 
 To define our variable sex as a factor, we use:
 
+
 ```{r}
 pbc$sex <- factor(pbc$sex, levels=c(1, 2), labels=c("Male", "Female"))
 ```
 
+
 We can confirm the coding by re-running a frequency table:
+
 
 ```{r}
 freq(pbc$sex)
 ```
 
+
 > Task: define `stage` and `status` (Vital Status) as factors, and produce one-way frequency tables. Refer to the file `pbc_info.txt` to view the labels for each variable. For example, for Stage:
+
 
 ```{r}
 pbc$stage <- factor(pbc$stage, levels=c(1, 2, 3, 4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
 freq(pbc$stage)
 ```
+
 
 ### Producing a two-way frequency table
 
@@ -611,9 +688,11 @@ To produce tables summarising two categorical variables, we can use the `contTab
 
 For example, to produce a two-way table showing stage of disease by sex using the pbc data frame, we use:
 
+
 ```{r}
 contTables(data=pbc, rows=sex, cols=stage)
 ```
+
 
 [The bottom part of the output, χ² Tests, can be ignored for now]
 
@@ -623,9 +702,11 @@ From the cross-tabulation, you can see the individual frequencies of participant
 
 You can also add percentages into your table using `pcCol=TRUE` to include column percents, and `pcRow=TRUE` for row percents. For example, to calculate the relative frequencies (i.e. percentages) of sex within each stage, we would request **column percents** with the option: `pcCol=TRUE`.
 
+
 ```{r}
 contTables(data=pbc, rows=sex, cols=stage, pcCol=TRUE)
 ```
+
 
 We can see that the 3 male participants with Stage 1 disease represent 14% of those with Stage 1 disease.
 
@@ -663,11 +744,13 @@ The simplest way to use the `plot()` function is by specifying an object to be p
 
 Here we will create the bar chart shown in @fig-bar-1 of the statistics notes using the `mod01_pdc.rds` dataset. The x-axis of this graph will be the stage of disease, and the y-axis will show the number of participants in each category.
 
+
 ```{r}
 plot(pbc$stage, 
      main="Bar graph of stage of disease from PBC study", 
      ylab="Number of participants")
 ```
+
 
 Note that stage is a categorical variable, that has been defined as a factor (in @sec-cat-as-factors). You **must define categorical data as factors** to plot them in a bar graph.
 
@@ -675,26 +758,32 @@ Note that stage is a categorical variable, that has been defined as a factor (in
 
 To create a clustered bar chart as shown in @fig-bar-2 of the statistics notes, we need to do a bit of manipulation. We first need to tabulate the data using the `table()` function. We want to plot stage of disease broken down by sex, so we specify `sex` as the first variable, and `stage` as the second variable for the `table()` command.
 
+
 ```{r}
 counts <- table(pbc$sex, pbc$stage)
 counts
 ```
 
+
 After tabulating the data, we use the `barplot()` function to plot the summarised data. We specify the main title using `main=" "`, specify that the stages be plotted separately by sex (`beside=TRUE`), specify the legend be defined by sex, and position the legend in the top-left of the graph:
+
 
 ```{r}
 barplot(counts, main="Bar graph of stage of disease by sex from PBC study",
         beside=TRUE, legend = rownames(counts), args.legend = list(x = "topleft"))
 ```
 
+
 #### Stacked bar graph
 
 A stacked bar graph can be constructed as for the clustered bar graph, but we specify `beside=FALSE`:
+
 
 ```{r}
 barplot(counts, main="Bar graph of stage of disease by sex from PBC study",
         beside=FALSE, legend = rownames(counts), args.legend = list(x = "topleft"))
 ```
+
 
 #### Stacked bar graph of relative frequencies
 
@@ -702,12 +791,15 @@ To plot relative frequencies, we need to transform our table of frequencies (`co
 
 We want to calculate the relative frequency of sex within each stage category. From our `counts` table above, this equates to calculating *column* proportions, so we specify `margin=2`. We also multiply the resulting table by 100 to obtain percentages (rather than proportions):
 
+
 ```{r}
 percent <- prop.table(counts, margin=2)*100
 percent
 ```
 
+
 After calculating the percentages, we use `barplot()` again, similar to the stacked bar graph:
+
 
 ```{r}
 barplot(percent, 
@@ -715,22 +807,28 @@ barplot(percent,
         legend = rownames(counts), beside=FALSE, args.legend = list(x = "topright"))
 ```
 
+
 ### Creating line graphs
 
 To demonstrate the graphing of aggregate data , we use the data on new cases and deaths from prostate cancer in males in NSW. This data has been entered as `mod01_prostate_cancer.rds`.
+
 
 ```{r}
 cancer <- readRDS("data/examples/mod01_prostate_cancer.rds")
 summary(cancer)
 ```
 
+
 We begin by plotting cancer cases (as the *y* variable) against year (the *x* variable).
+
 
 ```{r}
 plot(x=cancer$year, y=cancer$rcases)
 ```
 
+
 Let's define the plot to be joined by lines (`type="l"`), in the colour red (`col="red"`), providing meaningful labels for the x-axis and y-axis, and changing the scale of the y-axis to be between 0 and 200 (`ylim=c(0,200)`):
+
 
 ```{r}
 plot(x=cancer$year, y=cancer$rcases, 
@@ -739,7 +837,9 @@ plot(x=cancer$year, y=cancer$rcases,
      ylab = "Age-standardised rate (per 100,000)", ylim=c(0,200))
 ```
 
+
 We can now add a second line to the plot using the `lines()` function, specifying a dashed line (`lty=2`), and add a legend to the plot:
+
 
 ```{r}
 plot(x=cancer$year, y=cancer$rcases, type="l", col = "red", 
@@ -752,4 +852,6 @@ legend("topleft", legend=c("Incidence", "Deaths"),
        col=c("red", "blue"), lty = 1:2)
 ```
 
+
 Note: coding for graphs is not always straightforward. Two excellent resources for creating graphs in R are: [R Graphics Cookbook](https://r-graphics.org/) and [The R Graph Gallery](https://r-graph-gallery.com/).
+

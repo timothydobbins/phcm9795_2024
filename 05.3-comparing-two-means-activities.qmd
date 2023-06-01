@@ -29,7 +29,7 @@ a) State the appropriate null hypothesis and alternate hypothesis
 b) Use Stata to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?
 
 ### Activity 5.3 {-}
-A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as entered in the files `ActivityS5.3.dta` and `ActivityS5.3.rds`. In the community, hematocrit levels are normally distributed.
+A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as entered in the files `Activity_S5.3.dta` and `Activity_S5.3.rds`. In the community, hematocrit levels are normally distributed.
 
 a) State the research question and frame it as a null hypothesis. 
 b) Use Stata to conduct an appropriate statistical test to answer the research question. Before using the test, check the data to see if the assumptions required for the test are met. Obtain a box plot to obtain an estimate of the centre and spread of the data for each group.
@@ -40,5 +40,5 @@ d) Construct a table to show how you would report your results and write a concl
 A total of 41 babies aged 6 months to 2 years with haemangioma (birth mark) were enrolled in a study to test the effect of a new topical medication in reducing the volume of their haemangioma. Parents were asked to apply the medication twice daily. The volume (in mm3) of the haemangioma was measured at enrolment and again after 12 weeks of using the medication.
 
 a) What is the research question in this study? State the null and alternative hypotheses.
-b) Use the data in the files `ActivityS5.4.dta` or `ActivityS5.4.rds` to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test and write your conclusion.
+b) Use the data in the files `ActivityS5.4.dta` or `Activity_S5.4.rds` to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test and write your conclusion.
 c) What are the limitations of this study?

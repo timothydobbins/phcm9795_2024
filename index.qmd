@@ -31,3 +31,16 @@ On successful completion of this course, you will be able to:
 4. Determine the appropriate sample size when planning a research study.
 5. Present and interpret statistical findings appropriate for a population health audience.
 
+
+### Changelog {-}
+
+**2023-06-01**
+
+[Changed]
+
+- Section 1.14.3: RStudio preferences are now located at **Edit \> Settings** on MacOS, and **Tools \> Global Options** on Windows
+- Section 1.14.7.2: Correct layout for commands to install packages (commands must be entered on separate lines)
+- Section 1.15.2: Correct the name of the pbc data set to mod_01_pdc.rds
+- Activity 2.3(b): Change the request to plot data on a Normal curve, not a standardised Normal curve
+- Activity 5.3 and 5.4: added underscores to filenames
+
