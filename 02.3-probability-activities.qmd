@@ -1,10 +1,10 @@
 ### Activity 2.1 {-}
 
-In a Randomised Controlled Trial, the preference of a new drug was tested against an established drug by giving both drugs to each of 90 people. Assume that the two drugs are equally preferred, that is, the probability that a patient prefers either of the drugs is equal (50%). Use one of the binomial functions in Stata to compute the probability that 60 or more patients would prefer the new drug. In completing this question, determine:
+In a Randomised Controlled Trial, the preference of a new drug was tested against an established drug by giving both drugs to each of 90 people. Assume that the two drugs are equally preferred, that is, the probability that a patient prefers either of the drugs is equal (50%). Use one of the binomial functions in Stata or R to compute the probability that 60 or more patients would prefer the new drug. In completing this question, determine:
 
-a)	The number of trials (n)
-b)	The number of successes we are interested in (k)
-c)	The probability of success for each trial (p)
+a)	The number of trials (`n` for Stata, `size` for R)
+b)	The number of successes we are interested in (`k` for Stata, `x` or `q` for R)
+c)	The probability of success for each trial (`p` for Stata, `prob` for R)
 d)	The form of the binomial function
     - for Stata: `binomialp`, `binomial` or `binomialtail`;
     - for R: `dbinom`, `pbinom` or `pbinom(lower.tail=FALSE)`
