@@ -316,8 +316,8 @@ b) See @tbl-babies.
 |                                        | Birthweight (grams) | Length of stay (days) |
 |----------------------------------------|---------------------|-----------------------|
 | Mean (Standard deviation)              |     2451 (504.8)    |       41 (36.9)       |
-| Median [Interquartile range]           | 2438 [2004 to 2830] |     30 [21 to 43]     |
-| Skewness                               |         0.35        |          3.1          |
+| Median [Interquartile range]           | 2438 [2012 to 2830] |     30 [21 to 43]     |
+| Skewness                               |          0.4        |          3.1          |
 | Kurtosis                               |         -0.7        |          11.6         |
 
 : Summary of data from 117 babies admitted to a hospital {#tbl-babies}
@@ -325,6 +325,32 @@ b) See @tbl-babies.
 As the histogram for birthweight shows a roughly symmetric distribution, we should present the mean and standard deviation as the appropriate measures of central tendency and spread. Notice that the mean and median are similar, which is to be expected for a symmetric distribution.
 
 The histogram for length of stay shows a highly skewed distribution (skewed to the right). In this case, the median and interquartile range are the appropriate measures to present. Notice that the mean is higher than the median, which is typical for distributions that are skewed to the right.
+
+### Process
+
+The histograms were produced using the following code:
+
+```{r, eval=FALSE}
+babies <- readRDS("data/activities/Activity_S2.5-LengthOfStay.rds")
+
+hist(babies$BirthWt, main=NA,
+     xlab="Birth weight (kg)",
+     breaks=seq(from=1500, to=4000, by=250))
+
+hist(babies$LengthStay, main=NA,
+     xlab="Length of stay (days)",
+     breaks=seq(from=0, to=250, by=25))
+```
+
+\newpage
+The summary statistics were produced with the following code:
+
+```{r}
+library(jmv)
+
+descriptives(data = babies, vars = c(BirthWt,LengthStay),
+             pc = TRUE, skew = TRUE, kurt = TRUE)
+```
 
 \newpage
 ## Activity 2.6

@@ -40,7 +40,7 @@ A non-representative sample might occur when random sampling is used, simply by 
 
 Module 1 introduced the mean, variance and standard deviation as measures of central tendency and spread for continuous measurements from a sample or a population. As described in Module 1, we rarely have data on the entire population but we can infer information about the population (e.g. the mean weight of people in the population) based on a sample. However, a sample taken from a population is usually a small proportion of the total population. If the sample is very small, we would not expect our estimate of the population mean value to be precise. If the sample is very large, we would expect a more precise estimate of the population mean, i.e. the estimated mean value would be much closer to the true mean value in the population. 
 
-### The standard error of the mean
+### The standard error of the mean {#sec-semean}
 
 A point estimate is a single best guess of the true value in the population. Instead of trying to guess the true value, it may be preferable to give a range of values in which we think the true value lies. For example, suppose we want to estimate the average weight of a population, and found a sample mean of 65 kg. Rather than saying we believe the true mean to be 65 kg, we could say we believe it is somewhere between, say, 58 kg and 72 kg.
 
@@ -90,23 +90,6 @@ The use of 1.96 as a general critical value to compute the 95% CI is determined 
 
 The critical value multiplied by SE (for normal distribution, 1.96 × SE) is called the maximum likely error for 95% confidence. 
 
-### Worked Example 3.1: 95% CI of a mean
-
-For our sample of weights data with standard error of 0.92:
-
-$$
-\begin{aligned}
-\ 95\% \text{ CI}(\bar{x}) &=  \bar{x} \pm 1.96 \times \text{SE}(\bar{x}) \\
- &= 70.0 \pm 1.96 \times 0.92 \\
- &= 68.2 \text{ to } 71.8 \text{kg}
-\end{aligned}
-$$
-We interpret this confidence interval as: we are 95% confident that the true mean of the population from which our sample was drawn lies between 68.2 kg and 71.8 kg.
-
-This calculation takes into account both the sample mean of 70.0 kg and the sampling error that has arisen by chance due to the sample size of 30 people.
-
-For a 95% CI to be reported around a mean value, the data values need to be approximately normally distributed, as discussed in Module 2. 
-
 ### The t-distribution and when should I use it?
 
 The population standard deviation ($\sigma$) is required for calculation of the standard error. Usually, $\sigma$ is not known and the sample standard deviation ($s$) is used to estimate it. It is known, however, that the sample standard deviation of a normally distributed variable underestimates the true value of $\sigma$, particularly when the sample size is small.
@@ -119,8 +102,33 @@ knitr::include_graphics(here::here("img", "mod03", "mod03-z-t-dist.png"))
 
 If a variable $X$ is normally distributed and the population standard deviation $\sigma$ is known, using the normal distribution is appropriate. However, if $\sigma$ is not known then one should use the student t-distribution with ($n – 1$) degrees of freedom.
 
-### Worked Example 3.2
-The publication of a study using a sample of 242 participants reported a sample mean systolic blood pressure of 128.4 mmHg and a sample standard deviation of 19.56 mmhg. Find the 95% confidence interval for the mean systolic blood pressure.
+### Worked Example 3.1: 95% CI of a mean using individual data
+
+Using our sample of 30 weights, we calculated the mean weight to be 70.0kg, with a standard error of 0.92 (@sec-semean). As we have estimated the standard deviation for this sample, we cannot use 1.96 to calculate the confidence interval for the mean. Instead, we use Stata or R to calculate the 95% confidence interval for the mean. In this example, the 95% confidence interval for the mean is calculated as 68.1kg to 71.9kg (see software section for details).
+
+We interpret this confidence interval as: we are 95% confident that the true mean of the population from which our sample was drawn lies between 68.1 kg and 71.9 kg.
+
+This calculation takes into account both the sample mean of 70.0 kg and the sampling error that has arisen by chance due to the sample size of 30 people. For a 95% CI to be reported around a mean value, the data values need to be approximately normally distributed, as discussed in Module 2. 
+
+::: {.callout-note icon=false}
+
+## Advanced
+
+If we were calculating this confidence interval by hand, we note that the standard deviation we estimate is not the population standard deviation, but is estimated from a sample. Therefore we cannot use the value of 1.96 when calculating the 95% confidence interval. Instead, we use the critical t-value, which for 29 degrees of freedom is 2.045:
+
+$$
+\begin{aligned}
+\ 95\% \text{ CI}(\bar{x}) &=  \bar{x} \pm 2.045 \times \text{SE}(\bar{x}) \\
+ &= 70.0 \pm 2.045 \times 0.92 \\
+ &= 68.1 \text{ to } 71.9 \text{kg}
+\end{aligned}
+$$
+
+:::
+
+
+### Worked Example 3.2: 95% CI of a mean using summarised data
+The publication of a study using a sample of 242 participants reported a sample mean systolic blood pressure of 128.4 mmHg and a sample standard deviation of 19.56 mmHg. Find the 95% confidence interval for the mean systolic blood pressure.
 
 In Stata we use the `cii means` command to compute the 95% confidence interval given the sample mean, sample standard deviation and the sample size (i.e. without using individual data from a dataset) (@sec-cimean-stata-summ):
 

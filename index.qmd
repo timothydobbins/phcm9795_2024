@@ -34,6 +34,13 @@ On successful completion of this course, you will be able to:
 
 ### Changelog {-}
 
+**2023-06-13**
+
+[Changed]
+
+- Module 3. Clarified Worked Example 3.1, and moved the example from Section 3.5.1 to Section 3.5.2.
+- Section 3.6: Added Stata output for calculating a 95% confidence interval from individual data.
+
 **2023-06-01**
 
 [Changed]

@@ -8,9 +8,16 @@ To demonstrate the computation of the 95% confidence interval of a mean we have 
 knitr::include_graphics(here::here("img", "mod03", "stata", "mod3-ci.png"))
 ```
 
-Click **OK** or **Submit** to obtain Output 3.1.
+Click **OK** or **Submit** to obtain the following output:
 
-[Command: `ci means weight`]
+```{r, echo=TRUE, eval=FALSE}
+. ci means weight
+
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+      weight |         30          70    .9207069        68.11694    71.88306
+
+```
 
 ## Calculating a 95% confidence interval of a mean: Summarised data {#sec-cimean-stata-summ}
 
