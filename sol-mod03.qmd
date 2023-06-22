@@ -122,7 +122,7 @@ c) We are 95% confident that the true mean diastolic blood pressure of the popul
 
 ### Process
 
-a) The histogram can be constructed using the following code.
+a) The histogram can be constructed using the following code. Note the use of `/n` to indicate a new line when defining a figure title.
 
 ```{r, eval=FALSE}
 bp <- readRDS("data/activities/Activity_S1.4.rds")
@@ -133,13 +133,20 @@ hist(bp$diabp,
            from a sample of 100 participants")
 ```
 
-b) The summary statistics can be obtained using the `t.test()` function 
+b) The mean and its standard error can be obtained using the `descriptives` package, using the `se=TRUE` option:
+
+```{r}
+library(jmv)
+
+descriptives(data=bp, vars=diabp, se=TRUE)
+```
+
+Note: **we do not use the `descriptives()` function within the `jmv` package to calculate a 95% Confidence Interval for the mean,** as it does not use a t-distribution to calculate the 95% confidence interval. Instead, we use the `t.test()` function (ignoring all output apart from the estimated mean and confidence interval)
 
 ```{r}
 t.test(bp$diabp)
 ```
 
-Note: **do not use the `descriptives()` function within the `jmv` package,** as it does not use a t-distribution to calculate the 95% confidence interval.
 
 ## Activity 3.4 {-}
 \tfont
