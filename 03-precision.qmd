@@ -11,7 +11,7 @@ By the end of this module you will be able to:
 - Calculate and interpret confidence intervals for a mean;
 - Be familiar with the t-distribution and when to use it.
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Chapters 4 and 6. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 

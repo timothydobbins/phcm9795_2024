@@ -34,6 +34,17 @@ On successful completion of this course, you will be able to:
 
 ### Changelog {-}
 
+**2023-07-01**
+
+[Changed]
+
+- Renamed "Readings" to "Optional readings"
+- Module 4, Section 4.8: Corrected the sentence that describes Figure 4.4. "the shaded region for a one-tailed test would be ~~doubled~~ retained on one side of the distribution and eliminated from the other side of the distribution".
+- Module 9: Added titles to Tables 9.3 and 9.4.
+- Module 9, Section 9.4: Corrected the level of evidence: "providing ~~strong~~ evidence of a difference in the median length of stay between the groups."
+- Module 9, Section 9.5.1. Corrected the text under Table 9.4: "The data shows ... 10 people who have a ~~negative~~ positive difference."
+
+
 **2023-06-13**
 
 [Changed]

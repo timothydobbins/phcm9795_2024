@@ -12,7 +12,7 @@ By the end of this module you will be able to:
 - Conduct an independent samples t-test and a paired t-test in Stata;
 - Report results and provide a concise summary of the findings of statistical analyses.
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Sections 7.1 to 7.5. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 

@@ -11,7 +11,7 @@ By the end of this module you will be able to:
 - Decide when to use parametric or non-parametric statistical methods;
 - Briefly outline other types of distributions.
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Chapters 5, 14 and 15. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 

@@ -17,12 +17,12 @@ c) A cohort study investigated the relationship between eating a healthy diet an
 
 ### Activity 4.3 {-}
 
-A pilot study was conducted to compare the mean daily energy intake of women aged 25 to 30 years with the recommended intake of 7750 kJ/day. In this study, the average daily energy intake over 10 days was recorded for 12 healthy women of that age group. The data are in the the Excel file Activity_4.3.xls. Import the file into Stata for this activity.
+A pilot study was conducted to compare the mean daily energy intake of women aged 25 to 30 years with the recommended intake of 7750 kJ/day. In this study, the average daily energy intake over 10 days was recorded for 12 healthy women of that age group. The data are in the the Excel file Activity_4.3.xls. Import the file into Stata or R for this activity.
 
 a) State the research question
 b) Formulate the null hypothesis
 c) Formulate the alternative hypothesis
-d) Analyse the data in Stata and report your conclusions
+d) Analyse the data in Stata or R and report your conclusions
 
 ### Activity 4.4 {-}
 

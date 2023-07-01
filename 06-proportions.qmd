@@ -8,7 +8,7 @@ By the end of this module you will be able to:
 - Conduct and interpret a significance test for a one-sample proportion;
 - Use statistical software to compute 95% confidence intervals for a difference in proportions, a relative risk and an odds ratio.
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Chapter 16 [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 

@@ -18,7 +18,7 @@ By the end of this module you will be able to:
 - Conduct and interpret a non-parametric paired samples significance test;
 - Calculate and interpret the Spearman rank correlation coefficient.
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Chapter 13. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 
@@ -89,6 +89,8 @@ It is often not possible or sensible to transform a non-normal distribution, for
 @tbl-9-1 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.
 
 ```{r tbl-9-1, echo=FALSE}
+#| tbl-cap: Transforming data to ranks (first 21 participants)
+
 df <- tibble::tribble(
    ~ID, ~Infection, ~`Length of stay`, ~Rank, ~`Infection=no`, ~`Infection=Yes`,
    32L,       "No",              0L,     1,               1,               NA,
@@ -118,8 +120,7 @@ huxtable(df) |>
   set_align(everywhere, everywhere, "centre") |> 
   set_number_format(everywhere, everywhere, fmt_pretty()) |> 
   theme_article() |> 
-  set_width(0.95) |> 
-  set_caption("Transforming data to ranks: first 21 participants")
+  set_width(0.95)
 ```
 
 By assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups.
@@ -130,7 +131,7 @@ The non-parametric equivalent to an independent samples t-test (Module 5) is the
 
 The assumption for this test is that the distributions of the two populations have the same general shape. If this assumption is met, then this test evaluates the null hypothesis that the medians of the two populations are equal. This test does not assume that the populations are normally distributed, nor that their variances are equal.
 
-Conducting the Wilcoxon ranked sum test for our length of stay data yields a P-value of 0.014, providing strong evidence of a difference in the median length of stay between the groups.
+Conducting the Wilcoxon ranked sum test for our length of stay data yields a P-value of 0.014, providing evidence of a difference in the median length of stay between the groups.
 
 This P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges. In our example, we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection.
 
@@ -147,6 +148,8 @@ In this test, the absolute differences between the paired scores are ranked and 
 A crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in @tbl-9-2.
 
 ```{r tbl-9-2, echo=FALSE}
+#| tbl-cap: Arthritis symptom scores for 11 patients after administering two drugs
+
 df <- tibble::tribble(
           ~`Patient ID`, ~`Score: Drug 1`, ~`Score: Drug 2`,
                    1L,               3L,               4L,  
@@ -167,11 +170,10 @@ huxtable(df) |>
   set_align(everywhere, everywhere, "centre") |> 
   set_number_format(everywhere, everywhere, fmt_pretty()) |> 
   theme_article() |> 
-  set_width(0.8) |> 
-  set_caption("Arthritis symptom scores for 11 patients after administering two drugs")
+  set_width(0.8)
 ```
 
-The data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs.
+The data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a positive difference. No one has the same score for both drugs.
 
 Before doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in @fig-mod09-diff-hist.
 

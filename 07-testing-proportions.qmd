@@ -7,7 +7,7 @@ By the end of this module you will be able to:
 - Conduct and interpret an appropriate test for independent proportions;
 - Conduct and interpret a test for paired proportions;
 
-## Readings {-}
+## Optional readings {-}
 
 @kirkwood_sterne01; Chapter 17. [[UNSW Library Link]](http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=624728)
 

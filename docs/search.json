@@ -32,7 +32,7 @@
     "href": "index.html#learning-outcomes",
     "title": "PHCM9795: Foundations of Biostatistics",
     "section": "Learning outcomes",
-    "text": "Learning outcomes\nOn successful completion of this course, you will be able to:\n\nSummarise and visualise data using statistical software.\nDemonstrate an understanding of statistical inference by interpreting p-values and confidence intervals.\nApply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.\nDetermine the appropriate sample size when planning a research study.\nPresent and interpret statistical findings appropriate for a population health audience.\n\n\nChangelog\n2023-06-13\n[Changed]\n\nModule 3. Clarified Worked Example 3.1, and moved the example from Section 3.5.1 to Section 3.5.2.\nSection 3.6: Added Stata output for calculating a 95% confidence interval from individual data.\n\n2023-06-01\n[Changed]\n\nSection 1.14.3: RStudio preferences are now located at Edit &gt; Settings on MacOS, and Tools &gt; Global Options on Windows\nSection 1.14.7.2: Correct layout for commands to install packages (commands must be entered on separate lines)\nSection 1.15.2: Correct the name of the pbc data set to mod_01_pdc.rds\nActivity 2.3(b): Change the request to plot data on a Normal curve, not a standardised Normal curve\nActivity 5.3 and 5.4: added underscores to filenames"
+    "text": "Learning outcomes\nOn successful completion of this course, you will be able to:\n\nSummarise and visualise data using statistical software.\nDemonstrate an understanding of statistical inference by interpreting p-values and confidence intervals.\nApply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.\nDetermine the appropriate sample size when planning a research study.\nPresent and interpret statistical findings appropriate for a population health audience.\n\n\nChangelog\n2023-07-01\n[Changed]\n\nRenamed “Readings” to “Optional readings”\nModule 4, Section 4.8: Corrected the sentence that describes Figure 4.4. “the shaded region for a one-tailed test would be doubled retained on one side of the distribution and eliminated from the other side of the distribution”.\nModule 9: Added titles to Tables 9.3 and 9.4.\nModule 9, Section 9.4: Corrected the level of evidence: “providing strong evidence of a difference in the median length of stay between the groups.”\nModule 9, Section 9.5.1. Corrected the text under Table 9.4: “The data shows … 10 people who have a negative positive difference.”\n\n2023-06-13\n[Changed]\n\nModule 3. Clarified Worked Example 3.1, and moved the example from Section 3.5.1 to Section 3.5.2.\nSection 3.6: Added Stata output for calculating a 95% confidence interval from individual data.\n\n2023-06-01\n[Changed]\n\nSection 1.14.3: RStudio preferences are now located at Edit &gt; Settings on MacOS, and Tools &gt; Global Options on Windows\nSection 1.14.7.2: Correct layout for commands to install packages (commands must be entered on separate lines)\nSection 1.15.2: Correct the name of the pbc data set to mod_01_pdc.rds\nActivity 2.3(b): Change the request to plot data on a Normal curve, not a standardised Normal curve\nActivity 5.3 and 5.4: added underscores to filenames"
   },
   {
     "objectID": "01-intro.html",
@@ -49,11 +49,11 @@
     "text": "Learning objectives\nBy the end of this module, you will be able to:\n\nDefine the term statistics;\nDescribe and identify the underpinning concepts of descriptive and inferential statistics;\nDistinguish between different types of variables (i.e. quantitative – discrete and continuous; and qualitative – ordinal and nominal);\nConstruct appropriate frequency tables from raw data;\nCompute summary statistics to describe the centre and spread of data;\nDescribe the (centre and spread of the) data using appropriate graphs (histogram and box plot);\nPresent and interpret graphical summaries of variables using a variety of graphs (bar charts, line-graphs, histograms, boxplots, pie charts and others)."
   },
   {
-    "objectID": "01-intro.html#readings",
-    "href": "01-intro.html#readings",
+    "objectID": "01-intro.html#optional-readings",
+    "href": "01-intro.html#optional-readings",
     "title": "1  Introduction to statistics and presenting data",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapters 2 and 3. [UNSW Library Link]\nBland (2015); Chapter 4. [UNSW Library Link]\nAcock (2010); Chapter 5.\nGraphics and statistics for cardiology: designing effective tables for presentation and publication, Boers (2018) [UNSW Library Link]\nGuidelines for Reporting of Figures and Tables for Clinical Research in Urology, Vickers et al. (2020) [UNSW Library Link]"
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapters 2 and 3. [UNSW Library Link]\nBland (2015); Chapter 4. [UNSW Library Link]\nAcock (2010); Chapter 5.\nGraphics and statistics for cardiology: designing effective tables for presentation and publication, Boers (2018) [UNSW Library Link]\nGuidelines for Reporting of Figures and Tables for Clinical Research in Urology, Vickers et al. (2020) [UNSW Library Link]"
   },
   {
     "objectID": "01-intro.html#an-introduction-to-statistics",
@@ -203,11 +203,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nDescribe the concept of probability;\nDescribe the characteristics of a binomial distribution and a Normal distribution;\nCompute binomial probabilities using Stata;\nCompute and use Z-scores to obtain probabilities;\nDecide when to use parametric or non-parametric statistical methods;\nBriefly outline other types of distributions."
   },
   {
-    "objectID": "02-probability.html#readings",
-    "href": "02-probability.html#readings",
+    "objectID": "02-probability.html#optional-readings",
+    "href": "02-probability.html#optional-readings",
     "title": "2  Probability and probability distributions",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapters 5, 14 and 15. [UNSW Library Link]\nBland (2015); Chapters 6 and 7. [UNSW Library Link]"
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapters 5, 14 and 15. [UNSW Library Link]\nBland (2015); Chapters 6 and 7. [UNSW Library Link]"
   },
   {
     "objectID": "02-probability.html#introduction",
@@ -462,11 +462,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nExplain the purpose of sampling, different sampling methods and their implications for data analysis;\nDistinguish between standard deviation of a sample and standard error of a mean;\nRecognise the importance of the central limit theorem;\nCalculate the standard error of a mean;\nCalculate and interpret confidence intervals for a mean;\nBe familiar with the t-distribution and when to use it."
   },
   {
-    "objectID": "03-precision.html#readings",
-    "href": "03-precision.html#readings",
+    "objectID": "03-precision.html#optional-readings",
+    "href": "03-precision.html#optional-readings",
     "title": "3  Precision, standard errors and confidence intervals",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapters 4 and 6. [UNSW Library Link]\nBland (2015); Sections 3.3 and 3.4, 8.1 to 8.3. [UNSW Library Link]"
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapters 4 and 6. [UNSW Library Link]\nBland (2015); Sections 3.3 and 3.4, 8.1 to 8.3. [UNSW Library Link]"
   },
   {
     "objectID": "03-precision.html#introduction",
@@ -546,11 +546,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nFormulate a research question as a hypothesis;\nUnderstand the concepts of a hypothesis test;\nConsider the difference between statistical significance and clinical importance;\nUse 95% confidence intervals to conduct an informal hypothesis test;\nPerform and interpret a one-sample t-test;\nExplain the concept of one and two tailed statistical tests."
   },
   {
-    "objectID": "04-hypothesis-testing.html#readings",
-    "href": "04-hypothesis-testing.html#readings",
+    "objectID": "04-hypothesis-testing.html#optional-readings",
+    "href": "04-hypothesis-testing.html#optional-readings",
     "title": "4  Hypothesis testing",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 8. [UNSW Library Link]\nBland (2015); Sections 9.1 to 9.7; Sections 10.1 and 10.2. [UNSW Library Link]\nAcock (2010); Section 7.4."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 8. [UNSW Library Link]\nBland (2015); Sections 9.1 to 9.7; Sections 10.1 and 10.2. [UNSW Library Link]\nAcock (2010); Section 7.4."
   },
   {
     "objectID": "04-hypothesis-testing.html#introduction",
@@ -606,7 +606,7 @@
     "href": "04-hypothesis-testing.html#one-and-two-tailed-tests",
     "title": "4  Hypothesis testing",
     "section": "4.8 One and two tailed tests",
-    "text": "4.8 One and two tailed tests\nMost statistical tests are two tailed tests, that is, we conduct a test that allows for the summary statistic in the group of interest to be either higher or lower than in the comparison group. For a t-test, this requires that we obtain a two-tailed P value which gives us the probability of the t-value being in either one of the two tails of the t-distribution as shown in Figure 4.3. The shaded regions show the t values that indicate a P value less than 0.05.\n\n\n\n\n\nFigure 4.3: P-value for a 2-tailed test\n\n\n\n\nOccasionally, one tailed tests are conducted in which the summary statistic in the group of interest can only be higher or lower than the comparison group, i.e. a difference is specified to occur in one direction only. This makes it easier to reject the null hypothesis because the consequence is that the P value is essentially halved. The P value for a one tailed test would be 0.025 i.e. the shaded region for a one-tailed test would be doubled on one side of the distribution and eliminated from the other side of the distribution as shown in Figure 4.4.\n\n\n\n\n\nFigure 4.4: P-value for 1-tailed tests\n\n\n\n\nIf a one tailed P value is reported, and is considered to be an invalid decision, it is usually easily converted to a two tailed value by doubling its numeric value. For example, for the same test statistic and sample size:\n\nOne tailed P value = 0.042 i.e. statistically significant\nTwo tailed P value = 0.084 i.e. non-significant\n\nObviously, the choice of whether to use a one or two tailed test is not as important when the P value is highly significant or clearly non-significant but can make a difference to the conclusions when the P value is on the margins of significance.\nIn most health research, the use of a one tailed test is rarely justified because it is unusual to be certain of the direction of effect prior to the research study being undertaken. It has been suggested that if the researchers were sure enough to consider using a one-tailed test, the research study would not be needed.\nIn most studies, two tailed tests of significance are used to allow for the possibility that the effect size could occur in either direction. In clinical trials, this would mean allowing for a result that can indicate a benefit or an adverse effect in response to a new treatment. In epidemiological studies, two tailed tests are used to allow for the fact that exposure to a factor of interest may be adverse or may be beneficial. This conservative approach is usually adopted to prevent missing important effects that occur in the opposite direction to that expected by the researchers."
+    "text": "4.8 One and two tailed tests\nMost statistical tests are two tailed tests, that is, we conduct a test that allows for the summary statistic in the group of interest to be either higher or lower than in the comparison group. For a t-test, this requires that we obtain a two-tailed P value which gives us the probability of the t-value being in either one of the two tails of the t-distribution as shown in Figure 4.3. The shaded regions show the t values that indicate a P value less than 0.05.\n\n\n\n\n\nFigure 4.3: P-value for a 2-tailed test\n\n\n\n\nOccasionally, one tailed tests are conducted in which the summary statistic in the group of interest can only be higher or lower than the comparison group, i.e. a difference is specified to occur in one direction only. This makes it easier to reject the null hypothesis because the consequence is that the P value is essentially halved. The P value for a one tailed test would be 0.025 i.e. the shaded region for a one-tailed test would be retained on one side of the distribution and eliminated from the other side of the distribution as shown in Figure 4.4.\n\n\n\n\n\nFigure 4.4: P-value for 1-tailed tests\n\n\n\n\nIf a one tailed P value is reported, and is considered to be an invalid decision, it is usually easily converted to a two tailed value by doubling its numeric value. For example, for the same test statistic and sample size:\n\nOne tailed P value = 0.042 i.e. statistically significant\nTwo tailed P value = 0.084 i.e. non-significant\n\nObviously, the choice of whether to use a one or two tailed test is not as important when the P value is highly significant or clearly non-significant but can make a difference to the conclusions when the P value is on the margins of significance.\nIn most health research, the use of a one tailed test is rarely justified because it is unusual to be certain of the direction of effect prior to the research study being undertaken. It has been suggested that if the researchers were sure enough to consider using a one-tailed test, the research study would not be needed.\nIn most studies, two tailed tests of significance are used to allow for the possibility that the effect size could occur in either direction. In clinical trials, this would mean allowing for a result that can indicate a benefit or an adverse effect in response to a new treatment. In epidemiological studies, two tailed tests are used to allow for the fact that exposure to a factor of interest may be adverse or may be beneficial. This conservative approach is usually adopted to prevent missing important effects that occur in the opposite direction to that expected by the researchers."
   },
   {
     "objectID": "04-hypothesis-testing.html#a-note-on-p-values-displayed-by-software",
@@ -651,11 +651,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nDecide whether to use an independent samples t-test or a paired t-test to compare two the means of two groups;\nConduct and interpret the results from an independent samples t-test;\nDescribe the assumptions of an independent samples t-test;\nConduct and interpret the results from a paired t-test;\nDescribe the assumptions of a paired t-test;\nConduct an independent samples t-test and a paired t-test in Stata;\nReport results and provide a concise summary of the findings of statistical analyses."
   },
   {
-    "objectID": "05-comparing-two-means.html#readings",
-    "href": "05-comparing-two-means.html#readings",
+    "objectID": "05-comparing-two-means.html#optional-readings",
+    "href": "05-comparing-two-means.html#optional-readings",
     "title": "5  Comparing the means of two groups",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Sections 7.1 to 7.5. [UNSW Library Link]\nBland (2015); Section 10.3. [UNSW Library Link]\nAcock (2010); Section 7.7, 7.8."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Sections 7.1 to 7.5. [UNSW Library Link]\nBland (2015); Section 10.3. [UNSW Library Link]\nAcock (2010); Section 7.7, 7.8."
   },
   {
     "objectID": "05-comparing-two-means.html#introduction",
@@ -763,11 +763,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nCompute and interpret 95% confidence intervals for proportions;\nConduct and interpret a significance test for a one-sample proportion;\nUse statistical software to compute 95% confidence intervals for a difference in proportions, a relative risk and an odds ratio."
   },
   {
-    "objectID": "06-proportions.html#readings",
-    "href": "06-proportions.html#readings",
+    "objectID": "06-proportions.html#optional-readings",
+    "href": "06-proportions.html#optional-readings",
     "title": "6  Summary statistics for binary data",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 16 [UNSW Library Link]\nBland (2015); Section 8.6, Section 13.7 [UNSW Library Link]\nAcock (2010); Section 7.5."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 16 [UNSW Library Link]\nBland (2015); Section 8.6, Section 13.7 [UNSW Library Link]\nAcock (2010); Section 7.5."
   },
   {
     "objectID": "06-proportions.html#introduction",
@@ -889,11 +889,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nUse and interpret the appropriate test for testing associations between categorical data;\nConduct and interpret an appropriate test for independent proportions;\nConduct and interpret a test for paired proportions;"
   },
   {
-    "objectID": "07-testing-proportions.html#readings",
-    "href": "07-testing-proportions.html#readings",
+    "objectID": "07-testing-proportions.html#optional-readings",
+    "href": "07-testing-proportions.html#optional-readings",
     "title": "7  Hypothesis testing for categorical data",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 17. [UNSW Library Link]\nBland (2015); Chapter 13. [UNSW Library Link]\nAcock (2010); Section 7.6."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 17. [UNSW Library Link]\nBland (2015); Chapter 13. [UNSW Library Link]\nAcock (2010); Section 7.6."
   },
   {
     "objectID": "07-testing-proportions.html#introduction",
@@ -1001,11 +1001,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nExplore the association between two continuous variables using a scatter plot;\nEstimate and interpret correlation coefficients;\nEstimate and interpret parameters from a simple linear regression;\nDecide whether a regression model is valid;\nTest a hypothesis using regression coefficients;\nOutline the concept of multiple regression and its role in investigative epidemiology."
   },
   {
-    "objectID": "08-correlation-and-regression.html#readings",
-    "href": "08-correlation-and-regression.html#readings",
+    "objectID": "08-correlation-and-regression.html#optional-readings",
+    "href": "08-correlation-and-regression.html#optional-readings",
     "title": "8  Correlation and linear regression",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 10. [UNSW Library Link]\nBland (2015); Chapter 11. [UNSW Library Link]\nAcock (2010); Chapter 8."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 10. [UNSW Library Link]\nBland (2015); Chapter 11. [UNSW Library Link]\nAcock (2010); Chapter 8."
   },
   {
     "objectID": "08-correlation-and-regression.html#introduction",
@@ -1120,11 +1120,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nTransform non-normally distributed variables;\nExplain the purpose of non-parametric statistics and key principles for their use;\nCalculate ranks for variables;\nConduct and interpret a non-parametric independent samples significance test;\nConduct and interpret a non-parametric paired samples significance test;\nCalculate and interpret the Spearman rank correlation coefficient."
   },
   {
-    "objectID": "09-non-parametrics.html#readings",
-    "href": "09-non-parametrics.html#readings",
+    "objectID": "09-non-parametrics.html#optional-readings",
+    "href": "09-non-parametrics.html#optional-readings",
     "title": "9  Analysing non-normal data",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 13. [UNSW Library Link]\nBland (2015); Chapter 12. [UNSW Library Link]\nAcock (2010); Section 7.11."
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 13. [UNSW Library Link]\nBland (2015); Chapter 12. [UNSW Library Link]\nAcock (2010); Section 7.11."
   },
   {
     "objectID": "09-non-parametrics.html#introduction",
@@ -1145,21 +1145,21 @@
     "href": "09-non-parametrics.html#non-parametric-significance-tests",
     "title": "9  Analysing non-normal data",
     "section": "9.3 Non-parametric significance tests",
-    "text": "9.3 Non-parametric significance tests\nIt is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g. length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.\n\n9.3.1 Ranking variables\nTable 9.3 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.\n\n\nTable 9.3: ?(caption)\n\n\n\n\n(a) Transforming data to ranks: first 21 participants\n\n\nID\nInfection\nLength of stay\nRank\nInfection=no\nInfection=Yes\n\n\n32\nNo\n0\n1\n1\n\n\n\n33\nNo\n1\n2\n2\n\n\n\n12\nNo\n9\n3\n3\n\n\n\n22\nNo\n11\n4.5\n4.5\n\n\n\n16\nNo\n11\n4.5\n4.5\n\n\n\n28\nYes\n12\n6\n\n6\n\n\n27\nNo\n13\n7.5\n7.5\n\n\n\n20\nNo\n13\n7.5\n7.5\n\n\n\n24\nNo\n14\n11\n11\n\n\n\n11\nNo\n14\n11\n11\n\n\n\n130\nNo\n14\n11\n11\n\n\n\n10\nNo\n14\n11\n11\n\n\n\n25\nNo\n14\n11\n11\n\n\n\n19\nNo\n15\n15.5\n15.5\n\n\n\n30\nNo\n15\n15.5\n15.5\n\n\n\n23\nNo\n15\n15.5\n15.5\n\n\n\n14\nNo\n15\n15.5\n15.5\n\n\n\n15\nNo\n17\n20.5\n20.5\n\n\n\n13\nNo\n17\n20.5\n20.5\n\n\n\n21\nYes\n17\n20.5\n\n20.5\n\n\n17\nNo\n17\n20.5\n20.5\n\n\n\n\n\n\n\n\n\n\n\n\n\nBy assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups."
+    "text": "9.3 Non-parametric significance tests\nIt is often not possible or sensible to transform a non-normal distribution, for example if there are too many zero values or when we simply want to compare groups using the unit in which the measurement was taken (e.g. length of stay). For this, non-parametric significance tests can be used but the general idea behind these tests is that the data values are replaced by ranks. This also protects against outliers having too much influence.\n\n9.3.1 Ranking variables\nTable 9.3 shows how ranks are calculated for the first 21 patients in the length-of-stay data. First the data are sorted in order of their magnitude (from the lowest value to the highest) ignoring the group variable. Each data point is then assigned a rank. Data points that are equal are assigned the mean of their ranks. Thus, the two lengths of stay of 11 days share the ranks 4 and 5, and have a mean rank of 4.5. Similarly, there are 5 people with a length of stay of 14 days and these share the ranks 9 to 13, the mean of which is 11. Once ranks are computed they are assigned to each of the two groups and summed within each group.\n\n\n\n\nTable 9.3: Transforming data to ranks (first 21 participants)\n\n\nID\nInfection\nLength of stay\nRank\nInfection=no\nInfection=Yes\n\n\n32\nNo\n0\n1\n1\n\n\n\n33\nNo\n1\n2\n2\n\n\n\n12\nNo\n9\n3\n3\n\n\n\n22\nNo\n11\n4.5\n4.5\n\n\n\n16\nNo\n11\n4.5\n4.5\n\n\n\n28\nYes\n12\n6\n\n6\n\n\n27\nNo\n13\n7.5\n7.5\n\n\n\n20\nNo\n13\n7.5\n7.5\n\n\n\n24\nNo\n14\n11\n11\n\n\n\n11\nNo\n14\n11\n11\n\n\n\n130\nNo\n14\n11\n11\n\n\n\n10\nNo\n14\n11\n11\n\n\n\n25\nNo\n14\n11\n11\n\n\n\n19\nNo\n15\n15.5\n15.5\n\n\n\n30\nNo\n15\n15.5\n15.5\n\n\n\n23\nNo\n15\n15.5\n15.5\n\n\n\n14\nNo\n15\n15.5\n15.5\n\n\n\n15\nNo\n17\n20.5\n20.5\n\n\n\n13\nNo\n17\n20.5\n20.5\n\n\n\n21\nYes\n17\n20.5\n\n20.5\n\n\n17\nNo\n17\n20.5\n20.5\n\n\n\n\n\n\n\n\n\nBy assigning ranks to individuals, we lose information about their actual values and this makes it more difficult to detect a difference. However, outliers and extreme values in the data are brought back closer to the data so that they are less influential. For this reason, non-parametric tests have less power than parametric tests and they require much larger differences in the data to show statistical significance between groups."
   },
   {
     "objectID": "09-non-parametrics.html#non-parametric-test-for-two-independent-samples-wilcoxon-ranked-sum-test",
     "href": "09-non-parametrics.html#non-parametric-test-for-two-independent-samples-wilcoxon-ranked-sum-test",
     "title": "9  Analysing non-normal data",
     "section": "9.4 Non-parametric test for two independent samples (Wilcoxon ranked sum test)",
-    "text": "9.4 Non-parametric test for two independent samples (Wilcoxon ranked sum test)\nThe non-parametric equivalent to an independent samples t-test (Module 5) is the Wilcoxon ranked sum test, also known as the Mann-Whitney U test. This can be obtained using the ranksum command in Stata, and the wilcox.test in R.\nThe assumption for this test is that the distributions of the two populations have the same general shape. If this assumption is met, then this test evaluates the null hypothesis that the medians of the two populations are equal. This test does not assume that the populations are normally distributed, nor that their variances are equal.\nConducting the Wilcoxon ranked sum test for our length of stay data yields a P-value of 0.014, providing strong evidence of a difference in the median length of stay between the groups.\nThis P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges. In our example, we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection."
+    "text": "9.4 Non-parametric test for two independent samples (Wilcoxon ranked sum test)\nThe non-parametric equivalent to an independent samples t-test (Module 5) is the Wilcoxon ranked sum test, also known as the Mann-Whitney U test. This can be obtained using the ranksum command in Stata, and the wilcox.test in R.\nThe assumption for this test is that the distributions of the two populations have the same general shape. If this assumption is met, then this test evaluates the null hypothesis that the medians of the two populations are equal. This test does not assume that the populations are normally distributed, nor that their variances are equal.\nConducting the Wilcoxon ranked sum test for our length of stay data yields a P-value of 0.014, providing evidence of a difference in the median length of stay between the groups.\nThis P-value should be provided alongside non-parametric summary statistics such as medians and inter-quartile ranges. In our example, we can obtain the median length of stay values of 24 (Interquartile Range: 19 to 40 days) in the group with no infection and 37 (Interquartile Range: 24 to 50 days) in the group with infection."
   },
   {
     "objectID": "09-non-parametrics.html#non-parametric-test-for-paired-data-wilcoxon-signed-rank-test",
     "href": "09-non-parametrics.html#non-parametric-test-for-paired-data-wilcoxon-signed-rank-test",
     "title": "9  Analysing non-normal data",
     "section": "9.5 Non-parametric test for paired data (Wilcoxon signed-rank test)",
-    "text": "9.5 Non-parametric test for paired data (Wilcoxon signed-rank test)\nThere are two types of non-parametric tests for paired data, called the Sign test and the Wilcoxon signed rank test. In practice, the Sign test is rarely used and will not be discussed in this course.\nIf the differences between two paired measurements are not normally distributed, a non-parametric equivalent of a paired t-test (Module 5) should be used. The equivalent test is the Wilcoxon matched-pairs signed rank test, also simply called the Wilcoxon matched-pairs test. This test is resistant to outliers in the data, however the proportion of outliers in the sample should be small. This test evaluates the null hypothesis that the median of the paired differences is equal to zero.\nIn this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e. scores where there is no difference between the pairs) are excluded. Note that the power of the test (the ability to detect an effect if there truly is an effect) reduces in the presence of zero differences, as the effective sample size (the number of non-zero differences) is reduced.\n\n9.5.1 Worked Example\nA crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in Table 9.4.\n\n\nTable 9.4: ?(caption)\n\n\n\n\n(a) Arthritis symptom scores for 11 patients after administering two drugs\n\n\nPatient ID\nScore: Drug 1\nScore: Drug 2\nDifference (Drug 2 - Drug 1)\n\n\n1\n3\n4\n1\n\n\n2\n2\n7\n5\n\n\n3\n3\n4\n1\n\n\n4\n8\n10\n2\n\n\n5\n6\n8\n2\n\n\n6\n6\n1\n-5\n\n\n7\n2\n6\n4\n\n\n8\n3\n7\n4\n\n\n9\n5\n8\n3\n\n\n10\n9\n10\n1\n\n\n11\n7\n8\n1\n\n\n\n\n\n\n\n\n\n\n\n\nThe data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a negative difference. No one has the same score for both drugs.\nBefore doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in Figure 9.3.\n\n\n\n\n\nFigure 9.3: Distribution of difference in symptom scores between Drug 1 and Drug 2\n\n\n\n\nThe histogram shows that the differences are not normally distributed. The data looks negatively skewed with a gap in the histogram between the values of -5 and 0. Therefore, it would not be appropriate to conduct a paired t-test. Hence, we conduct a non-parametric paired test (Wilcoxon matched-pairs signed-rank test).\nA non-parametric paired test can be obtained in Stata using the signrank command, or in R using the wilcox.test (specifying paired=TRUE).\nThe P-value obtained from Stata is 0.044, and the P-value obtained from R is 0.049. The reason these two P-values differ is that R uses a so-called “continuity correction” which makes the test more conservative (i.e. makes the test less likely to reject the null-hypothesis when the null-hypothesis is true). In both cases, there is evidence of a difference in symptom scores between the two drugs."
+    "text": "9.5 Non-parametric test for paired data (Wilcoxon signed-rank test)\nThere are two types of non-parametric tests for paired data, called the Sign test and the Wilcoxon signed rank test. In practice, the Sign test is rarely used and will not be discussed in this course.\nIf the differences between two paired measurements are not normally distributed, a non-parametric equivalent of a paired t-test (Module 5) should be used. The equivalent test is the Wilcoxon matched-pairs signed rank test, also simply called the Wilcoxon matched-pairs test. This test is resistant to outliers in the data, however the proportion of outliers in the sample should be small. This test evaluates the null hypothesis that the median of the paired differences is equal to zero.\nIn this test, the absolute differences between the paired scores are ranked and the difference scores that are equal to zero (i.e. scores where there is no difference between the pairs) are excluded. Note that the power of the test (the ability to detect an effect if there truly is an effect) reduces in the presence of zero differences, as the effective sample size (the number of non-zero differences) is reduced.\n\n9.5.1 Worked Example\nA crossover trial is done to compare symptom scores for two drugs in 11 people with arthritis (higher scores indicate more severe symptoms). The data are contained in datafile file mod09_arthritis.csv. The data are shown in Table 9.4.\n\n\n\n\nTable 9.4: Arthritis symptom scores for 11 patients after administering two drugs\n\n\nPatient ID\nScore: Drug 1\nScore: Drug 2\nDifference (Drug 2 - Drug 1)\n\n\n1\n3\n4\n1\n\n\n2\n2\n7\n5\n\n\n3\n3\n4\n1\n\n\n4\n8\n10\n2\n\n\n5\n6\n8\n2\n\n\n6\n6\n1\n-5\n\n\n7\n2\n6\n4\n\n\n8\n3\n7\n4\n\n\n9\n5\n8\n3\n\n\n10\n9\n10\n1\n\n\n11\n7\n8\n1\n\n\n\n\n\n\n\n\nThe data shows that there is 1 person who has a negative difference, where the symptom score on drug 2 that is smaller than that for drug 1 (i.e., drug 2 is better than drug 1); and 10 people who have a positive difference. No one has the same score for both drugs.\nBefore doing the analysis let us examine the distribution of the difference of symptom scores between the two drugs. As in Module 5, we first need to compute the difference between the symptom scores. To examine the distribution, we plot a histogram as shown in Figure 9.3.\n\n\n\n\n\nFigure 9.3: Distribution of difference in symptom scores between Drug 1 and Drug 2\n\n\n\n\nThe histogram shows that the differences are not normally distributed. The data looks negatively skewed with a gap in the histogram between the values of -5 and 0. Therefore, it would not be appropriate to conduct a paired t-test. Hence, we conduct a non-parametric paired test (Wilcoxon matched-pairs signed-rank test).\nA non-parametric paired test can be obtained in Stata using the signrank command, or in R using the wilcox.test (specifying paired=TRUE).\nThe P-value obtained from Stata is 0.044, and the P-value obtained from R is 0.049. The reason these two P-values differ is that R uses a so-called “continuity correction” which makes the test more conservative (i.e. makes the test less likely to reject the null-hypothesis when the null-hypothesis is true). In both cases, there is evidence of a difference in symptom scores between the two drugs."
   },
   {
     "objectID": "09-non-parametrics.html#non-parametric-estimates-of-correlation",
@@ -1246,11 +1246,11 @@
     "text": "Learning objectives\nBy the end of this module you will be able to:\n\nExplain the issues involved in sample size estimation for epidemiological studies;\nEstimate sample sizes for descriptive and analytic studies;\nCompute the sample size needed for planned statistical tests;\nAdjust sample size calculations for factors that influence study power."
   },
   {
-    "objectID": "10-sample-size.html#readings",
-    "href": "10-sample-size.html#readings",
+    "objectID": "10-sample-size.html#optional-readings",
+    "href": "10-sample-size.html#optional-readings",
     "title": "10  Sample size estimation",
-    "section": "Readings",
-    "text": "Readings\nKirkwood and Sterne (2001); Chapter 35. [UNSW Library Link]\nBland (2015); Chapter 18. [UNSW Library Link]\nFor interest: Woodward (2013); Chapter 8. [UNSW Library Link]"
+    "section": "Optional readings",
+    "text": "Optional readings\nKirkwood and Sterne (2001); Chapter 35. [UNSW Library Link]\nBland (2015); Chapter 18. [UNSW Library Link]\nFor interest: Woodward (2013); Chapter 8. [UNSW Library Link]"
   },
   {
     "objectID": "10-sample-size.html#introduction",
