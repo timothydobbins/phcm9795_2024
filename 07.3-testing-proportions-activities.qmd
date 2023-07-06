@@ -9,7 +9,7 @@ b) Use a chi-squared test to evaluate the hypothesis and interpret the result. A
 The files `Activity_S7.2.dta` and `Activity_S7.2.rds` summarise 5-year mortality (the outcome) for 89 people who did or did not have a heart attack (the exposure).
 
 a) State the null hypothesis.
-b) Using Stata, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
+b) Using Stata or R, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
 c) Estimate the appropriate risk estimate for mortality. Are the confidence intervals of the risk estimates consistent with the P value?
 d) Summarise your results and state your conclusion.
 

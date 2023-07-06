@@ -94,7 +94,7 @@ Much like constructing a 95% confidence interval, there are two main options whe
 The first step in the z-test is to calculate a z-statistic, which is then used to calculate a P-value. The z-statistic is calculated as the difference between the population proportion and the sample proportion divided by the standard error of the population proportion, i.e.
 
 $$
-z = \frac{(p_{population} - p_{sample})}{\text{SE}(p_{population})}
+z = \frac{(p_{sample} - p_{population})}{\text{SE}(p_{population})}
 $$
 
 This z-statistic is then compared to the standard Normal distribution to calculate the P-value.
@@ -114,7 +114,7 @@ z &= \frac{(0.18 - 0.20)}{\sqrt{\frac{0.20 × (1 - 0.20)}{300}}} \\
 \end{aligned}
 $$
 
-This z-statistic does not meet or exceed the critical value of 1.96 for a two tailed test. This indicates that there is insufficient evidence to conclude that there is a difference between the proportion of smokers in the community and the country. This is consistent with our 95%% confidence interval which crosses the null value of 20%.
+This z-statistic does not meet or exceed the critical value of 1.96 for a two tailed test. This indicates that there is insufficient evidence to conclude that there is a difference between the proportion of smokers in the community and the country. This is consistent with our 95% confidence interval which crosses the null value of 20%.
 
 The P-value for the test above can be obtained from a Normal distribution table as $P = 2 × 0.192 = 0.38$ (using Table A2.1 in the Appendix), or using the hand-calculator in Stata.
 

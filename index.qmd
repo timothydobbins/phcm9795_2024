@@ -38,6 +38,17 @@ On successful completion of this course, you will be able to:
 
 [Changed]
 
+- Section 4.2: Fixed typo: "The particular test statistic differs depending on the type of data being ~~analyses~~ analysed"
+- Section 4.4: Fixed typo: "This is the situation described in scenario (c) of ~~Figure~~ Figure 4.1."
+- Activity 5.2: Added "or R" to the instruction "Use Stata to conduct an appropriate statistical test"
+- Activity 5.3: Added "or R" to the instruction "Use Stata to conduct an appropriate statistical test"
+- Section 6.3: Fixed formula for testing one sample proportion to: "$z = \frac{(p_{sample} - p_{population})}{\text{SE}(p_{population})}$"
+- Activity 7.2: Added "or R" to the instruction "Using Stata, carry out the appropriate significance test"
+
+**2023-07-01**
+
+[Changed]
+
 - Renamed "Readings" to "Optional readings"
 - Module 4, Section 4.8: Corrected the sentence that describes Figure 4.4. "the shaded region for a one-tailed test would be ~~doubled~~ retained on one side of the distribution and eliminated from the other side of the distribution".
 - Module 9: Added titles to Tables 9.3 and 9.4.
