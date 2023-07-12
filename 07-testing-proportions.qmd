@@ -68,21 +68,21 @@ The first two assumptions are dictated by the study design. The last two assumpt
 
 We will revisit Worked Example 6.4, investigating the relationship between nausea and drug exposure:
 
-|         |   Nausea | No nausea |      Total |
-|---------|---------:|----------:|-----------:|
-| Active  | 35 (70%) |  15 (30%) |  50 (100%) |
-| Placebo | 46 (92%) |    4 (8%) |  50 (100%) |
-| Total   | 81 (81%) |  19 (19%) | 100 (100%) |
+|         |    Nausea | No nausea|      Total |
+|---------|----------:|---------:|-----------:|
+| Active  |  15 (30%) | 35 (70%) |  50 (100%) |
+| Placebo |    4 (8%) | 46 (92%) |  50 (100%) |
+| Total   |  19 (19%) | 81 (81%) | 100 (100%) |
 
 : Nausea status by drug exposure {#tbl-rr-observed}
 
 We can see from the row percentages that 8% of patients in the placebo group experienced nausea compared to 30% of patients in the active group. If no association existed, we would expect to find approximately the same percent of patients with nausea in each group. Statistical software can calculate the values we would expect if there was no association between nausea and drug exposure (i.e. the expected counts):
 
-|         |   Nausea | No nausea |      Total |
-|---------|---------:|----------:|-----------:|
-| Active  |     40.5 |       9.5 |        50  |
-| Placebo |     40.5 |       9.5 |        50  |
-| Total   |       81 |        19 |       100  |
+|         |    Nausea |No nausea |      Total |
+|---------|----------:|---------:|-----------:|
+| Active  |       9.5 |     40.5 |        50  |
+| Placebo |       9.5 |     40.5 |        50  |
+| Total   |        19 |       81 |       100  |
 
 : Expected counts of nausea status by drug exposure {#tbl-rr-exp}
 

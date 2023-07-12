@@ -34,6 +34,13 @@ On successful completion of this course, you will be able to:
 
 ### Changelog {-}
 
+**2023-07-12**
+
+[Changed]
+
+- Worked Example 6.2: removed "This z-statistic does not meet or exceed the critical value of 1.96 for a two tailed test" and re-framed this in terms of interpreting the P-value as calculated from software.
+- Worked Example 7.1: corrected column headings for Nausea and No nausea
+
 **2023-07-01**
 
 [Changed]
