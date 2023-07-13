@@ -34,6 +34,12 @@ On successful completion of this course, you will be able to:
 
 ### Changelog {-}
 
+**2023-07-13**
+
+[Changed]
+
+- Section 7.13: tidied up the R function used to calculate the 95% confidence interval for the difference in paired proportions.
+
 **2023-07-12**
 
 [Changed]

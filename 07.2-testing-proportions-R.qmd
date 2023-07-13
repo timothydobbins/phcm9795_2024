@@ -136,24 +136,6 @@ mcNemarDiff <- function(data, var1, var2, digits = 3) {
 }
 ### End copy
 
-
-a <- 21
-b <- 20
-c <- 14
-d <- 5
-n <- 60
-
-rdiff <- (b - c) / n
-diffL <- rdiff - (1/n) - qnorm(1 - 0.05/2) * 
-  (sqrt((a + d) * (b + c) + 4 * b * c)/(n * sqrt(n)))
-diffU <- rdiff + (1/n) + qnorm(1 - 0.05/2) * 
-  (sqrt((a + d) * (b + c) + 4 * b * c)/(n * sqrt(n)))
-
-rdiff
-diffL
-diffU
-
-
 mcNemarDiff(data = drug, var1 = "druga", var2 = "drugb", digits = 2)
 ```
 

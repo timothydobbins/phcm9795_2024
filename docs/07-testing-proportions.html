@@ -1210,32 +1210,7 @@ div.csl-indent {
 <span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="do">### End copy</span></span>
 <span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">21</span></span>
-<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">14</span></span>
-<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>rdiff <span class="ot">&lt;-</span> (b <span class="sc">-</span> c) <span class="sc">/</span> n</span>
-<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>diffL <span class="ot">&lt;-</span> rdiff <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span>n) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> </span>
-<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">sqrt</span>((a <span class="sc">+</span> d) <span class="sc">*</span> (b <span class="sc">+</span> c) <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> b <span class="sc">*</span> c)<span class="sc">/</span>(n <span class="sc">*</span> <span class="fu">sqrt</span>(n)))</span>
-<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>diffU <span class="ot">&lt;-</span> rdiff <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>n) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> </span>
-<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">sqrt</span>((a <span class="sc">+</span> d) <span class="sc">*</span> (b <span class="sc">+</span> c) <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> b <span class="sc">*</span> c)<span class="sc">/</span>(n <span class="sc">*</span> <span class="fu">sqrt</span>(n)))</span>
-<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a>rdiff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>diffL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1054528</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>diffU</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3054528</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcNemarDiff</span>(<span class="at">data =</span> drug, <span class="at">var1 =</span> <span class="st">"druga"</span>, <span class="at">var2 =</span> <span class="st">"drugb"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="fu">mcNemarDiff</span>(<span class="at">data =</span> drug, <span class="at">var1 =</span> <span class="st">"druga"</span>, <span class="at">var2 =</span> <span class="st">"drugb"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Proportion 1: 0.68; Proportion 2: 0.58"
 [1] "Difference in paired proportions: 0.10; 95% CI: -0.11 to 0.31"</code></pre>
