@@ -34,6 +34,12 @@ On successful completion of this course, you will be able to:
 
 ### Changelog {-}
 
+**2023-07-17**
+
+[Changed]
+
+- Section 7.9: Corrected screenshots to test difference in paired proportions in Stata.
+
 **2023-07-13**
 
 [Changed]

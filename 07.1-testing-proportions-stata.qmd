@@ -118,19 +118,41 @@ knitr::include_graphics(here::here("img", "mod07", "stata", "tabulate2-3.png"))
 
 [Command: `tab2 drugb druga , cell`]
 
-Click **OK** or **Submit** to obtain Stata Output 7.3.
+Click **OK** or **Submit** to obtain the following output:
 
-To perform the McNemar’s test, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Matched case-control studies**. In the `mcc` dialog box, select the variable `drugb` as the **Exposed case variable** and `druga` as the **Exposed control variable** as shown below.
+```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
+. tabulate druga drugb, cell
+
++-----------------+
+| Key             |
+|-----------------|
+|    frequency    |
+| cell percentage |
++-----------------+
+
+  Response |  Response to Drug B
+ to Drug A |        No        Yes |     Total
+-----------+----------------------+----------
+        No |         5         14 |        19 
+           |      8.33      23.33 |     31.67 
+-----------+----------------------+----------
+       Yes |        20         21 |        41 
+           |     33.33      35.00 |     68.33 
+-----------+----------------------+----------
+     Total |        25         35 |        60 
+           |     41.67      58.33 |    100.00 
+```
+
+To perform the McNemar’s test, go to **Statistics > Epidemiology and related > Tables for epidemiologists > Matched case-control studies**. In the `mcc` dialog box, select the variable `druga` as the **Exposed case variable** and `drugb` as the **Exposed control variable** as shown below.
 
 ```{r mcc-1, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod07", "stata", "mcc-1.png"))
 ```
 
-[Command: `mcc drugb druga`]
- 
-Click **OK** or **Submit** when you are done to obtain the following output.
+[Command: `mcc druga drugb`]
 
-#### Stata Output 7.4: McNemar's test {-}
+Click **OK** or **Submit** when you are done to obtain the following output:
+
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
 . mcc druga drugb
 
