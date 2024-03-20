@@ -1,0 +1,136 @@
+---
+title: 'Graphics: base vs ggformula vs ggplot2'
+output: html_document
+---
+
+Load data and packages
+
+```{r cars}
+library(ggplot2)
+library(ggformula)
+
+pbc <- readRDS("data/activities/mod01_pbc.rds")
+
+pbc$stage <- factor(pbc$stage, levels = c(1, 2, 3, 4),
+                    labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
+
+pbc$sex <- factor(pbc$sex, levels = c(1, 2), labels = c("Male", "Female"))
+```
+
+## Module 1
+
+### Histogram
+```{r}
+hist(pbc$age, xlab="Age (years)", 
+     main=NA)
+
+gf_histogram(~ age, data=pbc, binwidth=5, boundary=20, colour="black",
+             xlab="Age (years)", ylab="Frequency")
+
+ggplot(data=pbc, aes(x=age)) + 
+  geom_histogram(binwidth=5, boundary=20, colour="black") +
+  xlab("Age (years)") + ylab("Frequency")
+```
+
+### Boxplot
+
+```{r}
+boxplot(pbc$age, xlab="Age (years)")
+
+gf_boxplot(~ age, data=pbc, xlab="Age (years)")
+
+ggplot(data=pbc, aes(y=age)) +
+  geom_boxplot()
+```
+
+Note that ggformula wants to produce a horizontal boxplot, while ggplot2 is happy producing a vertical boxplot.
+
+Neither ggformula nor ggplot can produce a boxplot with an appropriate axis for the non-summarised variable.
+
+### Simple bar chart
+```{r}
+plot(pbc$stage, xlab = "Stage", ylab = "Number of participants")
+
+gf_bar( ~ stage, data=pbc,
+        xlab = "Stage", ylab = "Number of participants")
+
+ggplot(data=pbc, aes(x=stage)) +
+  geom_bar() +
+  xlab("Stage") + ylab("Number of participants")
+```
+
+Note that there doesn't seem to be a simple way to remove the NA bar without using a filter. Sigh...
+
+```{r}
+gf_bar( ~ stage, data=subset(pbc, is.na(stage) == FALSE),
+        xlab = "Stage", ylab = "Number of participants")
+
+ggplot(data=subset(pbc, is.na(stage) == FALSE), aes(x=stage)) +
+  geom_bar() +
+  xlab("Stage") + ylab("Number of participants")
+
+```
+
+### Clustered bar chart
+```{r}
+counts <- table(pbc$sex, pbc$stage)
+barplot(counts, main="Bar graph of stage of disease by sex from PBC study",
+        beside=TRUE, legend = rownames(counts), args.legend = list(x = "topleft"))
+
+gf_bar( ~ stage, fill = ~sex, position = "dodge", data=subset(pbc, is.na(stage) == FALSE),
+        xlab = "Stage", ylab = "Number of participants")
+```
+
+### Stacked bar chart
+```{r}
+barplot(counts, main="Bar graph of stage of disease by sex from PBC study",
+        beside=FALSE, legend = rownames(counts), args.legend = list(x = "topleft"))
+
+gf_bar( ~ stage, fill = ~sex, data=subset(pbc, is.na(stage) == FALSE),
+        xlab = "Stage", ylab = "Number of participants")
+```
+
+### Stacked bar graph of relative frequencies
+```{r}
+percent <- prop.table(counts, margin=2)*100
+barplot(percent, 
+        main="Relative frequency of sex within stage of disease from PBC study",
+        legend = rownames(counts), beside=FALSE, args.legend = list(x = "topright"))
+
+gf_bar( ~ stage, fill = ~sex, position = "fill", data=subset(pbc, is.na(stage) == FALSE),
+        xlab = "Stage", ylab = "Number of participants")
+```
+
+### Line graphs
+```{r}
+cancer <- readRDS("data/examples/mod01_prostate_cancer.rds")
+
+plot(x=cancer$year, y=cancer$rcases, type="l", col = "red", 
+     xlab = "Year", ylab = "Age-standardised rate (per 100,000)", 
+     ylim=c(0,200))
+
+lines(cancer$year, cancer$rdeaths, col = "blue", type = "l", lty = 2)
+
+legend("topleft", legend=c("Incidence", "Deaths"), 
+       col=c("red", "blue"), lty = 1:2)
+
+gf_line(rcases ~ year, data=cancer, colour="red") |> 
+  gf_line(rdeaths ~ year, data=cancer, colour="blue", linetype="dashed")
+
+# Note - give students a long-version of this dataset
+library(tidyverse)
+cancer <- cancer |> 
+  rename(count_cases = ncases,
+         count_deaths = ndeaths,
+         rate_cases = rcases,
+         rate_deaths = rdeaths)
+
+cancer_long <- pivot_longer(data=cancer, cols=-year,
+                            names_to = c(".value", "outcome"),
+                            names_sep="_")
+
+gf_line(rate ~ year, data=cancer_long, colour= ~outcome,
+        xlab = "Year", ylab = "Age-standardised rate (per 100,000)") |> 
+  gf_lims(y=c(0, 200))
+```
+
