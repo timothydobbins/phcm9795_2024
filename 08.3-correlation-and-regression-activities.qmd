@@ -12,7 +12,7 @@ d) If we randomly sampled a person from the population and found that their weig
 ### Activity 8.2 {-}
 To examine whether age predicts IQ, data were collected on 104 people. Use the data in the file `Activity_8.2.csv` to answer the following questions.
 
-a)	What are the outcome variable and the explanatory variable? 
+a)	What is the outcome variable and the explanatory variable? 
 b)	Create a scatter plot with the two variables. What can you infer from the scatter plot? 
 c)	Obtain the correlation coefficient between age and IQ and interpret it. 
 d)	Conduct a simple linear regression and report the relationship between the two variables including the interpretation of the R^2^ value. Are the assumptions for linear regression met in this model?

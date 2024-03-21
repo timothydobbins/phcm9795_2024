@@ -22,11 +22,11 @@ By the end of this module you will be able to:
 
 ## Introduction
 
-In Module 4, a one-sample t-test was used for comparing a single mean to a hypothesised value. In health research, we often want to compare the means between two groups. For example, in an observational study, we may want to compare cholesterol levels in people who are normal weight to the levels in people who are overweight. In a clinical trial, we may want to compare cholesterol levels in people who have been randomised to a dietary modification or to usual care. In this module, we show how to compare the means of two groups where the analysis variable is normally distributed. 
+In Module 4, a one-sample t-test was used for comparing a single mean to a hypothesised value. In health research, we often want to compare the means between two groups. For example, in an observational study, we may want to compare cholesterol levels in people who exercise regularly to the levels in people who do not exercise regularly. In a clinical trial, we may want to compare cholesterol levels in people who have been randomised to a dietary modification or to usual care. In this module, we show how to compare the means of two groups where the analysis variable is normally distributed. 
 
 From the decision tree presented in the Appendix, we can see that if we have a continuous outcome measure and two categorical groups that are not related, i.e. a binary exposure measurement, the test for such data is an independent samples t-test. The test is also sometimes called a 2-sample t-test.
 
-However, in research, data are often 'paired' or 'matched', that is the two data points are related to one another. This occurs when measurements are taken:
+In research, data are often 'paired' or 'matched', that is the two data points are related to one another. This occurs when measurements are taken:
 
 - From each participant on two occasions, e.g. at baseline and follow-up in an experimental study or in a longitudinal cohort study;
 - From related people, e.g. a mother and daughter or a child and their sibling;
@@ -52,7 +52,7 @@ The assumptions that must be met before an independent samples t-test can be use
 
 - The two groups are independent
 - The measurements are independent
-- The outcome variable must be continuous and must be normally distributed in each group
+- The analysis variable must be continuous and must be normally distributed in each group
 - The variance in the two groups is similar (homogenous)
 
 The first two assumptions are determined by the study design. The two samples must be independent, i.e. if a person is in one group then they cannot be included in the other group, and the measurements within a sample must be independent, i.e. each person must be included in their group once only.
