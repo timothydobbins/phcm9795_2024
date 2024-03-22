@@ -105,7 +105,6 @@ descriptives(data=bwt, vars=birthweight, splitBy=gender)
 We can use the `ttestIS()` (t-test, independent samples) function from the `jmv` package to perform the independent samples t-test. We include the `meanDiff=TRUE` and `ci=TRUE` options to obtain the difference in means, with its 95% confidence interval. We can request a Welch's test (which does not assume equal variances) by the `welchs=TRUE` option:
 
 ```{r}
-ttestIS(data=bwt, vars=birthweight, group=gender, meanDiff=TRUE, ci=TRUE)
 ttestIS(data=bwt, vars=birthweight, group=gender, meanDiff=TRUE, ci=TRUE, welchs=TRUE)
 ```
 
@@ -114,10 +113,10 @@ There is no built-in function to calculate an independent t-test from summarised
 ```
 tsum.test(mean.x=, s.x=, n.x=,
           mean.y=, s.y=, n.y=,
-          mu=0, alternative="two.sided", var.equal = TRUE)
+          mu=0, alternative="two.sided", var.equal = FALSE)
 ```
 
-Here we specify the mean, standard deviation and sample size for the first group (on the first line) and the second group (on the second line). We can relax the assumption of equal variances using `var.equal=FALSE`.
+Here we specify the mean, standard deviation and sample size for the first group (on the first line) and the second group (on the second line).
 
 ## Checking the assumptions for a Paired t-test
 

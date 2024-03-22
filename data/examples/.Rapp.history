@@ -1,1 +1,2 @@
 load("/Users/td/Documents/GitHub/phcm9795_2023/data/examples/mod01_pbc.rds")
+load("/Users/td/Documents/GitHub/phcm9795_2024/data/examples/mod05_birthweight.rds")

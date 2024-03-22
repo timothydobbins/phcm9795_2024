@@ -9,7 +9,7 @@ By the end of this module you will be able to:
 - Describe the assumptions of an independent samples t-test;
 - Conduct and interpret the results from a paired t-test;
 - Describe the assumptions of a paired t-test;
-- Conduct an independent samples t-test and a paired t-test in Stata;
+- Conduct an independent samples t-test and a paired t-test using software;
 - Report results and provide a concise summary of the findings of statistical analyses.
 
 ## Optional readings {-}
@@ -42,7 +42,7 @@ An independent samples t-test is a parametric test that is used to assess whethe
 
 The null hypothesis is that the mean values of the two groups are not different, that is:
 
-H~0~: (Mean~2~ $-$ Mean~1~) = 0
+H~0~: ($\mu_1 - \mu_2$) = 0
 
 Rejecting the null hypothesis using an independent samples t-test indicates that the difference between the means of the two groups is large in relation to the variability in the samples and is unlikely to be due to chance or to sampling variation.
 
@@ -53,13 +53,12 @@ The assumptions that must be met before an independent samples t-test can be use
 - The two groups are independent
 - The measurements are independent
 - The analysis variable must be continuous and must be normally distributed in each group
-- The variance in the two groups is similar (homogenous)
 
 The first two assumptions are determined by the study design. The two samples must be independent, i.e. if a person is in one group then they cannot be included in the other group, and the measurements within a sample must be independent, i.e. each person must be included in their group once only.
 
 The third assumption of normality is important although t-tests are robust to some degree of non-normality as long as there are no influential outliers and, more importantly, if the sample size is large. We examined how to assess normality in Module 2. If the data are not normally distributed, it may be possible to transform them using a mathematical function such as a logarithmic transformation. If not, then we may need to use non-parametric tests. This is examined in Module 9.
 
-The final assumption is homogeneity of variance between the groups. This can be verified by checking that the standard deviation (square root of the variance) of each group is similar. If the variances are different, then Welch's t-test, an alternative version of the t-test can be used.
+Traditionally, the variance of the analysis variable in each group was assumed to be equal. However, this assumption can be relaxed by using Welch's variation of the t-test. It has been recommended that this unequal-variances t-test be used in most, if not all situations [@west21; @delacre17; @ruxton06]
 
 ### Worked Example
 
@@ -70,7 +69,7 @@ Some preliminary descriptive statistics of the distribution of the variable of i
 ```{r fig-mod05-bwt-gender, echo=FALSE, out.width = "100%", fig.cap="Histograms and box plots of birth weight by gender"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-bwt-gender.png"))
 ```
-The plots show that the data are approximately normally distributed: the histograms are relatively bell shaped and symmetric, and the boxes are fairly symmetrical, there are no outliers, and the spread is similar in both groups as the similar length of the whiskers suggesting that the variance is homogenous.
+The plots show that the data are approximately normally distributed: the histograms are relatively bell shaped and symmetric, and the boxes are fairly symmetrical, there are no outliers, and the spread is similar in both groups as the similar length of the whiskers suggesting that the variance is equal between groups.
 
 We can also describe the data using summary statistics:
 
@@ -104,7 +103,7 @@ An independent samples t-test provides us with a t statistic from which we can c
 
 $$t = \frac{{\overline{x}}_{1} - {\overline{x}}_{2}}{SE({\overline{x}}_{1} - {\overline{x}}_{2})}$$
 
-with *n~1~ + n~2~* -- 2 degrees of freedom.
+with the standard error and degrees of freedom calculated from software. Note that by using Welch's t-test, the degrees of freedom will usually not be a whole number, and will appear with decimals.
 
 Looking at the formula for the t-statistic, we can see that the $t$ is an estimate of how different the mean values are compared to the variability of the difference in means. So $t$ will become larger as the difference in means increases with respect to the variability.
 
@@ -132,7 +131,7 @@ huxtable(df) |>
 
 Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference of weight between girls and boys lies between 0.02 and 0.31 kg. Note that this interval does not contain the null value of 0.
 
-Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.30 with 98 degrees of freedom, and yields a two-sided P value of 0.024, providing evidence of a difference in mean birthweight between sex.
+Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.30 with 93.5 degrees of freedom, and yields a two-sided P value of 0.023, providing evidence of a difference in mean birthweight between sex.
 
 ## Paired t-tests
 

@@ -104,7 +104,7 @@ The output above is easy for copying into a report. You could also submit the su
 
 ## Independent samples t-test
 
-To carry out an independent sample t-test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**. In the **ttest** dialog box, choose the **Two-sample using groups** button, then select `birthweight` as the **Variable** name and `gender` as the **Group** variable name as shown below. Because the variances of `birthweight` are similar for males and females, we can leave the **Unequal variances** box unchecked.
+To carry out an independent sample t-test, go to **Statistics > Summaries, tables, and tests > Classical tests of hypotheses > t test (mean-comparison test)**. In the **ttest** dialog box, choose the **Two-sample using groups** button, then select `birthweight` as the **Variable** name and `gender` as the **Group** variable name as shown below. Because we don't assume equal variances of `birthweight` for males and females, we tick the **Unequal variances** box.
 
 ```{r ttest-1, echo=FALSE, out.width = "66%",}
 knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-1.png"))
@@ -113,7 +113,7 @@ knitr::include_graphics(here::here("img", "mod05", "stata", "ttest-1.png"))
 Click **OK** or **Submit** to obtain the following output:
 
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-Two-sample t test with equal variances
+Two-sample t test with unequal variances
 ------------------------------------------------------------------------------
    Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
 ---------+--------------------------------------------------------------------
@@ -122,16 +122,16 @@ Two-sample t test with equal variances
 ---------+--------------------------------------------------------------------
 combined |     100     3.51435    .0366567    .3665666    3.441615    3.587085
 ---------+--------------------------------------------------------------------
-    diff |            .1660471    .0723027                .0225648    .3095293
+    diff |            .1660471     .072074                .0229333    .3091609
 ------------------------------------------------------------------------------
-    diff = mean(Female) - mean(Male)                              t =   2.2966
-Ho: diff = 0                                     degrees of freedom =       98
+    diff = mean(Female) - mean(Male)                              t =   2.3038
+Ho: diff = 0                     Satterthwaite's degrees of freedom =  93.5438
 
     Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
- Pr(T < t) = 0.9881         Pr(|T| > |t|) = 0.0238          Pr(T > t) = 0.0119
+ Pr(T < t) = 0.9883         Pr(|T| > |t|) = 0.0234          Pr(T > t) = 0.0117
 ```
 
-[Command: `ttest birthweight, by(gender)`]
+[Command: `ttest birthweight, by(gender) unequal`]
 
 ## Checking the assumptions for a Paired t-test
 

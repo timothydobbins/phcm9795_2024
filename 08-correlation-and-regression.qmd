@@ -11,9 +11,8 @@ By the end of this module you will be able to:
 -   Explore the association between two continuous variables using a scatter plot;
 -   Estimate and interpret correlation coefficients;
 -   Estimate and interpret parameters from a simple linear regression;
--   Decide whether a regression model is valid;
--   Test a hypothesis using regression coefficients;
--   Outline the concept of multiple regression and its role in investigative epidemiology.
+-   Assess the assumptions of simple linear regression;
+-   Test a hypothesis using regression coefficients.
 
 ## Optional readings {.unnumbered}
 
