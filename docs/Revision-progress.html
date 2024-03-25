@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Timothy Dobbins">
 
-<title>PHCM9795: Foundations of Biostatistics</title>
+<title>PHCM9795: Foundations of Biostatistics – revision-progress</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Revision-progress.html" rel="next">
+<link href="./06-proportions.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,12 +68,10 @@ ul.task-list li input[type="checkbox"] {
       }
 </style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -82,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Course introduction</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Revision-progress.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Revision-progress.html</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -92,35 +90,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">PHCM9795: Foundations of Biostatistics</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Timothy Dobbins </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">18 May, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -137,13 +107,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Revision-progress.html" class="sidebar-item-text sidebar-link">
+  <a href="./Revision-progress.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Revision-progress.html</span></span></a>
   </div>
 </li>
@@ -170,117 +140,128 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#course-introduction" id="toc-course-introduction" class="nav-link active" data-scroll-target="#course-introduction">Course introduction</a>
-  <ul class="collapse">
-  <li><a href="#course-information" id="toc-course-information" class="nav-link" data-scroll-target="#course-information">Course information</a></li>
-  <li><a href="#units-of-credit" id="toc-units-of-credit" class="nav-link" data-scroll-target="#units-of-credit">Units of credit</a></li>
-  <li><a href="#course-aim" id="toc-course-aim" class="nav-link" data-scroll-target="#course-aim">Course aim</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a>
-  <ul class="collapse">
-  <li><a href="#changelog" id="toc-changelog" class="nav-link" data-scroll-target="#changelog">Changelog</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th style="text-align: center;">Revise main notes</th>
+<th style="text-align: center;">Revise Stata notes</th>
+<th style="text-align: center;">Revise R notes</th>
+<th style="text-align: center;">Revise activities</th>
+<th style="text-align: center;">Revise solutions</th>
+<th style="text-align: center;">Review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 
-<section id="course-introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Course introduction</h1>
-<p>Welcome to PHCM9795 Foundations of Biostatistics.</p>
-<p>This introductory course in biostatistics aims to provide students with core biostatistical skills to analyse and present quantitative data from different study types. These are essential skills required in your degree and throughout your career.</p>
-<p>We hope you enjoy the course and will value your feedback and comment throughout the course.</p>
-<section id="course-information" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="course-information">Course information</h2>
-<p>Biostatistics is a foundational discipline needed for the analysis and interpretation of quantitative information and its application to population health policy and practice.</p>
-<p>This course is central to becoming a population health practitioner as the concepts and techniques developed in the course are fundamental to your studies and practice in population health. In this course you will develop an understanding of, and skills in, the core concepts of biostatistics that are necessary for analysis and interpretation of population health data and health literature.</p>
-<p>In designing this course, we provide a learning sequence that will allow you to obtain the required graduate capabilities identified for your program. This course is taught with an emphasis on formulating a hypothesis and quantifying the evidence in relation to a specific research question. You will have the opportunity to analyse data from different study types commonly seen in population health research.</p>
-<p>The course will allow those of you who have covered some of this material in your undergraduate and other professional education to consolidate your knowledge and skills. Students exposed to biostatistics for the first time may find the course challenging at times. Based on student feedback, the key to success in this course is to devote time to it every week. We recommend that you spend an average of 10-15 hours per week on the course, including the time spent reading the course notes and readings, listening to lectures, and working through learning activities and completing your assessments. Please use the resources provided to assist you, including online support.</p>
-</section>
-<section id="units-of-credit" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="units-of-credit">Units of credit</h2>
-<p>This course is a core course of the Master of Public Health, Master of Global Health and Master of Infectious Diseases Intelligence programs and associated dual degrees, comprising 6 units of credit towards the total required for completion of the study program. A value of 6 UOC requires a minimum of 150 hours work for the average student across the term.</p>
-</section>
-<section id="course-aim" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="course-aim">Course aim</h2>
-<p>This course aims to provide students with the core biostatistical skills to apply appropriate statistical techniques to analyse and present population health data.</p>
-</section>
-<section id="learning-outcomes" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
-<p>On successful completion of this course, you will be able to:</p>
-<ol type="1">
-<li>Summarise and visualise data using statistical software.</li>
-<li>Demonstrate an understanding of statistical inference by interpreting p-values and confidence intervals.</li>
-<li>Apply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.</li>
-<li>Determine the appropriate sample size when planning a research study.</li>
-<li>Present and interpret statistical findings appropriate for a population health audience.</li>
-</ol>
-<section id="changelog" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="changelog">Changelog</h3>
-<p><strong>2023-07-17</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Section 7.9: Corrected screenshots to test difference in paired proportions in Stata.</li>
-</ul>
-<p><strong>2023-07-13</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Section 7.13: tidied up the R function used to calculate the 95% confidence interval for the difference in paired proportions.</li>
-</ul>
-<p><strong>2023-07-12</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Worked Example 6.2: removed “This z-statistic does not meet or exceed the critical value of 1.96 for a two tailed test” and re-framed this in terms of interpreting the P-value as calculated from software.</li>
-<li>Worked Example 7.1: corrected column headings for Nausea and No nausea</li>
-</ul>
-<p><strong>2023-07-01</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Section 4.2: Fixed typo: “The particular test statistic differs depending on the type of data being <del>analyses</del> analysed”</li>
-<li>Section 4.4: Fixed typo: “This is the situation described in scenario (c) of <del>Figure</del> Figure 4.1.”</li>
-<li>Activity 5.2: Added “or R” to the instruction “Use Stata to conduct an appropriate statistical test”</li>
-<li>Activity 5.3: Added “or R” to the instruction “Use Stata to conduct an appropriate statistical test”</li>
-<li>Section 6.3: Fixed formula for testing one sample proportion to: “<span class="math inline">\(z = \frac{(p_{sample} - p_{population})}{\text{SE}(p_{population})}\)</span>”</li>
-<li>Activity 7.2: Added “or R” to the instruction “Using Stata, carry out the appropriate significance test”</li>
-</ul>
-<p><strong>2023-07-01</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Renamed “Readings” to “Optional readings”</li>
-<li>Module 4, Section 4.8: Corrected the sentence that describes Figure 4.4. “the shaded region for a one-tailed test would be <del>doubled</del> retained on one side of the distribution and eliminated from the other side of the distribution”.</li>
-<li>Module 9: Added titles to Tables 9.3 and 9.4.</li>
-<li>Module 9, Section 9.4: Corrected the level of evidence: “providing <del>strong</del> evidence of a difference in the median length of stay between the groups.”</li>
-<li>Module 9, Section 9.5.1. Corrected the text under Table 9.4: “The data shows … 10 people who have a <del>negative</del> positive difference.”</li>
-</ul>
-<p><strong>2023-06-13</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Module 3. Clarified Worked Example 3.1, and moved the example from Section 3.5.1 to Section 3.5.2.</li>
-<li>Section 3.6: Added Stata output for calculating a 95% confidence interval from individual data.</li>
-</ul>
-<p><strong>2023-06-01</strong></p>
-<p>[Changed]</p>
-<ul>
-<li>Section 1.14.3: RStudio preferences are now located at <strong>Edit &gt; Settings</strong> on MacOS, and <strong>Tools &gt; Global Options</strong> on Windows</li>
-<li>Section 1.14.7.2: Correct layout for commands to install packages (commands must be entered on separate lines)</li>
-<li>Section 1.15.2: Correct the name of the pbc data set to mod_01_pdc.rds</li>
-<li>Activity 2.3(b): Change the request to plot data on a Normal curve, not a standardised Normal curve</li>
-<li>Activity 5.3 and 5.4: added underscores to filenames</li>
-</ul>
 
-
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -518,10 +499,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course introduction</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Revision-progress.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Revision-progress.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-proportions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

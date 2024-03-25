@@ -255,6 +255,8 @@ The interpretation of an odds ratio is discussed in detail in PHCM9794: Foundati
 
 In some situations, related to how well controls are recruited into this study, the odds ratio is a close approximation of the relative risk. Therefore, you may see in some published papers of case control studies the OR interpreted as you would interpret a RR. This should be avoided in this course.
 
+More information about the problems of interpreting odds-ratios as relative risks has been presented by @deeks98 and @schmidt_kohlmann08.
+
 
 ### Worked Example 6.4
 
