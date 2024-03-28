@@ -62,7 +62,7 @@ The assumptions that must be met when using Pearson's chi-squared test are that:
 - at least 80% of the expected cell counts should exceed a value of five;
 - all expected cell counts should exceed a value of one.
 
-The first two assumptions are dictated by the study design. The last two assumptions relate to the numbers in the cells and should be explored when running the test. There should not be too many cells with low expected counts. Sometimes, the only way to avoid small cell counts is to recruit a much larger sample size. If small cell counts cannot be avoided, Fisher's exact test can be used instead. More information on Fisher's exact test can be found in Chapter 13 of An Introduction to Medical Statistics, @bland15.
+The first two assumptions are dictated by the study design. The last two assumptions relate to the numbers in the cells and should be explored when running the test. There should not be too many cells with low expected counts.
 
 ### Worked Example 7.1
 
@@ -91,6 +91,22 @@ For the data being considered from Worked Example 7.1 all cells have an expected
 The chi-squared statistic is calculated as 7.86 with 1 df, giving a P-value of 0.005. Combining these results with the estimated relative risk (from Module 6), we can state: 
 
 The proportion with nausea in those who received the active drug is 30%, compared to 8% in those who received the placebo drug. Nausea was more frequent in those who received the active drug (Relative Risk = 3.75, 95% CI: 1.34 to 10.51). There is strong evidence that the proportion with nausea differs between the two groups ($\chi ^2$ = 7.86 with 1 df, P=0.005).
+
+### Fisher's exact test
+
+If small expected cell counts are present, Fisher's exact test can be used instead. More information on Fisher's exact test can be found in Chapter 13 of An Introduction to Medical Statistics, @bland15, or Section 17.3 of Essential Medical Statistics, @kirkwood_sterne01. The computation of Fisher's exact test is complex, and best conducted by statistical software.
+
+A reasonable question could be posed: why not conduct Fisher's exact test by default? The answer to this is complex.
+
+Fisher's exact test has quite a restrictive assumption: we assume that the totals of the rows and columns are fixed before we conduct the study.
+
+From Worked Example 7.1, this would be saying that we knew we would end up with 50 people in the active treatment arm, and 50 people in the placebo. This seems reasonable, we can design our study to randomise equal groups. However, Fisher's exact test also assumes that we know we will obtain 19 people with nausea and 81 people without nausea. We cannot possibly know this before we do the study.
+
+In the case where we cannot assume that the totals of the rows and columns are fixed before we conduct the study, it can be shown that Fisher's exact test will be conservative (we will be less likely to reject the null hypothesis when it is false, or in other words, the P-value will be larger than it should be).
+
+While there are other tests that perform better than Fisher's exact test, most of the time we live with this conservative test when we have to (i.e. for small expected cell counts) because Fisher's exact test is so widely known.
+
+Pragmatically, we use the standard (Pearson) chi-square when we can, and Fisher's exact test only when we have small expected cell counts.
 
 ## Chi-squared tests for tables larger than 2-by-2
 

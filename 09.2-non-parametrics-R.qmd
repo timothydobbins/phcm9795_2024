@@ -6,6 +6,7 @@ You can calculate a new, transformed, variable using standard commands. For exam
 
 ```{r}
 library(jmv)
+library(ggformula)
 
 hospital <- readRDS("data/examples/mod09_infection.rds")
 
@@ -61,6 +62,10 @@ arthritis <- read.csv("data/examples/mod09_arthritis.csv")
 arthritis$difference = arthritis$drug_2 - arthritis$drug_1
 
 hist(arthritis$difference, xlab="Difference", main="Histogram of differences in pain scores")
+
+gf_histogram(~ difference, data=arthritis, xlab="Difference", title="Histogram of differences in pain scores",
+             boundary=0, binwidth = 2) +
+  gf_theme(theme_light())
 
 wilcox.test(arthritis$drug_1, arthritis$drug_2, 
             paired=TRUE)
