@@ -1,4 +1,4 @@
-# Sample size estimation
+# An introduction to sample size estimation
 
 ## Learning objectives {.unnumbered}
 

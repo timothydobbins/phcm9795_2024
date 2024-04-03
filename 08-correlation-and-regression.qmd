@@ -1,4 +1,4 @@
-# Correlation and linear regression
+# Correlation and simple linear regression
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(huxtable)
@@ -84,14 +84,14 @@ There are two types of correlation coefficients-- the correct one to use is dete
 #| tbl-cap: Correlation coefficients and their application
 
 df <- tibble::tribble(
-  ~`Correlation coefficient`, ~Application,
-  "Pearson’s correlation coefficient: r", "Both variables are continuous and a bivariate normal distribution can be assumed",
-  "Spearman’s rank correlation: rho", "Bivariate normality cannot be assumed. Also useful when at least one of the variables is ordinal"
-  )
+    ~`Correlation coefficient`, ~Application,
+    "Pearson’s correlation coefficient: r", "Both variables are continuous and a bivariate normal distribution can be assumed",
+    "Spearman’s rank correlation: rho", "Bivariate normality cannot be assumed. Also useful when at least one of the variables is ordinal"
+)
 
-huxtable(df) |> 
-  theme_article() |> 
-  set_width(0.95)
+huxtable(df) |>
+    theme_article() |>
+    set_width(0.95)
 ```
 
 Spearman's $\rho$ is calculated using the ranks of the data, rather than the actual values of the data. We will see further examples of such methods in Module 9, when we consider non-parametric tests, which are often based on ranks.
@@ -142,30 +142,30 @@ knitr::include_graphics(here::here("img", "mod08", "regression-line-parameters.p
 #| tbl-cap: Notation for linear regression equation
 
 if (knitr::is_latex_output()) {
-  df <- tibble::tribble(
-        ~Symbol,  ~Interpretation,
+    df <- tibble::tribble(
+        ~Symbol, ~Interpretation,
         "$y$", "The outcome variable",
         "$x$", "The explanatory variable",
         "$\\beta_0$", "Intercept of the regression line",
         "$\\beta_1$", "Slope of the regression line"
-        )
+    )
 
-knitr::kable(df, "latex", booktabs=TRUE, escape = F)
+    knitr::kable(df, "latex", booktabs = TRUE, escape = F)
 }
-  
+
 if (knitr::is_html_output()) {
-df <- tibble::tribble(
-        ~Symbol,  ~Interpretation,
+    df <- tibble::tribble(
+        ~Symbol, ~Interpretation,
         "\\(y \\)", "The outcome variable",
         "\\(x \\)", "The explanatory variable",
         "\\(\\beta_0\\)", "Intercept of the regression line",
         "\\(\\beta_1\\)", "Slope of the regression line"
-        )
+    )
 
-  huxtable(df) |> 
-  theme_article() |> 
-  set_width(0.8) |> 
-    set_escape_contents(TRUE)
+    huxtable(df) |>
+        theme_article() |>
+        set_width(0.8) |>
+        set_escape_contents(TRUE)
 }
 ```
 
@@ -210,12 +210,13 @@ This will give a t statistic which can be referred to a t distribution with n �
 #| tbl-cap: Estimated regression coefficients
 
 df <- tibble::tribble(
-        ~Term,  ~Estimate, ~`Standard error`, ~`t value`, ~`P value`, ~`95% Confidence interval`,
-       "Intercept", -18.87,   2.194, "t=-8.60, 118df", "<0.001", "-23.22 to -14.53",
-       "Height", 0.14, 0.013, "t=10.58, 118df", "<0.001", "0.11 to 0.17")
+    ~Term, ~Estimate, ~`Standard error`, ~`t value`, ~`P value`, ~`95% Confidence interval`,
+    "Intercept", -18.87, 2.194, "t=-8.60, 118df", "<0.001", "-23.22 to -14.53",
+    "Height", 0.14, 0.013, "t=10.58, 118df", "<0.001", "0.11 to 0.17"
+)
 
-huxtable(df) |> 
-  theme_article()
+huxtable(df) |>
+    theme_article()
 ```
 
 From this output, we see that the slope is estimated as 0.14 with an estimated intercept of -18.87. Therefore, the regression equation is estimated as:

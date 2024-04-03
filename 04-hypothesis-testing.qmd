@@ -2,7 +2,7 @@
 library(huxtable)
 ```
 
-# Hypothesis testing
+# An introduction to hypothesis testing
 
 ## Learning objectives {-}
 
@@ -64,16 +64,17 @@ Historically, a value of 0.05 has been used as a cut-point for finding evidence 
 #| tbl-cap: Interpretation of P-values
 
 tab4_1 <- tibble::tribble(
-  ~`Size of P-value`, ~`Strength of evidence`,
-  "<0.001",	"Very strong evidence",
-  "0.001 to <0.01",	"Strong evidence",
-  "0.01 to <0.05", "Evidence",
-  "0.05 to <0.1",	"Weak evidence",
-  "≥0.1", "Little or no evidence")
-  
+    ~`Size of P-value`, ~`Strength of evidence`,
+    "<0.001", "Very strong evidence",
+    "0.001 to <0.01", "Strong evidence",
+    "0.01 to <0.05", "Evidence",
+    "0.05 to <0.1", "Weak evidence",
+    "≥0.1", "Little or no evidence"
+)
+
 huxtable(tab4_1) |>
-  theme_article() |> 
-  set_width(0.8)
+    theme_article() |>
+    set_width(0.8)
 ```
 
 P-values are usually generated using statistical software although other methods such as statistical tables or Excel functions can be used to generate test statistics and determine the P-value. In traditional statistics, the probability level was described as a lower-case p but in many journals today, probability is commonly described by upper case P. Both have the same meaning. 
@@ -115,39 +116,39 @@ The error in falsely rejecting the null hypothesis when it is true (type I error
 #| tbl-cap: Comparison of study result with the truth
 
 if (knitr::is_html_output()) {
-  df <- tibble::tribble(
-    ~` `, ~Effect, ~`No effect`,
-    "Evidence", "Correct conclusion", "ɑ",
-    "No evidence", "β", "Correct conclusion"
-  )
-  
-  huxtable(df) |>
-    insert_row("Study result", "Truth", "", after=0) |> 
-    merge_cells(1, 2:3) |> 
-    theme_article() |> 
-    set_align(everywhere, 2:3, "center") |> 
-    set_width(0.8) |> 
-    set_bold(1, everywhere, TRUE) |> 
-    set_bold(2, everywhere, FALSE) |> 
-    set_escape_contents(everywhere, everywhere, FALSE)
+    df <- tibble::tribble(
+        ~` `, ~Effect, ~`No effect`,
+        "Evidence", "Correct conclusion", "ɑ",
+        "No evidence", "β", "Correct conclusion"
+    )
+
+    huxtable(df) |>
+        insert_row("Study result", "Truth", "", after = 0) |>
+        merge_cells(1, 2:3) |>
+        theme_article() |>
+        set_align(everywhere, 2:3, "center") |>
+        set_width(0.8) |>
+        set_bold(1, everywhere, TRUE) |>
+        set_bold(2, everywhere, FALSE) |>
+        set_escape_contents(everywhere, everywhere, FALSE)
 }
 
 if (knitr::is_latex_output()) {
-  df <- tibble::tribble(
-    ~` `, ~Effect, ~`No effect`,
-    "Evidence", "$\\checkmark$", "$\\alpha$",
-    "No evidence", "$\\beta$", "$\\checkmark$"
-  )
-  
-  huxtable(df) |>
-    insert_row("Study result", "Truth", "", after=0) |> 
-    merge_cells(1, 2:3) |> 
-    theme_article() |> 
-    set_align(everywhere, 2:3, "center") |> 
-    set_width(0.8) |> 
-    set_bold(1, everywhere, TRUE) |> 
-    set_bold(2, everywhere, FALSE) |> 
-    set_escape_contents(everywhere, everywhere, FALSE)
+    df <- tibble::tribble(
+        ~` `, ~Effect, ~`No effect`,
+        "Evidence", "$\\checkmark$", "$\\alpha$",
+        "No evidence", "$\\beta$", "$\\checkmark$"
+    )
+
+    huxtable(df) |>
+        insert_row("Study result", "Truth", "", after = 0) |>
+        merge_cells(1, 2:3) |>
+        theme_article() |>
+        set_align(everywhere, 2:3, "center") |>
+        set_width(0.8) |>
+        set_bold(1, everywhere, TRUE) |>
+        set_bold(2, everywhere, FALSE) |>
+        set_escape_contents(everywhere, everywhere, FALSE)
 }
 ```
 
@@ -170,48 +171,59 @@ library(ggplot2)
 library(dplyr)
 
 group4 <- data.frame(
-  group=4,
-  x = rnorm(65, mean=-1, sd=4))
+    group = 4,
+    x = rnorm(65, mean = -1, sd = 4)
+)
 
 group3 <- data.frame(
-  group=3,
-  x = rnorm(50, mean=1, sd=8))
+    group = 3,
+    x = rnorm(50, mean = 1, sd = 8)
+)
 
 group2 <- data.frame(
-  group=2,
-  x = rnorm(45, mean=2, sd=5.5))
+    group = 2,
+    x = rnorm(45, mean = 2, sd = 5.5)
+)
 
 group1 <- data.frame(
-  group=1,
-  x = rnorm(50, mean=4, sd=2))
+    group = 1,
+    x = rnorm(50, mean = 4, sd = 2)
+)
 
 df <- rbind(group1, group2, group3, group4)
 df$group <- factor(df$group)
 
-dfsumm <- df |> 
-  group_by(group) |> 
-  summarise(mean.x = mean(x, na.rm = TRUE),
-            sd.x = sd(x, na.rm = TRUE),
-            n.x = n()) |> 
-  mutate(se.x = sd.x / sqrt(n.x),
-         lower.ci.x = mean.x - qt(1 - (0.05 / 2), n.x - 1) * se.x,
-         upper.ci.x = mean.x + qt(1 - (0.05 / 2), n.x - 1) * se.x,
-         text = c("P<0.001; Very strong evidence",
-                  "P=0.01; Evidence",
-                  "P=0.4; No evidence",
-                  "P=0.08; Weak evidence"
-                  ))
+dfsumm <- df |>
+    group_by(group) |>
+    summarise(
+        mean.x = mean(x, na.rm = TRUE),
+        sd.x = sd(x, na.rm = TRUE),
+        n.x = n()
+    ) |>
+    mutate(
+        se.x = sd.x / sqrt(n.x),
+        lower.ci.x = mean.x - qt(1 - (0.05 / 2), n.x - 1) * se.x,
+        upper.ci.x = mean.x + qt(1 - (0.05 / 2), n.x - 1) * se.x,
+        text = c(
+            "P<0.001; Very strong evidence",
+            "P=0.01; Evidence",
+            "P=0.4; No evidence",
+            "P=0.08; Weak evidence"
+        )
+    )
 
-ggplot(data=dfsumm, aes(x=mean.x, y=group)) +
-  geom_errorbar(aes(xmin=lower.ci.x, xmax=upper.ci.x), width=0.1) +
-  geom_point() +
-  geom_text(aes(label = text), nudge_y = -0.1) +
-  xlim(c(-2, 6)) +
-  theme_minimal() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        axis.line.x=element_line(colour = "black"), axis.text.y=element_blank()) +
-  labs(x="Difference in means and 95% CI", y="") +
-  geom_vline(xintercept = 0, linetype=2)
+ggplot(data = dfsumm, aes(x = mean.x, y = group)) +
+    geom_errorbar(aes(xmin = lower.ci.x, xmax = upper.ci.x), width = 0.1) +
+    geom_point() +
+    geom_text(aes(label = text), nudge_y = -0.1) +
+    xlim(c(-2, 6)) +
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.line.x = element_line(colour = "black"), axis.text.y = element_blank()
+    ) +
+    labs(x = "Difference in means and 95% CI", y = "") +
+    geom_vline(xintercept = 0, linetype = 2)
 ```
 
 For relative risk and odds ratio measures, when the 95% CI includes the value of 1 it indicates that we can be 95% confident that the true RR or OR of the association between the study factor and outcome factor includes 1.0 in the source population. This indicates little evidence of an association between the study factor and the outcome factor, e.g. if the results of a study were reported as RR = 1.10 (95% CI 0.95 to 1.25). The P-value can be calculated to assess this (discussed in Module 7).
@@ -220,17 +232,17 @@ For relative risk and odds ratio measures, when the 95% CI includes the value of
 #| tbl-cap: Values indicating no effect
 
 df <- tibble::tribble(
- ~`Type of outcome`, ~`Measure of effect`, ~`Null value`,
- "Continuous", "Difference in means", 0L,
- "Binary", "Difference in proportions", 0L,
- "Binary", "Relative risk", 1L,
- "Binary", "Odds ratio", 1L
+    ~`Type of outcome`, ~`Measure of effect`, ~`Null value`,
+    "Continuous", "Difference in means", 0L,
+    "Binary", "Difference in proportions", 0L,
+    "Binary", "Relative risk", 1L,
+    "Binary", "Odds ratio", 1L
 )
 
 huxtable(df) |>
-add_rows(c(NA, NA, "(indicating no difference)"), after=1) |>
-  merge_repeated_rows(everywhere, 1) |> 
-  theme_article()
+    add_rows(c(NA, NA, "(indicating no difference)"), after = 1) |>
+    merge_repeated_rows(everywhere, 1) |>
+    theme_article()
 ```
 
 ## One-sample t-test
