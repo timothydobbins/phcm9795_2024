@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHCM9795: Foundations of Biostatistics - 2&nbsp; Comparing the means of two groups</title>
+<title>PHCM9795: Foundations of Biostatistics - 3&nbsp; Comparing the means of two groups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./06-proportions.html" rel="next">
-<link href="./Revision-progress.html" rel="prev">
+<link href="./02-probability.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <style>
@@ -134,10 +135,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-comparing-two-means.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-comparing-two-means.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -147,7 +148,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></h1>
+      <h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></h1>
                       </div>
   </div>
     
@@ -183,26 +184,38 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Revision-progress.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Revision-progress.html</span></span></a>
+  <a href="./_revision-progress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">_revision-progress.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-comparing-two-means.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Comparing the means of two groups</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-proportions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-testing-proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hypothesis testing for categorical data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-correlation-and-regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Correlation and simple linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -229,42 +242,42 @@ div.csl-indent {
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#optional-readings" id="toc-optional-readings" class="nav-link" data-scroll-target="#optional-readings">Optional readings</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2.1</span> Introduction</a></li>
-  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test"><span class="header-section-number">2.2</span> Independent samples t-test</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test"><span class="header-section-number">3.2</span> Independent samples t-test</a>
   <ul class="collapse">
-  <li><a href="#assumptions-for-an-independent-samples-t-test" id="toc-assumptions-for-an-independent-samples-t-test" class="nav-link" data-scroll-target="#assumptions-for-an-independent-samples-t-test"><span class="header-section-number">2.2.1</span> Assumptions for an independent samples t-test</a></li>
-  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="header-section-number">2.2.2</span> Worked Example</a></li>
-  <li><a href="#conducting-and-interpreting-an-independent-samples-t-test" id="toc-conducting-and-interpreting-an-independent-samples-t-test" class="nav-link" data-scroll-target="#conducting-and-interpreting-an-independent-samples-t-test"><span class="header-section-number">2.2.3</span> Conducting and interpreting an independent samples t-test</a></li>
+  <li><a href="#assumptions-for-an-independent-samples-t-test" id="toc-assumptions-for-an-independent-samples-t-test" class="nav-link" data-scroll-target="#assumptions-for-an-independent-samples-t-test"><span class="header-section-number">3.2.1</span> Assumptions for an independent samples t-test</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="header-section-number">3.2.2</span> Worked Example</a></li>
+  <li><a href="#conducting-and-interpreting-an-independent-samples-t-test" id="toc-conducting-and-interpreting-an-independent-samples-t-test" class="nav-link" data-scroll-target="#conducting-and-interpreting-an-independent-samples-t-test"><span class="header-section-number">3.2.3</span> Conducting and interpreting an independent samples t-test</a></li>
   </ul></li>
-  <li><a href="#paired-t-tests" id="toc-paired-t-tests" class="nav-link" data-scroll-target="#paired-t-tests"><span class="header-section-number">2.3</span> Paired t-tests</a>
+  <li><a href="#paired-t-tests" id="toc-paired-t-tests" class="nav-link" data-scroll-target="#paired-t-tests"><span class="header-section-number">3.3</span> Paired t-tests</a>
   <ul class="collapse">
-  <li><a href="#assumptions-for-a-paired-t-test" id="toc-assumptions-for-a-paired-t-test" class="nav-link" data-scroll-target="#assumptions-for-a-paired-t-test"><span class="header-section-number">2.3.1</span> Assumptions for a paired t-test</a></li>
-  <li><a href="#computing-a-paired-t-test" id="toc-computing-a-paired-t-test" class="nav-link" data-scroll-target="#computing-a-paired-t-test"><span class="header-section-number">2.3.2</span> Computing a paired t-test</a></li>
-  <li><a href="#worked-example-5.2" id="toc-worked-example-5.2" class="nav-link" data-scroll-target="#worked-example-5.2"><span class="header-section-number">2.3.3</span> Worked Example 5.2</a></li>
+  <li><a href="#assumptions-for-a-paired-t-test" id="toc-assumptions-for-a-paired-t-test" class="nav-link" data-scroll-target="#assumptions-for-a-paired-t-test"><span class="header-section-number">3.3.1</span> Assumptions for a paired t-test</a></li>
+  <li><a href="#computing-a-paired-t-test" id="toc-computing-a-paired-t-test" class="nav-link" data-scroll-target="#computing-a-paired-t-test"><span class="header-section-number">3.3.2</span> Computing a paired t-test</a></li>
+  <li><a href="#worked-example-5.2" id="toc-worked-example-5.2" class="nav-link" data-scroll-target="#worked-example-5.2"><span class="header-section-number">3.3.3</span> Worked Example 5.2</a></li>
   </ul></li>
   <li><a href="#stata-notes" id="toc-stata-notes" class="nav-link" data-scroll-target="#stata-notes">Stata notes</a>
   <ul class="collapse">
-  <li><a href="#setting-an-observation-to-missing" id="toc-setting-an-observation-to-missing" class="nav-link" data-scroll-target="#setting-an-observation-to-missing"><span class="header-section-number">2.4</span> Setting an observation to missing</a></li>
-  <li><a href="#checking-data-for-the-independent-samples-t-test" id="toc-checking-data-for-the-independent-samples-t-test" class="nav-link" data-scroll-target="#checking-data-for-the-independent-samples-t-test"><span class="header-section-number">2.5</span> Checking data for the independent samples t-test</a>
+  <li><a href="#setting-an-observation-to-missing" id="toc-setting-an-observation-to-missing" class="nav-link" data-scroll-target="#setting-an-observation-to-missing"><span class="header-section-number">3.4</span> Setting an observation to missing</a></li>
+  <li><a href="#checking-data-for-the-independent-samples-t-test" id="toc-checking-data-for-the-independent-samples-t-test" class="nav-link" data-scroll-target="#checking-data-for-the-independent-samples-t-test"><span class="header-section-number">3.5</span> Checking data for the independent samples t-test</a>
   <ul class="collapse">
-  <li><a href="#producing-histograms-and-boxplots-by-a-second-variable" id="toc-producing-histograms-and-boxplots-by-a-second-variable" class="nav-link" data-scroll-target="#producing-histograms-and-boxplots-by-a-second-variable"><span class="header-section-number">2.5.1</span> Producing histograms and boxplots by a second variable</a></li>
-  <li><a href="#producing-split-summary-statistics" id="toc-producing-split-summary-statistics" class="nav-link" data-scroll-target="#producing-split-summary-statistics"><span class="header-section-number">2.5.2</span> Producing split summary statistics</a></li>
+  <li><a href="#producing-histograms-and-boxplots-by-a-second-variable" id="toc-producing-histograms-and-boxplots-by-a-second-variable" class="nav-link" data-scroll-target="#producing-histograms-and-boxplots-by-a-second-variable"><span class="header-section-number">3.5.1</span> Producing histograms and boxplots by a second variable</a></li>
+  <li><a href="#producing-split-summary-statistics" id="toc-producing-split-summary-statistics" class="nav-link" data-scroll-target="#producing-split-summary-statistics"><span class="header-section-number">3.5.2</span> Producing split summary statistics</a></li>
   </ul></li>
-  <li><a href="#independent-samples-t-test-1" id="toc-independent-samples-t-test-1" class="nav-link" data-scroll-target="#independent-samples-t-test-1"><span class="header-section-number">2.6</span> Independent samples t-test</a></li>
-  <li><a href="#checking-the-assumptions-for-a-paired-t-test" id="toc-checking-the-assumptions-for-a-paired-t-test" class="nav-link" data-scroll-target="#checking-the-assumptions-for-a-paired-t-test"><span class="header-section-number">2.7</span> Checking the assumptions for a Paired t-test</a></li>
-  <li><a href="#paired-t-test" id="toc-paired-t-test" class="nav-link" data-scroll-target="#paired-t-test"><span class="header-section-number">2.8</span> Paired t-Test</a></li>
+  <li><a href="#independent-samples-t-test-1" id="toc-independent-samples-t-test-1" class="nav-link" data-scroll-target="#independent-samples-t-test-1"><span class="header-section-number">3.6</span> Independent samples t-test</a></li>
+  <li><a href="#checking-the-assumptions-for-a-paired-t-test" id="toc-checking-the-assumptions-for-a-paired-t-test" class="nav-link" data-scroll-target="#checking-the-assumptions-for-a-paired-t-test"><span class="header-section-number">3.7</span> Checking the assumptions for a Paired t-test</a></li>
+  <li><a href="#paired-t-test" id="toc-paired-t-test" class="nav-link" data-scroll-target="#paired-t-test"><span class="header-section-number">3.8</span> Paired t-Test</a></li>
   </ul></li>
   <li><a href="#r-notes" id="toc-r-notes" class="nav-link" data-scroll-target="#r-notes">R notes</a>
   <ul class="collapse">
-  <li><a href="#setting-an-observation-to-missing-1" id="toc-setting-an-observation-to-missing-1" class="nav-link" data-scroll-target="#setting-an-observation-to-missing-1"><span class="header-section-number">2.9</span> Setting an observation to missing</a></li>
-  <li><a href="#checking-data-for-the-independent-samples-t-test-1" id="toc-checking-data-for-the-independent-samples-t-test-1" class="nav-link" data-scroll-target="#checking-data-for-the-independent-samples-t-test-1"><span class="header-section-number">2.10</span> Checking data for the independent samples t-test</a>
+  <li><a href="#setting-an-observation-to-missing-1" id="toc-setting-an-observation-to-missing-1" class="nav-link" data-scroll-target="#setting-an-observation-to-missing-1"><span class="header-section-number">3.9</span> Setting an observation to missing</a></li>
+  <li><a href="#checking-data-for-the-independent-samples-t-test-1" id="toc-checking-data-for-the-independent-samples-t-test-1" class="nav-link" data-scroll-target="#checking-data-for-the-independent-samples-t-test-1"><span class="header-section-number">3.10</span> Checking data for the independent samples t-test</a>
   <ul class="collapse">
-  <li><a href="#producing-histograms-and-boxplots-by-a-second-variable-1" id="toc-producing-histograms-and-boxplots-by-a-second-variable-1" class="nav-link" data-scroll-target="#producing-histograms-and-boxplots-by-a-second-variable-1"><span class="header-section-number">2.10.1</span> Producing histograms and boxplots by a second variable</a></li>
-  <li><a href="#producing-split-summary-statistics-1" id="toc-producing-split-summary-statistics-1" class="nav-link" data-scroll-target="#producing-split-summary-statistics-1"><span class="header-section-number">2.10.2</span> Producing split summary statistics</a></li>
+  <li><a href="#producing-histograms-and-boxplots-by-a-second-variable-1" id="toc-producing-histograms-and-boxplots-by-a-second-variable-1" class="nav-link" data-scroll-target="#producing-histograms-and-boxplots-by-a-second-variable-1"><span class="header-section-number">3.10.1</span> Producing histograms and boxplots by a second variable</a></li>
+  <li><a href="#producing-split-summary-statistics-1" id="toc-producing-split-summary-statistics-1" class="nav-link" data-scroll-target="#producing-split-summary-statistics-1"><span class="header-section-number">3.10.2</span> Producing split summary statistics</a></li>
   </ul></li>
-  <li><a href="#independent-samples-t-test-2" id="toc-independent-samples-t-test-2" class="nav-link" data-scroll-target="#independent-samples-t-test-2"><span class="header-section-number">2.11</span> Independent samples t-test</a></li>
-  <li><a href="#checking-the-assumptions-for-a-paired-t-test-1" id="toc-checking-the-assumptions-for-a-paired-t-test-1" class="nav-link" data-scroll-target="#checking-the-assumptions-for-a-paired-t-test-1"><span class="header-section-number">2.12</span> Checking the assumptions for a Paired t-test</a></li>
-  <li><a href="#paired-t-test-1" id="toc-paired-t-test-1" class="nav-link" data-scroll-target="#paired-t-test-1"><span class="header-section-number">2.13</span> Paired t-Test</a></li>
+  <li><a href="#independent-samples-t-test-2" id="toc-independent-samples-t-test-2" class="nav-link" data-scroll-target="#independent-samples-t-test-2"><span class="header-section-number">3.11</span> Independent samples t-test</a></li>
+  <li><a href="#checking-the-assumptions-for-a-paired-t-test-1" id="toc-checking-the-assumptions-for-a-paired-t-test-1" class="nav-link" data-scroll-target="#checking-the-assumptions-for-a-paired-t-test-1"><span class="header-section-number">3.12</span> Checking the assumptions for a Paired t-test</a></li>
+  <li><a href="#paired-t-test-1" id="toc-paired-t-test-1" class="nav-link" data-scroll-target="#paired-t-test-1"><span class="header-section-number">3.13</span> Paired t-Test</a></li>
   </ul></li>
   <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a>
   <ul class="collapse">
@@ -301,8 +314,8 @@ div.csl-indent {
 <p><span class="citation" data-cites="bland15">Bland (<a href="references.html#ref-bland15" role="doc-biblioref">2015</a>)</span>; Section 10.3. <a href="http://er1.library.unsw.edu.au/er/cgi-bin/eraccess.cgi?url=https://ebookcentral.proquest.com/lib/unsw/detail.action?docID=5891730">[UNSW Library Link]</a></p>
 <p><span class="citation" data-cites="acock10">Acock (<a href="references.html#ref-acock10" role="doc-biblioref">2010</a>)</span>; Section 7.7, 7.8.</p>
 </section>
-<section id="introduction" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">2.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
 <p>In Module 4, a one-sample t-test was used for comparing a single mean to a hypothesised value. In health research, we often want to compare the means between two groups. For example, in an observational study, we may want to compare cholesterol levels in people who exercise regularly to the levels in people who do not exercise regularly. In a clinical trial, we may want to compare cholesterol levels in people who have been randomised to a dietary modification or to usual care. In this module, we show how to compare the means of two groups where the analysis variable is normally distributed.</p>
 <p>From the decision tree presented in the Appendix, we can see that if we have a continuous outcome measure and two categorical groups that are not related, i.e.&nbsp;a binary exposure measurement, the test for such data is an independent samples t-test. The test is also sometimes called a 2-sample t-test.</p>
 <p>In research, data are often ‘paired’ or ‘matched’, that is the two data points are related to one another. This occurs when measurements are taken:</p>
@@ -315,14 +328,14 @@ div.csl-indent {
 </ul>
 <p>An independent samples t-test cannot be used for analysing paired or matched data because the assumption that the two groups are independent is violated. Treating paired or matched measurements as independent samples would artificially inflate the sample size and lead to inaccurate P values. When the data are related in a paired or matched way and the outcome is continuous, a paired t-test is the appropriate statistic to use if the data are normally distributed.</p>
 </section>
-<section id="independent-samples-t-test" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="independent-samples-t-test"><span class="header-section-number">2.2</span> Independent samples t-test</h2>
+<section id="independent-samples-t-test" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="independent-samples-t-test"><span class="header-section-number">3.2</span> Independent samples t-test</h2>
 <p>An independent samples t-test is a parametric test that is used to assess whether the mean values of two groups are different from one another. Thus, the test is used to assess whether two mean values are similar enough to have come from the same population or whether the difference between them is so large that the two groups can be considered to have come from separate populations with different characteristics.</p>
 <p>The null hypothesis is that the mean values of the two groups are not different, that is:</p>
 <p>H<sub>0</sub>: (<span class="math inline">\(\mu_1 - \mu_2\)</span>) = 0</p>
 <p>Rejecting the null hypothesis using an independent samples t-test indicates that the difference between the means of the two groups is large in relation to the variability in the samples and is unlikely to be due to chance or to sampling variation.</p>
-<section id="assumptions-for-an-independent-samples-t-test" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="assumptions-for-an-independent-samples-t-test"><span class="header-section-number">2.2.1</span> Assumptions for an independent samples t-test</h3>
+<section id="assumptions-for-an-independent-samples-t-test" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="assumptions-for-an-independent-samples-t-test"><span class="header-section-number">3.2.1</span> Assumptions for an independent samples t-test</h3>
 <p>The assumptions that must be met before an independent samples t-test can be used are:</p>
 <ul>
 <li>The two groups are independent</li>
@@ -331,18 +344,18 @@ div.csl-indent {
 </ul>
 <p>The first two assumptions are determined by the study design. The two samples must be independent, i.e.&nbsp;if a person is in one group then they cannot be included in the other group, and the measurements within a sample must be independent, i.e.&nbsp;each person must be included in their group once only.</p>
 <p>The third assumption of normality is important although t-tests are robust to some degree of non-normality as long as there are no influential outliers and, more importantly, if the sample size is large. We examined how to assess normality in Module 2. If the data are not normally distributed, it may be possible to transform them using a mathematical function such as a logarithmic transformation. If not, then we may need to use non-parametric tests. This is examined in Module 9.</p>
-<p>Traditionally, the variance of the analysis variable in each group was assumed to be equal. However, this assumption can be relaxed by using Welch’s variation of the t-test. It has been recommended that this unequal-variances t-test be used in most, if not all situations <span class="citation" data-cites="west21 delacre17 ruxton06">(<a href="references.html#ref-west21" role="doc-biblioref">West 2021</a>; <a href="references.html#ref-delacre17" role="doc-biblioref"><strong>delacre17?</strong></a>; <a href="references.html#ref-ruxton06" role="doc-biblioref">Ruxton 2006</a>)</span></p>
+<p>Traditionally, the variance of the analysis variable in each group was assumed to be equal. However, this assumption can be relaxed by using Welch’s variation of the t-test. It has been recommended that this unequal-variances t-test be used in most, if not all situations <span class="citation" data-cites="west21 delacre_etal17 ruxton06">(<a href="references.html#ref-west21" role="doc-biblioref">West 2021</a>; <a href="references.html#ref-delacre_etal17" role="doc-biblioref">Delacre, Lakens, and Leys 2017</a>; <a href="references.html#ref-ruxton06" role="doc-biblioref">Ruxton 2006</a>)</span>.</p>
 </section>
-<section id="worked-example" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">2.2.2</span> Worked Example</h3>
+<section id="worked-example" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">3.2.2</span> Worked Example</h3>
 <p>In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.</p>
-<p>Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using <strong>Graphics &gt; Box plot</strong> is shown in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>2.1</span></a>. The datasets <code>mod05_birthweight.dta</code> and <code>mod05_birthweight.rds</code> are available on Moodle.</p>
+<p>Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using <strong>Graphics &gt; Box plot</strong> is shown in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>3.1</span></a>. The datasets <code>mod05_birthweight.dta</code> and <code>mod05_birthweight.rds</code> are available on Moodle.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mod05-bwt-gender" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/mod05/mod05-bwt-gender.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Histograms and box plots of birth weight by gender</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;3.1: Histograms and box plots of birth weight by gender</figcaption>
 </figure>
 </div>
 </div>
@@ -352,104 +365,67 @@ div.csl-indent {
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-5-1" class="anchored">
-<table id="tab:tbl-5-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;2.1: Summary of birthweight by gender</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;"><p><strong>Characteristic</strong></p></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><p><strong>Female</strong></p></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;"><p><strong>Male</strong></p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Birthweight</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">N</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">56</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">44</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Mean (SD)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.59 (0.36)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.42 (0.35)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Median (IQR)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.53 (3.33, 3.87)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.43 (3.16, 3.63)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Range</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2.95, 4.25</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">2.75, 4.10</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-5-1"><caption>Table&nbsp;3.1:  <p>Summary of birthweight by gender</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;"><p><strong>Characteristic</strong></p>
+</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><p><strong>Female</strong></p>
+</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;"><p><strong>Male</strong></p>
+</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Birthweight</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;"></td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">N</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">56</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">44</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Mean (SD)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.59 (0.36)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.42 (0.35)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Median (IQR)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.53 (3.33, 3.87)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.43 (3.16, 3.63)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Range</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2.95, 4.25</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">2.75, 4.10</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>The table shows that girls have a mean weight of 3.59 kg (SD 0.36) and boys have a mean weight of 3.42 kg (SD 0.35) with females being heavier than males. The variabilities of birth weight, as indicated by the standard deviations, are similar.</p>
 </section>
-<section id="conducting-and-interpreting-an-independent-samples-t-test" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="conducting-and-interpreting-an-independent-samples-t-test"><span class="header-section-number">2.2.3</span> Conducting and interpreting an independent samples t-test</h3>
+<section id="conducting-and-interpreting-an-independent-samples-t-test" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="conducting-and-interpreting-an-independent-samples-t-test"><span class="header-section-number">3.2.3</span> Conducting and interpreting an independent samples t-test</h3>
 <p>An independent samples t-test provides us with a t statistic from which we can compute a P value. The computation of the t statistic is as follows:</p>
 <p><span class="math display">\[t = \frac{{\overline{x}}_{1} - {\overline{x}}_{2}}{SE({\overline{x}}_{1} - {\overline{x}}_{2})}\]</span></p>
 <p>with the standard error and degrees of freedom calculated from software. Note that by using Welch’s t-test, the degrees of freedom will usually not be a whole number, and will appear with decimals.</p>
 <p>Looking at the formula for the t-statistic, we can see that the <span class="math inline">\(t\)</span> is an estimate of how different the mean values are compared to the variability of the difference in means. So <span class="math inline">\(t\)</span> will become larger as the difference in means increases with respect to the variability.</p>
 <p>Statistical software will calculate both the t and P values. If the t-value is large, the P value will be small, providing evidence against the null hypothesis of no difference between the groups.</p>
-<p><a href="#tbl-ind-t">Table&nbsp;<span>2.2</span></a> summarises the results of an independent samples t-test using <code>mod05_birthweight.dta</code> or <code>mod05_birthweight.rds</code>. The process of conducting the t-test is summarised for Stata and R in the following sections.</p>
+<p><a href="#tbl-ind-t">Table&nbsp;<span>3.2</span></a> summarises the results of an independent samples t-test using <code>mod05_birthweight.dta</code> or <code>mod05_birthweight.rds</code>. The process of conducting the t-test is summarised for Stata and R in the following sections.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-ind-t" class="anchored">
-<table id="tab:tbl-ind-t" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;2.2: Birthweight (kg) by sex</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Sex</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">n</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Mean (SE)</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence Interval</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Female</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">56</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.59 (0.049)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.49 to 3.68</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Male</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">44</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.42 (0.053)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.31 to 3.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Difference</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.17 (0.072)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">0.02 to 0.31</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-ind-t"><caption>Table&nbsp;3.2:  <p>Birthweight (kg) by sex</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Sex</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">n</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Mean (SE)</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence Interval</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Female</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">56</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.59 (0.049)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.49 to 3.68</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Male</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">44</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.42 (0.053)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">3.31 to 3.53</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Difference</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.17 (0.072)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">0.02 to 0.31</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>Here we see that girls are heavier than boys, and the mean difference in weights between the genders is 0.17 kg (95% CI 0.02, 0.31). We are 95% confident that the true mean difference of weight between girls and boys lies between 0.02 and 0.31 kg. Note that this interval does not contain the null value of 0.</p>
 <p>Here we are testing the null hypothesis of no difference in mean birthweights between females and males: a two-sided test. The t-value is calculated as 2.30 with 93.5 degrees of freedom, and yields a two-sided P value of 0.023, providing evidence of a difference in mean birthweight between sex.</p>
 </section>
 </section>
-<section id="paired-t-tests" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="paired-t-tests"><span class="header-section-number">2.3</span> Paired t-tests</h2>
+<section id="paired-t-tests" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="paired-t-tests"><span class="header-section-number">3.3</span> Paired t-tests</h2>
 <p>If the outcome of interest is the difference in the continuously outcome measurement between each pair of observations, a paired t-test is used. In effect, a paired t-test is used to assess whether the mean of the differences between the two related measurements is significantly different from zero. In this sense, a paired t-test is very closely aligned with a one sample t-test.</p>
 <p>When using a paired t-test, the variation <em>between the pairs</em> of measurements is the most important statistic. The variation between the participants is of little interest.</p>
 <p>For related measurements, the data for each pair of values must be entered on the same row of the spreadsheet. Thus, the number of rows in the data sheet is the number of pairs of observations. Thus, the effective sample size is the total number of pairs and not the total number of measurements.</p>
-<section id="assumptions-for-a-paired-t-test" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="assumptions-for-a-paired-t-test"><span class="header-section-number">2.3.1</span> Assumptions for a paired t-test</h3>
+<section id="assumptions-for-a-paired-t-test" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="assumptions-for-a-paired-t-test"><span class="header-section-number">3.3.1</span> Assumptions for a paired t-test</h3>
 <p>The assumptions for a paired t-test are:</p>
 <ul>
 <li>the outcome variable is continuous</li>
@@ -457,8 +433,8 @@ div.csl-indent {
 </ul>
 <p>For a paired samples t-test, it is important to test whether the <em>differences</em> between the two measurements are normally distributed. If the assumptions for a paired t-test cannot be met, a non-parametric equivalent is a more appropriate test to use (Module 9).</p>
 </section>
-<section id="computing-a-paired-t-test" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="computing-a-paired-t-test"><span class="header-section-number">2.3.2</span> Computing a paired t-test</h3>
+<section id="computing-a-paired-t-test" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="computing-a-paired-t-test"><span class="header-section-number">3.3.2</span> Computing a paired t-test</h3>
 <p>The null hypothesis for using a paired t-test is as follows:</p>
 <p>H<sub>0</sub>: Mean (Measurement1 – Measurement2) = 0</p>
 <p>To compute a t-value, the size of the mean difference between the two measurements is compared to the standard error of the paired differences, i.e.</p>
@@ -466,56 +442,37 @@ div.csl-indent {
 <p>with <em>n</em>–1 degrees of freedom, where <em>n</em> is the number of pairs.</p>
 <p>Because the standard error becomes smaller as the sample size becomes larger, the t-value increases as the sample size increases for the same mean difference.</p>
 </section>
-<section id="worked-example-5.2" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="worked-example-5.2"><span class="header-section-number">2.3.3</span> Worked Example 5.2</h3>
+<section id="worked-example-5.2" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="worked-example-5.2"><span class="header-section-number">3.3.3</span> Worked Example 5.2</h3>
 <p>A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.</p>
-<p>The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the <code>generate</code> command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>2.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
+<p>The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the <code>generate</code> command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>3.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mod05-sbpdiff" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/mod05/mod05-sbpdiff.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: Distribution of differences in ankle SBP between two sites of 107 participants</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;3.2: Distribution of differences in ankle SBP between two sites of 107 participants</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The paired t-test can be performed using statistical software, with a summary of the results presented in <a href="#tbl-paired-t">Table&nbsp;<span>2.3</span></a>. We can see that the mean SBP is very similar in the two sites.</p>
+<p>The paired t-test can be performed using statistical software, with a summary of the results presented in <a href="#tbl-paired-t">Table&nbsp;<span>3.3</span></a>. We can see that the mean SBP is very similar in the two sites.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-paired-t" class="anchored">
-<table id="tab:tbl-paired-t" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;2.3: Systolic blood pressure (mmHg) measured at two sites on the ankle</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Site</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">n</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Mean (SE)</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence Interval</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Dorsalis pedis</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">116.7 (3.46)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(109.9 to 123.6)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Tibialis posterior</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">118.0 (3.43)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(111.2 to 124.8)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Difference</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-1.3 (1.31)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(-3.9 to 1.3)</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-paired-t"><caption>Table&nbsp;3.3:  <p>Systolic blood pressure (mmHg) measured at two sites on the ankle</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Site</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">n</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Mean (SE)</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">95% Confidence Interval</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Dorsalis pedis</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">116.7 (3.46)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(109.9 to 123.6)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Tibialis posterior</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">118.0 (3.43)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(111.2 to 124.8)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Difference</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">107</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-1.3 (1.31)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">(-3.9 to 1.3)</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>The t-value is calculated as −0.96 with 106 degrees of freedom, providing a two-sided P-value of 0.34. Thus these data provide no evidence of a difference in systolic blood pressure between the two sites.</p>
@@ -524,15 +481,15 @@ div.csl-indent {
 </section>
 <section id="stata-notes" class="level1 unnumbered">
 <h1 class="unnumbered">Stata notes</h1>
-<section id="setting-an-observation-to-missing" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="setting-an-observation-to-missing"><span class="header-section-number">2.4</span> Setting an observation to missing</h2>
+<section id="setting-an-observation-to-missing" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="setting-an-observation-to-missing"><span class="header-section-number">3.4</span> Setting an observation to missing</h2>
 <p>Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor (make sure you are in Edit mode). Click the cell containing the data to be set to missing, press the <strong>Delete</strong> key, and the press <strong>Enter</strong>.</p>
 </section>
-<section id="checking-data-for-the-independent-samples-t-test" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="checking-data-for-the-independent-samples-t-test"><span class="header-section-number">2.5</span> Checking data for the independent samples t-test</h2>
-<section id="producing-histograms-and-boxplots-by-a-second-variable" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="producing-histograms-and-boxplots-by-a-second-variable"><span class="header-section-number">2.5.1</span> Producing histograms and boxplots by a second variable</h3>
-<p>To obtain the histograms in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>2.1</span></a> using the <code>mod05_birthweight.dta</code> data, go to <strong>Graphics &gt; Histogram</strong>. Select <code>birthweight</code> as the <strong>Variable</strong> in the <strong>Main</strong> tab. Next go to the <strong>By</strong> tab, tick <strong>Draw subgraphs for unique values of variable</strong> and select <code>gender</code> as the <strong>variable</strong> as shown below:</p>
+<section id="checking-data-for-the-independent-samples-t-test" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="checking-data-for-the-independent-samples-t-test"><span class="header-section-number">3.5</span> Checking data for the independent samples t-test</h2>
+<section id="producing-histograms-and-boxplots-by-a-second-variable" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="producing-histograms-and-boxplots-by-a-second-variable"><span class="header-section-number">3.5.1</span> Producing histograms and boxplots by a second variable</h3>
+<p>To obtain the histograms in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>3.1</span></a> using the <code>mod05_birthweight.dta</code> data, go to <strong>Graphics &gt; Histogram</strong>. Select <code>birthweight</code> as the <strong>Variable</strong> in the <strong>Main</strong> tab. Next go to the <strong>By</strong> tab, tick <strong>Draw subgraphs for unique values of variable</strong> and select <code>gender</code> as the <strong>variable</strong> as shown below:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mod05/stata/hist-by-1.png" class="img-fluid" style="width:66.0%"></p>
@@ -544,7 +501,7 @@ div.csl-indent {
 <p><img src="img/mod05/stata/hist-by-2.png" class="img-fluid" style="width:66.0%"></p>
 </div>
 </div>
-<p>A similar process is used to obtain the boxplots shown in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>2.1</span></a>: go to <strong>Graphics &gt; Box plot</strong>. In the <strong>graph box – Box plots</strong> dialog box, select <code>birthweight</code> as the <strong>Variable</strong> in the <strong>Main</strong> tab. Next go to the <strong>Categories</strong> tab, tick <strong>Group 1</strong> and select <code>gender</code> as the <strong>Grouping variable</strong> as shown below.</p>
+<p>A similar process is used to obtain the boxplots shown in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>3.1</span></a>: go to <strong>Graphics &gt; Box plot</strong>. In the <strong>graph box – Box plots</strong> dialog box, select <code>birthweight</code> as the <strong>Variable</strong> in the <strong>Main</strong> tab. Next go to the <strong>Categories</strong> tab, tick <strong>Group 1</strong> and select <code>gender</code> as the <strong>Grouping variable</strong> as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mod05/stata/box-by-1.png" class="img-fluid" style="width:66.0%"></p>
@@ -553,8 +510,8 @@ div.csl-indent {
 <p>Click <strong>OK</strong> or <strong>Submit</strong> to produce the box plot.</p>
 <p>[Command: <code>graph box birthweight, over(gender)</code>]</p>
 </section>
-<section id="producing-split-summary-statistics" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="producing-split-summary-statistics"><span class="header-section-number">2.5.2</span> Producing split summary statistics</h3>
+<section id="producing-split-summary-statistics" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="producing-split-summary-statistics"><span class="header-section-number">3.5.2</span> Producing split summary statistics</h3>
 <p>To produce summary statistics for a continuous variable, split by a second binary categorical variable, as in Worked Example 5.1 using <code>mod05_birthweight.dta</code>, go to <strong>Statistics &gt; Summaries, tables, and tests &gt; Summary and descriptive statistics &gt; Summary statistics</strong> . In the <strong>summarize</strong> dialog box, select <code>birthweight</code> as the <strong>Variable</strong> in the <strong>Main</strong> tab of the dialog box. Next go to the <strong>by/if/in</strong> tab, tick <strong>Repeat command by groups</strong> and select <code>gender</code> as the <strong>Variable that define groups</strong> as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -623,8 +580,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="independent-samples-t-test-1" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="independent-samples-t-test-1"><span class="header-section-number">2.6</span> Independent samples t-test</h2>
+<section id="independent-samples-t-test-1" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="independent-samples-t-test-1"><span class="header-section-number">3.6</span> Independent samples t-test</h2>
 <p>To carry out an independent sample t-test, go to <strong>Statistics &gt; Summaries, tables, and tests &gt; Classical tests of hypotheses &gt; t test (mean-comparison test)</strong>. In the <strong>ttest</strong> dialog box, choose the <strong>Two-sample using groups</strong> button, then select <code>birthweight</code> as the <strong>Variable</strong> name and <code>gender</code> as the <strong>Group</strong> variable name as shown below. Because we don’t assume equal variances of <code>birthweight</code> for males and females, we tick the <strong>Unequal variances</strong> box.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -652,8 +609,8 @@ div.csl-indent {
 </div>
 <p>[Command: <code>ttest birthweight, by(gender) unequal</code>]</p>
 </section>
-<section id="checking-the-assumptions-for-a-paired-t-test" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test"><span class="header-section-number">2.7</span> Checking the assumptions for a Paired t-test</h2>
+<section id="checking-the-assumptions-for-a-paired-t-test" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test"><span class="header-section-number">3.7</span> Checking the assumptions for a Paired t-test</h2>
 <p>Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset <code>mod05_ankle_bp.xls</code> to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences.</p>
 <p>Go to <strong>Data &gt; Create new variable</strong>.</p>
 <p>In the <strong>generate – Create a new variable</strong> dialog box, assign a name (e.g.&nbsp;<code>difference</code>) to your new variable in the <strong>Variable name</strong> box. We want to compute difference as sbp_dp − sbp_tp, so we enter this in the <strong>Specify a value or an expression</strong> box as shown below.</p>
@@ -665,7 +622,7 @@ div.csl-indent {
 <p>Click <strong>Submit</strong> or <strong>OK</strong>.</p>
 <p>[Command: <code>generate difference = sbp_dp-sbp_tp</code>]</p>
 <p>Check that the new variable appears in your Data Editor window.</p>
-<p>Create a histogram with a normal curve under <strong>Graphics &gt; Histogram</strong>, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>2.2</span></a> was defined to have a lower limit of -40 and a bin width of 10. We have also requested a Normal curve be plotted in the <strong>Density plots</strong> tab.</p>
+<p>Create a histogram with a normal curve under <strong>Graphics &gt; Histogram</strong>, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>3.2</span></a> was defined to have a lower limit of -40 and a bin width of 10. We have also requested a Normal curve be plotted in the <strong>Density plots</strong> tab.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mod05/stata/ttest-3.png" class="img-fluid" style="width:66.0%"></p>
@@ -673,8 +630,8 @@ div.csl-indent {
 </div>
 <p>[Command: <code>histogram difference, width(10) start(-40) frequency normal</code>]</p>
 </section>
-<section id="paired-t-test" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="paired-t-test"><span class="header-section-number">2.8</span> Paired t-Test</h2>
+<section id="paired-t-test" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="paired-t-test"><span class="header-section-number">3.8</span> Paired t-Test</h2>
 <p>To perform a paired t-test we will use the dataset <code>mod05_ankle_bp.xls</code>. For a paired t-test, data must be organised into two variables (i.e.&nbsp;two columns). Go to <strong>Statistics &gt; Summaries, tables, and tests &gt; Classical tests of hypotheses &gt; t test (mean-comparison test)</strong> as you had for the Independent samples t-test. In the <strong>ttest</strong> dialog box, choose the <strong>Paired</strong> button then Select <code>sbp_dp</code> from the dropdown list under <strong>First variable</strong> and select <code>sbp_tp</code> from the dropdown list under <strong>Second variable</strong>. The dialog box will look like:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -704,8 +661,8 @@ div.csl-indent {
 </section>
 <section id="r-notes" class="level1 unnumbered">
 <h1 class="unnumbered">R notes</h1>
-<section id="setting-an-observation-to-missing-1" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="setting-an-observation-to-missing-1"><span class="header-section-number">2.9</span> Setting an observation to missing</h2>
+<section id="setting-an-observation-to-missing-1" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="setting-an-observation-to-missing-1"><span class="header-section-number">3.9</span> Setting an observation to missing</h2>
 <p>Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor. While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.</p>
 <p>A missing value in R is denoted <code>NA</code>, and this is consistent for any variable type: continuous, string (i.e.&nbsp;character) and even a factor.</p>
 <p>Recall the <code>weights</code> data used in Module 2. In viewing a boxplot of <code>weight</code>, we saw an obvious outlier of 700.2kg for ID 58:</p>
@@ -720,19 +677,13 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(sample, weight<span class="sc">&gt;</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table id="tab:unnamed-chunk-8" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">id</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">58</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">700</td>
-</tr>
-</tbody>
-</table>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  ">
+<colgroup><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">id</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">58</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">700</td></tr>
+</tbody></table>
 
 </div>
 </div>
@@ -745,21 +696,13 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(sample, sample<span class="sc">$</span>id<span class="sc">==</span><span class="dv">58</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table id="tab:unnamed-chunk-10" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">id</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight</td>
-<td data-quarto-table-cell-role="th" style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight_clean</td>
-</tr>
-<tr class="even">
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">58</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">700</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;"></td>
-</tr>
-</tbody>
-</table>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  ">
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">id</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">weight_clean</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">58</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">700</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;"></td></tr>
+</tbody></table>
 
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>sample, <span class="at">vars=</span>weight_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -787,10 +730,10 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="checking-data-for-the-independent-samples-t-test-1" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="checking-data-for-the-independent-samples-t-test-1"><span class="header-section-number">2.10</span> Checking data for the independent samples t-test</h2>
-<section id="producing-histograms-and-boxplots-by-a-second-variable-1" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="producing-histograms-and-boxplots-by-a-second-variable-1"><span class="header-section-number">2.10.1</span> Producing histograms and boxplots by a second variable</h3>
+<section id="checking-data-for-the-independent-samples-t-test-1" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="checking-data-for-the-independent-samples-t-test-1"><span class="header-section-number">3.10</span> Checking data for the independent samples t-test</h2>
+<section id="producing-histograms-and-boxplots-by-a-second-variable-1" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="producing-histograms-and-boxplots-by-a-second-variable-1"><span class="header-section-number">3.10.1</span> Producing histograms and boxplots by a second variable</h3>
 <p>We have seen how to create histograms and boxplots separated by a second variable in Module 2 (REF). We will demonstrate using the birthweight data in <code>mod05_birthweight.rds</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
@@ -845,18 +788,6 @@ Attaching package: 'ggplot2'</code></pre>
     theme_grey</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: ggstance</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggstance'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:ggplot2':
-
-    geom_errorbarh, GeomErrorbarh</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: scales</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -877,36 +808,36 @@ New to ggformula?  Try the tutorials:
     learnr::run_tutorial("introduction", package = "ggformula")
     learnr::run_tutorial("refining", package = "ggformula")</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight <span class="sc">|</span> gender, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight <span class="sc">|</span> gender, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> ., <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> ., <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> . <span class="sc">|</span> gender, <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> . <span class="sc">|</span> gender, <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>When we are done plotting multiple graphs, we can reset the plot window by submitting <code>par(mfrow=c(1,1))</code>.</p>
 </section>
-<section id="producing-split-summary-statistics-1" class="level3" data-number="2.10.2">
-<h3 data-number="2.10.2" class="anchored" data-anchor-id="producing-split-summary-statistics-1"><span class="header-section-number">2.10.2</span> Producing split summary statistics</h3>
+<section id="producing-split-summary-statistics-1" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="producing-split-summary-statistics-1"><span class="header-section-number">3.10.2</span> Producing split summary statistics</h3>
 <p>The <code>descriptives</code> function within the <code>jmv</code> function allows summary statistics to be calculated within subgroups using the <code>splitBy</code> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">splitBy=</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">splitBy=</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -934,11 +865,11 @@ New to ggformula?  Try the tutorials:
 </div>
 </section>
 </section>
-<section id="independent-samples-t-test-2" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="independent-samples-t-test-2"><span class="header-section-number">2.11</span> Independent samples t-test</h2>
+<section id="independent-samples-t-test-2" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="independent-samples-t-test-2"><span class="header-section-number">3.11</span> Independent samples t-test</h2>
 <p>We can use the <code>ttestIS()</code> (t-test, independent samples) function from the <code>jmv</code> package to perform the independent samples t-test. We include the <code>meanDiff=TRUE</code> and <code>ci=TRUE</code> options to obtain the difference in means, with its 95% confidence interval. We can request a Welch’s test (which does not assume equal variances) by the <code>welchs=TRUE</code> option:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  INDEPENDENT SAMPLES T-TEST
@@ -959,42 +890,42 @@ New to ggformula?  Try the tutorials:
           mu=0, alternative="two.sided", var.equal = FALSE)</code></pre>
 <p>Here we specify the mean, standard deviation and sample size for the first group (on the first line) and the second group (on the second line).</p>
 </section>
-<section id="checking-the-assumptions-for-a-paired-t-test-1" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test-1"><span class="header-section-number">2.12</span> Checking the assumptions for a Paired t-test</h2>
+<section id="checking-the-assumptions-for-a-paired-t-test-1" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test-1"><span class="header-section-number">3.12</span> Checking the assumptions for a Paired t-test</h2>
 <p>Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset <code>mod05_ankle_bp.xls</code> to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>sbp <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/examples/mod05_ankle_bp.xlsx"</span>)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>sbp<span class="sc">$</span>diff <span class="ot">=</span> sbp<span class="sc">$</span>sbp_dp <span class="sc">-</span> sbp<span class="sc">$</span>sbp_tp</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">"Blood pressure (mmHg)"</span>, <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sbp <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/examples/mod05_ankle_bp.xlsx"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>sbp<span class="sc">$</span>diff <span class="ot">=</span> sbp<span class="sc">$</span>sbp_dp <span class="sc">-</span> sbp<span class="sc">$</span>sbp_tp</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">"Blood pressure (mmHg)"</span>, <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We might want to plot a Normal curve over this distribution, as we did in Module 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff,</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Systolic blood pressure (mmHg)"</span>,</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>,</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(sbp<span class="sc">$</span>diff),</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(sbp<span class="sc">$</span>diff)),</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"darkblue"</span>,</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Systolic blood pressure (mmHg)"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(sbp<span class="sc">$</span>diff),</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(sbp<span class="sc">$</span>diff)),</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"darkblue"</span>,</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>While there is a large difference in blood pressure (around 60 mmHg) that warrents further checking, the curve is roughly symmetric with an approximately Normal distribution.</p>
 </section>
-<section id="paired-t-test-1" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="paired-t-test-1"><span class="header-section-number">2.13</span> Paired t-Test</h2>
+<section id="paired-t-test-1" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="paired-t-test-1"><span class="header-section-number">3.13</span> Paired t-Test</h2>
 <p>To perform a paired t-test we will use the dataset <code>mod05_ankle_bp.xls</code>. We can perform a paired t-test using the <code>ttestPS()</code> function within the <code>jmv</code> package, where we defined the paired observations as: `pairs=list(list(i1 = ‘variable1’, i2 = ‘variable2’))</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>sbp, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">'sbp_dp'</span>, <span class="at">i2 =</span> <span class="st">'sbp_tp'</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>sbp, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">'sbp_dp'</span>, <span class="at">i2 =</span> <span class="st">'sbp_tp'</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  PAIRED SAMPLES T-TEST
@@ -1010,7 +941,7 @@ New to ggformula?  Try the tutorials:
 </div>
 <p>The syntax of the ttestPS function is a little cumbersome. The <code>t.test</code> function can be used as an alternative:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sbp<span class="sc">$</span>sbp_dp, sbp<span class="sc">$</span>sbp_tp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sbp<span class="sc">$</span>sbp_dp, sbp<span class="sc">$</span>sbp_tp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1045,32 +976,17 @@ mean difference
 <p>A study was conducted to compare haemoglobin levels in the blood of children with and without cystic fibrosis. It is known that haemoglobin levels are normally distributed in children. The study results are given below:</p>
 <div class="cell">
 <div class="cell-output-display">
-<table id="tab:act-5-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Summary of haemoglobin (g/dL)</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Statistic</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Children without CF</td>
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Children with CF</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">n</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">12</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Mean</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">19.9</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">13.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 0pt; font-weight: normal;">SD (SE)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5.9 (1.70)</td>
-<td style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 0pt 6pt 6pt; font-weight: normal;">6.2 (1.60)</td>
-</tr>
-</tbody>
-</table>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:act-5-2">
+<caption style="caption-side: top; text-align: center;">Summary of haemoglobin (g/dL)</caption><colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: bold;">Statistic</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Children without CF</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: bold;">Children with CF</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">n</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">12</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">15</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">Mean</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">19.9</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">13.9</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 0pt; font-weight: normal;">SD (SE)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5.9 (1.70)</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 0pt 6pt 6pt; font-weight: normal;">6.2 (1.60)</td></tr>
+</tbody></table>
 
 </div>
 </div>
@@ -1105,6 +1021,9 @@ Acock, Alan C. 2010. <em>A <span>Gentle Introduction</span> to <span>Stata</span
 </div>
 <div id="ref-bland15" class="csl-entry" role="listitem">
 Bland, Martin. 2015. <em>An <span>Introduction</span> to <span>Medical Statistics</span></em>. 4th Edition. Oxford, New York: Oxford University Press.
+</div>
+<div id="ref-delacre_etal17" class="csl-entry" role="listitem">
+Delacre, Marie, Daniël Lakens, and Christophe Leys. 2017. <span>“Why <span>Psychologists Should</span> by <span>Default Use Welch</span>’s t-Test <span>Instead</span> of <span>Student</span>’s t-Test”</span> 30 (1): 92. <a href="https://doi.org/10.5334/irsp.82">https://doi.org/10.5334/irsp.82</a>.
 </div>
 <div id="ref-kirkwood_sterne01" class="csl-entry" role="listitem">
 Kirkwood, Betty, and Jonathan Sterne. 2001. <em>Essentials of <span>Medical Statistics</span></em>. 2nd edition. Malden, Mass: Wiley-Blackwell.
@@ -1355,13 +1274,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Revision-progress.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Revision-progress.html</span></span>
+      <a href="./02-probability.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability and probability distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./06-proportions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary statistics for binary data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
