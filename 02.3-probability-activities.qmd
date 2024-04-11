@@ -41,14 +41,13 @@ Create a two-way table to display the distribution of BMI categories by sex (sex
 
 ### Activity 2.5 {-}
 
-The data in the files `Activity_S2.5.dta` and `Activity_S2.5.rds` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
+The data in the files `Activity_S2.5.dta` and `Activity_S2.5.rds` (available on Moodle) has information about **birth weight** and **length of stay** collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
 
 a.  Create a histogram to inspect the distribution of the variable;
 
 b.  Complete the following summary statistics for each variable:
     - mean and median;
-    - standard deviation and interquartile range;
-    - skewness and kurtosis.
+    - standard deviation and interquartile range.
 
 Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.
 

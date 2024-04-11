@@ -130,15 +130,6 @@ curve(dnorm(x,
       add=TRUE)
 ```
 
-## Descriptive statistics for checking normality
-
-All the descriptive statistics including *skewness* and *kurtosis* discussed in this module can be obtained using the `descriptives` function from the `jmv` package. In particular, skewness and kurtosis can be requested in addition to the default statistics by including: `skew=TRUE, kurt=TRUE`:
-
-```{r}
-library(jmv)
-
-descriptives(data=sample, vars=weight_clean, skew=TRUE, kurt=TRUE)
-```
 
 ## Importing Excel data into R
 
@@ -341,7 +332,7 @@ survey$bmi_cat <- cut(survey$bmi,
 summary(survey$bmi_cat)
 ```
 
-## Computing binomial probabilities using R
+## Computing binomial probabilities using R {#sec-binom-r}
 
 There are two R functions that we can use to calculate probabilities based on the binomial distribution: `dbinom` and `pbinom`:
 
@@ -373,7 +364,7 @@ For the lower tail for part (c), we use the `pbinom` function:
 pbinom(q=2, size=6, prob=0.198)
 ```
 
-## Computing probabilities from a Normal distribution
+## Computing probabilities from a Normal distribution {#sec-normal-r}
 
 We can use the `pnorm` function to calculate probabilities from a Normal distribution:
 

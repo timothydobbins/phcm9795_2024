@@ -290,100 +290,44 @@ a) From a random sample of 6 people from the Australian population in 2007, what
 b) What is the probability that among the six persons, at least 4 will be smokers? 
 c) What is the probability that at most, 2 will be smokers?
 
-#### Stata Solution {-}
+#### Solution {-}
 
-a) The computation for binomial probabilities can be done using Stata from the main menu **Data > Other utilities > Hand calculator** as shown in the Stata Notes section.
+a) Calculating this single binomial probability is best done using software.
 
-Of the three binomial functions in the Hand Calculator, we choose the `binomialp` function, which gives “the probability of observing k successes in n trials when the probability of a success on one trial is p”. 
+In Stata, we used the `binomialp` function with n=6, k=3, and p=0.198. This gives an answer of 0.08 (see @sec-binom-stata for details).
 
-We complete the function using n=6, k=3, and p=0.198. This gives an answer of 0.08.
-[Command: `display binomialp(6, 4, 0.198)`]
+In R, we used the `dbinom` function with x=3, size=6, and prob=0.198. This gives an answer of 0.08 (see @sec-binom-r for details).
 
 b)	In common language, getting “at least 4” smokers means getting 4, 5 or 6 smokers. Since these are mutually exclusive events, we can apply the additive law to find the probability of getting at least 4 smokers:
 
 $$ P(X \ge 4) = P(X=4) + P(X=5) + P(X=6) $$
-Using the same binomial probability function as in the previous question,
+Using the same binomial probability functions as in the previous question, we could calculate
 
--	P(X=4) = 0.015 [Command: `display binomialp(6, 4, 0.198)`]
--	P(X=5) = 0.001 [Command: `display binomialp(6, 5, 0.198)`]
--	P(X=6) = 0.00006 [Command: `display binomialp(6, 6, 0.198)`]
+-	P(X=4) = 0.0148
+-	P(X=5) = 0.00146
+-	P(X=6) = 0.0000603
 
-Answer: $P(X \ge 4) = 0.00006025 + 0.00146437 + 0.0148282 = 0.016$
+Answer: $P(X \ge 4) = 0.0148 + 0.00146 + 0.0000603 = 0.016$
 
-Alternatively, we can use the `binomialtail` function (which gives “the probability of observing k or more successes in n trials when the probability of a success on one trial is p”). 
+Alternatively, in Stata we can use the `binomialtail` function (which gives “the probability of observing k or more successes in n trials when the probability of a success on one trial is p”). Again, see @sec-binom-stata for details.
 
-Here, n=6, k=4 and p=0.198, giving the same answer as above: 0.016.
-[Command: `display binomialtail(6, 4, 0.198)`]
+In R we can use the `pbinom` function with the `lower.tail=FALSE` option (@sec-binom-r).
 
 c)	Observing at most two means observing 0, 1 or 2 smokers. Therefore, the probability of observing at most 2 smokers is:
 
 -	P(X $\le$ 2) = P(X=0) + P(X=1) + P(X=2)
-- P(X=0) = 0.266 [Command: `display binomialp(6,0,.198)`]
-- P(X=1) = 0.394 [Command: `display binomialp(6,1,.198)`]
-- P(X=2) = 0.243 [Command: `display binomialp(6,2,.198)`]
+- P(X=0) = 0.266
+- P(X=1) = 0.394
+- P(X=2) = 0.243
 
 Answer: P(X $\le$ 2) = 0.266+0.394+0.243=0.903
 
-This can also be done by using the `binomial` function (which gives “the probability of observing k or fewer successes in n trials when the probability of a success on one trial is p”).
-
-Here, n=6, k=2 and p=0.198, giving the same answer as above: 0.904 (note the discrepancy due to rounding error above).
-[Command: `display binomial(6, 2, 0.198)`]
-
-
-#### R Solution {-}
-
-The computation for binomial probabilities can be done in R using the `dbinom` and `pbinom` functions.
-
-a) Of the two binomial functions, we choose the `dbinom(x, size, prob)` function, which gives the probability of observing `x` successes in `size` trials when the probability of a success on one trial is `prob`.
-
-We complete the function using x=6, size=3, and prob=0.198. This gives an answer of 0.08:
-
-```{r}
-dbinom(x=3, size=6, prob=0.198)
-```
-
-b)	In common language, getting “at least 4” smokers means getting 4, 5 or 6 smokers. Since these are mutually exclusive events, we can apply the additive law to find the probability of getting at least 4 smokers:
-
-$$ P(X \ge 4) = P(X=4) + P(X=5) + P(X=6) $$
-Using the same binomial probability function as in the previous question,
-
--	P(X=4) = 0.015 [Command: `dbinom(x=4, size=6, prob=0.198)`]
--	P(X=5) = 0.001 [Command: `dbinom(x=5, size=6, prob=0.198)`]
--	P(X=6) = 0.00006 [Command: `dbinom(x=6, size=6, prob=0.198)`]
-
-Answer: $P(X \ge 4) = 0.0148282 + 0.00146437 + 0.00006025 = 0.016$
-
-Alternatively, we can use the `pbinom(q, size, prob, lower.tail=FALSE)` function (which gives the probability of observing *more than `q`* successes in `size` trials when the probability of a success on one trial is `prob`).
-
-Here, q=3, size=6 and prob=0.198, giving the same answer as above: 0.016:
-
-
-```{r}
-pbinom(q=3, size=6, prob=0.198, lower.tail=FALSE)
-```
-
-
-c)	Observing at most two means observing 0, 1 or 2 smokers. Therefore, the probability of observing at most 2 smokers is:
-
--	P(X $\le$ 2) = P(X=0) + P(X=1) + P(X=2)
-- P(X=0) = 0.266 [Command: `dbinom(x=0, size=6, prob=0.198)`]
-- P(X=1) = 0.394 [Command: `dbinom(x=1, size=6, prob=0.198)`]
-- P(X=2) = 0.243 [Command: `dbinom(x=2, size=6, prob=0.198)`]
-
-Answer: $P(X \le 2) = 0.266 + 0.394 + 0.243 = 0.903$
-
-This can also be done by using the `pbinom(q, size, prob)` function (which gives the probability of observing *`q` or fewer* successes in `size` trials when the probability of a success on one trial is `prob`).
-
-Here, q=2, size=6 and p=0.198, giving the same answer as above: 0.904 (note the discrepancy due to rounding error above).
-
-```{r}
-pbinom(q=2, size=6, prob=0.198)
-```
+This can also be done by using the `binomial` function in Stata (which gives “the probability of observing k or fewer successes in n trials when the probability of a success on one trial is p”) or the `pbinom` function in R.
 
 
 ## Probability for continuous variables
 
-Calculating the probability for a discrete random variable is relatively straightforward, as there are only a finite number of possible events. However, there are an infinite number of possible values for a continuous variable, and we usually calculate the probability that the continuous variable lies in a range of values.
+Calculating the probability for a discrete random variable is relatively straightforward, as there are only a finite number of possible events. However, there are an infinite number of possible values for a continuous variable, and we calculate the probability that the continuous variable lies in a range of values.
 
 ## Normal distribution
 
@@ -431,85 +375,31 @@ Using the z-score formula, with x=90, $\mu$=77.9 and $\sigma$=11:
 $$ z = \frac{90 - 77.9}{11} = 1.1 $$
 Thus, a blood pressure of 90 mmHg corresponds to a z-score of 1.1, or a value 1.1 $\times \sigma$ above the mean weight of the population.
 
-Using a table of Z-scores (Appendix Table 1), we find the probability that a person has a diastolic blood pressure of 90 mmHg or more as P(Z ≥ 1.1) = 0.136.
-
-An extract from Appendix Table 1 is shown in @fig-2-4 to demonstrate how to find the probability from the look-up table.
-
-```{r fig-2-4, echo=FALSE, out.width = "66%", fig.cap="Obtaining a probability from a table of Standard Normal distribution"}
-knitr::include_graphics(here::here("img", "mod02", "z-table-extract.png"))
-```
-
-@fig-2-5 shows the probability of a diastolic blood pressure of 90 mmHg or more in the population for a Z-score of greater than 1.1 on a Standard Normal distribution.
+@fig-2-5 shows the probability of a diastolic blood pressure of 90 mmHg or more in the population for a z-score of greater than 1.1 on a Standard Normal distribution.
 
 ```{r fig-2-5, echo=FALSE, out.width = "66%", fig.cap="Area under the Standard Normal curve (as probability) for Z > 1.1"}
 knitr::include_graphics(here::here("img", "mod02", "z-dist-shaded.png"))
 ```
 
-Apart from calculating probabilities, Z-scores are most useful for comparing measurements taken from a sample to a known population distribution. It allows measurements to be compared to one another despite being on different scales or having different predicted values.
+Using software, we find the probability that a person has a diastolic blood pressure of 90 mmHg or more as P(Z ≥ 1.1) = 0.136 (see @sec-normal-stata and @sec-normal-r for details).
 
-For example, if we take a sample of children and measure their weights, it is useful to describe those weights as Z-scores from the population weight distribution for each age and gender. Such distributions from large population samples are widely available. This allows us to describe a child’s weight in terms of how much it is above or below the population average. For example, if mean weights were compared, children aged 5 years would be on average heavier than the children aged 3 years simply because they are older and therefore larger. To make a valid comparison, we could use the Z-scores to say that children aged 3 years tend to be more overweight than children aged 5 years because they have a higher mean Z-score for weight. 
+Apart from calculating probabilities, z-scores are most useful for comparing measurements taken from a sample to a known population distribution. It allows measurements to be compared to one another despite being on different scales or having different predicted values.
+
+For example, if we take a sample of children and measure their weights, it is useful to describe those weights as z-scores from the population weight distribution for each age and gender. Such distributions from large population samples are widely available. This allows us to describe a child’s weight in terms of how much it is above or below the population average. For example, if mean weights were compared, children aged 5 years would be on average heavier than the children aged 3 years simply because they are older and therefore larger. To make a valid comparison, we could use the Z-scores to say that children aged 3 years tend to be more overweight than children aged 5 years because they have a higher mean z-score for weight. 
 
 ## Assessing Normality
-There are several ways to assess whether a continuous variable is Normally distributed. The simple process of plotting a histogram and boxplot and comparing estimates of the centre of the data (mean and median) provide valuable information about the way in which the data are distributed.
 
-Other more formal measures of Normality such as skewness (whether the distribution is symmetrical or asymmetrical) and kurtosis (whether the distribution is flat or peaked) can be obtained from Stata (see Stata Notes section on Producing summary statistics in Module 1).
+There are several ways to assess whether a continuous variable is Normally distributed. With a large sample, simply plotting a histogram is one of the best ways to assess whether a variable is Normally distributed. For smaller samples, examining a histogram can be less clear, particularly for histograms with only a small number of bins. However, if a histogram looks bell-shaped and approximately symmetrical, assuming Normality would be reasonable.
 
-### Skewness and kurtosis
-Skewness is a measure of the lack of symmetry of a distribution. If the distribution is symmetric, the coefficient of skewness is 0. If the coefficient is negative, the median is usually greater than the mean and the distribution is said to be skewed left. If the coefficient is positive, the median is usually less than the mean and the distribution is said to be skewed right. 
+It may be useful to examine a boxplot of a variable in conjunction with a histogram. However a boxplot in isolation is not as useful as a histogram, as a boxplot only indicates whether a variable is distributed symmetrically (indicated by equal "whiskers"). A boxplot cannot give an indication of whether the distribution is bell-shaped, or flat.
 
-Kurtosis (from the Greek kyrtosis, meaning curvature) is a measure of peakiness of a distribution. The smaller the coefficient of kurtosis, the flatter the distribution. The Normal distribution has a coefficient of kurtosis of 3 (0 in R) and provides a convenient benchmark. If the distribution is more spread out, then the kurtosis will be greater than 3 (0 in R).
+> For your information: There are formal tests in Stata and R that test for Normality. These tests are beyond the scope of this course and are not recommended.
 
-```{r tbl-2-skew, echo=FALSE}
-#| tbl-cap: Interpretation of skewness statistics
-
-tab2_skew <- tibble::tribble(
-  ~`Skewness`,	~Interpretation,
-  "0", "The distribution is symmetric",
-  "0", "If skewness is between -0.5 and 0.5, the distribution is approximately symmetric",
-  "Negative", "Distribution is skewed to the left (mean is usually less than the median) – aka negative skew (longer tail to the left)",
-  "Negative", "If it is less than −1, the distribution is highly skewed to the left",
-  "Negative", "If it is between −1 and −0.5, the distribution is moderately skewed to the left",
-  "Positive",	"Distribution is skewed to the right (mean is usually greater than the median) – aka positive skew (longer tail to the right)",
-  "Positive",	"If it is greater than 1, the distribution is highly skewed to the right",
-  "Positive",	"If it is between 1 and 0.5, the distribution is moderately skewed to the right"
-)
-
-huxtable::huxtable(tab2_skew) |>
-  set_align(everywhere, everywhere, "left") |> 
-  theme_article() |> 
-  set_width(0.95) |> 
-  merge_repeated_rows() |> 
-  set_bottom_border(c(3,6,9), everywhere)
-```
-
-For your information: There are formal tests in Stata and R that test for Normality. These tests are beyond the scope of this course and will be discussed in the Advanced course.
-
-The histogram for our 30 weights is approximately bell-shaped and roughly symmetrical. The mean and median (50th percentile) values are identical, as would be expected for a Normal distribution. These statistics indicate that the data are Normally distributed. Finally, you can look at the histogram and boxplot (@fig-2-6) to assess symmetry and outliers at either end of the distribution.
+The histogram for our 30 weights is approximately bell-shaped and roughly symmetrical. The mean and median (50th percentile) values are similar, as would be expected for a Normal distribution. Thus, it would be reasonable to assume that the data are Normally distributed.
 
 ```{r fig-2-6, echo=FALSE, out.width = "90%", fig.cap="Histogram and boxplot of weight of 30 students attending a gym"}
 knitr::include_graphics(here::here("img", "mod02", "weights-hist-boxplot.png"))
 ```
-
-A summary of how to explore Normality is shown in @tbl-2-examine-normality.
-
-```{r tbl-2-examine-normality, echo=FALSE}
-#| tbl-cap: Methods to assess Normality
-
-tab2_norm <- tibble::tribble(
-~Method, ~`Indication of Normality`,
-"Examine histogram", "Approximately bell shaped and symmetrical; may be difficult to determine if the sample size is small",
-"Compare mean and median values", "Values are approximately equal",
-"Examine box plot", "Box plot symmetrical with no outliers"
-  )
-
-huxtable::huxtable(tab2_norm) |>
-  set_align(everywhere, everywhere, "left") |> 
-  theme_article() |> 
-  set_width(0.95) |> 
-  merge_repeated_rows()
-```
-
-It is important to look at all these measures together, and not rely on a single measure when assessing whether a sample is approximately Normally distributed. For small samples, it can be very difficult to determine whether the data are approximately Normally distributed. 
 
 ## Non-Normally distributed measurements 
 In the above example, diastolic blood pressure was Normally distributed with an approximately bell-shaped frequency histogram. However, not all measurements are Normally distributed, and the symmetry of the bell shape may be distorted by the presence of some very small or very large values. Non-Normal distributions such as this are called skewed distributions.

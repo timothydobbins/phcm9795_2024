@@ -73,16 +73,6 @@ Your histogram should look like this:
 knitr::include_graphics(here::here("img", "mod02", "stata", "hist-03.png"))
 ```
 
-## Descriptive statistics for checking normality
-All the descriptive statistics including Skewness and Kurtosis discussed in this module can be obtained using the `summarize` command from **Statistics > Summaries, tables, and tests > Summary and descriptive statistics > Summary statistics** and specifying **detail** as an option in Stata (as shown in the Stata Notes for Module 1).
-
-[Command: `summarize weight, detail`]
- 
-```{r , echo=FALSE, out.width = "66%",}
-knitr::include_graphics(here::here("img", "mod02", "stata", "desc-01.png"))
-```
-
-You can similarly repeat this using the dataset `mod02_weight_30.dta` used for creating these in the course notes for this module.
 
 ## Importing Excel data into Stata
 Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `mod02_health_survey.xlsx`.
@@ -264,7 +254,7 @@ Click **OK** to complete the recoding.
 
 Note that the default label for the new recoded variable `bmi_category` is `RECODE of BMI`. This can be relabelled in the usual way: click on `bmi_category` in the **Variables** window, then enter a name such as `BMI Category` in the **Label** box in the **Properties** window.
 
-## Computing binomial probabilities using the Hand calculator in Stata
+## Computing binomial probabilities using the Hand calculator in Stata {#sec-binom-stata}
 There are three Stata functions that we can use to calculate probabilities based on the binomial distribution: `binomialp`, `binomial` and `binomialtail`. Stata provides a description of the function in the **Expression Builder**, summarised below.
 
 ```{r binfuns, echo=FALSE, fig.pos="H"}
@@ -328,7 +318,7 @@ knitr::include_graphics(here::here("img", "mod02", "stata", "binomial-05.png"))
 
 Click **OK** or **Submit** when you are done. [Command: `display binomial(6, 2, 0.198)`]
 
-## Computing probabilities from the normal distribution using the Hand calculator in Stata
+## Computing probabilities from the normal distribution using the Hand calculator in Stata {#sec-normal-stata}
 
 From Stata, the probability using a normal distribution can be obtained from the display command via **Data > Other utilities > Hand calculator** as shown in Worked example 2.1. In the dialog box, click the **Create...** button to bring up the **Expression Builder** dialog box. In the **Categories** box, click on **Functions** to expand the list, then scroll down to **Statistical** and expand the list again and select **Normal** this time. Double-click on **normal()** to populate the top of the expression builder box with `normal(z)`.
 

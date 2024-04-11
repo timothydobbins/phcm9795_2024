@@ -27,6 +27,10 @@ hist(pbc$age, xlab="Age (years)",
 gf_histogram(~ age, data=pbc, binwidth=5, boundary=20, colour="black",
              xlab="Age (years)", ylab="Frequency")
 
+gf_dhistogram(~ age, data=pbc, binwidth=5, boundary=20, colour="black",
+             xlab="Age (years)", ylab="Frequency") |> 
+  gf_dens()
+
 ggplot(data=pbc, aes(x=age)) + 
   geom_histogram(binwidth=5, boundary=20, colour="black") +
   xlab("Age (years)") + ylab("Frequency")
