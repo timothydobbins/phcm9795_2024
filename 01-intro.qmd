@@ -9,13 +9,11 @@ library(tibble)
 
 By the end of this module, you will be able to:
 
-- Define the term statistics;
-- Describe and identify the underpinning concepts of descriptive and inferential statistics;
-- Distinguish between different types of variables (i.e. quantitative – discrete and continuous; and qualitative – ordinal and nominal);
-- Construct appropriate frequency tables from raw data; 
-- Compute summary statistics to describe the centre and spread of data; 
-- Describe the (centre and spread of the) data using appropriate graphs (histogram and box plot); 
-- Present and interpret graphical summaries of variables using a variety of graphs (bar charts, line-graphs, histograms, boxplots, pie charts and others).
+- Understand the difference between descriptive and inferential statistics
+- Distinguish between different types of variables
+- Present and report data numerically
+- Present and interpret graphical summaries of data using a variety of graphs
+- Compute summary statistics to describe the centre and spread of data
 
 ## Optional readings {-}
 
@@ -89,14 +87,45 @@ Characteristics (sex, age group and Indigenous status) of the sample of prisoner
 knitr::include_graphics(here::here("img", "mod01", "prisoner-health.png"))
 ```
 
-## Variables
-A variable is simply a characteristic that is being measured or observed. For example, height, weight, eye colour, income, country of birth are all types of variables.
+## What are data?
 
-When we are examining associations between variables, we may also use the terms: outcome variable (sometimes called a dependent variable) and explanatory variable (sometimes called an independent variable).
+According to the Australian Bureau of Statistics, "data are measurements or observations that are collected as a source of information".^[https://www.abs.gov.au/statistics/understanding-statistics/statistical-terms-and-concepts/data] Note that technically, the word *data* is a plural noun. This may sound a little odd, but it means that we say "data are ..." when discussing a set of measurements.
 
-For example, some rural areas of Bangladesh have a very high concentration of arsenic in the drinking water. Children who consume arsenic-contaminated water become malnourished. In this example, being malnourished is the outcome variable which is being caused, or influenced, by the exposure variable: arsenic-contaminated water. Thus, the outcome variable is the variable of interest which may change in response to some exposure.
+Other definitions that we use in this course are:
 
-### Types of data
+- **observation**, (or **record**, or **unit record**): one individual in the population being studied
+- **variable**: a characteristic of an individual being measured. For example, height, weight, eye colour, income, country of birth are all types of variables.
+- **dataset**: the complete collection of all observations
+
+### Types of varaibles
+
+We can categorise variables into two main types: numeric or categorical.
+
+**Numerical variables** (also called quantitative variables) comprise data that must be represented by a number, which can be either measured or counted.
+
+**Continuous** variables can take any value within a defined range.
+
+For example, age, height, weight or blood pressure, are continuous variables because we can make any divisions we want on them, and they can be measured as small as the instrument allows.  As an illustration, if two people have the same blood pressure measured to the nearest millimetre of mercury, we may get a difference between them if the blood pressure is measured to the nearest tenth of millimetre. If they are still the same (to the nearest tenth of a millimetre), we can measure them with even finer gradations until we can see a difference.
+
+**Discrete** variables can only take one of a distinct set of values (usually whole numbers). For discrete variables, observations are based on a quantity where both ordering and magnitude are important, such that numbers represent actual measurable quantities rather than mere labels. 
+
+For example, the number of cancer cases in a specified area emerging over a certain period, the number of motorbike accidents in Sydney, the number of times a woman has given birth, the number of beds in a hospital are all discrete variables. Notice that a natural ordering exists among the data points, that is, a hospital with 100 beds has more beds than a hospital with 75 beds. Moreover, a difference between 40 and 50 beds is the same as the difference between 80 and 90 beds.
+
+**Categorical variables** comprise data that describe a 'quality' or 'characteristic'. Categorical variables, sometimes called qualitative variables, do not have measurable numeric values. Categorical variables can be nominal or ordinal.
+
+A **nominal** variable consists of unordered categories. For example, gender, race, ethnic group, religion, eye colour etc. Both the order and magnitude of a nominal variable are unimportant.
+
+If a nominal variable takes on one of two distinct categories, such as black or white then it is called a **binary** or dichotomous variable. Other examples would be smoker or non-smoker; exposed to arsenic or not exposed.
+
+A nominal variable can also have more than two categories, such as blood group, with categories of: Group A, Group B, Group AB and Group O.
+
+**Ordinal** varaibles consist of ordered categories where differences between categories are important, such as socioeconomic status (low, medium, high) or student evaluation rating could be classified according to their level of satisfaction: (highly satisfied, satisfied and unsatisfied). Here a natural order exists among the categories.
+
+Note that categorical variables are often stored in data sets using numbers to represent categories. However, this is for convenience only, and these variable must not be analysed as if they were numeric variables.
+
+
+##**##
+
 Data are groups of information that represent the qualitative or quantitative attributes of variables or a group of variables. For example, the ages of students attending a university gym in a particular hour were recorded. The thirty ages are given below:
 
 ```{r tbl-1-ages, echo=FALSE}
@@ -119,21 +148,6 @@ huxtable::huxtable(tab1_ages, add_colnames = FALSE) |>
 
 The variable here is age and there are 30 observations recorded.
 
-**Quantitative** data are numerical data that can be measured or counted such as age, weight, height, etc. These data can be discrete or continuous. Biostatistics mostly deals with quantitative variables or numerical data.
-
-A **discrete** variable can have only one of a distinct set of values. For a discrete variable, observations are based on a count where both ordering and magnitude are important, such that numbers represent actual measurable quantities rather than mere labels. 
-
-For example, the number of cancer cases in a specified area emerging over a certain period, the number of motorbike accidents in Sydney, the number of times a woman has given birth, the number of beds in a hospital.  It is noteworthy that natural ordering exists among the data points, that is, a hospital with 100 beds has more beds than a hospital with 75 beds. Moreover, a difference between 40 and 50 beds is the same as the difference between 80 and 90 beds. A discrete variable can take only non-negative integer values: a woman cannot have 5.7 births. However, we can calculate summaries of discrete variables that are not necessarily discrete. For instance, if one woman has given birth four times and another woman five times, then on average, these two women have 4.5 births.
-
-**Continuous** data can take any values within a defined range.
-
-For example, age, height, weight or blood pressure, are continuous variables because we can make any divisions we want on them, and they can be measured as small as the instrument allows.  As an illustration, if two people have the same blood pressure measured to the nearest millimetre of mercury, we may get a difference between them if the blood pressure is measured to the nearest tenth of millimetre. If they are still the same (to the nearest tenth of a millimetre), we can measure them with even finer gradations until we can see a difference.
-
-**Qualitative** data have values that describe a 'quality' or 'characteristic'. Categorical data are qualitative data and do not have measurable numeric values. These data can be nominal or ordinal.
-
-A **nominal** variable consists of unordered categories. For example, gender, race, ethnic group, religion, eye colour etc. Both the order and magnitude of a nominal variable are unimportant.  If a nominal variable takes on one of two distinct categories, such as black or white then it is called dichotomous or binary variable. Other examples would be male or female; smoker or non-smoker; exposed to arsenic or not exposed. A number is often used to represent (label) each of the categories; for example, males could be assigned the value 1 and females 0; in the case of exposed and unexposed, exposed could be assigned 1 and unexposed 0. A nominal variable can also have more than two categories, such as blood group, with labels and categories as follows (1=Group A, 2=Group B, 3=Group AB, 4=Group O). Numbers are used for the sake of convenience of analysis when using a computer package. 
-
-**Ordinal** data consist of ordered categories where differences between categories are important, such as socioeconomic status (low, medium, high) or student evaluation rating could be classified according to their level of satisfaction, where 1 represents excellent, 2 is satisfactory and 3 is unsatisfactory. Here natural order exists among the categories, where a smaller number represents higher satisfaction. 
 
 ## Presenting data
 
