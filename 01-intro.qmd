@@ -2,7 +2,9 @@
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(huxtable)
-library(tibble)
+library(flextable)
+library(tidyverse)
+library(jmv)
 ```
 
 ## Learning objectives {-}
@@ -124,235 +126,87 @@ A nominal variable can also have more than two categories, such as blood group, 
 Note that categorical variables are often stored in data sets using numbers to represent categories. However, this is for convenience only, and these variable must not be analysed as if they were numeric variables.
 
 
-##**##
+## Presenting data
 
-Data are groups of information that represent the qualitative or quantitative attributes of variables or a group of variables. For example, the ages of students attending a university gym in a particular hour were recorded. The thirty ages are given below:
+We will now look at ways to summarise and present data. The choice of presentation will depend on the type of variable being summarised. We will use the dataset based on a study into primary biliary cholangitis (PBC) from the Introduction to Stata or Introduction to R exercise to demonstrate the appropriate ways to summarise and present data.
 
-```{r tbl-1-ages, echo=FALSE}
-#| tbl-cap: Age of 30 gym attendees
+### Summarising a single categorical variable numerically
 
-tab1_ages <- tibble::tribble(
-  ~v1, ~v2, ~v3, ~v4, ~v5, ~v6,
-   18L, 17L, 20L, 21L, 23L, 19L,
-   19L, 18L, 18L, 20L, 21L, 23L,
-   20L, 23L, 19L, 21L, 19L, 20L,
-   20L, 22L, 19L, 22L, 20L, 21L,
-   18L, 23L, 24L, 18L, 20L, 21L
-   )
-   
-huxtable::huxtable(tab1_ages, add_colnames = FALSE) |>
-  set_align(everywhere, everywhere, ".") |> 
+Categorical data are best summarised using a frequency table, where each category is summarised by its frequency: the count of the number of individuals in each category. The **relative frequency** (the frequency expressed as a proportion or percentage of the total frequency) is usually included give further insight.
+
+```{r tbl-1-sex, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Sex of participants in PBC study
+
+pbc <- readRDS("data/examples/mod01_pbc.rds") |> 
+  mutate(sex = factor(sex, levels=c(1,2),
+                      labels=c("Male", "Female")))
+
+tab <- descriptives(pbc, sex, freq=TRUE)
+
+tab_out <- as.data.frame(tab$frequencies[[1]]) |> 
+  rename(Sex = sex,
+         Frequency = counts,
+         `Relative frequency (%)` = pc,
+         `Cumulative relative frequency (%)` = cumpc) |> 
+  mutate(`Relative frequency (%)` = 100*`Relative frequency (%)`,
+         `Cumulative relative frequency (%)` = 100*`Cumulative relative frequency (%)`)
+
+huxtable(select(tab_out, 1:3)) |> 
+  set_number_format(everywhere, 3, "%3.1f") |> 
   theme_article() |> 
   set_width(0.8)
 ```
 
-The variable here is age and there are 30 observations recorded.
+It is sometimes useful to present the cumulative relative frequency, which shows the relative frequency of individuals in a certain category or below (for example, @tbl-1-stage).
 
+```{r tbl-1-stage, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Stage of disease for participants in PBC study
 
-## Presenting data
+pbc <- pbc |> 
+  mutate(stage = factor(stage))
 
-We will now look at ways to present frequency information numerically in tables and graphs.
+tab_stage <- descriptives(pbc, stage, freq=TRUE)
 
-### Frequency tables
+tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |> 
+  rename(`Stage *` = stage,
+         Frequency = counts,
+         `Relative frequency (%)` = pc,
+         `Cumulative relative frequency (%)` = cumpc) |> 
+  mutate(`Relative frequency (%)` = 100*`Relative frequency (%)`,
+         `Cumulative relative frequency (%)` = 100*`Cumulative relative frequency (%)`)
 
-#### Worked example
-
-Consider the ages of 30 students visiting a university gym in a particular hour presented in @tbl-1-ages. This information is difficult to interpret in its raw form, but becomes more clear if the ages are grouped in a frequency table as shown in @tbl-1-ages-freq1.
-
-```{r tbl-1-ages-freq1, echo=FALSE, fig.pos="H"}
-#| tbl-cap: Frequency of ages of students visiting a gym
-
-tab1_2 <- tribble(
-  ~Age, ~Frequency,
-"17",	1L,
-"18",	5L,
-"19",	5L,
-"20",	7L,
-"21",	5L,
-"22",	2L,
-"23",	4L,
-"24",	1L,
-"Total", 30L
-)
-
-huxtable(tab1_2) |>
-  set_align(everywhere, everywhere, ".") |> 
+huxtable(select(tab_stage_out, 1:4)) |> 
+  set_number_format(everywhere, 3:4, "%3.1f") |> 
+  add_footnote("* Disease stage was missing for 6 participants", border=0) |> 
   theme_article() |> 
-  set_width(0.6)
+  set_width(0.8)
 ```
 
-The frequency is a count of the number of individuals of each age in the corresponding row. Three more columns can be added to the frequency table to give further insight: relative frequency, cumulative frequency and cumulative relative frequency (@tbl-1-ages-freq2).
+From @tbl-1-stage, we can see that 65.0% of participants had Stage 3 disease or lower.
 
-```{r tbl-1-ages-freq2, echo=FALSE, fig.pos="H"}
-#| tbl-cap: Frequency of ages of students visiting a gym
+### Summarising a single categorical variable graphically
 
-tab1_3 <- tribble(
-  ~Age, ~Frequency, ~`Relative frequency (%)`, ~`Cumulative frequency`, ~`Cumulative relative frequency (%)`,
-  "17",	1L,   3L,	 1L,	3L,
-  "18",	5L,  17L,	 6L,   20L,
-  "19",	5L,  17L,	11L,   37L,
-  "20",	7L,  23L,	18L,   60L,
-  "21",	5L,  17L,	23L,   77L,
-  "22",	2L,   7L,	25L,   83L,
-  "23",	4L,  13L,	29L,   97L,
-  "24",	1L,   3L,	30L,  100L,
-  "Total", 30L, 100L,	NA,   NA
-)
-
-huxtable(tab1_3) |>
-  set_align(everywhere, everywhere, ".") |> 
-  theme_article() |> 
-  set_width(0.9)
-```
-
-The relative frequency is the frequency expressed as a proportion or percentage of the total frequency.  For example, 5 out of 30 students are aged 21, so the relative frequency is (5/30) $\times$ 100 = 16.7%.
-
-The cumulative frequency here shows the total number of students less than or equal to a certain age, while the cumulative relative frequency is the percentage (of the total) who are less than a certain age.  For example, the cumulative frequency of students at the gym aged 19 years or less is 1 + 5 + 5 = 11, and the cumulative relative frequency is (11/30) $\times$ 100 = 36.7%.
-
-The information presented in @tbl-1-ages-freq2 is called the frequency distribution of the variable age.  Frequency distributions can also be presented for qualitative (categorical) data.
-
-For example, if we know that there are 12 males and 18 females in our data, this can be presented as in @tbl-1-sex-freq.  We should not interpret the cumulative frequency for nominal data (e.g. gender, eye colour or cancer types) as these data cannot be ranked. However, we can calculate the cumulative frequency for ordinal data (e.g. student satisfaction level, cancer stage).
-
-```{r tbl-1-sex-freq, echo=FALSE}
-#| tbl-cap: Frequency of sex of students visiting a gym
-
-tab1_4 <- tribble(
-  ~Sex, ~Frequency, ~`Relative frequency (%)`,
-  "Male",	12L,  40L,
-  "Female",	18L,  60L,
-  "Total", 30L, 100L
-)
-
-huxtable(tab1_4) |>
-  set_align(everywhere, everywhere, ".") |> 
-  theme_article() |> 
-  set_width(0.9)
-```
-
-### Tables with more than one variable 
-So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than one variable in a table – called a cross tabulation, or a two-way (summarising two variables) table or multi-way (summarising more than two variables) table. However, tables become complex when more than two variables are incorporated (you may need to present the information as two tables or incorporate additional rows and columns).
-
-In our example above, if we have two categorical variables (e.g. sex with two categories male and female and BMI status with three categories Normal, Overweight and Obese) measured on each subject (student), we can classify the two variables simultaneously using two-way tables of frequency as shown in @tbl-1-sex-bmi-freq.
-
-```{r tbl-1-sex-bmi-freq, echo=FALSE}
-#| tbl-cap: Frequency of students visiting a gym by sex and BMI status*
-
-tab1_5 <- tibble::tribble(
-  ~Sex, ~`Not overweight`, ~`Overweight`, ~`Obese`, ~Total,
-  "Male",          1L,                9L,           2L,    12L,
-  "Female",         11L,                6L,           0L,    17L,
-  "Total",         12L,               15L,           3L,    29L
-)
-
-huxtable(tab1_5) |>
-  set_align(everywhere, everywhere, ".") |> 
-  theme_article() |> 
-  set_width(0.9) |> 
-  add_footnote("*BMI was missing for 1 student")
-```
-
-### Tables containing more than two variables
-In @fig-1-2, characteristics of the sample of prisoners from the NPHDC were presented. This table contains information about sex, age group and Indigenous status from different groups of prisoners; prison entrants, discharges, and prisoners in custody. This type of condensed information is often found in reports and journal articles giving demographic information, by different groups considered in the study.
-
-We might also consider a table containing further pieces of information. The table presented in @fig-prison-education (from the health of Australia’s prisoners 2015 report) compares prison entrants and the general community by three variables: age group, Indigenous status, and highest level of completed education.
-
-Can you see any issues with the presentation of this table?
-
-```{r fig-prison-education, echo=FALSE, out.width = "66%", fig.cap="Highest level of completed education in prison entrants and the general community", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod01", "prisoner-education.png"))
-```
-Source: Australian Institute of Health and Welfare 2015. The health of Australia’s prisoners 2015. Cat. no. PHE 207. Canberra: AIHW.
-
-Some issues in this table:
-
-- The title of the table does not contain full information about the variables in the table;
-- It is unclear how the percentages were calculated (which groupings added to 100%);
-- The ages are not labelled as such, thus without reading the text in report it is unclear that these are age groupings.
-
-### Table presentation guidelines (Woodward, 2013)
-
-1. Each table (and figure) should be self-explanatory, i.e. the reader should be able to understand it without reference to the text in the body of the report.
-    -	This can be achieved by using complete, meaningful labels for the rows and columns and giving a complete, meaningful title. 
-    - Footnotes can be used to enhance the explanation.
-2. Units of the variables (and if needed, method of calculation or derivation) should be given and missing records should be noted (e.g. in a footnote).
-3. A table should be visually uncluttered. 
-    - Avoid use of vertical lines. 
-    - Horizontal lines should not be used in every single row, but they can be used to group parts of the table. 
-    - Sensible use of white space also helps enormously; use equal spacing except where large spaces are left to separate distinct parts of the table. 
-    - Different typefaces (or fonts) may be used to provide discrimination, e.g. use of bold type and/or italics.
-4. The rows and columns of each table should be arranged in a natural order to help interpretation. For instance, when rows are ordered by the size of the numbers they contain for a nominal variable, it is immediately obvious where relatively big and small contributions come from.
-5. Tables should have a consistent appearance throughout the report so that the paper is easy to follow (and also for an aesthetic appearance). Conventions for labelling and ordering should be the same (for both tables as well as figures) for ease of comparison of different tables (and figures).
-6. Consider if there is a particular table orientation that makes a table easier to read. 
-
-Given the different possible formats of tables and their complexity, some further guidelines are given in the following excellent references: 
-
-- Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18
-- Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20
-
-## Graphical presentation
-
-### Bar graphs
-
-Using the PBC data from the Introduction to Stata or Introduction to R exercise, we can present the distribution of Stage of Disease graphically using a bar graph (@fig-bar-1). Bar graphs, which are suitable for plotting discrete or categorical variables, are defined by the fact that the bars do not touch.
+A categorical variable is best summarised graphically using a **bar chart**. For example, we can present the distribution of Stage of Disease graphically using a bar graph (@fig-bar-1). Bar graphs, which are suitable for plotting discrete or categorical variables, are defined by the fact that the bars do not touch.
 
 ```{r fig-bar-1, echo=FALSE, out.width = "75%", fig.cap="Bar graph of stage of disease from PBC study", fig.pos="H"}
 knitr::include_graphics(here::here("img", "mod01", "pbc-bar.png"))
 ```
 
-Information from more than one variable can be presented as clustered or multiple bar chart (bars side-by-side) (@fig-bar-2). This type of graph is useful when examining changes in the categories separately, but also comparing the grouping variable between the main bar variable. Here we can see that Stage 3 and Stage 4 disease is the most common for both males and females, but there are many more females within each stage of disease.
-
-```{r fig-bar-2, echo=FALSE, out.width = "75%", fig.cap="Bar graph of stage of disease by sex from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex.png"))
-```
-
-An alternative bar graph is a stacked or composite bar graph, which retains the overall height for each category, but differentiates the bars by another variable (@fig-bar-3).
-
-```{r fig-bar-3, echo=FALSE, out.width = "75%", fig.cap="Stacked bar graph of stage of disease by sex from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked.png"))
-```
-
-Finally, a stacked relative bar chart (@fig-bar-4) displays the proportion of grouping variable for each bar, where each overall bar represents 100%. These graphs allow the reader to compare the proportions between categories. We can easily see from @fig-bar-4 that the distribution of sex is similar across each stage of disease.
-
-```{r fig-bar-4, echo=FALSE, out.width = "75%", fig.cap="Relative frequency of sex within stage of disease from PBC study", fig.pos="H"}
-knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked-relative.jpg"))
-```
-
-### Line graphs
-A line graph is effective to illustrate trends over time (e.g. change over several years). Let’s look at an example from cancer epidemiology.
-
-Cancer incidence is the number of new cases of cancer diagnosed in a population in a given time period. A useful comparison with the incidence rate is the mortality rate, revealing information about the deaths from cancer in the same period. @fig-line-1 shows the prostate cancer trend in the NSW male population in the period 1972-2014, specifically the age-standardised incidence and mortality rate per 100,000.
-
-```{r fig-line-1, echo=FALSE, out.width="66%", fig.pos="H", fig.cap="Prostate cancer age-standardised incidence and mortality rates (per 100,000), NSW, 1972-2014"}
-knitr::include_graphics(here::here("img", "mod01", "line-graph-prostate-cancer.jpg"))
-```
-Source: The Cancer Institute NSW (2018) Cancer statistics NSW. https://www.cancer.nsw.gov.au/cancer-statistics-nsw (Accessed: 24 Jan 2019).
-
-The age standardised incidence rate for prostate cancer increased steadily in the period 1972 – 1991, from 55.2 cases per 100,00 to 109.3 cases per 100,000. There were two notable peaks in incidence in the period 1972-2014. In particular, there was an increase between 1992-1994, and also between 2002-2009. Since 2009 (to 2014) the rates decreased from 198.9 per 100,000 to 148.2 per 100,000. Whilst the incidence rate for prostate cancer has fluctuated over the period, the age standardised mortality rate remained relatively stable (around 35 deaths per 100,000). Since 2009 the mortality rate appears to be decreasing and was at its lowest in 2014 at 22.1 per 100,000.  
-
-[The increase in prostate cancer incidence in the early 1990’s occurred at a time when blood testing of men for Prostate Specific Antigen (PSA) became more widespread. The more recent peak in incidence in the early 2000’s maybe explained by PSA being increasingly used as a screening test for men who did not have symptoms of prostate cancer.] 
-
-### Pie charts
-An example of graphical presentation that we would recommend avoiding, is a pie chart. These are often used to present the proportion of each category that contributed to the total. However, their use is limited and sometimes misleading, and the same information can be presented as a stacked bar chart of proportions. Here are some reasons why not to use pie charts:
+Pie charts can be an alternative way to summarise a categorical variable graphically, however their use is not recommended for the following reasons:
 
 - Not ideal when there are many categories to compare
 - The use of percentages is not appropriate when the sample size is small
 - Can be misleading by using different size pies, different rotations and different colours to draw attention to specific groups
 - 3D and exploding bar charts further distort the effect of perspective and may confuse the reader
 
-### Graphical presentation guidelines
-Consider the following guidelines for the appropriate presentation of graphs in scientific journals and reports (Woodward, 2013).
+Pie charts will not be discussed further in this course.
 
-- Figures should be self-explanatory and have consistent appearance through the report. 
-- A title should give complete information. Note that figure titles are usually placed below the figure, whereas for tables titles are given above the table. 
-- Axes should be labelled appropriately 
-- Units of the variables should be given in the labelling of the axes. Use footnotes to indicate any calculation or derivation of variables and to indicate missing values
-- If the Y-axis has a natural origin, it should be included, or emphasised if it is not included. 
-- If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison 
-- Columns of bar charts should be separated by a space
-- Three dimensional graphs should be avoided unless the third dimension adds additional information 
+### Summarising a single continuous variable numerically
 
-## Summary statistics and variation in data
-We often collect measurements that are continuous in nature, that is measurements such as height, weight, time, blood pressure etc which can be measured accurately to one or more decimal places. A useful way of describing the continuous data is via summary statistics. These include measures to describe the distribution of data points via the central tendency (e.g. mean, median) and spread (e.g. standard deviation and inter quartile range). We also examine the data visually by graphing it using histograms and box plots.
+When summarising continuous data numerically, there are two things we want to know:
+
+1. what is the average value? And,
+2. How variable (or spread out) are the data?
 
 ### Mathematical and statistical notation
 When computing summary statistics or using more formal statistical methods, mathematical and statistical notation is often used. Below are some of the common statistical terms and interpretation that will be used in the course and which are seen in many text books.
@@ -480,6 +334,146 @@ In practice, we rarely have the information for the entire population to be able
 1. the characteristics of the normal distribution (the most important probability distribution discussed in later modules) are defined by the population mean and standard deviation;
 2. while calculating sample sizes (discussed in later modules) we need information about the population standard deviation, which is usually obtained from the existing literature.
 
+
+
+#### Worked example
+
+Consider the ages of 30 students visiting a university gym in a particular hour presented in @tbl-1-ages. This information is difficult to interpret in its raw form, but becomes more clear if the ages are grouped in a frequency table as shown in @tbl-1-ages-freq1.
+
+```{r tbl-1-ages-freq1, echo=FALSE, fig.pos="H"}
+#| tbl-cap: Frequency of ages of students visiting a gym
+
+tab1_2 <- tribble(
+  ~Age, ~Frequency,
+"17",	1L,
+"18",	5L,
+"19",	5L,
+"20",	7L,
+"21",	5L,
+"22",	2L,
+"23",	4L,
+"24",	1L,
+"Total", 30L
+)
+
+huxtable(tab1_2) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.6)
+```
+
+
+### Tables with more than one variable 
+So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than one variable in a table – called a cross tabulation, or a two-way (summarising two variables) table or multi-way (summarising more than two variables) table. However, tables become complex when more than two variables are incorporated (you may need to present the information as two tables or incorporate additional rows and columns).
+
+In our example above, if we have two categorical variables (e.g. sex with two categories male and female and BMI status with three categories Normal, Overweight and Obese) measured on each subject (student), we can classify the two variables simultaneously using two-way tables of frequency as shown in @tbl-1-sex-bmi-freq.
+
+```{r tbl-1-sex-bmi-freq, echo=FALSE}
+#| tbl-cap: Frequency of students visiting a gym by sex and BMI status*
+
+tab1_5 <- tibble::tribble(
+  ~Sex, ~`Not overweight`, ~`Overweight`, ~`Obese`, ~Total,
+  "Male",          1L,                9L,           2L,    12L,
+  "Female",         11L,                6L,           0L,    17L,
+  "Total",         12L,               15L,           3L,    29L
+)
+
+huxtable(tab1_5) |>
+  set_align(everywhere, everywhere, ".") |> 
+  theme_article() |> 
+  set_width(0.9) |> 
+  add_footnote("*BMI was missing for 1 student")
+```
+
+### Tables containing more than two variables
+In @fig-1-2, characteristics of the sample of prisoners from the NPHDC were presented. This table contains information about sex, age group and Indigenous status from different groups of prisoners; prison entrants, discharges, and prisoners in custody. This type of condensed information is often found in reports and journal articles giving demographic information, by different groups considered in the study.
+
+We might also consider a table containing further pieces of information. The table presented in @fig-prison-education (from the health of Australia’s prisoners 2015 report) compares prison entrants and the general community by three variables: age group, Indigenous status, and highest level of completed education.
+
+Can you see any issues with the presentation of this table?
+
+```{r fig-prison-education, echo=FALSE, out.width = "66%", fig.cap="Highest level of completed education in prison entrants and the general community", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "prisoner-education.png"))
+```
+Source: Australian Institute of Health and Welfare 2015. The health of Australia’s prisoners 2015. Cat. no. PHE 207. Canberra: AIHW.
+
+Some issues in this table:
+
+- The title of the table does not contain full information about the variables in the table;
+- It is unclear how the percentages were calculated (which groupings added to 100%);
+- The ages are not labelled as such, thus without reading the text in report it is unclear that these are age groupings.
+
+### Table presentation guidelines (Woodward, 2013)
+
+1. Each table (and figure) should be self-explanatory, i.e. the reader should be able to understand it without reference to the text in the body of the report.
+    -	This can be achieved by using complete, meaningful labels for the rows and columns and giving a complete, meaningful title. 
+    - Footnotes can be used to enhance the explanation.
+2. Units of the variables (and if needed, method of calculation or derivation) should be given and missing records should be noted (e.g. in a footnote).
+3. A table should be visually uncluttered. 
+    - Avoid use of vertical lines. 
+    - Horizontal lines should not be used in every single row, but they can be used to group parts of the table. 
+    - Sensible use of white space also helps enormously; use equal spacing except where large spaces are left to separate distinct parts of the table. 
+    - Different typefaces (or fonts) may be used to provide discrimination, e.g. use of bold type and/or italics.
+4. The rows and columns of each table should be arranged in a natural order to help interpretation. For instance, when rows are ordered by the size of the numbers they contain for a nominal variable, it is immediately obvious where relatively big and small contributions come from.
+5. Tables should have a consistent appearance throughout the report so that the paper is easy to follow (and also for an aesthetic appearance). Conventions for labelling and ordering should be the same (for both tables as well as figures) for ease of comparison of different tables (and figures).
+6. Consider if there is a particular table orientation that makes a table easier to read. 
+
+Given the different possible formats of tables and their complexity, some further guidelines are given in the following excellent references: 
+
+- Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18
+- Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20
+
+## Graphical presentation
+
+### Bar graphs
+
+Information from more than one variable can be presented as clustered or multiple bar chart (bars side-by-side) (@fig-bar-2). This type of graph is useful when examining changes in the categories separately, but also comparing the grouping variable between the main bar variable. Here we can see that Stage 3 and Stage 4 disease is the most common for both males and females, but there are many more females within each stage of disease.
+
+```{r fig-bar-2, echo=FALSE, out.width = "75%", fig.cap="Bar graph of stage of disease by sex from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex.png"))
+```
+
+An alternative bar graph is a stacked or composite bar graph, which retains the overall height for each category, but differentiates the bars by another variable (@fig-bar-3).
+
+```{r fig-bar-3, echo=FALSE, out.width = "75%", fig.cap="Stacked bar graph of stage of disease by sex from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked.png"))
+```
+
+Finally, a stacked relative bar chart (@fig-bar-4) displays the proportion of grouping variable for each bar, where each overall bar represents 100%. These graphs allow the reader to compare the proportions between categories. We can easily see from @fig-bar-4 that the distribution of sex is similar across each stage of disease.
+
+```{r fig-bar-4, echo=FALSE, out.width = "75%", fig.cap="Relative frequency of sex within stage of disease from PBC study", fig.pos="H"}
+knitr::include_graphics(here::here("img", "mod01", "pbc-bar-stage-sex-stacked-relative.jpg"))
+```
+
+### Line graphs
+A line graph is effective to illustrate trends over time (e.g. change over several years). Let’s look at an example from cancer epidemiology.
+
+Cancer incidence is the number of new cases of cancer diagnosed in a population in a given time period. A useful comparison with the incidence rate is the mortality rate, revealing information about the deaths from cancer in the same period. @fig-line-1 shows the prostate cancer trend in the NSW male population in the period 1972-2014, specifically the age-standardised incidence and mortality rate per 100,000.
+
+```{r fig-line-1, echo=FALSE, out.width="66%", fig.pos="H", fig.cap="Prostate cancer age-standardised incidence and mortality rates (per 100,000), NSW, 1972-2014"}
+knitr::include_graphics(here::here("img", "mod01", "line-graph-prostate-cancer.jpg"))
+```
+Source: The Cancer Institute NSW (2018) Cancer statistics NSW. https://www.cancer.nsw.gov.au/cancer-statistics-nsw (Accessed: 24 Jan 2019).
+
+The age standardised incidence rate for prostate cancer increased steadily in the period 1972 – 1991, from 55.2 cases per 100,00 to 109.3 cases per 100,000. There were two notable peaks in incidence in the period 1972-2014. In particular, there was an increase between 1992-1994, and also between 2002-2009. Since 2009 (to 2014) the rates decreased from 198.9 per 100,000 to 148.2 per 100,000. Whilst the incidence rate for prostate cancer has fluctuated over the period, the age standardised mortality rate remained relatively stable (around 35 deaths per 100,000). Since 2009 the mortality rate appears to be decreasing and was at its lowest in 2014 at 22.1 per 100,000.  
+
+[The increase in prostate cancer incidence in the early 1990’s occurred at a time when blood testing of men for Prostate Specific Antigen (PSA) became more widespread. The more recent peak in incidence in the early 2000’s maybe explained by PSA being increasingly used as a screening test for men who did not have symptoms of prostate cancer.] 
+
+
+
+### Graphical presentation guidelines
+Consider the following guidelines for the appropriate presentation of graphs in scientific journals and reports (Woodward, 2013).
+
+- Figures should be self-explanatory and have consistent appearance through the report. 
+- A title should give complete information. Note that figure titles are usually placed below the figure, whereas for tables titles are given above the table. 
+- Axes should be labelled appropriately 
+- Units of the variables should be given in the labelling of the axes. Use footnotes to indicate any calculation or derivation of variables and to indicate missing values
+- If the Y-axis has a natural origin, it should be included, or emphasised if it is not included. 
+- If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison 
+- Columns of bar charts should be separated by a space
+- Three dimensional graphs should be avoided unless the third dimension adds additional information 
+
+
 ## Using graphs to display the centre and spread of the data
 As well as calculating measures of central tendency and spread to describe the characteristics of the data, a graphical plot is very helpful to better understand the characteristics and distribution of the measurements obtained. *Histograms* and *box plots* are excellent ways to graphically display continuous data.
 
@@ -568,20 +562,20 @@ Sources:
 @assel_etal19
 
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# An introduction to Stata {-}
+<!-- # An introduction to Stata {-} -->
 
-{{< include 01.1-intro-stata.qmd >}}
+<!-- {{< include 01.1-intro-stata.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# An introduction to R and RStudio {-}
+<!-- # An introduction to R and RStudio {-} -->
 
-{{< include 01.2-intro-R.qmd >}}
+<!-- {{< include 01.2-intro-R.qmd >}} -->
 
-{{< pagebreak >}}
+<!-- {{< pagebreak >}} -->
 
-# Activities {-}
+<!-- # Activities {-} -->
 
-{{< include 01.3-intro-activities.qmd >}}
+<!-- {{< include 01.3-intro-activities.qmd >}} -->

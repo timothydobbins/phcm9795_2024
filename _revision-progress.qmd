@@ -1,12 +1,17 @@
+## To do
+
+- Label subheadings consistently between HTML and PDF (e.g. 3 levels deep, like 1.1.1)
+
+
 | Module | Revise main notes | Revise Stata notes | Revise R notes | Revise activities | Revise solutions | Review |
-|--------|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1      |     |     |     |     |     |     |
-| 2      |  Y  |  Y  |  Y  |     |     |     |
-| 3      |  Y  |  Y  |  Y  |     |     |     |
-| 4      |  Y  |  Y  |  Y  |     |     |     |
-| 5      |  Y  |  Y  |  Y  |     |     |     |
-| 6      |  Y  |  Y  |  Y  |     |     |     |
-| 7      |  Y  |  Y  |  Y  |     |     |     |
-| 8      |  Y  |  Y  |  Y  |     |     |     |
-| 9      |  Y  |  Y  |  Y  |     |     |     |
-| 10     |  Y  |  Y  |  Y  |     |     |     |
+|-----------|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
+| 1      |                   |                    |                |                   |                  |        |
+| 2      |         Y         |         Y          |       Y        |                   |                  |        |
+| 3      |         Y         |         Y          |       Y        |                   |                  |        |
+| 4      |         Y         |         Y          |       Y        |                   |                  |        |
+| 5      |         Y         |         Y          |       Y        |                   |                  |        |
+| 6      |         Y         |         Y          |       Y        |                   |                  |        |
+| 7      |         Y         |         Y          |       Y        |                   |                  |        |
+| 8      |         Y         |         Y          |       Y        |                   |                  |        |
+| 9      |         Y         |         Y          |       Y        |                   |                  |        |
+| 10     |         Y         |         Y          |       Y        |                   |                  |        |
