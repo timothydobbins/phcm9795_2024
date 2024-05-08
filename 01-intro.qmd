@@ -2,7 +2,7 @@
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(huxtable)
-library(flextable)
+library(gtsummary)
 library(tidyverse)
 library(jmv)
 ```
@@ -177,9 +177,10 @@ tab_stage_out <- as.data.frame(tab_stage$frequencies[[1]]) |>
 
 huxtable(select(tab_stage_out, 1:4)) |> 
   set_number_format(everywhere, 3:4, "%3.1f") |> 
-  add_footnote("* Disease stage was missing for 6 participants", border=0) |> 
   theme_article() |> 
-  set_width(0.8)
+  set_width(0.8) |> 
+  add_footnote("* Disease stage was missing for 6 participants", border=0)
+
 ```
 
 From @tbl-1-stage, we can see that 65.0% of participants had Stage 3 disease or lower.
@@ -205,82 +206,63 @@ Pie charts will not be discussed further in this course.
 
 When summarising continuous data numerically, there are two things we want to know:
 
-1. what is the average value? And,
+1. What is the average value? And,
 2. How variable (or spread out) are the data?
 
-### Mathematical and statistical notation
-When computing summary statistics or using more formal statistical methods, mathematical and statistical notation is often used. Below are some of the common statistical terms and interpretation that will be used in the course and which are seen in many text books.
+We will use a sample of 35 ages (in whole years) to illustrate how to calculate the average value and measures of variability:
 
-|   Notation       |   Interpretation|
-|:------------|:----------------|
-|  $x$        | An observation in your sample |
-|  $\sum x$   | Sum of all the observations |
-| $N$         |	Total population size |
-| $n$	        | Sample size |
-| $\mu$ (mu)  | Population mean |
-| $\sigma^2$  |	Population variance |
-| $\sigma$	  | Population standard deviation |
-| $\bar{x}$	  | Sample mean |
-| $s^2$	      | Sample variance |
-| $s$	        | Sample standard deviation |
+59 41 44 43 31 47 53
+59 35 60 54 61 67 52
+43 46 39 69 50 64 57
+39 54 50 51 31 48 49
+70 44 60 51 37 53 34
 
-### Measures of central tendency
 
-#### Worked example
-
-In our random sample of 30 students attending a university gym on a given day, their weight in kilograms was measured (see below). Weight is a continuous measurement (similar to height, blood pressure etc) that in theory can be measured to infinitely small units, though in practice they can be measured accurately to one or two decimal places. 
-
-We will use these data to look at measures of central tendency and spread of the data and other summary statistics. 
-
-60.0					
-62.5	62.5	62.5			
-65.0	65.0	65.0			
-67.5	67.5	67.5	67.5	67.5	
-70.0	70.0	70.0	70.0	70.0	70.0
-72.5	72.5	72.5	72.5		
-75.0	75.0	75.0	75.0	75.0	
-77.5	77.5				
-80.0					
+#### Measures of central tendency
 
 #### Mean
-The most commonly used measure of the central tendency of the data is the mean value. The mean of a set of values is often referred to as the average of all the values. The mean ($\bar{x}$) of a sample dataset is calculated using the following formula:
+
+The most commonly used measure of the central tendency of the data is the mean, calculated as:
 
 $$\bar{x} = \frac{\sum x}{n}$$
 
-From the weights example: $\bar{x}$ = 2100/30 = 70.0. Thus, the mean weight of this sample is 70.0 kg
+From the age example: $\bar{x}$ = 1745/35 = 49.9. Thus, the mean age of this sample is 49.9 years.
 
-#### Median and mode
-Other measures of central tendency include the median and mode. The median is the true centre of the data, the value at which half of the measurements lie above it and half of the measurements lie below it. 
+#### Median
+Other measures of central tendency include the median and mode. The median is the middle value of the data, the value at which half of the measurements lie above it and half of the measurements lie below it. 
 
 To estimate the median, the data are ordered from the lowest to highest values, and the middle value is used. If the middle value is between two data points (if there are an even number of observations), the median is an average of the two values. 
-Using the weight example, the median would be 70.0 kg.
 
-For a set of eight exam results ranked in order: 
+Using our example, we could rank the ages from smallest to largest, and locate the middle value (which has been bolded):
 
-48	51	55	59	63	64	69	75
+31 31 34 35 37 39 39
+41 43 43 44 44 46 47
+48 49 50 **50** 51 51 52
+53 53 54 54 57 59 59
+60 60 61 64 67 69 70
 
-The median is the average of the two middle observations: 59 and 63. So the median is (59+63)/2 = 61
+Here, the median is estimated as 50 years.
 
-The mode is the most frequent value in the distribution, in the weight example this would be 70.0 kg as this value features most frequently. The mode is not used frequently.
+Note that, in practice, the median is usually calculated by software automatically, and there is no need to rank our data.
 
-### Describing the spread of the data
-In addition to measuring the centre of the data, we also need a robust estimate of the spread of the data points.
+#### Describing the spread of the data
+In addition to measuring the centre of the data, we also need an estimate of the variability, or spread, of the data points.
 
 #### Range
 The absolute measure of the spread of the data is the range, that is the difference between the highest and lowest values in the dataset. 
 
 Range = highest data value – lowest data value
 
-Using the weights example, Range = 80.0 - 60.0 = 20.0 kg
+Using the age example, Range = 70 - 31 = 39 years.
 
-Note that while the range is 20.0 kg, the range is often reported as the actual lowest and highest values e.g. Range 60 to 80 kg.
+The range is most usefully reported as the actual lowest and highest values e.g. Range: 31 to 70 years.
 
 The range is not always ideal as it only describes the extreme values, without considering how the bulk of the data is distributed between them. 
 
 #### Variance and standard deviation
 More useful statistics to describe the spread of the data around a mean value are the variance and standard deviation. These measures of variability depend on the difference between individual observations and the mean value (deviations). If all values are equal to the mean there would be no variability at all, all deviations would be zero; conversely large deviations indicate greater variability.
 
-One way of combining deviations in a single measure is to first square the deviations and then average the squares. Squaring is done because we are equally interested in negative deviations and positive deviations; if we averaged without squaring, negative and positive deviations would ‘cancel out’. This measure is called the variance of the set of observations. It is ‘the average squared deviation from the mean’. Because the variance is in ‘square’ units and not in the units of the measurement, a second measure is derived by taking the square root of the variance. This is the standard deviation (SD), and is the most commonly used measure of variability in practice, as it is a more intuitive interpretation since it is in the same units as the units of measurement (adapted from: Williams, 2015).
+One way of combining deviations in a single measure is to first square the deviations and then average the squares. Squaring is done because we are equally interested in negative deviations and positive deviations; if we averaged without squaring, negative and positive deviations would ‘cancel out’. This measure is called the variance of the set of observations. It is ‘the average squared deviation from the mean’. Because the variance is in ‘square’ units and not in the units of the measurement, a second measure is derived by taking the square root of the variance. This is the standard deviation (SD), and is the most commonly used measure of variability in practice, as it is a more intuitive interpretation since it is in the same units as the units of measurement.
 
 The formula for the variance of a sample ($s^2$) is:
 
@@ -291,33 +273,22 @@ Note that the deviations are first squared before they are summed to remove the 
 The sample standard deviation is the square root of the of the sample variance:
 
 $$s = \sqrt{s^2}$$
-For the worked weights example, we would calculate the sample variance:
-
-$$\begin{aligned}
-  s^2 &= \frac{(60.0 - 70.0)^2 + (62.5 - 70.0)^2 + \dots + (80.0 - 70.0)^2}{30-1} \\
-      &= \frac{737.5}{29} \\
-      &= 25.43 \text{ kg}^2
-  \end{aligned}$$ 
-
-
-with a sample standard deviation: $s = \sqrt{25.43} = 5.04 \text{ kg}$.
-
-Thus, in our sample of 30 students, we have an estimated mean weight of 70.0 kg, with a variance of 25.43 kg^2^ and a standard deviation of 5.04 kg.
+For the age example, we would calculate the sample variance using statistical software. The sample standard deviation is estimated as: $s = 10.47 \text{ years}$.
 
 Characteristics of the standard deviation
 - It is affected by every measurement
 - It is in the same units as the measurements
 - It can be converted to measures of precision (standard error and 95% confidence intervals) (Module 3)
 
-Interquartile range
-The inter-quartile range (IQR) describes the range of measurements in the central 50% of values around the median i.e. the bottom 25% and top 25% of values are discarded and only the values in the 25%-75% range are quoted. The IQR is the preferred measure of spread when the median has been used to describe central tendency.
+#### Interquartile range
+The inter-quartile range (IQR) describes the range of measurements in the central 50% of values lie. This is estimated by calculating the values that cut the data at the bottom 25% and top 25%. The IQR is the preferred measure of spread when the median has been used to describe central tendency.
 
-In the weights example the IQR would be 67.5 – 75.0 (i.e. the middle 50% of values).
+In the age example, the IQR is estimated as 43 to 59 years. Note that R and Stata use slightly different methods to calculate the interquartile range (Stata IQR: 43 to 59 years; R IQR: 43 to 58 years). This difference is not important, and either range would be considered correct.
 
-## Population values: mean, variance and standard deviation
-The examples above show how the sample mean, range, variance and standard deviation are calculated from the sample of weight measures from 30 people. If we had information on the weight of the total population that the sample was drawn from, we could calculate all the summary statistics described above (for the sample) for the population.
+#### Population values: mean, variance and standard deviation
+The examples above show how the sample mean, range, variance and standard deviation are calculated from the sample of ages from 35 people. If we had information on the age of the *entire* population that the sample was drawn from, we could calculate all the summary statistics described above (for the sample) for the population.
 
-The equation for calculating the population mean is the same as that of sample mean, though now we denote the population mean as μ:
+The equation for calculating the population mean is the same as that of sample mean, though now we denote the population mean as $\mu$:
 
 $$ \mu = \frac{\sum{x}}{N} $$
 
@@ -335,57 +306,119 @@ In practice, we rarely have the information for the entire population to be able
 2. while calculating sample sizes (discussed in later modules) we need information about the population standard deviation, which is usually obtained from the existing literature.
 
 
+### Summarising a single continuous variable graphically
 
-#### Worked example
+As well as calculating measures of central tendency and spread to describe the characteristics of the data, a graphical plot is very helpful to better understand the characteristics and distribution of the measurements obtained. *Histograms* and *box plots* are excellent ways to graphically display continuous data.
 
-Consider the ages of 30 students visiting a university gym in a particular hour presented in @tbl-1-ages. This information is difficult to interpret in its raw form, but becomes more clear if the ages are grouped in a frequency table as shown in @tbl-1-ages-freq1.
+#### Frequency histograms
+A histogram that plots the frequency of the grouped observations is called a frequency histogram. Some features of a frequency histogram:
 
-```{r tbl-1-ages-freq1, echo=FALSE, fig.pos="H"}
-#| tbl-cap: Frequency of ages of students visiting a gym
+- The area under each rectangle is proportional to the frequency 
+- The rectangles are drawn without gaps between them (unlike a bar graph)
+- The data are ‘binned’ into discrete intervals (of (usually of equal width)
 
-tab1_2 <- tribble(
-  ~Age, ~Frequency,
-"17",	1L,
-"18",	5L,
-"19",	5L,
-"20",	7L,
-"21",	5L,
-"22",	2L,
-"23",	4L,
-"24",	1L,
-"Total", 30L
-)
+If the rectangles are symmetrically distributed about the middle of the histogram, we say that the data are symmetric, and the mean and median will be approximately equal.
 
-huxtable(tab1_2) |>
-  set_align(everywhere, everywhere, ".") |> 
-  theme_article() |> 
-  set_width(0.6)
+If the histogram has a longer tail to the right, then the data are said to be positively skewed (or skewed to the right), and the mean will be greater than the median.
+
+If the histogram has an extended tail to the left, then the data are negatively skewed (or skewed to the left) and the mean will be smaller than the median.
+
+> The skewness of a distribution is defined by the location of the longer tail, not the location of the peak of the data.
+
+@fig-hist-1 presents two histograms from the PBC data from the Introduction to Stata exercise: for age and serum bilirubin. We can see that the distribution for age is roughly symmetric, while the distribution for serum bilirubin is highly positively skewed (or skewed to the right).
+
+```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histogram of age (left) and serum bilirubin (right) from PBC study data"}
+knitr::include_graphics(here::here("img", "mod01", "hist-symmetric-skewed.png"))
+```
+
+A slight variation on the frequency histogram is the **density histogram**, which plots the density on the y-axis. The density is a technical term, which is similar to the relative frequency, but is scaled so that the sum of the area of the bars is equal to 1.
+
+Both the frequency and density histograms are useful for understanding how the data is distributed across the range of values. Taller bars indicate regions where the data is more densely concentrated, while shorter bars represent areas with fewer data points.
+
+#### Boxplots
+
+Another useful way to inspect the distribution of data is by using a box plot. In a box plot:
+
+- the line across the box shows the median value
+- the limits of the box show the 25-75% range (i.e. the inter-quartile range (IQR) where the middle 50% of the data lie)
+- the bars (or whiskers) indicate the most extreme values (highest and lowest) that fall within 1.5 times the interquartile range from each end of the box
+    - the upper whisker is the highest value falling within 75th percentile plus 1.5 × IQR
+    - the lower whisker is the lowest value falling within 25th percentile minus 1.5 × IQR
+-	any values in the dataset lying outside the whiskers are plotted individually.
+
+If the data are symmetric, the line across the box (the median value) will be in the centre of the box, and the tails will be roughly equal.
+
+@fig-box-1 presents two boxplots from the PBC data: for age and serum bilirubin. We can see that the boxplot for age has roughly equal tails, and the median (the horizontal line) lies roughly in the middle of the interquartile range (the shaded box). It would be reasonable to assume that age follows a symmetric distribution from this plot. The boxplot for serum bilirubin shows a much longer upper tail, and a median much closer to the bottom of the shaded box than the middle. The boxplot also shows a number of points above the 75th percentile plus 1.5 × IQR. As the upper tail is longer than the lower tail, this distribution is positively skewed.
+
+
+```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age (left) and serum bilirubin (right) from PBC study data"}
+knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
 ```
 
 
-### Tables with more than one variable 
-So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than one variable in a table – called a cross tabulation, or a two-way (summarising two variables) table or multi-way (summarising more than two variables) table. However, tables become complex when more than two variables are incorporated (you may need to present the information as two tables or incorporate additional rows and columns).
 
-In our example above, if we have two categorical variables (e.g. sex with two categories male and female and BMI status with three categories Normal, Overweight and Obese) measured on each subject (student), we can classify the two variables simultaneously using two-way tables of frequency as shown in @tbl-1-sex-bmi-freq.
 
-```{r tbl-1-sex-bmi-freq, echo=FALSE}
-#| tbl-cap: Frequency of students visiting a gym by sex and BMI status*
 
-tab1_5 <- tibble::tribble(
-  ~Sex, ~`Not overweight`, ~`Overweight`, ~`Obese`, ~Total,
-  "Male",          1L,                9L,           2L,    12L,
-  "Female",         11L,                6L,           0L,    17L,
-  "Total",         12L,               15L,           3L,    29L
-)
+##**##
 
-huxtable(tab1_5) |>
-  set_align(everywhere, everywhere, ".") |> 
+### Summarising two categorical variables numerically
+
+So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than two categorical variables in a table – called a cross tabulation, or a two-way (summarising two variables) table.
+
+Using our PBC data, we can summarise the two categorical variables: sex and stage of disease. The two-way table of frequencies is shown in @tbl-1-sex-stage-freq.
+
+```{r tbl-1-sex-stage-freq, echo=FALSE, warning=FALSE}
+#| tbl-cap: Frequency of participants by sex and stage of disease*
+
+t<- tbl_cross(pbc, sex, stage, missing="no",
+                     percent="none",
+                     label = list(sex ="Sex", stage="Stage"),
+                     digits = 0)
+
+as_hux_table(t) |> 
   theme_article() |> 
   set_width(0.9) |> 
-  add_footnote("*BMI was missing for 1 student")
+  add_footnote("*Stage of disease was missing for 6 participants")
 ```
 
-### Tables containing more than two variables
+Column percents
+
+```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
+#| tbl-cap: Frequency of participants by sex and stage of disease*
+
+t_col<- tbl_cross(pbc, sex, stage, missing="no",
+                     percent="column",
+                     label = list(sex ="Sex", stage="Stage"),
+                     digits = 0)
+
+as_hux_table(t_col) |> 
+  theme_article() |> 
+  set_width(0.9) |> 
+  add_footnote("*Stage of disease was missing for 6 participants")
+```
+
+Row percents
+
+```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
+#| tbl-cap: Frequency of participants by sex and stage of disease*
+
+t_row <- tbl_cross(pbc, sex, stage, missing="no",
+                     percent="row",
+                     label = list(sex ="Sex", stage="Stage"),
+                     digits = 0)
+
+as_hux_table(t_row) |> 
+  theme_article() |> 
+  set_width(0.9) |> 
+  add_footnote("*Stage of disease was missing for 6 participants")
+```
+
+
+
+#### Tables containing more than two variables
+
+It is possible to construct multi-way tables that summarise more than two categorical variables in a single table. However, tables can become complex when more than two variables are incorporated, and you may need to present the information as two tables or incorporate additional rows and columns.
+
 In @fig-1-2, characteristics of the sample of prisoners from the NPHDC were presented. This table contains information about sex, age group and Indigenous status from different groups of prisoners; prison entrants, discharges, and prisoners in custody. This type of condensed information is often found in reports and journal articles giving demographic information, by different groups considered in the study.
 
 We might also consider a table containing further pieces of information. The table presented in @fig-prison-education (from the health of Australia’s prisoners 2015 report) compares prison entrants and the general community by three variables: age group, Indigenous status, and highest level of completed education.
@@ -474,49 +507,6 @@ Consider the following guidelines for the appropriate presentation of graphs in 
 - Three dimensional graphs should be avoided unless the third dimension adds additional information 
 
 
-## Using graphs to display the centre and spread of the data
-As well as calculating measures of central tendency and spread to describe the characteristics of the data, a graphical plot is very helpful to better understand the characteristics and distribution of the measurements obtained. *Histograms* and *box plots* are excellent ways to graphically display continuous data.
-
-### Frequency histograms
-A histogram that plots the frequency of the grouped observations is called a frequency histogram. Some features of a frequency histogram:
-
-- The area under each rectangle is proportional to the frequency 
-- The rectangles are drawn without gaps between them (unlike a bar graph)
-- The data are ‘binned’ into discrete intervals (of (usually of equal width)
-- The mid-point of the histogram represents the centre (mean, median) of the data 
-
-If the rectangles are symmetrically distributed about the middle of the histogram, we say that the data are symmetric, and the mean and median will be approximately equal.
-
-If the histogram has a longer tail to the right, then the data are said to be positively skewed (or skewed to the right), and the mean will be greater than the median.
-
-If the histogram has an extended tail to the left, then the data are negatively skewed (or skewed to the left) and the mean will be smaller than the median.
-
-> The skewness of a distribution is defined by the location of the longer tail, not the location of the peak of the data.
-
-@fig-hist-1 presents two histograms from the PBC data from the Introduction to Stata exercise: for age and serum bilirubin. We can see that the distribution for age is roughly symmetric, while the distribution for serum bilirubin is highly positively skewed (or skewed to the right).
-
-```{r fig-hist-1, echo=FALSE, out.width = "100%", fig.cap="Histogram of age (left) and serum bilirubin (right) from PBC study data"}
-knitr::include_graphics(here::here("img", "mod01", "hist-symmetric-skewed.png"))
-```
-
-### Boxplots
-Another useful way to inspect the distribution of data is by using a box plot. In a box plot:
-
-- the line across the box shows the median value
-- the limits of the box show the 25-75% range (i.e. the inter-quartile range (IQR) where the middle 50% of the data lie)
-- the bars (or whiskers) indicate the most extreme values (highest and lowest) that fall within 1.5 times the interquartile range from each end of the box
-    - the upper whisker is the highest value falling within 75th percentile plus 1.5 × IQR
-    - the lower whisker is the lowest value falling within 25th percentile minus 1.5 × IQR
--	any values in the dataset lying outside the whiskers are plotted individually.
-
-If the data are symmetric, the line across the box (the median value) will be in the centre of the box, and the tails will be roughly equal.
-
-@fig-box-1 presents two boxplots from the PBC data: for age and serum bilirubin. We can see that the boxplot for age has roughly equal tails, and the median (the horizontal line) lies roughly in the middle of the interquartile range (the shaded box). It would be reasonable to assume that age follows a symmetric distribution from this plot. The boxplot for serum bilirubin shows a much longer upper tail, and a median much closer to the bottom of the shaded box than the middle. The boxplot also shows a number of points above the 75th percentile plus 1.5 × IQR. As the upper tail is longer than the lower tail, this distribution is positively skewed.
-
-
-```{r fig-box-1, echo=FALSE, out.width = "100%", fig.cap="Box plot of age (left) and serum bilirubin (right) from PBC study data"}
-knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
-```
 
 ## How to report summary statistics
 When reporting summary statistics, it is important not to present results with too many decimal places. Doing so implies that your data have a higher level of precision than they do. For example, presenting a mean blood pressure of 100.2487 mmHg implies that blood pressure can be measured accurately to at least three decimal places.
@@ -579,3 +569,20 @@ Sources:
 <!-- # Activities {-} -->
 
 <!-- {{< include 01.3-intro-activities.qmd >}} -->
+
+
+### Mathematical and statistical notation
+When computing summary statistics or using more formal statistical methods, mathematical and statistical notation is often used. Below are some of the common statistical terms and interpretation that will be used in the course and which are seen in many text books.
+
+|   Notation       |   Interpretation|
+|:------------|:----------------|
+|  $x$        | An observation in your sample |
+|  $\sum x$   | Sum of all the observations |
+| $N$         |	Total population size |
+| $n$	        | Sample size |
+| $\mu$ (mu)  | Population mean |
+| $\sigma^2$  |	Population variance |
+| $\sigma$	  | Population standard deviation |
+| $\bar{x}$	  | Sample mean |
+| $s^2$	      | Sample variance |
+| $s$	        | Sample standard deviation |

@@ -1,12 +1,15 @@
 library(tidyverse)
 library(ggformula)
+library(gtsummary)
 library(jmv)
 
 set.seed(8034812)
 
 pbc <- readRDS("data/examples/mod01_pbc.rds") |> 
   mutate(stage = factor(stage, levels=c(1, 2, 3, 4),
-                        labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4")))
+                        labels = c("Stage 1", "Stage 2", "Stage 3", "Stage 4")),
+         sex = factor(sex, levels=c(1,2),
+                      labels=c("Male", "Female")))
 
 gf_bar(filter(pbc, is.na(stage) == FALSE), ~ stage,
        xlab = "", ylab = "Number of participants") |> 
@@ -15,8 +18,10 @@ gf_bar(filter(pbc, is.na(stage) == FALSE), ~ stage,
 
 age <- select(pbc, age) |> 
   slice_sample(n=35) |> 
-  mutate(age = round(age)) |> 
-  arrange(age)
+  mutate(age = round(age))
+
+age
+arrange(age, by=age)
 
 hist(age$age)
 plot(density(age$age))
@@ -52,4 +57,15 @@ gf_boxplot(data=age, age ~ .,
            axis.ticks.x = element_blank())
 
 
-contTables(data=pbc, rows=sex, cols=stage, pcCol=TRUE)
+t<- gtsummary::tbl_cross(pbc, sex, stage, missing="no",
+                     percent="column",
+                     label = list(sex ="Sex", stage="Stage"),
+                     digits = 0)
+as_hux_table(t)
+
+
+t_row <- gtsummary::tbl_cross(pbc, sex, stage, missing="no",
+                         percent="row",
+                         label = list(sex ="Sex", stage="Stage"),
+                         digits = 0)
+as_hux_table(t_row)
