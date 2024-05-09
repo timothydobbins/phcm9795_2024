@@ -381,10 +381,10 @@ as_hux_table(t) |>
   add_footnote("*Stage of disease was missing for 6 participants")
 ```
 
-Column percents
+We can add percentages to two-way tables as either *column* or *row* percents. Using @tbl-1-sex-stage-freq as an example, column percents represent the relative frequencies of sex within each stage: 
 
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
-#| tbl-cap: Frequency of participants by sex and stage of disease*
+#| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
 
 t_col<- tbl_cross(pbc, sex, stage, missing="no",
                      percent="column",
@@ -397,10 +397,10 @@ as_hux_table(t_col) |>
   add_footnote("*Stage of disease was missing for 6 participants")
 ```
 
-Row percents
+Conversely, row percents represent the relative frequencies of stage within each sex: 
 
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
-#| tbl-cap: Frequency of participants by sex and stage of disease*
+#| tbl-cap: Frequency of participants by sex and stage of disease*, including row percents
 
 t_row <- tbl_cross(pbc, sex, stage, missing="no",
                      percent="row",
@@ -412,8 +412,6 @@ as_hux_table(t_row) |>
   set_width(0.9) |> 
   add_footnote("*Stage of disease was missing for 6 participants")
 ```
-
-
 
 #### Tables containing more than two variables
 
