@@ -9,7 +9,7 @@ book:
   date-format: "DD MMMM, YYYY"
   chapters:
     - index.qmd
-    - _revision-progress.qmd
+    # - _revision-progress.qmd
     - 01-intro.qmd
     # - 02-probability.qmd
     # - 03-precision.qmd

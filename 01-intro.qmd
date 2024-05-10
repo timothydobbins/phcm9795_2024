@@ -355,12 +355,6 @@ If the data are symmetric, the line across the box (the median value) will be in
 knitr::include_graphics(here::here("img", "mod01", "boxp-symmetric-skewed.png"))
 ```
 
-
-
-
-
-##**##
-
 ### Summarising two categorical variables numerically
 
 So far, we have discussed one-way frequency tables, that is, tables that summarise one variable. We can summarise more than two categorical variables in a table – called a cross tabulation, or a two-way (summarising two variables) table.
@@ -434,29 +428,7 @@ Some issues in this table:
 - It is unclear how the percentages were calculated (which groupings added to 100%);
 - The ages are not labelled as such, thus without reading the text in report it is unclear that these are age groupings.
 
-### Table presentation guidelines (Woodward, 2013)
-
-1. Each table (and figure) should be self-explanatory, i.e. the reader should be able to understand it without reference to the text in the body of the report.
-    -	This can be achieved by using complete, meaningful labels for the rows and columns and giving a complete, meaningful title. 
-    - Footnotes can be used to enhance the explanation.
-2. Units of the variables (and if needed, method of calculation or derivation) should be given and missing records should be noted (e.g. in a footnote).
-3. A table should be visually uncluttered. 
-    - Avoid use of vertical lines. 
-    - Horizontal lines should not be used in every single row, but they can be used to group parts of the table. 
-    - Sensible use of white space also helps enormously; use equal spacing except where large spaces are left to separate distinct parts of the table. 
-    - Different typefaces (or fonts) may be used to provide discrimination, e.g. use of bold type and/or italics.
-4. The rows and columns of each table should be arranged in a natural order to help interpretation. For instance, when rows are ordered by the size of the numbers they contain for a nominal variable, it is immediately obvious where relatively big and small contributions come from.
-5. Tables should have a consistent appearance throughout the report so that the paper is easy to follow (and also for an aesthetic appearance). Conventions for labelling and ordering should be the same (for both tables as well as figures) for ease of comparison of different tables (and figures).
-6. Consider if there is a particular table orientation that makes a table easier to read. 
-
-Given the different possible formats of tables and their complexity, some further guidelines are given in the following excellent references: 
-
-- Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18
-- Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20
-
-## Graphical presentation
-
-### Bar graphs
+### Summarising two categorical variables graphically
 
 Information from more than one variable can be presented as clustered or multiple bar chart (bars side-by-side) (@fig-bar-2). This type of graph is useful when examining changes in the categories separately, but also comparing the grouping variable between the main bar variable. Here we can see that Stage 3 and Stage 4 disease is the most common for both males and females, but there are many more females within each stage of disease.
 
@@ -492,29 +464,19 @@ The age standardised incidence rate for prostate cancer increased steadily in th
 
 
 
-### Graphical presentation guidelines
-Consider the following guidelines for the appropriate presentation of graphs in scientific journals and reports (Woodward, 2013).
+## Presentation guidelines
 
-- Figures should be self-explanatory and have consistent appearance through the report. 
-- A title should give complete information. Note that figure titles are usually placed below the figure, whereas for tables titles are given above the table. 
-- Axes should be labelled appropriately 
-- Units of the variables should be given in the labelling of the axes. Use footnotes to indicate any calculation or derivation of variables and to indicate missing values
-- If the Y-axis has a natural origin, it should be included, or emphasised if it is not included. 
-- If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison 
-- Columns of bar charts should be separated by a space
-- Three dimensional graphs should be avoided unless the third dimension adds additional information 
+### Guidelines for presenting summary statistics
 
-
-
-## How to report summary statistics
 When reporting summary statistics, it is important not to present results with too many decimal places. Doing so implies that your data have a higher level of precision than they do. For example, presenting a mean blood pressure of 100.2487 mmHg implies that blood pressure can be measured accurately to at least three decimal places.
 
 There are a number of guidelines that have been written to help in the presentation of numerical data. Many of these guidelines are based on the number of decimal places, while others are based on the number of significant figures. Briefly, the number of significant figures are "the number of digits from the first non-zero digit to the last meaningful digit, irrespective of the position of the decimal point. Thus, 1.002, 10.02, 100200 (if this number is expressed to the nearest 100) all have four significant digits." @armitage_etal13
 
-A summary of these guidelines that will be used in this course appear below.
+A summary of these guidelines that will be used in this course appear in @tbl-1-pres.
 
 ```{r tbl-1-pres, echo=FALSE}
 #| tbl-cap: Guidelines for presentation of statistical results
+#| fig-pos: 'h'
 
 tab1_pres <- tibble::tribble(
 ~`Summary statistic`,       ~`Guideline (reference)`,
@@ -539,6 +501,39 @@ huxtable::huxtable(tab1_pres) |>
   set_valign(everywhere, everywhere, "middle")
 ```
 
+### Table presentation guidelines
+
+Consider the following guidelines for the appropriate presentation of tables in scientific journals and reports (Woodward, 2013).
+
+1. Each table (and figure) should be self-explanatory, i.e. the reader should be able to understand it without reference to the text in the body of the report.
+    -	This can be achieved by using complete, meaningful labels for the rows and columns and giving a complete, meaningful title. 
+    - Footnotes can be used to enhance the explanation.
+2. Units of the variables (and if needed, method of calculation or derivation) should be given and missing records should be noted (e.g. in a footnote).
+3. A table should be visually uncluttered. 
+    - Avoid use of vertical lines. 
+    - Horizontal lines should not be used in every single row, but they can be used to group parts of the table. 
+    - Sensible use of white space also helps enormously; use equal spacing except where large spaces are left to separate distinct parts of the table. 
+    - Different typefaces (or fonts) may be used to provide discrimination, e.g. use of bold type and/or italics.
+4. The rows and columns of each table should be arranged in a natural order to help interpretation. For instance, when rows are ordered by the size of the numbers they contain for a nominal variable, it is immediately obvious where relatively big and small contributions come from.
+5. Tables should have a consistent appearance throughout the report so that the paper is easy to follow (and also for an aesthetic appearance). Conventions for labelling and ordering should be the same (for both tables as well as figures) for ease of comparison of different tables (and figures).
+6. Consider if there is a particular table orientation that makes a table easier to read. 
+
+Given the different possible formats of tables and their complexity, some further guidelines are given in the following excellent references: 
+
+- Graphics and statistics for cardiology: designing effective tables for presentation and publication, @boers18
+- Guidelines for Reporting of Figures and Tables for Clinical Research in Urology, @vickers_etal20
+
+### Graphical presentation guidelines
+Consider the following guidelines for the appropriate presentation of graphs in scientific journals and reports (Woodward, 2013).
+
+- Figures should be self-explanatory and have consistent appearance through the report. 
+- A title should give complete information. Note that figure titles are usually placed below the figure, whereas for tables titles are given above the table. 
+- Axes should be labelled appropriately 
+- Units of the variables should be given in the labelling of the axes. Use footnotes to indicate any calculation or derivation of variables and to indicate missing values
+- If the Y-axis has a natural origin, it should be included, or emphasised if it is not included. 
+- If graphs are being compared, the Y-axis should be the same across the graphs to enable fair comparison 
+- Columns of bar charts should be separated by a space
+- Three dimensional graphs should be avoided unless the third dimension adds additional information 
 
 
 Sources:
@@ -550,37 +545,22 @@ Sources:
 @assel_etal19
 
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # An introduction to Stata {-} -->
+# An introduction to Stata {-}
 
-<!-- {{< include 01.1-intro-stata.qmd >}} -->
+{{< include 01.1-intro-stata.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # An introduction to R and RStudio {-} -->
+# An introduction to R and RStudio {-}
 
-<!-- {{< include 01.2-intro-R.qmd >}} -->
+{{< include 01.2-intro-R.qmd >}}
 
-<!-- {{< pagebreak >}} -->
+{{< pagebreak >}}
 
-<!-- # Activities {-} -->
+# Activities {-}
 
-<!-- {{< include 01.3-intro-activities.qmd >}} -->
+{{< include 01.3-intro-activities.qmd >}}
 
 
-### Mathematical and statistical notation
-When computing summary statistics or using more formal statistical methods, mathematical and statistical notation is often used. Below are some of the common statistical terms and interpretation that will be used in the course and which are seen in many text books.
-
-|   Notation       |   Interpretation|
-|:------------|:----------------|
-|  $x$        | An observation in your sample |
-|  $\sum x$   | Sum of all the observations |
-| $N$         |	Total population size |
-| $n$	        | Sample size |
-| $\mu$ (mu)  | Population mean |
-| $\sigma^2$  |	Population variance |
-| $\sigma$	  | Population standard deviation |
-| $\bar{x}$	  | Sample mean |
-| $s^2$	      | Sample variance |
-| $s$	        | Sample standard deviation |

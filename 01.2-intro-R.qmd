@@ -155,7 +155,7 @@ You should now see four window panes, as below. In the top-left window, type the
 
 ```{r eval=FALSE}
 # Author: Timothy Dobbins
-# Date: 5 April 2022
+# Date: 5 April 2024
 # Purpose: My first R script
 
 age <- c(20, 25, 23, 29, 21, 27)
@@ -377,13 +377,9 @@ Note that quotation marks are not required for the `library()` function (althoug
 
 ## TASK
 
-Install the packages: `jmv`, `skimr` and `summarytools` using **Tools \> Install packages**, or by typing into the console:
+Install the package `jmv` using **Tools \> Install packages**, or by typing into the console:
 
 `install.packages("jmv")`
-
-`install.packages("skimr")`
-
-`install.packages("summarytools")`
 :::
 
 
@@ -405,7 +401,7 @@ Package loading
 
 If you have done much reading about R, you may have come across the tidyverse:
 
-> "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures." <https://www.tidyverse.org/>
+> "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures." <https://www.tidyverse.org/>
 
 Packages in the tidyverse have been designed with a goal to make using R more consistent by defining a "grammar" to manipulate data, examine data and draw conclusions from data. While the tidyverse is a common and powerful set of packages, we will not be teaching the tidyverse in this course for two main reasons:
 
