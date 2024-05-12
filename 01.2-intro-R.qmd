@@ -563,17 +563,11 @@ boxplot(pbc$age, xlab="Age (years)", main="Boxplot of participant age from pbc s
 
 ### Producing a one-way frequency table
 
-We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables.
-
-```{r message=FALSE}
-library(summarytools)
-
-freq(pbc$sex)
-```
+We have three categorical variables to summarise in Table 1: sex, stage and vital status. These variables are best summarised using one-way frequency tables, which can be constructed using the `descriptives` function from the `jmv` package, with the `freq = TRUE` option. Before constructing frequency tables however, we *must define the variables as categorical variables*, by converting them to *factors*.
 
 #### Defining categorical variables as factors {#sec-cat-as-factors}
 
-You will notice that the table above, in its current form, is uninterpretable as the 1 and 2 categories are not labelled. In this course, all variables including categorical variables tend to be numerically coded. To define a categorical variable as such in R, we define it as a **factor** using the factor function:
+To define a categorical variable as such in R, we define it as a **factor** using the factor function:
 
 `factor(variable=, levels=, labels=)`
 
@@ -582,23 +576,22 @@ We specify:
 -   levels: the values the categorical variable can take
 -   labels: the labels corresponding to each of the levels (entered in the same order as the levels)
 
-To define our variable sex as a factor, we use:
+To define our variable `sex` as a factor, we use:
 
 ```{r}
 pbc$sex <- factor(pbc$sex, levels=c(1, 2), labels=c("Male", "Female"))
 ```
 
-We can confirm the coding by re-running a frequency table:
+We can then produce a frequency table:
 
 ```{r}
-freq(pbc$sex)
+descriptives(data=pbc, vars=sex, freq=TRUE)
 ```
 
 > Task: define `stage` and `status` (Vital Status) as factors, and produce one-way frequency tables. Refer to the file `pbc_info.txt` to view the labels for each variable. For example, for Stage:
 
 ```{r}
 pbc$stage <- factor(pbc$stage, levels=c(1, 2, 3, 4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
-freq(pbc$stage)
 ```
 
 ### Producing a two-way frequency table
