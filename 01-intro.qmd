@@ -179,7 +179,7 @@ huxtable(select(tab_stage_out, 1:4)) |>
   set_number_format(everywhere, 3:4, "%3.1f") |> 
   theme_article() |> 
   set_width(0.8) |> 
-  add_footnote("* Disease stage was missing for 6 participants", border=0)
+  add_footnote("* Disease stage was missing for 6 participants")
 
 ```
 
@@ -275,7 +275,8 @@ The sample standard deviation is the square root of the of the sample variance:
 $$s = \sqrt{s^2}$$
 For the age example, we would calculate the sample variance using statistical software. The sample standard deviation is estimated as: $s = 10.47 \text{ years}$.
 
-Characteristics of the standard deviation
+Characteristics of the standard deviation:
+
 - It is affected by every measurement
 - It is in the same units as the measurements
 - It can be converted to measures of precision (standard error and 95% confidence intervals) (Module 3)
@@ -283,7 +284,7 @@ Characteristics of the standard deviation
 #### Interquartile range
 The inter-quartile range (IQR) describes the range of measurements in the central 50% of values lie. This is estimated by calculating the values that cut the data at the bottom 25% and top 25%. The IQR is the preferred measure of spread when the median has been used to describe central tendency.
 
-In the age example, the IQR is estimated as 43 to 59 years. Note that R and Stata use slightly different methods to calculate the interquartile range (Stata IQR: 43 to 59 years; R IQR: 43 to 58 years). This difference is not important, and either range would be considered correct.
+In the age example, the IQR is estimated as 43 to 59 years. Note that R and Stata use slightly different methods to calculate the interquartile range (Stata IQR: 43 to 59 years; R IQR: 43 to 58 years). This difference is not practically important, and either range would be considered correct.
 
 #### Population values: mean, variance and standard deviation
 The examples above show how the sample mean, range, variance and standard deviation are calculated from the sample of ages from 35 people. If we had information on the age of the *entire* population that the sample was drawn from, we could calculate all the summary statistics described above (for the sample) for the population.
@@ -361,7 +362,7 @@ So far, we have discussed one-way frequency tables, that is, tables that summari
 
 Using our PBC data, we can summarise the two categorical variables: sex and stage of disease. The two-way table of frequencies is shown in @tbl-1-sex-stage-freq.
 
-```{r tbl-1-sex-stage-freq, echo=FALSE, warning=FALSE}
+```{r tbl-1-sex-stage-freq, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*
 
 t<- tbl_cross(pbc, sex, stage, missing="no",
@@ -375,7 +376,7 @@ as_hux_table(t) |>
   add_footnote("*Stage of disease was missing for 6 participants")
 ```
 
-We can add percentages to two-way tables as either *column* or *row* percents. Using @tbl-1-sex-stage-freq as an example, column percents represent the relative frequencies of sex within each stage: 
+We can add percentages to two-way tables as either *column* or *row* percents. Using @tbl-1-sex-stage-freq as an example, column percents represent the relative frequencies of sex within each stage (@tbl-1-sex-stage-col).
 
 ```{r tbl-1-sex-stage-col, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including column percents
@@ -391,7 +392,7 @@ as_hux_table(t_col) |>
   add_footnote("*Stage of disease was missing for 6 participants")
 ```
 
-Conversely, row percents represent the relative frequencies of stage within each sex: 
+Conversely, row percents represent the relative frequencies of stage within each sex (@tbl-1-sex-stage-row).
 
 ```{r tbl-1-sex-stage-row, echo=FALSE, message=FALSE}
 #| tbl-cap: Frequency of participants by sex and stage of disease*, including row percents

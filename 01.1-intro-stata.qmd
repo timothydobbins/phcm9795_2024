@@ -19,9 +19,11 @@ Stata is a powerful statistical package that is relatively easy to use. It is co
 
 ## Part 1: A simple Stata analysis
 
-In this very brief section, we will introduce Stata by calculating the average of six ages. If you are using Windows, open Stata by clicking:	**Start > Stata 16 > Stata SE**
+In this very brief section, we will introduce Stata by calculating the average of six ages. If you are using Windows, open Stata by clicking:	**Start > Stata 18 > Stata SE**
 
 If you are using MacOS, open Stata from the Applications folder. Note that while Stata is available for Windows and MacOS, most of the screenshots in these notes will be based on the Windows version.
+
+Alternatively, open Stata using UNSW's myAccess service.
 
 When you first open Stata, it will look something like the following.
 

@@ -87,7 +87,7 @@ You can read the `==` as "is equal to". So the code `sample$weight == 700.2` is 
 
 ## Overlaying a Normal curve on a histogram
 
-It can be useful to produce a histogram with an overlayed Normal curve to assess whether our sample appears approximately Normally distributed. We can do this by plotting a histogram using the `hist()` function. As we're overlaying a probability distribution, we request the histogram be plotted on a probability scale, rather than a frequency scale, using `probability=TRUE`.
+It can be useful to produce a histogram with an overlayed Normal curve to assess whether our sample appears approximately Normally distributed. We can do this by plotting a histogram using the `hist()` function. As we're overlaying a probability distribution, we request a **density histogram**, rather than a frequency histogram, using `freq=FALSE`.
 
 We then request a curve be overlayed using the `curve()` function:
 
@@ -105,7 +105,7 @@ We then request a curve be overlayed using the `curve()` function:
 hist(sample$weight_clean,
      xlab="Weight (kg)",
      main="Histogram of 1000 weights",
-     probability = TRUE)
+     freq = FALSE)
 
 curve(dnorm(x,
             mean=mean(sample$weight_clean),
@@ -121,7 +121,7 @@ hist(sample$weight_clean,
      xlab="Weight (kg)",
      main="Histogram of 1000 weights",
      probability = TRUE,
-     ylim=c(0,0.1))
+     freq = FALSE)
 
 curve(dnorm(x,
             mean=mean(sample$weight_clean),
@@ -227,7 +227,7 @@ In order to summarise a vector using the `descriptives()` function, we must firs
 
 ```{r}
 # Author: Timothy Dobbins
-# Date: 5 April 2022
+# Date: 5 April 2024
 # Purpose: My first R script
 library(jmv)
 

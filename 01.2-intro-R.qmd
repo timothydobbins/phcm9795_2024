@@ -41,7 +41,7 @@ In summary, we recommend you use RStudio to write R code.
 
 2.  Install R by running the installer and following the installation instructions. The default settings are fine.
 
-    -   **Note for macOS:** if you are running macOS 10.8 or later, you will need to install an additional application called XQuartz, which is available at <https://www.xquartz.org/>. Download the latest installer (XQuartz-2.8.5.dmg as of May 2023), and install it in the usual way.
+    -   **Note for macOS:** if you are running macOS 10.8 or later, you may need to install an additional application called XQuartz, which is available at <https://www.xquartz.org/>. Download the latest installer (XQuartz-2.8.5.dmg as of May 2024), and install it in the usual way.
 
 3.  Open the R program. You should see a screen similar to below:
 
@@ -174,7 +174,7 @@ To run your script, choose **Code \> Run Region \> Run All**. You will see your 
 
 ```{r eval=FALSE}
 > # Author: Timothy Dobbins
-> # Date: 5 April 2022
+> # Date: 5 April 2024
 > # Purpose: My first R script
 > 
 > age <- c(20, 25, 23, 29, 21, 27)
@@ -377,9 +377,11 @@ Note that quotation marks are not required for the `library()` function (althoug
 
 ## TASK
 
-Install the package `jmv` using **Tools \> Install packages**, or by typing into the console:
+Install the packages `jmv` and `skimr` using **Tools \> Install packages**, or by typing into the console:
 
 `install.packages("jmv")`
+
+`install.packages("skimr")`
 :::
 
 
@@ -529,7 +531,7 @@ descriptives(data=pbc, vars=c(age, ast, bili), pc=TRUE)
 
 ### Producing a histogram
 
-We can use the `hist()` function to produce a histogram, specifying the dataframe to use and the variable to be plotted as `dataframe$variable`:
+We can use the `hist()` function to produce a frequency histogram, specifying the dataframe to use and the variable to be plotted as `dataframe$variable`:
 
 ```{r}
 hist(pbc$age)
@@ -539,18 +541,15 @@ The histogram function does a remarkably good job of choosing cutpoints and binw
 
 ```{r}
 hist(pbc$age, xlab="Age (years)", 
-     main="Histogram of participant age from pbc study data")
+     main="Frequency histogram of participant age from pbc study data")
 ```
 
-By default, the `hist()` function plots a **frequency histogram**, with counts on the y-axis. We can tweak the histogram using the following code to plot a histogram of the **relative frequencies**:
+By default, the `hist()` function plots a **frequency histogram**, with counts on the y-axis. We can plot a **density histogram** using the following code:
 
 ```{r}
-h <- hist(pbc$age, plot=FALSE)
-h$density <- h$counts/sum(h$counts)*100
-plot(h, freq=FALSE, 
+h <- hist(pbc$age, freq=FALSE,
      xlab="Age (years)", 
-     ylab="Relative frequency (%)",
-     main="Histogram of participant age from pbc study data")
+     main="Density histogram of participant age from pbc study data")
 ```
 
 ### Producing a boxplot
@@ -558,7 +557,8 @@ plot(h, freq=FALSE,
 The `boxplot` function is used to produce boxplots, again specifying the dataframe to use and the variable to be plotted as `dataframe$variable`. Labels can be applied in the same way as the histogram:
 
 ```{r}
-boxplot(pbc$age, xlab="Age (years)", main="Boxplot of participant age from pbc study data")
+boxplot(pbc$age, xlab="Age (years)", 
+   main="Boxplot of participant age from pbc study data")
 ```
 
 ### Producing a one-way frequency table
@@ -579,7 +579,8 @@ We specify:
 To define our variable `sex` as a factor, we use:
 
 ```{r}
-pbc$sex <- factor(pbc$sex, levels=c(1, 2), labels=c("Male", "Female"))
+pbc$sex <- factor(pbc$sex, levels=c(1, 2), 
+   labels=c("Male", "Female"))
 ```
 
 We can then produce a frequency table:
@@ -591,7 +592,8 @@ descriptives(data=pbc, vars=sex, freq=TRUE)
 > Task: define `stage` and `status` (Vital Status) as factors, and produce one-way frequency tables. Refer to the file `pbc_info.txt` to view the labels for each variable. For example, for Stage:
 
 ```{r}
-pbc$stage <- factor(pbc$stage, levels=c(1, 2, 3, 4), labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
+pbc$stage <- factor(pbc$stage, levels=c(1, 2, 3, 4), 
+   labels=c("Stage 1", "Stage 2", "Stage 3", "Stage 4"))
 ```
 
 ### Producing a two-way frequency table
@@ -630,9 +632,7 @@ It is not necessary to save our PBC data, as we have made only minor changes to 
 
 It is important to note that saving your data or your script in R will not save your output. The easiest way to retain the output of your analyses is to copy the output from the Console into a word processor package (e.g. Microsoft Word) before closing R.
 
-Unfortunately, by default, R is not ideal for creating publication quality tables. There are many packages that will help in this process, such as R Markdown, bookdown[^introtor-1], huxtable, gt and gtsummary, but their use is beyond the scope of this course. [R Markdown for Scientists](https://rmd4sci.njtierney.com/) provides an excellent introduction to R Markdown.
-
-[^introtor-1]: these R notes and the PHCM9795 course notes have been written using [bookdown](https://bookdown.org/yihui/bookdown/)
+Unfortunately, by default, R is not ideal for creating publication quality tables. There are many packages that will help in this process, such as R Markdown, huxtable, gt and gtsummary, but their use is beyond the scope of this course. [R Markdown for Scientists](https://rmd4sci.njtierney.com/) provides an excellent introduction to R Markdown.
 
 ::: {.callout-note icon=false}
 
