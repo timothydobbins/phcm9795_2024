@@ -24,7 +24,7 @@ huxtable::huxtable(tab1_1, add_colnames = FALSE) |>
 
 a) These data have been saved as `Activity_S1.1.dta` and `Activity_S1.1.rds`. Read the data into your software package.
 b) What type of data are these?
-c) Construct an appropriate graph to display the relative frequency of participants' weight loss. Your graph should start at 50 grams, with weight loss grouped into 50 gram bins. Provide appropriate labels for the axes and give the graph an appropriate title.
+c) Construct an appropriate graph to display the frequency of participants' weight loss. Your graph should start at 50 grams, with weight loss grouped into 50 gram bins. Provide appropriate labels for the axes and give the graph an appropriate title.
 
 ### Activity 1.2 {-}
 Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The Stata file `Activity_S1.2.dta` and the R file `Activity_S1.2.rds` contain data on the participants in the study. The file is located on Moodle in the Learning Activities section.
@@ -43,13 +43,18 @@ Estimate the mean, median, mode, standard deviation, range and interquartile ran
 Data of diastolic blood pressure (BP) of a sample of study participants are provided in the datasets `Activity_S1.4.dta` and `Activity_S1.4.rds`. Compute the mean, median, range and SD of diastolic BP.
 
 ### Activity 1.5 {-}
-In a study of 100 participants data were missing for 5 people. The missing data points were coded as ‘99’. The mean of the data was estimated as 45.0 with a standard deviation of 5.6; the smallest and greatest values are 16 and 65 respectively.
+The ages of 100 study participants have been saved as `Activity_S1.5.dta` and `Activity_S1.5.rds`. Estimate the:
 
-If the researcher analysed the data as if the 99s were real data, would it make the following statistics larger, smaller, or stay the same?
+a. mean and median;
+b. standard deviation and interquartile range;
+c. range.
 
-a) Mean 
-b) Standard Deviation 
-c) Range 
+Plot the data using a histogram and boxpolot. Is there anything unusual about the ages? What do you think is a possible explanation for this?
+
+A clean version of the data have been saved as Activity_S1.5_clean.dta` and `Activity_S1.5_clean.rds`. Recalculate the summary statistics and recreate the plots using the clean data.
+
+Based on this exercise, what is your advice on coding unusual or missing values in data?
+
 
 ### Activity 1.6 {-}
 

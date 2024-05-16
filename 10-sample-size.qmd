@@ -165,7 +165,7 @@ The test that is used to show that two mean values are significantly different f
 
 ### Worked Example
 
-There is a hypothesis that the use of the oral contraceptive (OC) pill in premenopausal women can increase systolic blood pressure. A study was planned to test this hypothesis using a two sided t-test. The investigators are interesting in detecting an increase of at least 5 mm Hg systolic blood pressure in the women using OC compared to the non-OC users with 90% power at a 5% significance level. A pilot study shows that the SD of systolic blood pressure in the target group is 25 mm Hg and the mean systolic blood pressure of non-OC user women is 90 mm Hg. What is the minimum number of women in each group that need to be recruited for the study to detect this difference?
+There is a hypothesis that the use of the oral contraceptive (OC) pill in premenopausal women can increase systolic blood pressure. A study was planned to test this hypothesis using a two sided t-test. The investigators are interested in detecting an increase of at least 5 mm Hg systolic blood pressure in the women using OC compared to the non-OC users with 90% power at a 5% significance level. A pilot study shows that the SD of systolic blood pressure in the target group is 25 mm Hg and the mean systolic blood pressure of non-OC user women is 110 mm Hg. What is the minimum number of women in each group that need to be recruited for the study to detect this difference?
 
 **Solution** The effect size of interest is 5 mm Hg and the associated standard deviation is 25 mm Hg. For power of 90% and alpha of 5%, the sample size calculation using the Stata can be calculated using the `power twomeans` command:
 
@@ -175,7 +175,7 @@ There is a hypothesis that the use of the oral contraceptive (OC) pill in premen
 #| label: lst-stata
 #| lst-cap: "Some stuff"
 
-. power twomeans 90 95, sd(25) power(0.9)
+. power twomeans 110 115, sd(25) power(0.9)
 
 Performing iteration ...
 
@@ -188,8 +188,8 @@ Study parameters:
         alpha =    0.0500
         power =    0.9000
         delta =    5.0000
-           m1 =   90.0000
-           m2 =   95.0000
+           m1 =  110.0000
+           m2 =  115.0000
            sd =   25.0000
 
 Estimated sample sizes:
@@ -204,7 +204,7 @@ We can use the `epi.sscompc` function within the `epiR` package in R to calculat
 library(epiR)
 library(pwr)
 
-epi.sscompc(treat=90, control=95, n=NA, sigma=25, power=0.9)
+epi.sscompc(treat=110, control=115, n=NA, sigma=25, power=0.9)
 ```
 
 Note that Stata and R provide slightly different estimated sample sizes. This difference is immaterial from a practical point of view, and highlights the importance of referencing which software package has been used when writing up results.
@@ -218,7 +218,7 @@ We can compute the required sample size in Stata using the `power pairedmeans` c
 #### Output 10.2: Paired samples t-test sample size using Worked Example 10.2 {.unnumbered}
 
 ```{r, echo=TRUE, eval=FALSE, highlight=FALSE}
-. power pairedmeans 90 95, corr(0) power(0.9) sd(25)
+. power pairedmeans 110 115, corr(0) power(0.9) sd(25)
 
 Performing iteration ...
 
@@ -228,8 +228,8 @@ Ho: d = d0  versus  Ha: d != d0
 
 Study parameters:
 
-        alpha =    0.0500          ma1 =   90.0000
-        power =    0.9000          ma2 =   95.0000
+        alpha =    0.0500          ma1 =  110.0000
+        power =    0.9000          ma2 =  115.0000
         delta =    0.1414           sd =   25.0000
            d0 =    0.0000         corr =    0.0000
            da =    5.0000
@@ -245,8 +245,8 @@ As discussed in the R notes, calculating the sample size required for a paired t
 #### Output 10.2: Paired samples t-test sample size using Worked Example 10.2 {.unnumbered}
 
 ```{r echo=FALSE, highlight=FALSE}
-m1 <- 90
-m2 <- 95
+m1 <- 110
+m2 <- 115
 s_group <- 25
 corr <- 0
 

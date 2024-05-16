@@ -17,7 +17,7 @@ To do the problem discussed in Worked Example 10.2, you can expand the **Means**
 knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-twomeans-1.png"))
 ```
 
-The **power twomeans** dialog box will appear. Based on the information in Worked Example 10.2, change **Power** to `0.9` and enter `25` as the **Common standard deviation**. For the means, we can assume that **Control** mean systolic blood pressure is `90` mmHg and the the **Experimental** mean systolic blood pressure is 5 mmHg higher at `95` mmHg. We use equal numbers in each group (allocation ratio of `1` which is the default) because that would give us the smallest total sample size required.
+The **power twomeans** dialog box will appear. Based on the information in Worked Example 10.2, change **Power** to `0.9` and enter `25` as the **Common standard deviation**. For the means, we can assume that **Control** mean systolic blood pressure is `110` mmHg and the the **Experimental** mean systolic blood pressure is 5 mmHg higher at `115` mmHg. We use equal numbers in each group (allocation ratio of `1` which is the default) because that would give us the smallest total sample size required.
 
 ```{r mod10-twomeans-2, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-twomeans-2.png"))
@@ -25,7 +25,7 @@ knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-twomeans-2.pn
 
 Click **OK** or **Submit** to produce Output 10.1. 
 
-[Command: `power twomeans 90 95, sd(25) power(0.9)`]
+[Command: `power twomeans 110 115, sd(25) power(0.9)`]
 
 ## Sample size calculation for paired samples t-test
 For a paired sample t-test, go back to the **Power and sample-size analysis** dialog box and click on **Two paired samples** under **Means** on the left-hand-side, then choose **Paired test comparing two correlated means, specify correlation between paired observations** as shown below.
@@ -34,7 +34,7 @@ For a paired sample t-test, go back to the **Power and sample-size analysis** di
 knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-pairedmeans-1.png"))
 ```
 
-In the **power pairedmeans** dialog box, change **Power** to `0.9` and enter `25` as the **Common standard deviation** as shown below. For the means, we can assume that **Control**  mean systolic blood pressure is 90 mmHg and the the **Experimental** mean systolic blood pressure is 5 mmHg higher at `95` mmHg as we had for the independent samples.
+In the **power pairedmeans** dialog box, change **Power** to `0.9` and enter `25` as the **Common standard deviation** as shown below. For the means, we can assume that **Control**  mean systolic blood pressure is 110 mmHg and the the **Experimental** mean systolic blood pressure is 5 mmHg higher at `115` mmHg as we had for the independent samples.
 
 ```{r mod10-pairedmeans-2, echo=FALSE, out.width = "66%"}
 knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-pairedmeans-2.png"))
@@ -42,7 +42,7 @@ knitr::include_graphics(here::here("img", "mod10", "stata", "mod10-pairedmeans-2
  
 Click **OK** or **Submit** to produce Output 10.2. 
 
-[Command: `power pairedmeans 90 95, corr(0) power(0.9) sd(25)`]
+[Command: `power pairedmeans 110 115, corr(0) power(0.9) sd(25)`]
 
 ## Sample size calculation for difference between two independent proportions
 

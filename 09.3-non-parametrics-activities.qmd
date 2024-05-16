@@ -1,6 +1,6 @@
 ### Activity 9.1 {-}
 
-There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and a copy of the data set, `Activity9.1.csv` is also available on Moodle.
+There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given in the following table and a copy of the data set, `Activity_9.1.csv` is also available on Moodle.
 
 ```{r act-9-1, echo=FALSE}
 #| tab-cap: Urinary level of ascorbic acid (mg per 3 hours) of university students
@@ -45,3 +45,13 @@ a) State the research question and the null hypothesis.
 b) Obtain suitable summary statistics and test the null hypothesis. Describe the reason for choosing the test. 
 c) Write a brief conclusion.
 d) What are the main limitations of this study? Consider both epidemiological and statistical aspects.
+
+### Activity 9.3 {-}
+
+It is often necessary to take blood from newborn babies, which causes them pain. A group of researchers wanted to test whether a pacifier (dummy) would provide some pain relief. Newborn babies undergoing venepuncture were randomised to one of two treatment groups. In the placebo group, babies had blood taken as per the usual protocol. In the pacifier group, babies were allowed to suck on a pacifier while having their blood taken. Each venepuncture was observed by an assessor, who rated the baby’s pain on the DAN scale which ranges from 0 (no pain) to 10. The DAN is based on observatioon of the baby’s facial expression, limb movement, and vocal expression. The data are
+provided in the file `Activity_9.3.csv`.
+
+a) State the null hypothesis.
+b) Plot the distribution of DAN scores for each group. How do the distributions compare?
+c) Obtain suitable summary statistics and test the null hypothesis.
+d) Write a brief conclusion.

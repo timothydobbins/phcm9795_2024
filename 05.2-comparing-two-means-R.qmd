@@ -1,6 +1,6 @@
 ## Setting an observation to missing
 
-Setting an incorrect observation to missing is straightforward in Stata by using the Data Editor. While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.
+While RStudio allows browsing a data set as a spreadsheet, it will not let a user replace an observation with a missing value: this should be done using code.
 
 A missing value in R is denoted `NA`, and this is consistent for any variable type: continuous, string (i.e. character) and even a factor.
 
@@ -128,21 +128,6 @@ library(readxl)
 sbp <- read_excel("data/examples/mod05_ankle_bp.xlsx")
 sbp$diff = sbp$sbp_dp - sbp$sbp_tp
 hist(sbp$diff, xlab="Blood pressure (mmHg)", main="Difference in systolic blood pressure")
-```
-
-We might want to plot a Normal curve over this distribution, as we did in Module 2:
-
-```{r}
-hist(sbp$diff,
-     xlab="Systolic blood pressure (mmHg)",
-     main="Difference in systolic blood pressure",
-     probability = TRUE)
-
-curve(dnorm(x,
-            mean=mean(sbp$diff),
-            sd=sd(sbp$diff)),
-      col="darkblue",
-      add=TRUE)
 ```
 
 While there is a large difference in blood pressure (around 60 mmHg) that warrents further checking, the curve is roughly symmetric with an approximately Normal distribution.
