@@ -747,42 +747,11 @@ drugs</p> </caption>
 <p>You can calculate a new, transformed, variable using standard commands. For example, to create a new column of data based on the log of length of stay:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: scales</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'scales'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:huxtable':
-
-    number_format</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:purrr':
-
-    discard</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:readr':
-
-    col_factor</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: ggridges</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-New to ggformula?  Try the tutorials: 
-    learnr::run_tutorial("introduction", package = "ggformula")
-    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>hospital <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/mod09_infection.rds"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>hospital<span class="sc">$</span>ln_los <span class="ot">&lt;-</span> <span class="fu">log</span>(hospital<span class="sc">$</span>los<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>hospital, <span class="at">vars=</span><span class="fu">c</span>(los, ln_los))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>hospital <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/mod09_infection.rds"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>hospital<span class="sc">$</span>ln_los <span class="ot">&lt;-</span> <span class="fu">log</span>(hospital<span class="sc">$</span>los<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>hospital, <span class="at">vars=</span><span class="fu">c</span>(los, ln_los))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -804,7 +773,7 @@ New to ggformula?  Try the tutorials:
 <p>You can now check whether this logged variable is normally distributed as described in Module 2, for example by plotting a histogram as shown in Figure 9.2.</p>
 <p>To obtain the back-transformed mean, we can use the <code>exp</code> command to <code>anti-log</code> the mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">3.407232</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">3.407232</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30.18159</code></pre>
 </div>
@@ -820,7 +789,7 @@ New to ggformula?  Try the tutorials:
 <pre><code>wilcox.test(continuous_variable ~ group_variable, data=df, correct=FALSE)</code></pre>
 <p>The Wilcoxon ranked-sum test will be demonstrated using the length of stay data in <code>mod09_infection.rds</code>. Here, out continuous variable is <code>los</code> and the grouping variable is <code>infect</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(los <span class="sc">~</span> infect, <span class="at">data=</span>hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(los <span class="sc">~</span> infect, <span class="at">data=</span>hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -837,22 +806,16 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <pre><code>wilcox.test(df$continuous_variable_1, df$continuous_variable_1, paired=TRUE)</code></pre>
 <p>We will demonstrate using the dataset on the arthritis drug cross-over trial (<code>mod09_arthritis.csv</code>). Like the paired t-test the paired data need to be in separate columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>arthritis <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/examples/mod09_arthritis.csv"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>arthritis<span class="sc">$</span>difference <span class="ot">=</span> arthritis<span class="sc">$</span>drug_2 <span class="sc">-</span> arthritis<span class="sc">$</span>drug_1</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(arthritis<span class="sc">$</span>difference, <span class="at">xlab=</span><span class="st">"Difference"</span>, <span class="at">main=</span><span class="st">"Histogram of differences in pain scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>arthritis <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/examples/mod09_arthritis.csv"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>arthritis<span class="sc">$</span>difference <span class="ot">=</span> arthritis<span class="sc">$</span>drug_2 <span class="sc">-</span> arthritis<span class="sc">$</span>drug_1</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(arthritis<span class="sc">$</span>difference, <span class="at">xlab=</span><span class="st">"Difference"</span>, <span class="at">main=</span><span class="st">"Histogram of differences in pain scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="09-non-parametrics_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> difference, <span class="at">data=</span>arthritis, <span class="at">xlab=</span><span class="st">"Difference"</span>, <span class="at">title=</span><span class="st">"Histogram of differences in pain scores"</span>,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">boundary=</span><span class="dv">0</span>, <span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="09-non-parametrics_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(arthritis<span class="sc">$</span>drug_1, arthritis<span class="sc">$</span>drug_2, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(arthritis<span class="sc">$</span>drug_1, arthritis<span class="sc">$</span>drug_2, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in wilcox.test.default(arthritis$drug_1, arthritis$drug_2, paired =
 TRUE): cannot compute exact p-value with ties</code></pre>
@@ -871,9 +834,9 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2 data-number="9.15" class="anchored" data-anchor-id="estimating-rank-correlation-coefficients-1"><span class="header-section-number">9.15</span> Estimating rank correlation coefficients</h2>
 <p>The analyses for Spearman’s and Kendall’s rank correlation are conducted in similar ways:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/mod08_lung_function.rds"</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lung<span class="sc">$</span>Height, lung<span class="sc">$</span>FVC, <span class="at">method=</span><span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/examples/mod08_lung_function.rds"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lung<span class="sc">$</span>Height, lung<span class="sc">$</span>FVC, <span class="at">method=</span><span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in cor.test.default(lung$Height, lung$FVC, method = "spearman"): Cannot
 compute exact p-value with ties</code></pre>
@@ -889,7 +852,7 @@ sample estimates:
       rho 
 0.7475566 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lung<span class="sc">$</span>Height, lung<span class="sc">$</span>FVC, <span class="at">method=</span><span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lung<span class="sc">$</span>Height, lung<span class="sc">$</span>FVC, <span class="at">method=</span><span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kendall's rank correlation tau

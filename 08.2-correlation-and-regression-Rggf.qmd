@@ -19,6 +19,13 @@ plot(x=lung$Height, y=lung$FVC,
      ylab="Forced vital capacity (L)")
 ```
 
+```{r}
+gf_point(FVC ~ Height, data=lung,
+     xlab="Height (cm)", 
+     ylab="Forced vital capacity (L)") +
+  gf_theme(theme_minimal())
+```
+
 To add a fitted line, we can use the `abline()` function which adds a straight line to the plot. The equation of this straight line will be determined from the estimated regression line, which we specify with the `lm()` function, which fits a *linear model*.
 
 The basic syntax of the `lm()` function is: `lm(y ~ x)` where `y` represents the *outcome* variable, and `x` represents the *explanatory* variable. Putting this all together:
@@ -29,6 +36,14 @@ plot(x=lung$Height, y=lung$FVC,
      ylab="Forced vital capacity (L)")
 
 abline(lm(lung$FVC ~ lung$Height))
+```
+
+```{r}
+gf_point(FVC ~ Height, data=lung,
+     xlab="Height (cm)", 
+     ylab="Forced vital capacity (L)") +
+  geom_lm() +
+  gf_theme(theme_minimal())
 ```
 
 ## Calculating a correlation coefficient {-}
@@ -67,4 +82,26 @@ We can use the `resid` function to obtain the residuals from a saved model. Thes
 ```{r}
 residuals <- resid(model)
 hist(residuals)
+
+gf_histogram(~ residuals, bins = 10) +
+  gf_theme(theme_minimal())
+```
+
+A Normal curve can be overlaid if we plot the residuals using a probability scale.
+
+```{r}
+hist(residuals, probability = TRUE,
+     ylim = c(0, 1))
+
+curve(dnorm(x, mean=mean(residuals), sd=sd(residuals)), 
+      col="darkblue", lwd=2, add=TRUE)
+
+gf_dhistogram(~ residuals, bins = 10)  |> 
+  gf_fitdistr(dist = "dnorm")
+
+gf_dhistogram(~ residuals, bins = 10, alpha=0.3)  |> 
+  gf_dens(~ residuals, colour= ~"Distribution of residuals")  |> 
+  gf_fitdistr(dist = "dnorm", colour = ~"Normal distribution") |> 
+  gf_labs(color = "") |> 
+  gf_theme(theme_light())
 ```

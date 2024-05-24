@@ -269,7 +269,7 @@ div.csl-indent {
   <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test"><span class="header-section-number">5.2</span> Independent samples t-test</a>
   <ul class="collapse">
   <li><a href="#assumptions-for-an-independent-samples-t-test" id="toc-assumptions-for-an-independent-samples-t-test" class="nav-link" data-scroll-target="#assumptions-for-an-independent-samples-t-test"><span class="header-section-number">5.2.1</span> Assumptions for an independent samples t-test</a></li>
-  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example"><span class="header-section-number">5.2.2</span> Worked Example</a></li>
+  <li><a href="#worked-example-5.1" id="toc-worked-example-5.1" class="nav-link" data-scroll-target="#worked-example-5.1"><span class="header-section-number">5.2.2</span> Worked Example 5.1</a></li>
   <li><a href="#conducting-and-interpreting-an-independent-samples-t-test" id="toc-conducting-and-interpreting-an-independent-samples-t-test" class="nav-link" data-scroll-target="#conducting-and-interpreting-an-independent-samples-t-test"><span class="header-section-number">5.2.3</span> Conducting and interpreting an independent samples t-test</a></li>
   </ul></li>
   <li><a href="#paired-t-tests" id="toc-paired-t-tests" class="nav-link" data-scroll-target="#paired-t-tests"><span class="header-section-number">5.3</span> Paired t-tests</a>
@@ -369,8 +369,8 @@ div.csl-indent {
 <p>The third assumption of normality is important although t-tests are robust to some degree of non-normality as long as there are no influential outliers and, more importantly, if the sample size is large. We examined how to assess normality in Module 2. If the data are not normally distributed, it may be possible to transform them using a mathematical function such as a logarithmic transformation. If not, then we may need to use non-parametric tests. This is examined in Module 9.</p>
 <p>Traditionally, the variance of the analysis variable in each group was assumed to be equal. However, this assumption can be relaxed by using Welch’s variation of the t-test. It has been recommended that this unequal-variances t-test be used in most, if not all situations <span class="citation" data-cites="west21 delacre_etal17 ruxton06">(<a href="references.html#ref-west21" role="doc-biblioref">West 2021</a>; <a href="references.html#ref-delacre_etal17" role="doc-biblioref">Delacre, Lakens, and Leys 2017</a>; <a href="references.html#ref-ruxton06" role="doc-biblioref">Ruxton 2006</a>)</span>.</p>
 </section>
-<section id="worked-example" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="worked-example"><span class="header-section-number">5.2.2</span> Worked Example</h3>
+<section id="worked-example-5.1" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="worked-example-5.1"><span class="header-section-number">5.2.2</span> Worked Example 5.1</h3>
 <p>In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.</p>
 <p>Some preliminary descriptive statistics of the distribution of the variable of interest in each group should always be obtained before a t-test is undertaken to ensure that the assumptions are met. Box plots and histograms are ideal for this. Histrograms and box plots of the data obtained in Stata using <strong>Graphics &gt; Box plot</strong> is shown in <a href="#fig-mod05-bwt-gender">Figure&nbsp;<span>5.1</span></a>. The datasets <code>mod05_birthweight.dta</code> and <code>mod05_birthweight.rds</code> are available on Moodle.</p>
 <div class="cell">
@@ -468,7 +468,7 @@ div.csl-indent {
 <section id="worked-example-5.2" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="worked-example-5.2"><span class="header-section-number">5.3.3</span> Worked Example 5.2</h3>
 <p>A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.</p>
-<p>The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the <code>generate</code> command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>5.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
+<p>The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>5.2</span></a>. The differences approximate a normal distribution and therefore a paired t-test can be used.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mod05-sbpdiff" class="quarto-figure quarto-figure-center anchored">
@@ -645,7 +645,7 @@ div.csl-indent {
 <p>Click <strong>Submit</strong> or <strong>OK</strong>.</p>
 <p>[Command: <code>generate difference = sbp_dp-sbp_tp</code>]</p>
 <p>Check that the new variable appears in your Data Editor window.</p>
-<p>Create a histogram with a normal curve under <strong>Graphics &gt; Histogram</strong>, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>5.2</span></a> was defined to have a lower limit of -40 and a bin width of 10.</p>
+<p>Create a histogram using <strong>Graphics &gt; Histogram</strong>, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, <a href="#fig-mod05-sbpdiff">Figure&nbsp;<span>5.2</span></a> was defined to have a lower limit of -40 and a bin width of 10.</p>
 </section>
 <section id="paired-t-test" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="paired-t-test"><span class="header-section-number">5.8</span> Paired t-Test</h2>
@@ -789,64 +789,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: ggplot2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggplot2'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:huxtable':
-
-    theme_grey</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: scales</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'scales'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:huxtable':
-
-    number_format</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: ggridges</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-New to ggformula?  Try the tutorials: 
-    learnr::run_tutorial("introduction", package = "ggformula")
-    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span> birthweight <span class="sc">|</span> gender, <span class="at">data=</span>bwt, <span class="at">bins=</span><span class="dv">10</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> ., <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(birthweight <span class="sc">~</span> . <span class="sc">|</span> gender, <span class="at">data=</span>bwt) <span class="sc">|&gt;</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">scale_x_discrete</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_light</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid" width="672"></p>
-</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When we are done plotting multiple graphs, we can reset the plot window by submitting <code>par(mfrow=c(1,1))</code>.</p>
 </section>
@@ -854,7 +797,7 @@ New to ggformula?  Try the tutorials:
 <h3 data-number="5.10.2" class="anchored" data-anchor-id="producing-split-summary-statistics-1"><span class="header-section-number">5.10.2</span> Producing split summary statistics</h3>
 <p>The <code>descriptives</code> function within the <code>jmv</code> function allows summary statistics to be calculated within subgroups using the <code>splitBy</code> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">splitBy=</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">splitBy=</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  DESCRIPTIVES
@@ -886,7 +829,7 @@ New to ggformula?  Try the tutorials:
 <h2 data-number="5.11" class="anchored" data-anchor-id="independent-samples-t-test-2"><span class="header-section-number">5.11</span> Independent samples t-test</h2>
 <p>We can use the <code>ttestIS()</code> (t-test, independent samples) function from the <code>jmv</code> package to perform the independent samples t-test. We include the <code>meanDiff=TRUE</code> and <code>ci=TRUE</code> options to obtain the difference in means, with its 95% confidence interval. We can request a Welch’s test (which does not assume equal variances) by the <code>welchs=TRUE</code> option:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>bwt, <span class="at">vars=</span>birthweight, <span class="at">group=</span>gender, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  INDEPENDENT SAMPLES T-TEST
@@ -911,11 +854,11 @@ New to ggformula?  Try the tutorials:
 <h2 data-number="5.12" class="anchored" data-anchor-id="checking-the-assumptions-for-a-paired-t-test-1"><span class="header-section-number">5.12</span> Checking the assumptions for a Paired t-test</h2>
 <p>Before performing a paired t-test, you must check that the assumptions for the test have been met. Using the dataset <code>mod05_ankle_bp.xls</code> to show that the difference between the pair of measurements between the sites is normally distributed, we first need to compute a new variable of the differences and examine its histogram.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sbp <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/examples/mod05_ankle_bp.xlsx"</span>)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>sbp<span class="sc">$</span>diff <span class="ot">=</span> sbp<span class="sc">$</span>sbp_dp <span class="sc">-</span> sbp<span class="sc">$</span>sbp_tp</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">"Blood pressure (mmHg)"</span>, <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sbp <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/examples/mod05_ankle_bp.xlsx"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>sbp<span class="sc">$</span>diff <span class="ot">=</span> sbp<span class="sc">$</span>sbp_dp <span class="sc">-</span> sbp<span class="sc">$</span>sbp_tp</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sbp<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">"Blood pressure (mmHg)"</span>, <span class="at">main=</span><span class="st">"Difference in systolic blood pressure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-comparing-two-means_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -926,7 +869,7 @@ New to ggformula?  Try the tutorials:
 <h2 data-number="5.13" class="anchored" data-anchor-id="paired-t-test-1"><span class="header-section-number">5.13</span> Paired t-Test</h2>
 <p>To perform a paired t-test we will use the dataset <code>mod05_ankle_bp.xls</code>. We can perform a paired t-test using the <code>ttestPS()</code> function within the <code>jmv</code> package, where we defined the paired observations as: `pairs=list(list(i1 = ‘variable1’, i2 = ‘variable2’))</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>sbp, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">'sbp_dp'</span>, <span class="at">i2 =</span> <span class="st">'sbp_tp'</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>sbp, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">'sbp_dp'</span>, <span class="at">i2 =</span> <span class="st">'sbp_tp'</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  PAIRED SAMPLES T-TEST
@@ -942,7 +885,7 @@ New to ggformula?  Try the tutorials:
 </div>
 <p>The syntax of the ttestPS function is a little cumbersome. The <code>t.test</code> function can be used as an alternative:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sbp<span class="sc">$</span>sbp_dp, sbp<span class="sc">$</span>sbp_tp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sbp<span class="sc">$</span>sbp_dp, sbp<span class="sc">$</span>sbp_tp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test

@@ -70,24 +70,6 @@ hist(bwt_f$birthweight, xlim=c(2.5, 4.5), xlab="Birthweight (kg)", main="Females
 boxplot(bwt_m$birthweight, ylim=c(2.5, 4.5), ylab="Birthweight (kg)", main="Males")
 boxplot(bwt_f$birthweight, ylim=c(2.5, 4.5), ylab="Birthweight (kg)", main="Females")
 par(mfrow=c(1,1))
-
-library(ggformula)
-gf_histogram(~ birthweight, data=bwt, bins=10, colour="black") |> 
-  gf_theme(theme_light())
-
-gf_histogram(~ birthweight | gender, data=bwt, bins=10, colour="black") |> 
-  gf_theme(theme_light())
-
-
-gf_boxplot(birthweight ~ ., data=bwt) |> 
-  gf_refine(scale_x_discrete()) |> 
-  gf_theme(theme_light())
-
-gf_boxplot(birthweight ~ . | gender, data=bwt) |> 
-  gf_refine(scale_x_discrete()) |> 
-  gf_theme(theme_light())
-
-
 ```
 
 When we are done plotting multiple graphs, we can reset the plot window by submitting `par(mfrow=c(1,1))`.

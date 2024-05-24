@@ -110,12 +110,12 @@ Click **OK** button when you are done.
 
 [Command: `predict FVC_resid, residuals`]
 
-You can now check the assumption that the residuals are normally distributed by creating a histogram with the normal curve using **Graphics > Histogram** as shown in **Stata Notes** section for **Module 2**. Below is the **histogram** dialog box used to produce the graph in **Figure 8.5**.
+You can now check the assumption that the residuals are normally distributed by creating a histogram using **Graphics > Histogram** as shown in **Stata Notes** section for **Module 2**. Below is the **histogram** dialog box used to produce the graph in **Figure 8.5**.
 
 ```{r postest-3, echo=FALSE, out.width = "66%",}
 knitr::include_graphics(here::here("img", "mod08", "stata", "postest-3.png"))
 ```
 
-[Command: `histogram FVC_resid, bin(12) frequency normal`]
+[Command: `histogram FVC_resid, bin(12) frequency`]
 
 

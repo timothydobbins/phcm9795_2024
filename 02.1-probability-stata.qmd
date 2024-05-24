@@ -51,29 +51,6 @@ By scrolling through the data, you will see that the values range from 53.8kg to
 
 Once you have checked your data for errors, you are ready to start analysing your data.
 
-## Overlaying a Normal curve on a Histogram
-
-It can be useful to produce a histogram with an overlayed Normal curve to assess whether our sample appears approximately Normally distributed. First go to menu **Graphics > Histogram**. In the **Histogram** dialog box, select `weight` into the **variable** box and choose the **Frequency** radio button for ease of interpretation.
-
-```{r , echo=FALSE, out.width = "66%",}
-knitr::include_graphics(here::here("img", "mod02", "stata", "hist-01.png"))
-```
-
-You can click the **Submit** button to check how the plot looks like. To superimpose the normal curve, go to the **Density plots** and tick **Add normal-density plot**, then click the **Submit** or **OK** button. You can change the X-axis label in the **X axis** tab, e.g. to `Weight (kg)`.
-
-```{r , echo=FALSE, out.width = "66%",}
-knitr::include_graphics(here::here("img", "mod02", "stata", "hist-02.png"))
-```
-
-[Command: `histogram weight, frequency normal xtitle(Weight (kg))`]
-
-Your histogram should look like this:
-
-```{r , echo=FALSE, out.width = "66%",}
-knitr::include_graphics(here::here("img", "mod02", "stata", "hist-03.png"))
-```
-
-
 ## Importing Excel data into Stata
 Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `mod02_health_survey.xlsx`.
 

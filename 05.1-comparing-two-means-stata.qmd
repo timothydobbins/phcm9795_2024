@@ -151,7 +151,7 @@ Click **Submit** or **OK**.
 
 Check that the new variable appears in your Data Editor window. 
 
-Create a histogram with a normal curve under **Graphics > Histogram**, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, @fig-mod05-sbpdiff was defined to have a lower limit of -40 and a bin width of 10.
+Create a histogram using **Graphics > Histogram**, as shown previously in Module 2. You might want to vary the minimum bar value and the bar width: for example, @fig-mod05-sbpdiff was defined to have a lower limit of -40 and a bin width of 10.
  
 ## Paired t-Test
 

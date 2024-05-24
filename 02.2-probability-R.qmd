@@ -85,52 +85,6 @@ In R, the test of equality is denoted by two equal signs: `==`. So we would use 
 
 You can read the `==` as "is equal to". So the code `sample$weight == 700.2` is read as: "is the value of weight from the data frame sample equal to 700.2?". In our `ifelse` statement above, if this condition is true, we replace `weight` by 70.2; if it is false, we leave weight as is.
 
-## Overlaying a Normal curve on a histogram
-
-It can be useful to produce a histogram with an overlayed Normal curve to assess whether our sample appears approximately Normally distributed. We can do this by plotting a histogram using the `hist()` function. As we're overlaying a probability distribution, we request a **density histogram**, rather than a frequency histogram, using `freq=FALSE`.
-
-We then request a curve be overlayed using the `curve()` function:
-
--   the curve should be based on the Normal distribution (`dnorm`);
-
-    -   with a mean equal to the mean of the cleaned weight: `mean(sample$weight_clean));`
-
-    -   and a standard deviation equal to the standard deviation of the cleaned weight: `sd(sample$weight_clean))`
-
--   using a dark-blue colour;
-
--   and added to the previous histogram (rather than plotting the curve by itself): `add=TRUE`
-
-```{r}
-hist(sample$weight_clean,
-     xlab="Weight (kg)",
-     main="Histogram of 1000 weights",
-     freq = FALSE)
-
-curve(dnorm(x,
-            mean=mean(sample$weight_clean),
-            sd=sd(sample$weight_clean)),
-      col="darkblue",
-      add=TRUE)
-```
-
-Notice that the top of the curve is chopped off. We can plot the whole curve by extending the y-axis of the histogram to 0.1:
-
-```{r}
-hist(sample$weight_clean, 
-     xlab="Weight (kg)",
-     main="Histogram of 1000 weights",
-     probability = TRUE,
-     freq = FALSE)
-
-curve(dnorm(x,
-            mean=mean(sample$weight_clean),
-            sd=sd(sample$weight_clean)),
-      col="darkblue",
-      add=TRUE)
-```
-
-
 ## Importing Excel data into R
 
 Another common type of file that data are stored in is a Microsoft Excel file (.xls or .xlsx). In this demonstration, we will import a selection of records from a large health survey, stored in the file `mod02_health_survey.xlsx`.

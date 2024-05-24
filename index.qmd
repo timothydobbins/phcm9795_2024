@@ -30,3 +30,17 @@ On successful completion of this course, you will be able to:
 3. Apply appropriate statistical tests for different types of variables given a research question, and interpret computer output of these tests appropriately.
 4. Determine the appropriate sample size when planning a research study.
 5. Present and interpret statistical findings appropriate for a population health audience.
+
+
+## Change log
+
+22 May 2024
+
+- Sections 2.15 and 2.24 - Overlaying a Normal curve on a histogram: remove
+- Worked example 5.2: remove reference to Stata when calculating the difference between two variables, as this is a task that can be done in any software
+- Figure 5.2: remove overlayed Normal curve
+- Section 5.7: remove reference to overlaying a Normal curve
+- Section 5.10: remove `ggformula` code and output
+- Figure 8.5: remove overlayed Normal curve
+- Module 8 R Notes: remove `ggformula` code and output
+- Section 9.14: remove `ggformula` code and output

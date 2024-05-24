@@ -60,7 +60,7 @@ The third assumption of normality is important although t-tests are robust to so
 
 Traditionally, the variance of the analysis variable in each group was assumed to be equal. However, this assumption can be relaxed by using Welch's variation of the t-test. It has been recommended that this unequal-variances t-test be used in most, if not all situations [@west21; @delacre_etal17; @ruxton06].
 
-### Worked Example
+### Worked Example 5.1
 
 In an observational study of a random sample of 100 full term babies from the community, birth weight and gender were measured. There were 44 male babies and 56 female babies in the sample. The research question asked whether there was a difference in birth weights between boys and girls. The two groups are independent of each other and therefore an independent samples t-test can be used to test the null hypothesis that there is no difference in weight between the genders.
 
@@ -168,7 +168,7 @@ Because the standard error becomes smaller as the sample size becomes larger, th
 
 A total of 107 people were recruited into a study to assess whether ankle blood pressure measured in two different sites would be the same. For each person, systolic blood pressure (SBP) was measured in two sites: dorsalis pedis and tibialis posterior.
 
-The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites in Stata using the `generate` command. This is shown in the Stata manual at the end of this module (Checking the assumptions for a Paired t-test). The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in @fig-mod05-sbpdiff. The differences approximate a normal distribution and therefore a paired t-test can be used.
+The dataset mod05_ankle_bp.xls is available on Moodle. First, we need to compute the pairwise difference between SBP measured in the two sites. The distribution of the difference between SBP measured in dorsalis pedis and tibialis posterior is shown in @fig-mod05-sbpdiff. The differences approximate a normal distribution and therefore a paired t-test can be used.
 
 ```{r fig-mod05-sbpdiff, echo=FALSE, out.width = "100%", fig.cap="Distribution of differences in ankle SBP between two sites of 107 participants"}
 knitr::include_graphics(here::here("img", "mod05", "mod05-sbpdiff.png"))
