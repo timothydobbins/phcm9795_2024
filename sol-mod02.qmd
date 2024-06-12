@@ -167,7 +167,7 @@ pnorm(95, mean=87, sd=8, lower.tail=TRUE) -
 \newpage
 ## Activity 2.4
 \tfont
-Using the health survey data (`Activity_S2.4.xlsx`) described in the computing notes of this module, create a new variable, BMI, which is equal to a person's weight (in kg) divided by their height (in metres) squared (i.e. $\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}$. Categorise BMI using the WHO categories:
+Using the health survey data (`Activity_2.4.xlsx`) described in the computing notes of this module, create a new variable, BMI, which is equal to a person's weight (in kg) divided by their height (in metres) squared (i.e. $\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}$. Categorise BMI using the WHO categories:
 
 -   Underweight: BMI \< 18.5
 -   Normal weight: 18.5 $\le$ BMI \< 25
@@ -213,7 +213,7 @@ We first read the Excel data into R, using the readxl package. It is useful to e
 library(readxl)
 library(jmv)
 
-survey <- read_excel("data/activities/Activity_S2.4-health-survey.xlsx")
+survey <- read_excel("data/activities/Activity_2.4-health-survey.xlsx")
 summary(survey)
 ```
 
@@ -278,12 +278,11 @@ contTables(data=survey,
 ## Activity 2.5
 
 \tfont
-The data in the files `Activity_S2.5.dta` and `Activity_S2.5.rds` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
+The data in the files `Activity_2.5.dta` and `Activity_2.5.rds` (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:
 a)	Create a histogram to inspect the distribution of the variable;
 b)	Complete the following summary statistics for each variable:
     -	mean and median;
-    -	standard deviation and interquartile range;
-    -	skewness and kurtosis.
+    -	standard deviation and interquartile range.
 
 Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.
 
@@ -300,7 +299,7 @@ a) See @fig-babies.
 #|   - "Length of stay"
 #| layout-ncol: 2
 
-babies <- readRDS("data/activities/Activity_S2.5-LengthOfStay.rds")
+babies <- readRDS("data/activities/Activity_2.5-LengthOfStay.rds")
 
 hist(babies$BirthWt, main=NA,
      xlab="Birth weight (kg)",
@@ -317,8 +316,6 @@ b) See @tbl-babies.
 |----------------------------------------|---------------------|-----------------------|
 | Mean (Standard deviation)              |     2451 (504.8)    |       41 (36.9)       |
 | Median [Interquartile range]           | 2438 [2012 to 2830] |     30 [21 to 43]     |
-| Skewness                               |          0.4        |          3.1          |
-| Kurtosis                               |         -0.7        |          11.6         |
 
 : Summary of data from 117 babies admitted to a hospital {#tbl-babies}
 
@@ -331,7 +328,7 @@ The histogram for length of stay shows a highly skewed distribution (skewed to t
 The histograms were produced using the following code:
 
 ```{r, eval=FALSE}
-babies <- readRDS("data/activities/Activity_S2.5-LengthOfStay.rds")
+babies <- readRDS("data/activities/Activity_2.5-LengthOfStay.rds")
 
 hist(babies$BirthWt, main=NA,
      xlab="Birth weight (kg)",
@@ -348,8 +345,7 @@ The summary statistics were produced with the following code:
 ```{r}
 library(jmv)
 
-descriptives(data = babies, vars = c(BirthWt,LengthStay),
-             pc = TRUE, skew = TRUE, kurt = TRUE)
+descriptives(data = babies, vars = c(BirthWt,LengthStay), pc = TRUE)
 ```
 
 \newpage
@@ -378,7 +374,7 @@ a)	The histograms for overall length of stay (Figure 4) and length of stay by ge
 #|   - "Boxplot"
 #| layout-ncol: 2
 
-hospstay <- read.csv("data/activities/Activity_S2.6.csv")
+hospstay <- read.csv("data/activities/Activity_2.6.csv")
 
 hist(hospstay$los, main=NA, xlab="Length of stay (days)")
 boxplot(hospstay$los, main=NA, ylab="Length of stay (days)")
