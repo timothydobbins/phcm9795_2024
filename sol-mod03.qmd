@@ -50,7 +50,7 @@ C is not necessarily correct. While 15 participants is a very small sample size,
 
 D is not necessarily correct. There may be valid ways of recruiting people living with agoraphobia. The researchers could work with anxiety support groups to codesign a method for enrolling participants that would increase the chance of recruiting a representative sample.
 
-
+\newpage
 ## Activity 3.2 {-}
 \tfont
 A dental epidemiologist wishes to estimate the mean weekly consumption of sweets among children of a given age in her area. After devising a method which enables her to determine the weekly consumption of sweets by a child, she conducted a pilot survey and found that the standard deviation of sweet consumption by the children per week is 85 gm (assuming this is the population standard deviation, $\sigma$). She considers taking a random sample for the main survey of:
@@ -92,7 +92,7 @@ The standard error of the mean for a sample of 625 = 85/√625 = 3.4 gm, and the
 
 The standard error of the mean for a sample of 3,000 = 85/√3000 = 1.55 gm, and the maximum likely error = 1.96 × 1.55 = 3.04 gm.
 
-
+\newpage
 ## Activity 3.3 {-}
 \tfont
 The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is `Activity1.4.dta` or `Activity1.4.rds` on Moodle.
@@ -108,7 +108,7 @@ c) Interpret the 95% confidence interval for the mean diastolic blood pressure.
 a) See Figure 1. The distribution is roughly symmetrical, centred about the mean.
 
 ```{r, plothist, echo=FALSE}
-bp <- readRDS("data/activities/Activity_S1.4.rds")
+bp <- readRDS("data/activities/Activity_1.4.rds")
 
 hist(bp$diabp,
      xlab="Diastolic blood pressure (mmHg)",
@@ -125,7 +125,7 @@ c) We are 95% confident that the true mean diastolic blood pressure of the popul
 a) The histogram can be constructed using the following code. Note the use of `/n` to indicate a new line when defining a figure title.
 
 ```{r, eval=FALSE}
-bp <- readRDS("data/activities/Activity_S1.4.rds")
+bp <- readRDS("data/activities/Activity_1.4.rds")
 
 hist(bp$diabp,
      xlab="Diastolic blood pressure (mmHg)",
@@ -133,21 +133,15 @@ hist(bp$diabp,
            from a sample of 100 participants")
 ```
 
-b) The mean and its standard error can be obtained using the `descriptives` package, using the `se=TRUE` option:
+b) The mean and its standard error can be obtained using the `descriptives` package, using the `se=TRUE` and `ci=TRUE` options:
 
 ```{r}
 library(jmv)
 
-descriptives(data=bp, vars=diabp, se=TRUE)
+descriptives(data=bp, vars=diabp, se=TRUE, ci=TRUE)
 ```
 
-Note: **we do not use the `descriptives()` function within the `jmv` package to calculate a 95% Confidence Interval for the mean,** as it does not use a t-distribution to calculate the 95% confidence interval. Instead, we use the `t.test()` function (ignoring all output apart from the estimated mean and confidence interval)
-
-```{r}
-t.test(bp$diabp)
-```
-
-
+\newpage
 ## Activity 3.4 {-}
 \tfont
 Suppose that a random sample of 81 newborn babies delivered in a hospital located in a poor neighbourhood during the last year had a mean birth weight of 2.7 kg and a standard deviation of 0.9 kg. Calculate the 95% confidence interval for the unknown population mean. Interpret the 95% confidence interval. 

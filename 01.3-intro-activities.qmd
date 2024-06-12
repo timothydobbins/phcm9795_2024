@@ -37,7 +37,7 @@ c) Construct a stacked bar chart of the data to examine if there a difference in
 d) Using your answers to the question a) and b), write a brief conclusion about the relationship of low birth weight and mother’s age and smoking status.
 
 ### Activity 1.3 {-}
-Estimate the mean, median, mode, standard deviation, range and interquartile range for the data `Activity_S1.3.dta` or `Activity_S1.3.rds`, available on Moodle.
+Estimate the mean, median, standard deviation, range and interquartile range for the data `Activity_S1.3.dta` or `Activity_S1.3.rds`, available on Moodle.
 
 ### Activity 1.4 {-}
 Data of diastolic blood pressure (BP) of a sample of study participants are provided in the datasets `Activity_S1.4.dta` and `Activity_S1.4.rds`. Compute the mean, median, range and SD of diastolic BP.

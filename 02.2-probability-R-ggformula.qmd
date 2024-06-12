@@ -1,26 +1,66 @@
 ## Introducing `ggformula`
 
-In the previous module, we used R's default graphics functions (sometimes called *base graphics*) to produce graphs. These functions do an excellent job for simple graphs, but can be difficult to extend. For example, it is quite difficult to produce a separate histogram for each level of a categorical variable. In this module, we will introduce the **ggformula** package, which allows users to produce complex graphics from simpler components.
+In the previous module, we used R's default graphics functions (sometimes called *base graphics*) to produce graphs. These functions do an excellent job for simple graphs, but can be difficult to extend. For example, it is quite difficult to produce a separate histogram for each level of a categorical variable.
+
+There are many packages in R that can be used to create graphs. One of the most widely used graphics packages is `ggplot2`, which has rather a steep learning curve. In this module, we will introduce the `ggformula` package, which allows users to produce complex graphics based on the `ggplot2` package, but with much simpler commands.
 
 ### The basic formula template
 
-Note: this section has been sourced from the ggformula documentation.^[https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html]
+Note: this section has been sourced from the `ggformula` documentation.^[https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html]
 
 The basic template for creating a plot with ggformula is
 
-gf_plottype(formula, data = mydata)
+> `gf_plottype(formula, data = mydata)`
+
 or, equivalently,
 
-mydata |> gf_plottype(formula)
+> `mydata |> gf_plottype(formula)`
+
 where
 
-plottype describes the type of plot (layer) desired (points, lines, a histogram, etc., etc.),
+- `plottype` describes the type of plot desired (a histogram, boxplot, barchart, etc.);
+- `mydata` is a data frame containing the variables used in the plot, and
+- `formula` describes how/where those variables are used, of the form `y-variable ~ x-variable`.
 
-mydata is a data frame containing the variables used in the plot, and
+For plots comprising only a single `x-variable`, for example histograms, boxplots and barcharts, the formula is entered as `" ~ x-variable"`.
 
-formula describes how/where those variables are used.
+The axes can be labelled using the `ylab` and `xlab` arguments, as in the base `plot` function.
 
-For example, in a bivariate plot, formula will take the form y ~ x, where y is the name of a variable to be plotted on the y-axis and x is the name of a variable to be plotted on the x-axis. 
+The *theme* of a graph can be changed, by using the `|>` command as follows:
+
+`gf_plottype(formula, data = mydata) |> `
+`   gf_theme(theme_classic())`
+
+Commonly used themes are `theme_classic()`, `theme_bw()` and `theme_minimal()`.
+
+### Plotting a barchart using `ggformula`
+
+A barchart is plotted using the `gf_bar` function. Note that, in contrast to the base `plot()` function, the variable to be plotted does not need to be defined as a factor.
+
+```{r}
+library(ggformula)
+
+pbc <- readRDS("data/examples/mod01_pbc.rds")
+
+gf_bar(pbc, ~ stage, xlab="Stage of disease", ylab="Frequency") |> 
+  gf_theme(theme_classic())
+```
+
+Notice that the `gf_bar()` is indicating (in very cryptic language) there are six missing values for **stage**.
+
+### Plotting a boxplot using `ggformula`
+
+A boxplot is constructed using the `gf_box` function:
+
+```{r}
+# Default: note horrible x axis
+gf_boxplot(pbc, age ~ .)
+
+# Fixed:
+gf_boxplot(age ~ ., data=pbc) + 
+  gf_refine(scale_x_discrete())
+```
+
 
 ## Importing data into R
 

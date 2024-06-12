@@ -34,6 +34,18 @@ On successful completion of this course, you will be able to:
 
 ## Change log
 
+12 June 2024
+
+- Module 2, Learning Outcome 3: replace with "Compute probabilities from a binomial distribution using statistical software"
+- Module 2, Learning Outcome 4: replace with "Compute probabilities from a Normal distribution using statistical software"
+ 
+
+9 June 2024
+
+- Activity 1.3: Remove "mode" from Activity 1.3
+- Section 3.3.1: Include example weights
+
+
 22 May 2024
 
 - Sections 2.15 and 2.24 - Overlaying a Normal curve on a histogram: remove

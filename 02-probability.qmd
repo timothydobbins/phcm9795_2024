@@ -6,8 +6,8 @@ By the end of this module you will be able to:
 
 - Describe the concept of probability;
 - Describe the characteristics of a binomial distribution and a Normal distribution;
-- Compute binomial probabilities using Stata;
-- Compute and use Z-scores to obtain probabilities;
+- Compute probabilities from a binomial distribution using statistical software;
+- Compute probabilities from a Normal distribution using statistical software;
 - Decide when to use parametric or non-parametric statistical methods;
 - Briefly outline other types of distributions.
 

@@ -97,10 +97,46 @@ drug_aggregated$side_effect <- factor(drug_aggregated$side_effect,
 
 We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the `counts` command:
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 contTables(data=drug_aggregated,
            rows=group, cols=side_effect, count=n,
            pcRow=TRUE, relRisk = TRUE)
+```
+
+```{r eval=FALSE, include=TRUE}
+CONTINGENCY TABLES
+
+ Contingency Tables                                                 
+ ────────────────────────────────────────────────────────────────── 
+   group                      Nausea       No nausea    Total       
+ ────────────────────────────────────────────────────────────────── 
+   Active     Observed        15.000000     35.00000     50.00000   
+              % within row     30.00000     70.00000    100.00000   
+                                                                    
+   Placebo    Observed         4.000000     46.00000     50.00000   
+              % within row      8.00000     92.00000    100.00000   
+                                                                    
+   Total      Observed        19.000000     81.00000    100.00000   
+              % within row     19.00000     81.00000    100.00000   
+ ────────────────────────────────────────────────────────────────── 
+
+
+ χ² Tests                              
+ ───────────────────────────────────── 
+         Value       df    p           
+ ───────────────────────────────────── 
+   χ²    7.862248     1    0.0050478   
+   N          100                      
+ ───────────────────────────────────── 
+
+
+ Comparative Measures                                    
+ ─────────────────────────────────────────────────────── 
+                    Value         Lower       Upper      
+ ─────────────────────────────────────────────────────── 
+   Relative risk    3.750000 ᵃ    1.337540    10.51370   
+ ─────────────────────────────────────────────────────── 
+   ᵃ Rows compared
 ```
 
 ## Computing a difference in proportions and its 95% confidence interval
@@ -117,7 +153,7 @@ contTables(data=drug,
 
 We can use the `contTables` function to obtain an odds ratio and its 95% CI, by specifying `odds=TRUE`. Here we will use the summarised HPV data from Module 6.
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 hpv <- data.frame(
   hpv = c("HPV +", "HPV +", "HPV -", "HPV -"),
   cancer = c("Case", "Control", "Case", "Control"),
@@ -130,6 +166,36 @@ hpv$hpv <- factor(hpv$hpv, levels=c("HPV +", "HPV -"))
 contTables(data=hpv, 
            rows=hpv, cols=cancer, count=n,
            odds = TRUE)
+```
+
+```{r eval=FALSE, include=TRUE}
+ CONTINGENCY TABLES
+
+ Contingency Tables                               
+ ──────────────────────────────────────────────── 
+   hpv      Case         Control      Total       
+ ──────────────────────────────────────────────── 
+   HPV +     57.00000     14.00000     71.00000   
+   HPV -     43.00000    186.00000    229.00000   
+   Total    100.00000    200.00000    300.00000   
+ ──────────────────────────────────────────────── 
+
+
+ χ² Tests                               
+ ────────────────────────────────────── 
+         Value       df    p            
+ ────────────────────────────────────── 
+   χ²    92.25660     1    < .0000001   
+   N          300                       
+ ────────────────────────────────────── 
+
+
+ Comparative Measures                               
+ ────────────────────────────────────────────────── 
+                 Value       Lower       Upper      
+ ────────────────────────────────────────────────── 
+   Odds ratio    17.61130    8.992580    34.49041   
+ ────────────────────────────────────────────────── 
 ```
 
 Note that 95% confidence intervals for the odds ratio based on `jmv` differ from those calculated by Stata. It appears that `jmv` uses the Woolf method to calculate confidence intervals, but this is not documented.
