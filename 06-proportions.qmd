@@ -61,7 +61,7 @@ $${\text{SE}\left( p \right) = \sqrt{\frac{0.2186 \times (1 - 0.2186)}{215}}
 
 Then, the 95% confidence interval is estimated as:
 
-$$\text{95\% CI} = 0.2816 \pm 1.96 \times 0.02819$$
+$$\text{95\% CI} = 0.2186 \pm 1.96 \times 0.02819$$
 
 $$= 0.1634 \text{ to } 0.2739$$
 

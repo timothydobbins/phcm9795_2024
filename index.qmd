@@ -34,6 +34,10 @@ On successful completion of this course, you will be able to:
 
 ## Change log
 
+2 July 2024
+
+- Worked Example 6.1: fixed typo in the calculation of the confidence interval
+
 13 June 2024
 
 - Table 1.6: added guidance on the acceptable number of decimal places for probabilities
